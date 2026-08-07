@@ -1,9 +1,12 @@
 'use client';
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
+import { Suspense } from 'react';
 import { useLanguage } from '@/components/language/LanguageProvider';
-export default function PhilosophyPost() {
-  const { slug } = useParams() as { slug: string };
+
+function PhilosophyNoteContent() {
+  const params = useSearchParams();
+  const slug = params.get('slug') || '';
   const { t } = useLanguage();
   return (<div className="max-w-3xl mx-auto px-6 py-20 sm:py-24">
     <Link href="/guanwo/yishu" className="text-xs mb-6 inline-block transition-opacity hover:opacity-70" style={{color:'var(--color-textMuted)'}}>{t('common','back_philosophy')}</Link>
@@ -12,4 +15,8 @@ export default function PhilosophyPost() {
     </div>
     <article className="prose-custom"><p>{t('common','philosophy_loading')} {slug}</p></article>
   </div>);
+}
+
+export default function PhilosophyNote() {
+  return <Suspense><PhilosophyNoteContent /></Suspense>;
 }

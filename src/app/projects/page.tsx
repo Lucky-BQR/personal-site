@@ -14,7 +14,7 @@ export default function ProjectsPage() {
     <h1 className="text-[clamp(1.35rem,4vw,2rem)] mb-4" style={{color:'var(--color-text)'}}>{t('projects','subtitle')}</h1>
     <p className="text-[15px] leading-relaxed mb-14" style={{color:'var(--color-textSecondary)',lineHeight:1.75}}>{t('projects','desc')}</p>
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-      {categories.map(cat=>(<Link key={cat.slug} href={`/projects/${cat.slug}`} className="group rounded-[1.25rem] border p-6 transition-all duration-300" style={{backgroundColor:'var(--color-card)',borderColor:'var(--color-border)',boxShadow:'0 1px 2px var(--color-shadow-sm), 0 2px 8px var(--color-shadow-sm), 0 8px 16px var(--color-shadow-sm)'}}>
+      {categories.map(cat=>(<Link key={cat.slug} href={`/projects/category?slug=${cat.slug}`} className="group rounded-[1.25rem] border p-6 transition-all duration-300" style={{backgroundColor:'var(--color-card)',borderColor:'var(--color-border)',boxShadow:'0 1px 2px var(--color-shadow-sm), 0 2px 8px var(--color-shadow-sm), 0 8px 16px var(--color-shadow-sm)'}}>
         <div className="flex items-start gap-4"><span className="text-[28px]">{cat.icon}</span><div><h3 className="font-semibold text-[14px] mb-1" style={{color:'var(--color-text)'}}>{t('projects',cat.label)}</h3><p className="text-[12px] leading-relaxed" style={{color:'var(--color-textMuted)'}}>{t('projects',cat.desc)}</p></div></div>
       </Link>))}
     </div>
