@@ -1,69 +1,67 @@
-import Image from "next/image";
+'use client';
 
-export default function Home() {
+import Link from 'next/link';
+import { useLanguage } from '@/components/language/LanguageProvider';
+
+const modules = [
+  { href: '/about', icon: '👤', label: 'module_about', desc: 'module_about_desc' },
+  { href: '/projects', icon: '💻', label: 'module_projects', desc: 'module_projects_desc' },
+  { href: '/blog', icon: '✍️', label: 'module_blog', desc: 'module_blog_desc' },
+  { href: '/guanwo', icon: '💡', label: 'module_guanwo', desc: 'module_guanwo_desc' },
+  { href: '/pinjian', icon: '🖌️', label: 'module_pinjian', desc: 'module_pinjian_desc' },
+  { href: '/garden', icon: '🌱', label: 'module_garden', desc: 'module_garden_desc' },
+  { href: '/pets', icon: '🐾', label: 'module_pets', desc: 'module_pets_desc' },
+  { href: '/inspiration', icon: '✨', label: 'module_inspiration', desc: 'module_inspiration_desc' },
+];
+
+export default function HomePage() {
+  const { t } = useLanguage();
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div className="min-h-[calc(100vh-4rem)]">
+      <section className="max-w-5xl mx-auto px-6 pt-28 pb-20 sm:pt-36 sm:pb-24">
+        <div className="max-w-2xl">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.12em] mb-8" style={{ color: 'var(--color-textMuted)' }}>
+            {t('home', 'title')}
           </p>
+          <h1 className="text-[clamp(1.35rem,4vw,2rem)] leading-[1.15] mb-8" style={{ color: 'var(--color-text)', fontWeight: 600, letterSpacing: '-0.02em' }}>
+            {t('home', 'headline')}
+          </h1>
+          <p className="text-[15px] max-w-[32rem] mb-10" style={{ color: 'var(--color-textSecondary)', lineHeight: 1.75, letterSpacing: '-0.008em' }}>
+            {t('home', 'subheadline')}
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/about" className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl font-medium text-[13px] transition-all duration-200" style={{ backgroundColor: 'var(--color-accent)', color: '#ffffff', boxShadow: '0 1px 3px rgba(90,122,74,0.2), 0 1px 2px rgba(90,122,74,0.15)' }}>
+              {t('home', 'explore')}
+              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+            </Link>
+            <Link href="/blog" className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl font-medium text-[13px] transition-all duration-200" style={{ color: 'var(--color-accent)', backgroundColor: 'var(--color-accentLight)' }}>
+              {t('home', 'read')}
+            </Link>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+      <div className="max-w-5xl mx-auto px-6"><hr style={{ borderColor: 'var(--color-border)' }} /></div>
+      <section className="max-w-5xl mx-auto px-6 py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          {modules.map((mod, i) => (
+            <Link key={mod.href} href={mod.href} className="group rounded-[1.25rem] p-6 border transition-all duration-300 animate-fade-in" style={{ backgroundColor: 'var(--color-card)', borderColor: 'var(--color-border)', boxShadow: '0 1px 2px var(--color-shadow-sm), 0 2px 8px var(--color-shadow-sm), 0 8px 16px var(--color-shadow-sm)', animationDelay: `${i * 60}ms` }}>
+              <div className="flex flex-col gap-3 h-full">
+                <span className="text-[26px]">{mod.icon}</span>
+                <div>
+                  <h3 className="font-semibold text-[14px] mb-1" style={{ color: 'var(--color-text)' }}>{t('home', mod.label)}</h3>
+                  <p className="text-[12px] leading-relaxed" style={{ color: 'var(--color-textMuted)' }}>{t('home', mod.desc)}</p>
+                </div>
+              </div>
+            </Link>
+          ))}
         </div>
-      </main>
+      </section>
+      <section className="max-w-5xl mx-auto px-6 pb-20">
+        <div className="flex flex-wrap gap-2">
+          <Link href="/timeline" className="text-[12px] py-2 px-5 rounded-full border transition-colors" style={{ color: 'var(--color-textSecondary)', borderColor: 'var(--color-border)' }}>{t('nav', 'timeline')}</Link>
+          <Link href="/friends" className="text-[12px] py-2 px-5 rounded-full border transition-colors" style={{ color: 'var(--color-textSecondary)', borderColor: 'var(--color-border)' }}>{t('nav', 'friends')}</Link>
+        </div>
+      </section>
     </div>
   );
 }
