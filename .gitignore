@@ -40,4 +40,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-.vercel
+# Apple Design skills (3 copies, only one needed)
+/.agents/
+/.claude/
+/agent/
+
+# Skills lock file
+/skills-lock.json
