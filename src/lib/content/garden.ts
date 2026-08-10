@@ -1,32 +1,46 @@
-import fs from 'node:fs';
-import path from 'node:path';
-import type { GardenEntry } from '@/types/garden';
-import { parseFrontmatter } from './loader';
+import type { GardenDocument, GardenEntry } from '@/types/garden';
+import { loadContentDirectory } from './loader';
 
-const gardenDirectory = path.join(process.cwd(), 'content', 'garden');
+const gardenDirectory = 'content/garden';
 
-function parseEntry(fileName: string): GardenEntry {
-  const raw = fs.readFileSync(path.join(gardenDirectory, fileName), 'utf8');
-  const { fields, content } = parseFrontmatter(raw);
-
+function normalizeDocument(document: GardenDocument): GardenDocument {
   return {
-    slug: fields.slug || fileName.replace(/\.mdx?$/, ''),
-    title: fields.title || 'Untitled thought',
-    excerpt: fields.excerpt || '',
-    date: fields.date || '',
-    category: (fields.category || 'reflection') as GardenEntry['category'],
-    featured: fields.featured === 'true',
-    tags: (fields.tags || '').split(',').map((tag) => tag.trim()).filter(Boolean),
-    content,
+    ...document,
+    metadata: {
+      ...document.metadata,
+      title: document.metadata.title || 'Untitled thought',
+      excerpt: document.metadata.excerpt || '',
+      date: document.metadata.date || '',
+      category: document.metadata.category || 'reflection',
+      tags: document.metadata.tags || [],
+    },
   };
 }
 
+function toGardenEntry(document: GardenDocument): GardenEntry {
+  return {
+    ...document.metadata,
+    content: document.content,
+  };
+}
+
+export function getGardenDocuments(): GardenDocument[] {
+  return loadContentDirectory<GardenDocument['metadata']>(gardenDirectory)
+    .map(normalizeDocument)
+    .sort((a, b) => b.metadata.date.localeCompare(a.metadata.date));
+}
+
+export function getGardenDocument(slug: string): GardenDocument | undefined {
+  return getGardenDocuments().find((document) => document.metadata.slug === slug);
+}
+
 export function getGardenEntries(): GardenEntry[] {
-  if (!fs.existsSync(gardenDirectory)) return [];
-  return fs.readdirSync(gardenDirectory)
-    .filter((fileName) => /\.mdx?$/.test(fileName))
-    .map(parseEntry)
-    .sort((a, b) => b.date.localeCompare(a.date));
+  return getGardenDocuments().map(toGardenEntry);
+}
+
+export function getGardenEntry(slug: string): GardenEntry | undefined {
+  const document = getGardenDocument(slug);
+  return document ? toGardenEntry(document) : undefined;
 }
 
 export function getFeaturedThoughts(): GardenEntry[] {
