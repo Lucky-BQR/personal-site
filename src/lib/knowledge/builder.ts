@@ -8,24 +8,50 @@ import type { KnowledgeIndex, KnowledgeNode, KnowledgeTopic, TopicRegistryEntry 
 const routeBuilders: Record<ContentKind, (slug: string) => string> = {
   garden: (slug) => `/garden/${slug}`,
   project: (slug) => `/projects/${slug}`,
-  timeline: () => '/timeline',
-  creator: () => '/about',
+  timeline: (slug) => `/timeline#${slug}`,
+  creator: (slug) => `/about#${slug}`,
 };
 
 export function knowledgeNodeId(kind: ContentKind, slug: string): string {
   return `${kind}:${slug}`;
 }
 
+function normalizedTopicLabel(value: string): string {
+  return value.normalize('NFKC').trim().toLowerCase();
+}
+
+export function topicSlug(value: string): string {
+  const slug = value
+    .normalize('NFKD')
+    .toLowerCase()
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/['’]/g, '')
+    .replace(/[^a-z0-9\u3400-\u9fff\u3040-\u30ff\uac00-\ud7af]+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
+  if (!slug) throw new Error(`Topic cannot produce a stable slug: ${value}`);
+  return slug;
+}
+
 function normalizeTopic(value: string): KnowledgeTopic | undefined {
   const label = value.trim();
-  const slug = label.toLowerCase().replace(/\s+/g, '-');
-  return slug ? { slug, label } : undefined;
+  return label ? { slug: topicSlug(label), label } : undefined;
 }
 
 function getDocumentTopics(document: ContentDocument): KnowledgeTopic[] {
   const topics = [...(document.metadata.topics || []), ...(document.metadata.tags || [])];
   const normalized = topics.map(normalizeTopic).filter((topic): topic is KnowledgeTopic => Boolean(topic));
-  return [...new Map(normalized.map((topic) => [topic.slug, topic])).values()];
+  const registry = new Map<string, KnowledgeTopic>();
+
+  for (const topic of normalized) {
+    const existing = registry.get(topic.slug);
+    if (existing && normalizedTopicLabel(existing.label) !== normalizedTopicLabel(topic.label)) {
+      throw new Error(`Topic slug collision in ${document.kind}:${document.metadata.slug}: ${existing.label} / ${topic.label}`);
+    }
+    if (!existing) registry.set(topic.slug, topic);
+  }
+
+  return [...registry.values()].sort((a, b) => a.slug.localeCompare(b.slug));
 }
 
 export function getAllContentDocuments(): ContentDocument[] {
@@ -79,6 +105,9 @@ export function buildTopicRegistry(nodes: KnowledgeNode[]): TopicRegistryEntry[]
   for (const node of nodes) {
     for (const topic of node.topics) {
       const entry = registry.get(topic.slug) || { ...topic, nodeIds: [] };
+      if (normalizedTopicLabel(entry.label) !== normalizedTopicLabel(topic.label)) {
+        throw new Error(`Topic slug collision: ${entry.label} / ${topic.label}`);
+      }
       if (!entry.nodeIds.includes(node.id)) entry.nodeIds.push(node.id);
       registry.set(topic.slug, entry);
     }

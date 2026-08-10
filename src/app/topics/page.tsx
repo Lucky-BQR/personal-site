@@ -9,20 +9,20 @@ export default function TopicsPage() {
   const { topics } = buildKnowledgeIndex();
 
   return (
-    <main className="container-main spatial-section">
+    <div className="container-main spatial-section">
       <header className="section-header motion-reveal mb-12">
         <p className="section-header-eyebrow type-meta">KNOWLEDGE INDEX</p>
         <h1 className="section-header-title type-heading-xl">主题索引</h1>
         <p className="section-header-description type-body">从主题进入项目、笔记、成长记录与创造方法之间的连接。</p>
       </header>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 spatial-card-grid">
+      {topics.length > 0 ? <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 spatial-card-grid">
         {topics.map((topic) => (
           <Link key={topic.slug} href={`/topics/${topic.slug}`} className="card-base group">
             <p className="card-meta mb-3">{topic.nodeIds.length} ITEMS</p>
             <h2 className="card-title">#{topic.label}</h2>
           </Link>
         ))}
-      </div>
-    </main>
+      </div> : <p className="type-body" style={{ color: 'var(--color-textMuted)' }}>主题仍在生长中。</p>}
+    </div>
   );
 }

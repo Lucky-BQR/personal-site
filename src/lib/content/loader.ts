@@ -4,6 +4,7 @@ import type { ContentDocument, ContentKind, ContentMetadata, ContentRelation, Co
 
 const contentKinds: ContentKind[] = ['garden', 'timeline', 'creator', 'project'];
 const relationTypes: ContentRelationType[] = ['related_to', 'part_of', 'inspired_by', 'built_from', 'continues', 'documents'];
+const contentStatuses: NonNullable<ContentMetadata['status']>[] = ['draft', 'published', 'archived'];
 
 type MetadataMapper<T extends ContentMetadata> = (metadata: ContentMetadata, fields: Record<string, string>) => T;
 
@@ -17,6 +18,11 @@ function isContentKind(value: string): value is ContentKind {
 
 function isRelationType(value: string): value is ContentRelationType {
   return relationTypes.includes(value as ContentRelationType);
+}
+
+function parseStatus(value = 'published'): NonNullable<ContentMetadata['status']> {
+  if (contentStatuses.includes(value as NonNullable<ContentMetadata['status']>)) return value as NonNullable<ContentMetadata['status']>;
+  throw new Error(`Invalid content status: ${value}`);
 }
 
 function parseRelations(value = ''): ContentRelation[] {
@@ -48,7 +54,7 @@ export function parseFrontmatter(raw: string) {
 
 export function parseContent<T extends ContentMetadata = ContentMetadata>(raw: string, kind: ContentKind, fallbackSlug = '', mapMetadata?: MetadataMapper<T>): ContentDocument<T> {
   const { fields, content } = parseFrontmatter(raw);
-  const metadata: ContentMetadata = { slug: fields.slug || fallbackSlug, title: fields.title || '', excerpt: fields.excerpt || '', date: fields.date || '', year: fields.year || '', category: fields.category || '', tags: parseList(fields.tags), topics: parseList(fields.topics), status: (fields.status || 'published') as ContentMetadata['status'], featured: fields.featured === 'true', relations: parseRelations(fields.relations) };
+  const metadata: ContentMetadata = { slug: fields.slug || fallbackSlug, title: fields.title || '', excerpt: fields.excerpt || '', date: fields.date || '', year: fields.year || '', category: fields.category || '', tags: parseList(fields.tags), topics: parseList(fields.topics), status: parseStatus(fields.status), featured: fields.featured === 'true', relations: parseRelations(fields.relations) };
   return { kind, metadata: mapMetadata ? mapMetadata(metadata, fields) : metadata as T, content };
 }
 
@@ -56,4 +62,8 @@ export function loadContentDirectory<T extends ContentMetadata = ContentMetadata
   const absolute = path.isAbsolute(directory) ? directory : path.join(process.cwd(), directory);
   if (!fs.existsSync(absolute)) return [];
   return fs.readdirSync(absolute).filter((file) => /\.mdx?$/.test(file)).map((file) => parseContent<T>(fs.readFileSync(path.join(absolute, file), 'utf8'), kind, file.replace(/\.mdx?$/, ''), mapMetadata));
+}
+
+export function isPublishedContent<T extends ContentMetadata>(document: ContentDocument<T>): boolean {
+  return document.metadata.status === 'published';
 }

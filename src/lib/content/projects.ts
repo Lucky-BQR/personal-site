@@ -1,6 +1,6 @@
 import type { ContentMetadata } from '@/types/content';
 import type { ProjectCaseStudy, ProjectDocument, ProjectMetadata } from '@/types/project';
-import { loadContentDirectory } from './loader';
+import { isPublishedContent, loadContentDirectory } from './loader';
 
 const projectDirectory = 'content/projects';
 
@@ -44,12 +44,16 @@ export function getProjectDocument(slug: string): ProjectDocument | undefined {
   return getProjectDocuments().find((document) => document.metadata.slug === slug);
 }
 
+export function getPublishedProjectDocuments(): ProjectDocument[] {
+  return getProjectDocuments().filter(isPublishedContent);
+}
+
 export function getProjects(): ProjectCaseStudy[] {
-  return getProjectDocuments().map(toProject);
+  return getPublishedProjectDocuments().map(toProject);
 }
 
 export function getProject(slug: string): ProjectCaseStudy | undefined {
-  const document = getProjectDocument(slug);
+  const document = getPublishedProjectDocuments().find((item) => item.metadata.slug === slug);
   return document ? toProject(document) : undefined;
 }
 

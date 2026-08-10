@@ -1,6 +1,6 @@
 import type { ContentMetadata } from '@/types/content';
 import type { GardenDocument, GardenEntry, GardenMetadata } from '@/types/garden';
-import { loadContentDirectory } from './loader';
+import { isPublishedContent, loadContentDirectory } from './loader';
 
 const gardenDirectory = 'content/garden';
 
@@ -31,12 +31,16 @@ export function getGardenDocument(slug: string): GardenDocument | undefined {
   return getGardenDocuments().find((document) => document.metadata.slug === slug);
 }
 
+export function getPublishedGardenDocuments(): GardenDocument[] {
+  return getGardenDocuments().filter(isPublishedContent);
+}
+
 export function getGardenEntries(): GardenEntry[] {
-  return getGardenDocuments().map(toGardenEntry);
+  return getPublishedGardenDocuments().map(toGardenEntry);
 }
 
 export function getGardenEntry(slug: string): GardenEntry | undefined {
-  const document = getGardenDocument(slug);
+  const document = getPublishedGardenDocuments().find((item) => item.metadata.slug === slug);
   return document ? toGardenEntry(document) : undefined;
 }
 

@@ -22,7 +22,7 @@ export function getSitemapEntries(knowledgeIndex: KnowledgeIndex) {
   const topicEntries = knowledgeIndex.topics.map((topic) => ({ url: absoluteUrl(`/topics/${topic.slug}`) }));
 
   return [
-    ...staticPaths.map((path) => ({ url: absoluteUrl(path), lastModified: new Date() })),
+    ...staticPaths.map((path) => ({ url: absoluteUrl(path) })),
     ...getProjects().map((project) => ({ url: absoluteUrl(`/projects/${project.slug}`), lastModified: new Date(`${project.year}-01-01`) })),
     ...gardenEntries,
     ...topicEntries,

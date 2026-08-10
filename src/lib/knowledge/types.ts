@@ -28,9 +28,13 @@ export interface KnowledgeIndex {
   topics: TopicRegistryEntry[];
 }
 
-export interface RelatedKnowledgeNode {
-  node: KnowledgeNode;
+export interface KnowledgeConnection {
   relation: ContentRelationType;
   direction: 'outgoing' | 'incoming';
   label?: string;
+}
+
+export interface RelatedKnowledgeNode {
+  node: KnowledgeNode;
+  connections: KnowledgeConnection[];
 }

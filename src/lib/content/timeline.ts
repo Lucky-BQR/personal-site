@@ -1,6 +1,6 @@
 import type { ContentMetadata } from '@/types/content';
 import type { TimelineDocument, TimelineEntry, TimelineMetadata } from '@/types/timeline';
-import { loadContentDirectory } from './loader';
+import { isPublishedContent, loadContentDirectory } from './loader';
 
 const timelineDirectory = 'content/timeline';
 
@@ -22,8 +22,12 @@ export function getTimelineDocuments(): TimelineDocument[] {
     .sort((a, b) => a.metadata.year.localeCompare(b.metadata.year));
 }
 
+export function getPublishedTimelineDocuments(): TimelineDocument[] {
+  return getTimelineDocuments().filter(isPublishedContent);
+}
+
 export function getTimelineEntries(): TimelineEntry[] {
-  return getTimelineDocuments().map(toTimelineEntry);
+  return getPublishedTimelineDocuments().map(toTimelineEntry);
 }
 
 export function getTimeline(limit = 3): TimelineEntry[] {

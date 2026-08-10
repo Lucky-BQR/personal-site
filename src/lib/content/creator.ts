@@ -1,5 +1,5 @@
 import type { CreatorContent, CreatorDocument } from '@/types/creator';
-import { loadContentDirectory } from './loader';
+import { isPublishedContent, loadContentDirectory } from './loader';
 
 const creatorDirectory = 'content/creator';
 
@@ -7,8 +7,12 @@ export function getCreatorDocuments(): CreatorDocument[] {
   return loadContentDirectory(creatorDirectory, 'creator');
 }
 
+export function getPublishedCreatorDocuments(): CreatorDocument[] {
+  return getCreatorDocuments().filter(isPublishedContent);
+}
+
 export function getCreatorDocument(slug = 'creator-story'): CreatorDocument | undefined {
-  return getCreatorDocuments().find((document) => document.metadata.slug === slug);
+  return getPublishedCreatorDocuments().find((document) => document.metadata.slug === slug);
 }
 
 export function getCreatorContent(): CreatorContent {

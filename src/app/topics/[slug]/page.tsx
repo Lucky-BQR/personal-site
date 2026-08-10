@@ -28,7 +28,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
   const nodes = getTopicNodes(index, topic.slug);
 
   return (
-    <main className="container-reading spatial-section">
+    <div className="container-reading spatial-section">
       <header className="section-header motion-reveal mb-12">
         <Link href="/topics" className="type-meta transition-opacity hover:opacity-70" style={{ color: 'var(--color-accent)' }}>← 全部主题</Link>
         <h1 className="section-header-title type-heading-xl mt-4">#{topic.label}</h1>
@@ -37,6 +37,6 @@ export default async function TopicPage({ params }: TopicPageProps) {
       <div className="grid grid-cols-1 spatial-card-grid">
         {nodes.map((node) => <KnowledgeCard key={node.id} node={node} />)}
       </div>
-    </main>
+    </div>
   );
 }

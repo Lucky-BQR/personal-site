@@ -95,6 +95,7 @@ export const siteConfig: SiteConfig = {
       ],
     },
     { label: 'garden', labelZh: '笔记花园', href: '/garden' },
+    { label: 'topics', labelZh: '主题', href: '/topics' },
     { label: 'pets', labelZh: '宠物', href: '/pets' },
     { label: 'inspiration', labelZh: '灵感速记', href: '/inspiration' },
     { label: 'timeline', labelZh: '时间线', href: '/timeline' },
