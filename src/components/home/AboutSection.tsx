@@ -73,7 +73,7 @@ export default function AboutSection() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_0.6fr] spatial-card-grid">
-        <article className="card">
+        <article className="card-base">
           <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1 mb-6">
             <h3 className="text-[22px]" style={{ color: 'var(--color-text)' }}>
               {creator.name}

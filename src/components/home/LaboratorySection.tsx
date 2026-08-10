@@ -39,28 +39,28 @@ export default function LaboratorySection() {
 
       <div className="grid grid-cols-1 md:grid-cols-3 spatial-card-grid">
         {laboratoryProjects.map((project) => (
-          <article key={project.id} className="card flex min-h-64 flex-col">
+          <article key={project.id} className="card-base flex min-h-64 flex-col">
             <div className="flex items-center justify-between gap-4 mb-8">
-              <p className="text-[10px] font-semibold uppercase tracking-[0.14em]" style={{ color: 'var(--color-accent)' }}>
+              <p className="card-meta" style={{ color: 'var(--color-accent)' }}>
                 PROJECT {project.id}
               </p>
-              <time className="text-[11px]" style={{ color: 'var(--color-textMuted)' }}>
+              <time className="card-meta" style={{ textTransform: 'none' }}>
                 {project.year}
               </time>
             </div>
 
-            <h3 className="text-[18px] mb-4" style={{ color: 'var(--color-text)' }}>
+            <h3 className="card-title mb-4">
               {project.name}
             </h3>
-            <p className="text-[13px] mb-8" style={{ color: 'var(--color-textSecondary)', lineHeight: 1.75 }}>
+            <p className="card-description mb-8">
               {project.philosophy}
             </p>
 
             <div className="mt-auto pt-4 border-t" style={{ borderColor: 'var(--color-border)' }}>
-              <p className="text-[10px] font-medium uppercase tracking-[0.12em] mb-2" style={{ color: 'var(--color-textMuted)' }}>
+              <p className="card-meta mb-2" style={{ fontWeight: 500 }}>
                 Technology
               </p>
-              <p className="text-[11px] font-medium" style={{ color: 'var(--color-tagText)' }}>
+              <p className="card-description" style={{ color: 'var(--color-tagText)', fontSize: 'var(--font-size-meta)', fontWeight: 500 }}>
                 {project.technology}
               </p>
             </div>

@@ -245,21 +245,50 @@ html { transition: background-color 0.3s ease, color 0.3s ease; }
 }
 
 /* === Card — Apple-style with multi-layer shadows === */
-.card {
+.card,
+.card-base {
   background: var(--color-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
-  padding: var(--space-6);
+  padding: 2rem;
   transition: transform var(--transition-normal),
               box-shadow var(--transition-normal),
-              background-color var(--transition-fast);
+              background-color var(--transition-fast),
+              border-color var(--transition-fast);
   box-shadow: var(--shadow-card);
 }
 
-.card:hover {
+.card:hover,
+.card-base:hover {
   background: var(--color-cardHover);
+  border-color: var(--color-accent);
   box-shadow: var(--shadow-md), var(--shadow-lg);
-  transform: translateY(-2px);
+  transform: translateY(-4px);
+}
+
+.card-meta {
+  color: var(--color-textMuted);
+  font-size: var(--font-size-meta);
+  font-weight: var(--font-weight-meta);
+  letter-spacing: var(--letter-spacing-meta);
+  line-height: var(--line-height-meta);
+  text-transform: uppercase;
+}
+
+.card-title {
+  color: var(--color-text);
+  font-size: var(--font-size-heading);
+  font-weight: var(--font-weight-heading);
+  letter-spacing: var(--letter-spacing-heading);
+  line-height: var(--line-height-heading);
+}
+
+.card-description {
+  color: var(--color-textSecondary);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-body);
+  letter-spacing: var(--letter-spacing-body);
+  line-height: var(--line-height-body);
 }
 
 /* === Interactive — respond on pointer-down === */
@@ -379,5 +408,11 @@ a:active {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  .card { transform: none !important; }
+  .card,
+  .card-base { transform: none !important; }
+}
+
+@media (max-width: 640px) {
+  .card,
+  .card-base { padding: 1.5rem; }
 }
