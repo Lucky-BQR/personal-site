@@ -64,10 +64,16 @@
   --shadow-lg: 0 8px 16px var(--color-shadow-sm), 0 16px 40px var(--color-shadow-sm);
   --shadow-card: var(--shadow-sm), 0 8px 16px var(--color-shadow-sm);
 
-  /* Transitions */
-  --transition-fast: 150ms ease;
-  --transition-normal: 300ms cubic-bezier(0.22, 1, 0.36, 1);
-  --transition-slow: 500ms cubic-bezier(0.22, 1, 0.36, 1);
+  /* Motion */
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+  --easing-standard: ease;
+  --easing-emphasized: cubic-bezier(0.22, 1, 0.36, 1);
+  --easing-linear: linear;
+  --transition-fast: var(--duration-fast) var(--easing-standard);
+  --transition-normal: var(--duration-normal) var(--easing-emphasized);
+  --transition-slow: var(--duration-slow) var(--easing-emphasized);
 
   /* === ZhuQing Studio Spatial Rhythm Tokens v1.0 === */
   --container-full-width: 100%;
@@ -234,7 +240,7 @@ p  { font-size: var(--font-size-body); font-weight: var(--font-weight-body); let
 }
 
 /* === Theme transitions === */
-html { transition: background-color 0.3s ease, color 0.3s ease; }
+html { transition: background-color var(--duration-normal) var(--easing-standard), color var(--duration-normal) var(--easing-standard); }
 
 /* === Glass utility === */
 .glass {
@@ -296,21 +302,34 @@ button:active,
 [role="button"]:active,
 a:active {
   transform: scale(0.97);
-  transition: transform 0.08s ease-out;
+  transition: transform var(--duration-fast) var(--easing-standard);
 }
 
 /* === Animations === */
+@keyframes zhuqingReveal {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
+.motion-reveal,
 .animate-fade-in {
-  animation: fadeIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: zhuqingReveal var(--duration-slow) var(--easing-emphasized) both;
+}
+
+.motion-hover {
+  transition: transform var(--duration-normal) var(--easing-emphasized),
+              box-shadow var(--duration-normal) var(--easing-emphasized),
+              border-color var(--duration-fast) var(--easing-standard),
+              background-color var(--duration-fast) var(--easing-standard);
 }
 
 .animate-stagger > * {
-  animation: fadeIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: zhuqingReveal var(--duration-slow) var(--easing-emphasized) both;
 }
 .animate-stagger > *:nth-child(1) { animation-delay: 0ms; }
 .animate-stagger > *:nth-child(2) { animation-delay: 60ms; }
@@ -407,6 +426,12 @@ a:active {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+  .motion-reveal,
+  .animate-fade-in,
+  .animate-stagger > * {
+    animation: none !important;
+    transform: none !important;
   }
   .card,
   .card-base { transform: none !important; }
