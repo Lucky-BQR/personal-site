@@ -1,5 +1,5 @@
 1:"$Sreact.fragment"
-:HL["/personal-site/_next/static/chunks/1_mm_we4df7_d.css","style"]
+:HL["/personal-site/_next/static/chunks/3min1x8h2jeqh.css","style"]
 2:Tf7c,
               (function() {
                 try {
@@ -81,7 +81,7 @@
                 } catch(e) {}
               })();
             5:X
-0:{"buildId":"clAZ0aseJTTF6ERjYkW13","data":[{"rsc":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/personal-site/_next/static/chunks/1_mm_we4df7_d.css","precedence":"next"}],["$","script","script-0",{"src":"/personal-site/_next/static/chunks/3fntmmi971322.js","async":true}],["$","script","script-1",{"src":"/personal-site/_next/static/chunks/0lsr6uq-416fm.js","async":true}]],["$","html",null,{"lang":"zh-CN","className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable h-full","suppressHydrationWarning":true,"children":[["$","head",null,{"children":["$","script",null,{"dangerouslySetInnerHTML":{"__html":"$2"}}]}],"$L3"]}]]}],"isPartial":"$@4","staleTime":"$5","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@6","rootVaryParams":null,"needsRuntimeRequest":"$@7"}
+0:{"buildId":"DbWJu3pncTl1tjOEOE_PC","data":[{"rsc":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/personal-site/_next/static/chunks/3min1x8h2jeqh.css","precedence":"next"}],["$","script","script-0",{"src":"/personal-site/_next/static/chunks/3fntmmi971322.js","async":true}],["$","script","script-1",{"src":"/personal-site/_next/static/chunks/0lsr6uq-416fm.js","async":true}]],["$","html",null,{"lang":"zh-CN","className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable h-full","suppressHydrationWarning":true,"children":[["$","head",null,{"children":["$","script",null,{"dangerouslySetInnerHTML":{"__html":"$2"}}]}],"$L3"]}]]}],"isPartial":"$@4","staleTime":"$5","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@6","rootVaryParams":null,"needsRuntimeRequest":"$@7"}
 8:I[65150,["/personal-site/_next/static/chunks/3fntmmi971322.js","/personal-site/_next/static/chunks/0lsr6uq-416fm.js"],"ThemeProvider"]
 9:I[5233,["/personal-site/_next/static/chunks/3fntmmi971322.js","/personal-site/_next/static/chunks/0lsr6uq-416fm.js"],"LanguageProvider"]
 a:I[3374,["/personal-site/_next/static/chunks/3fntmmi971322.js","/personal-site/_next/static/chunks/0lsr6uq-416fm.js"],"default"]
