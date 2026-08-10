@@ -1,0 +1,1 @@
+export default function CaseStudySection({ title, children }: { title: string; children: React.ReactNode }) { return <section className="spatial-section-compact" aria-labelledby={title}><h2 id={title} className="type-heading mb-4">{title}</h2><div className="type-body" style={{ color: 'var(--color-textSecondary)' }}>{children}</div></section>; }

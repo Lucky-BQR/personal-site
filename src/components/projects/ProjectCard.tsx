@@ -1,0 +1,3 @@
+import Link from 'next/link';
+import type { ProjectCaseStudy } from '@/types/project';
+export default function ProjectCard({ project }: { project: ProjectCaseStudy }) { return <Link href={`/projects/${project.slug}`} className="card-base group"><div className="flex items-start justify-between gap-4 mb-4"><span className="card-meta">{project.category}</span><time className="card-meta">{project.year}</time></div><h2 className="card-title mb-2">{project.title}</h2><p className="card-description mb-4">{project.summary}</p><div className="flex flex-wrap gap-2">{project.technologies.map((tech) => <span key={tech} className="card-meta">{tech}</span>)}</div></Link>; }

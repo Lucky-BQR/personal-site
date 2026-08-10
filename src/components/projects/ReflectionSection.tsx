@@ -1,0 +1,1 @@
+export default function ReflectionSection({ text }: { text: string }) { return <section className="card-base mt-8" aria-labelledby="project-reflection-title"><p className="card-meta mb-3">REFLECTION</p><h2 id="project-reflection-title" className="type-heading mb-3">创造反思</h2><p className="type-body" style={{ color: 'var(--color-textSecondary)' }}>{text}</p></section>; }
