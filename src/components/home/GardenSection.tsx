@@ -23,7 +23,7 @@ const gardenPaths = [
 
 export default function GardenSection() {
   return (
-    <section className="col-span-full py-4 sm:py-8" aria-labelledby="knowledge-garden-title">
+    <section className="col-span-full spatial-section" aria-labelledby="knowledge-garden-title">
       <div className="max-w-2xl mb-8 sm:mb-10">
         <p className="text-[10px] font-semibold uppercase tracking-[0.16em] mb-3" style={{ color: 'var(--color-textMuted)' }}>
           Knowledge Garden
@@ -38,7 +38,7 @@ export default function GardenSection() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+      <div className="grid grid-cols-1 md:grid-cols-3 spatial-card-grid">
         {gardenPaths.map((path, index) => (
           <HomeModuleCard
             key={path.label}

@@ -35,7 +35,7 @@ const explorationFields = [
 
 export default function ExplorationSection() {
   return (
-    <section className="order-first col-span-full py-4 sm:py-8">
+    <section className="order-first col-span-full spatial-section">
       <div className="max-w-2xl mb-8 sm:mb-10">
         <p className="text-[10px] font-semibold uppercase tracking-[0.16em] mb-3" style={{ color: 'var(--color-textMuted)' }}>
           Exploration
@@ -50,7 +50,7 @@ export default function ExplorationSection() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 spatial-card-grid">
         {explorationFields.map((field, index) => (
           <HomeModuleCard
             key={field.label}

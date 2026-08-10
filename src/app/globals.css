@@ -69,6 +69,16 @@
   --transition-normal: 300ms cubic-bezier(0.22, 1, 0.36, 1);
   --transition-slow: 500ms cubic-bezier(0.22, 1, 0.36, 1);
 
+  /* === ZhuQing Studio Spatial Rhythm Tokens v1.0 === */
+  --container-full-width: 100%;
+  --container-main-max: 64rem;
+  --container-reading-max: 48rem;
+  --container-gutter: 1.5rem;
+  --space-section-hero: 10rem;
+  --space-section-normal: 7.5rem;
+  --space-section-compact: 5rem;
+  --space-card-gap: 1rem;
+
   /* === ZhuQing Studio Typography Tokens v1.0 === */
   --font-size-display: clamp(2.5rem, 7vw, 4.75rem);
   --line-height-display: 1.08;
@@ -164,10 +174,49 @@ p  { font-size: var(--font-size-body); font-weight: var(--font-weight-body); let
   line-height: var(--line-height-meta);
 }
 
+/* === Spatial rhythm utilities === */
+.container-full {
+  width: var(--container-full-width);
+}
+
+.container-main {
+  width: min(var(--container-full-width) - (var(--container-gutter) * 2), var(--container-main-max));
+  margin-inline: auto;
+}
+
+.container-reading {
+  width: min(100%, var(--container-reading-max));
+}
+
+.spatial-hero {
+  padding-block: var(--space-section-hero);
+}
+
+.spatial-section {
+  padding-block: var(--space-section-normal);
+}
+
+.spatial-section-compact {
+  padding-block: var(--space-section-compact);
+}
+
+.spatial-card-grid {
+  gap: var(--space-card-gap);
+}
+
 .text-xs { letter-spacing: 0.01em; line-height: 1.5; }
 .text-\[11px\] { letter-spacing: 0.015em; line-height: 1.5; }
 .text-\[13px\] { letter-spacing: -0.005em; line-height: 1.5; }
 .text-\[14px\] { letter-spacing: -0.005em; line-height: 1.5; }
+
+@media (max-width: 640px) {
+  :root {
+    --container-gutter: 1.25rem;
+    --space-section-hero: 6rem;
+    --space-section-normal: 4.5rem;
+    --space-section-compact: 4.5rem;
+  }
+}
 
 /* === Scrollbar === */
 ::-webkit-scrollbar { width: 6px; }

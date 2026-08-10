@@ -6,8 +6,8 @@ export default function HeroSection() {
 
   return (
     <>
-      <section className="max-w-5xl mx-auto px-6 pt-24 pb-20 sm:pt-32 sm:pb-24">
-        <div className="max-w-3xl">
+      <section className="container-main spatial-hero">
+        <div className="container-reading">
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-10">
             <p className="text-[13px] font-semibold tracking-[0.12em]" style={{ color: 'var(--color-accent)' }}>
               {brand.name}
@@ -51,7 +51,7 @@ export default function HeroSection() {
           </div>
         </div>
       </section>
-      <div className="max-w-5xl mx-auto px-6"><hr style={{ borderColor: 'var(--color-border)' }} /></div>
+      <div className="container-main"><hr style={{ borderColor: 'var(--color-border)' }} /></div>
     </>
   );
 }
