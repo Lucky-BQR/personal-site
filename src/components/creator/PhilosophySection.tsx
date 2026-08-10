@@ -1,0 +1,2 @@
+import type { CreatorContent } from '@/types/creator';
+export default function PhilosophySection({ content }: { content: CreatorContent }) { return <section className="spatial-section-compact" aria-labelledby="creator-philosophy-title"><p className="type-meta mb-4" style={{ color: 'var(--color-accent)' }}>PHILOSOPHY</p><h2 id="creator-philosophy-title" className="type-heading mb-4">创造哲学</h2><p className="type-body max-w-2xl" style={{ color: 'var(--color-textSecondary)' }}>{content.philosophy}</p></section>; }

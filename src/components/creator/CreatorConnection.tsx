@@ -1,0 +1,2 @@
+import type { CreatorContent } from '@/types/creator';
+export default function CreatorConnection({ content }: { content: CreatorContent }) { return <section className="card-base mt-8" aria-labelledby="creator-connection-title"><p className="card-meta mb-3">CREATOR CONNECTION</p><h2 id="creator-connection-title" className="type-heading mb-3">与创造保持连接</h2><p className="type-body" style={{ color: 'var(--color-textSecondary)' }}>{content.connection}</p></section>; }
