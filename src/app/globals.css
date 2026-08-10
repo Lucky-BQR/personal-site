@@ -125,6 +125,9 @@
 /* Base styles */
 body {
   font-family: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  background:
+    radial-gradient(circle at 12% 8%, var(--color-accentSubtle), transparent 28rem),
+    var(--color-background);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -225,7 +228,38 @@ p  { font-size: var(--font-size-body); font-weight: var(--font-weight-body); let
 }
 
 .spatial-section {
+  position: relative;
+  isolation: isolate;
   padding-block: var(--space-section-normal);
+}
+
+/* === Background Atmosphere System v1.0 === */
+.spatial-section::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 8% -12% 8%;
+  border-radius: var(--radius-full);
+  background:
+    radial-gradient(ellipse at 18% 24%, var(--color-accentSubtle), transparent 42%),
+    linear-gradient(120deg, transparent 30%, var(--color-accentLight) 100%);
+  opacity: 0.35;
+  filter: blur(28px);
+  pointer-events: none;
+}
+
+.section-atmosphere {
+  position: relative;
+  isolation: isolate;
+}
+
+.section-atmosphere::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: radial-gradient(circle at 80% 50%, var(--color-accentSubtle), transparent 55%);
+  pointer-events: none;
 }
 
 .spatial-section-compact {
@@ -493,6 +527,9 @@ a:active {
   }
   .card,
   .card-base { transform: none !important; }
+
+  .spatial-section::before,
+  .section-atmosphere::before { filter: none; }
 }
 
 @media (max-width: 640px) {
