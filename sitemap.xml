@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>https://lucky-bqr.github.io/personal-site/</loc>
+</url>
+<url>
 <loc>https://lucky-bqr.github.io/personal-site/about</loc>
 </url>
 <url>
@@ -14,6 +17,7 @@
 </url>
 <url>
 <loc>https://lucky-bqr.github.io/personal-site/topics</loc>
+<lastmod>2026-08-10T00:00:00.000Z</lastmod>
 </url>
 <url>
 <loc>https://lucky-bqr.github.io/personal-site/projects/ai-assistant</loc>
@@ -25,27 +29,34 @@
 </url>
 <url>
 <loc>https://lucky-bqr.github.io/personal-site/topics/ai</loc>
+<lastmod>2026-01-01T00:00:00.000Z</lastmod>
 </url>
 <url>
 <loc>https://lucky-bqr.github.io/personal-site/topics/automation</loc>
+<lastmod>2026-01-01T00:00:00.000Z</lastmod>
 </url>
 <url>
 <loc>https://lucky-bqr.github.io/personal-site/topics/creation</loc>
+<lastmod>2022-01-01T00:00:00.000Z</lastmod>
 </url>
 <url>
 <loc>https://lucky-bqr.github.io/personal-site/topics/creator</loc>
 </url>
 <url>
 <loc>https://lucky-bqr.github.io/personal-site/topics/eastern-thought</loc>
+<lastmod>2026-01-01T00:00:00.000Z</lastmod>
 </url>
 <url>
 <loc>https://lucky-bqr.github.io/personal-site/topics/engineering</loc>
+<lastmod>2022-01-01T00:00:00.000Z</lastmod>
 </url>
 <url>
 <loc>https://lucky-bqr.github.io/personal-site/topics/knowledge</loc>
+<lastmod>2026-08-10T00:00:00.000Z</lastmod>
 </url>
 <url>
 <loc>https://lucky-bqr.github.io/personal-site/topics/learning</loc>
+<lastmod>2026-08-10T00:00:00.000Z</lastmod>
 </url>
 <url>
 <loc>https://lucky-bqr.github.io/personal-site/topics/method</loc>
@@ -55,11 +66,14 @@
 </url>
 <url>
 <loc>https://lucky-bqr.github.io/personal-site/topics/product</loc>
+<lastmod>2026-01-01T00:00:00.000Z</lastmod>
 </url>
 <url>
 <loc>https://lucky-bqr.github.io/personal-site/topics/reflection</loc>
+<lastmod>2026-08-10T00:00:00.000Z</lastmod>
 </url>
 <url>
 <loc>https://lucky-bqr.github.io/personal-site/topics/technology</loc>
+<lastmod>2026-01-01T00:00:00.000Z</lastmod>
 </url>
 </urlset>
