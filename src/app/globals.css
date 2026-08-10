@@ -314,6 +314,35 @@ p  { font-size: var(--font-size-body); font-weight: var(--font-weight-body); let
     min-height: auto;
     align-items: stretch;
   }
+
+  .hero-section a {
+    flex: 1 1 100%;
+    justify-content: center;
+  }
+
+  .section-header {
+    margin-bottom: var(--space-8);
+  }
+
+  .spatial-card-grid {
+    gap: var(--space-4);
+  }
+
+  .section-header-description {
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1023px) {
+  :root {
+    --container-gutter: 2rem;
+    --space-section-normal: 6rem;
+    --space-section-compact: 4rem;
+  }
+
+  .hero-section {
+    min-height: min(680px, calc(100svh - 3.5rem));
+  }
 }
 
 /* === Scrollbar === */
