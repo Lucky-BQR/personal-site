@@ -1,4 +1,5 @@
 import HomeModuleCard from './HomeModuleCard';
+import HomeSectionHeader from './HomeSectionHeader';
 
 const explorationFields = [
   {
@@ -36,19 +37,7 @@ const explorationFields = [
 export default function ExplorationSection() {
   return (
     <section className="order-first col-span-full spatial-section">
-      <div className="max-w-2xl mb-8 sm:mb-10">
-        <p className="text-[10px] font-semibold uppercase tracking-[0.16em] mb-3" style={{ color: 'var(--color-textMuted)' }}>
-          Exploration
-        </p>
-        <h2 className="text-[clamp(1.5rem,3vw,2rem)] mb-4" style={{ color: 'var(--color-text)' }}>
-          探索方向
-        </h2>
-        <p className="text-[14px] sm:text-[15px]" style={{ color: 'var(--color-textSecondary)', lineHeight: 1.75 }}>
-          在技术快速发展的时代，
-          <br className="hidden sm:block" />
-          探索人与智能、知识与文明之间的新连接。
-        </p>
-      </div>
+      <HomeSectionHeader number="02" eyebrow="Exploration" title="探索方向" description="在技术快速发展的时代，探索人与智能、知识与文明之间的新连接。" />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 spatial-card-grid">
         {explorationFields.map((field, index) => (

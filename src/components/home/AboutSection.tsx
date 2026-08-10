@@ -1,6 +1,7 @@
 'use client';
 
 import HomeModuleCard from './HomeModuleCard';
+import HomeSectionHeader from './HomeSectionHeader';
 import { useLanguage } from '@/components/language/LanguageProvider';
 import { profile } from '@/data/profile';
 import { siteConfig } from '@/data/site';
@@ -60,16 +61,8 @@ export default function AboutSection() {
 
   return (
     <section className="col-span-full spatial-section" aria-labelledby="about-creator-title">
-      <div className="max-w-2xl mb-8 sm:mb-10">
-        <p className="text-[10px] font-semibold uppercase tracking-[0.16em] mb-3" style={{ color: 'var(--color-textMuted)' }}>
-          {copy.eyebrow}
-        </p>
-        <h2 id="about-creator-title" className="text-[clamp(1.5rem,3vw,2rem)] mb-4" style={{ color: 'var(--color-text)' }}>
-          {copy.title}
-        </h2>
-        <p className="text-[14px] sm:text-[15px]" style={{ color: 'var(--color-textSecondary)', lineHeight: 1.75 }}>
-          {brand.positioning} · {profile.tagline}
-        </p>
+      <div id="about-creator-title">
+        <HomeSectionHeader number="06" eyebrow={copy.eyebrow} title={copy.title} description={`${brand.positioning} · ${profile.tagline}`} />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_0.6fr] spatial-card-grid">

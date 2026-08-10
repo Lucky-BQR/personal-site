@@ -1,3 +1,5 @@
+import HomeSectionHeader from './HomeSectionHeader';
+
 const laboratoryProjects = [
   {
     id: '001',
@@ -25,17 +27,7 @@ const laboratoryProjects = [
 export default function LaboratorySection() {
   return (
     <section className="col-span-full spatial-section">
-      <div className="max-w-2xl mb-8 sm:mb-10">
-        <p className="text-[10px] font-semibold uppercase tracking-[0.16em] mb-3" style={{ color: 'var(--color-textMuted)' }}>
-          Creator Laboratory
-        </p>
-        <h2 className="text-[clamp(1.5rem,3vw,2rem)] mb-4" style={{ color: 'var(--color-text)' }}>
-          创造实验室
-        </h2>
-        <p className="text-[14px] sm:text-[15px]" style={{ color: 'var(--color-textSecondary)', lineHeight: 1.75 }}>
-          展示技术创造、产品实验与长期项目积累。
-        </p>
-      </div>
+      <HomeSectionHeader number="03" eyebrow="Creator Laboratory" title="创造实验室" description="展示技术创造、产品实验与长期项目积累。" />
 
       <div className="grid grid-cols-1 md:grid-cols-3 spatial-card-grid">
         {laboratoryProjects.map((project) => (

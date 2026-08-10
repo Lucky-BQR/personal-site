@@ -1,4 +1,5 @@
 import HomeModuleCard from './HomeModuleCard';
+import HomeSectionHeader from './HomeSectionHeader';
 
 const creationFields = [
   {
@@ -31,19 +32,7 @@ const creationFields = [
 export default function CreationSection() {
   return (
     <section className="order-first col-span-full spatial-section">
-      <div className="max-w-2xl mb-8 sm:mb-10">
-        <p className="text-[10px] font-semibold uppercase tracking-[0.16em] mb-3" style={{ color: 'var(--color-textMuted)' }}>
-          Creation Fields
-        </p>
-        <h2 className="text-[clamp(1.5rem,3vw,2rem)] mb-4" style={{ color: 'var(--color-text)' }}>
-          创造领域
-        </h2>
-        <p className="text-[14px] sm:text-[15px]" style={{ color: 'var(--color-textSecondary)', lineHeight: 1.75 }}>
-          通过技术创造工具、系统与数字产品，
-          <br className="hidden sm:block" />
-          探索人与智能世界之间的新连接。
-        </p>
-      </div>
+      <HomeSectionHeader number="01" eyebrow="Creation Fields" title="创造领域" description="通过技术创造工具、系统与数字产品，探索人与智能世界之间的新连接。" />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 spatial-card-grid">
         {creationFields.map((field, index) => (

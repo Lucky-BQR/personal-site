@@ -236,6 +236,33 @@ p  { font-size: var(--font-size-body); font-weight: var(--font-weight-body); let
   gap: var(--space-card-gap);
 }
 
+.section-header {
+  max-width: var(--container-reading-max);
+  margin-bottom: var(--space-10);
+}
+
+.section-header-number {
+  display: block;
+  margin-bottom: var(--space-3);
+  color: var(--color-accent);
+}
+
+.section-header-eyebrow {
+  margin-bottom: var(--space-3);
+  color: var(--color-textMuted);
+  text-transform: uppercase;
+}
+
+.section-header-title {
+  margin-bottom: var(--space-4);
+  color: var(--color-text);
+}
+
+.section-header-description {
+  max-width: 38rem;
+  color: var(--color-textSecondary);
+}
+
 .text-xs { letter-spacing: 0.01em; line-height: 1.5; }
 .text-\[11px\] { letter-spacing: 0.015em; line-height: 1.5; }
 .text-\[13px\] { letter-spacing: -0.005em; line-height: 1.5; }
