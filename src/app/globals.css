@@ -180,7 +180,7 @@ p  { font-size: var(--font-size-body); font-weight: var(--font-weight-body); let
 }
 
 .container-main {
-  width: min(var(--container-full-width) - (var(--container-gutter) * 2), var(--container-main-max));
+  width: min(calc(var(--container-full-width) - (var(--container-gutter) * 2)), var(--container-main-max));
   margin-inline: auto;
 }
 

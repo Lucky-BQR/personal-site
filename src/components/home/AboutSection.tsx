@@ -59,7 +59,7 @@ export default function AboutSection() {
   const { creator, brand } = siteConfig;
 
   return (
-    <section className="col-span-full py-4 sm:py-8" aria-labelledby="about-creator-title">
+    <section className="col-span-full spatial-section" aria-labelledby="about-creator-title">
       <div className="max-w-2xl mb-8 sm:mb-10">
         <p className="text-[10px] font-semibold uppercase tracking-[0.16em] mb-3" style={{ color: 'var(--color-textMuted)' }}>
           {copy.eyebrow}
@@ -72,7 +72,7 @@ export default function AboutSection() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_0.6fr] gap-3">
+      <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_0.6fr] spatial-card-grid">
         <article className="card">
           <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1 mb-6">
             <h3 className="text-[22px]" style={{ color: 'var(--color-text)' }}>

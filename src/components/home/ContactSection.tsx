@@ -7,7 +7,7 @@ export default function ContactSection() {
   const { t } = useLanguage();
 
   return (
-    <section className="max-w-5xl mx-auto px-6 pb-20" aria-labelledby="connect-continue-title">
+    <section className="container-main spatial-section-compact" aria-labelledby="connect-continue-title">
       <div className="border-t pt-8" style={{ borderColor: 'var(--color-border)' }}>
         <p className="text-[10px] font-semibold uppercase tracking-[0.16em] mb-3" style={{ color: 'var(--color-textMuted)' }}>
           {t('contact', 'eyebrow')}

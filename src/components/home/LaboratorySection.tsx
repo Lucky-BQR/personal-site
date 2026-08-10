@@ -24,7 +24,7 @@ const laboratoryProjects = [
 
 export default function LaboratorySection() {
   return (
-    <section className="col-span-full py-4 sm:py-8">
+    <section className="col-span-full spatial-section">
       <div className="max-w-2xl mb-8 sm:mb-10">
         <p className="text-[10px] font-semibold uppercase tracking-[0.16em] mb-3" style={{ color: 'var(--color-textMuted)' }}>
           Creator Laboratory
@@ -37,7 +37,7 @@ export default function LaboratorySection() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+      <div className="grid grid-cols-1 md:grid-cols-3 spatial-card-grid">
         {laboratoryProjects.map((project) => (
           <article key={project.id} className="card flex min-h-64 flex-col">
             <div className="flex items-center justify-between gap-4 mb-8">

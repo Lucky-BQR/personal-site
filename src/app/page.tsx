@@ -11,7 +11,7 @@ export default function HomePage() {
   return (
     <div className="min-h-[calc(100vh-4rem)]">
       <HeroSection />
-      <section className="container-main spatial-content-shell">
+      <section className="container-main">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 spatial-card-grid">
           <AboutSection />
           <CreationSection />
