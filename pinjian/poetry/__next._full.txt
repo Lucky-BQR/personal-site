@@ -1,0 +1,111 @@
+1:"$Sreact.fragment"
+9:I[68027,["/personal-site/_next/static/chunks/3fntmmi971322.js","/personal-site/_next/static/chunks/3g-91g2lk3rnu.js"],"default",1]
+:HL["/personal-site/_next/static/chunks/2shm2zwj5xo5m.css","style"]
+:HL["/personal-site/_next/static/media/797e433ab948586e-s.p.0r6juujl39pe6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/personal-site/_next/static/media/caa3a2e1cccd8315-s.p.0wgildi0cnwt9.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+2:Tf7c,
+              (function() {
+                try {
+                  var theme = localStorage.getItem('site-theme') || 'zhuqing';
+                  document.documentElement.setAttribute('data-theme', theme);
+
+                  // Set CSS variables for the saved theme to avoid flash
+                  var themes = {
+                    zhuqing: {
+                      '--color-bg': '#f5f9f3',
+                      '--color-text': '#2d3a28',
+                      '--color-textSecondary': '#4a5a42',
+                      '--color-textMuted': '#7d8e75',
+                      '--color-accent': '#7d9b6a',
+                      '--color-accentLight': '#c5d8b5',
+                      '--color-border': 'rgba(139,160,120,0.2)',
+                      '--color-card': '#ffffff',
+                      '--color-cardHover': '#f0f5ec',
+                      '--color-bgSecondary': '#edf4e9',
+                      '--color-bgTertiary': '#e2ecdc',
+                      '--color-navBg': 'rgba(245,249,243,0.85)',
+                      '--color-glass': 'rgba(245,249,243,0.72)',
+                      '--color-glassBorder': 'rgba(139,160,120,0.18)',
+                      '--color-terminal': '#1a2315',
+                      '--color-terminalText': '#b5cca0',
+                      '--color-tagBg': '#e2ecdc',
+                      '--color-tagText': '#4a6a3a',
+                      '--color-accentHover': '#6a8558'
+                    },
+                    moyun: {
+                      '--color-bg': '#1a1d1a',
+                      '--color-text': '#d4d9cf',
+                      '--color-textSecondary': '#a3aa9d',
+                      '--color-textMuted': '#6b7265',
+                      '--color-accent': '#8aab74',
+                      '--color-accentLight': '#3a4a30',
+                      '--color-border': 'rgba(100,120,90,0.15)',
+                      '--color-card': '#242724',
+                      '--color-cardHover': '#2a2e29',
+                      '--color-bgSecondary': '#222522',
+                      '--color-bgTertiary': '#2a2e29',
+                      '--color-navBg': 'rgba(26,29,26,0.88)',
+                      '--color-glass': 'rgba(26,29,26,0.78)',
+                      '--color-glassBorder': 'rgba(100,120,90,0.12)',
+                      '--color-terminal': '#0d0f0c',
+                      '--color-terminalText': '#8aab74',
+                      '--color-tagBg': '#2a3a20',
+                      '--color-tagText': '#9cbd85',
+                      '--color-accentHover': '#9cbd85'
+                    },
+                    subai: {
+                      '--color-bg': '#fafafa',
+                      '--color-text': '#1d1d1f',
+                      '--color-textSecondary': '#555555',
+                      '--color-textMuted': '#999999',
+                      '--color-accent': '#0071e3',
+                      '--color-accentLight': '#dbeafe',
+                      '--color-border': 'rgba(0,0,0,0.08)',
+                      '--color-card': '#ffffff',
+                      '--color-cardHover': '#f9f9f9',
+                      '--color-bgSecondary': '#f5f5f5',
+                      '--color-bgTertiary': '#eeeeee',
+                      '--color-navBg': 'rgba(250,250,250,0.82)',
+                      '--color-glass': 'rgba(250,250,250,0.75)',
+                      '--color-glassBorder': 'rgba(0,0,0,0.08)',
+                      '--color-terminal': '#1d1d1f',
+                      '--color-terminalText': '#34c759',
+                      '--color-tagBg': '#f0f0f0',
+                      '--color-tagText': '#555555',
+                      '--color-accentHover': '#0077ed'
+                    }
+                  };
+
+                  var vars = themes[theme] || themes.zhuqing;
+                  var root = document.documentElement;
+                  for (var key in vars) {
+                    root.style.setProperty(key, vars[key]);
+                  }
+                } catch(e) {}
+              })();
+            7:X
+0:{"P":null,"c":["","pinjian","poetry"],"q":"","i":false,"f":[[["",{"children":["pinjian",{"children":["poetry",{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/personal-site/_next/static/chunks/2shm2zwj5xo5m.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/personal-site/_next/static/chunks/3fntmmi971322.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/personal-site/_next/static/chunks/3g-91g2lk3rnu.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable h-full","suppressHydrationWarning":true,"children":[["$","head",null,{"children":["$","script",null,{"dangerouslySetInnerHTML":{"__html":"$2"}}]}],"$L3"]}]]}],{"children":["$L4",{"children":["$L5",{"children":["$L6",{},null,false,null]},null,false,"$7"]},null,false,"$7"]},null,false,null],"$L8",false]],"m":"$undefined","G":["$9",["$La"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"LgpOWyoFgfNwidtthy3E0"}
+b:I[65150,["/personal-site/_next/static/chunks/3fntmmi971322.js","/personal-site/_next/static/chunks/3g-91g2lk3rnu.js"],"ThemeProvider"]
+c:I[5233,["/personal-site/_next/static/chunks/3fntmmi971322.js","/personal-site/_next/static/chunks/3g-91g2lk3rnu.js"],"LanguageProvider"]
+d:I[3374,["/personal-site/_next/static/chunks/3fntmmi971322.js","/personal-site/_next/static/chunks/3g-91g2lk3rnu.js"],"default"]
+e:I[39756,["/personal-site/_next/static/chunks/3fntmmi971322.js","/personal-site/_next/static/chunks/3g-91g2lk3rnu.js"],"default"]
+f:I[37457,["/personal-site/_next/static/chunks/3fntmmi971322.js","/personal-site/_next/static/chunks/3g-91g2lk3rnu.js"],"default"]
+10:I[47257,["/personal-site/_next/static/chunks/3fntmmi971322.js","/personal-site/_next/static/chunks/3g-91g2lk3rnu.js"],"ClientPageRoot"]
+11:I[23563,["/personal-site/_next/static/chunks/3fntmmi971322.js","/personal-site/_next/static/chunks/3g-91g2lk3rnu.js","/personal-site/_next/static/chunks/1j6eg2c-k9-ps.js"],"default"]
+14:I[97367,["/personal-site/_next/static/chunks/3fntmmi971322.js","/personal-site/_next/static/chunks/3g-91g2lk3rnu.js"],"OutletBoundary"]
+15:"$Sreact.suspense"
+17:I[97367,["/personal-site/_next/static/chunks/3fntmmi971322.js","/personal-site/_next/static/chunks/3g-91g2lk3rnu.js"],"ViewportBoundary"]
+19:I[97367,["/personal-site/_next/static/chunks/3fntmmi971322.js","/personal-site/_next/static/chunks/3g-91g2lk3rnu.js"],"MetadataBoundary"]
+3:["$","body",null,{"className":"min-h-full flex flex-col antialiased transition-colors duration-300","style":{"backgroundColor":"var(--color-bg)","color":"var(--color-text)"},"children":["$","$Lb",null,{"children":["$","$Lc",null,{"children":[["$","$Ld",null,{}],["$","main",null,{"className":"flex-1 animate-fade-in","children":["$","$Le",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$Lf",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","footer",null,{"className":"mt-auto","children":[["$","div",null,{"className":"h-px","style":{"background":"linear-gradient(to right, transparent 0%, var(--color-glassBorder) 50%, transparent 100%)"}}],["$","div",null,{"className":"max-w-5xl mx-auto px-6 py-8","children":["$","div",null,{"className":"flex items-center justify-between","children":[["$","p",null,{"className":"text-[11px]","style":{"color":"var(--color-textMuted)"},"children":["竹青小筑 © ",2026]}],["$","p",null,{"className":"text-[11px]","style":{"color":"var(--color-textMuted)"},"children":"Built with Next.js"}]]}]}]]}]]}]}]}]
+4:["$","$1","c",{"children":[null,["$","$Le",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$Lf",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+5:["$","$1","c",{"children":[null,["$","$Le",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$Lf",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+6:["$","$1","c",{"children":[["$","$L10",null,{"Component":"$11","serverProvidedParams":{"searchParams":{},"params":{},"promises":["$@12","$@13"]}}],[["$","script","script-0",{"src":"/personal-site/_next/static/chunks/1j6eg2c-k9-ps.js","async":true,"nonce":"$undefined"}]],["$","$L14",null,{"children":["$","$15",null,{"name":"Next.MetadataOutlet","children":"$@16"}]}]]}]
+8:["$","$1","h",{"children":[null,["$","$L17",null,{"children":"$L18"}],["$","div",null,{"hidden":true,"children":["$","$L19",null,{"children":["$","$15",null,{"name":"Next.Metadata","children":"$L1a"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]
+a:["$","link","0",{"rel":"stylesheet","href":"/personal-site/_next/static/chunks/2shm2zwj5xo5m.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
+7:C
+12:{}
+13:"$6:props:children:0:props:serverProvidedParams:params"
+18:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+1b:I[27201,["/personal-site/_next/static/chunks/3fntmmi971322.js","/personal-site/_next/static/chunks/3g-91g2lk3rnu.js"],"IconMark"]
+16:null
+1a:[["$","title","0",{"children":"竹青小筑 — 技术与生活交织的个人花园"}],["$","meta","1",{"name":"description","content":"探索技术、热爱创新、记录生活。关注编程、设计、古典文化与生活之美。"}],["$","link","2",{"rel":"icon","href":"/personal-site/favicon.ico?favicon.2vob68tjqpejf.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L1b","3",{}]]
