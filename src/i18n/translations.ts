@@ -12,6 +12,7 @@ const translations: Record<string, any> = {
     inspiration: { title:'灵感速记',desc:'随时随地记录一闪而过的想法。',placeholder:'记录一个灵感...',add:'记录' },
     timeline: { title:'时间线',desc:'人生重要节点与里程碑。' },
     friends: { title:'友链',desc:'朋友们的小站与推荐链接。' },
+    contact: { eyebrow:'Connect & Continue',title:'连接与回响',desc:'创造持续发生，知识持续生长。欢迎继续探索竹青小筑，在技术、思想与日常之间保持连接。' },
     common: { back_home:'← 返回',back_blog:'← 返回博客',back_projects:'← 返回项目',back_philosophy:'← 返回哲学',post_title:'文章标题',note_title:'笔记标题',philosophy_note:'哲学笔记',mdx_loading:'文章内容将通过 MDX 加载。',philosophy_loading:'哲学读书笔记将通过 MDX 加载。',project_loading:'项目内容将通过 MDX 加载。',coming_soon:'尚在整理中，敬请期待。',no_content:'还没有内容。',comment:'评论',comment_disabled:'评论功能 (Giscus) 将在部署后启用。' },
   },
   en: {
@@ -27,6 +28,7 @@ const translations: Record<string, any> = {
     inspiration: { title:'Quick Ideas',desc:'Recording fleeting thoughts anytime.',placeholder:'Record an idea...',add:'Add' },
     timeline: { title:'Timeline',desc:'Important life milestones & moments.' },
     friends: { title:'Friends',desc:'Friends\' personal sites & recommended links.' },
+    contact: { eyebrow:'连接与回响',title:'Connect & Continue',desc:'Creation continues, and knowledge keeps growing. Continue exploring ZhuQing Studio and stay connected across technology, thought, and everyday life.' },
     common: { back_home:'← Back',back_blog:'← Back to Blog',back_projects:'← Back to Projects',back_philosophy:'← Back to Philosophy',post_title:'Post Title',note_title:'Note Title',philosophy_note:'Philosophy Note',mdx_loading:'Content will be loaded via MDX.',philosophy_loading:'Philosophy notes will be loaded via MDX.',project_loading:'Project content will be loaded via MDX.',coming_soon:'Coming soon.',no_content:'No content yet.',comment:'Comments',comment_disabled:'Comments (Giscus) will be enabled after deployment.' },
   },
   ja: {
@@ -42,6 +44,7 @@ const translations: Record<string, any> = {
     inspiration: { title:'インスピレーション',desc:'ふと思いついたことをいつでもどこでも記録。',placeholder:'アイデアを記録...',add:'追加' },
     timeline: { title:'タイムライン',desc:'人生の重要なマイルストーンと瞬間。' },
     friends: { title:'フレンド',desc:'友達の個人サイトとおすすめリンク。' },
+    contact: { eyebrow:'Connect & Continue',title:'つながりと余韻',desc:'創造は続き、知識は育ち続ける。技術、思索、日々の間にあるつながりを探しながら、竹青小筑をお楽しみください。' },
     common: { back_home:'← 戻る',back_blog:'← ブログに戻る',back_projects:'← プロジェクトに戻る',back_philosophy:'← 哲学に戻る',post_title:'記事タイトル',note_title:'ノートタイトル',philosophy_note:'哲学ノート',mdx_loading:'コンテンツはMDXで読み込まれます。',philosophy_loading:'哲学ノートはMDXで読み込まれます。',project_loading:'プロジェクト内容はMDXで読み込まれます。',coming_soon:'準備中。',no_content:'まだコンテンツがありません。',comment:'コメント',comment_disabled:'コメント（Giscus）はデプロイ後に有効になります。' },
   },
   'zh-TW': {
@@ -57,6 +60,7 @@ const translations: Record<string, any> = {
     inspiration: { title:'靈感速記',desc:'隨時隨地記錄一閃而過的想法。',placeholder:'記錄一個靈感...',add:'記錄' },
     timeline: { title:'時間線',desc:'人生重要節點與里程碑。' },
     friends: { title:'友鏈',desc:'朋友們的小站與推薦鏈接。' },
+    contact: { eyebrow:'Connect & Continue',title:'連結與回響',desc:'創造持續發生，知識持續生長。歡迎繼續探索竹青小筑，在技術、思想與日常之間保持連結。' },
     common: { back_home:'← 返回',back_blog:'← 返回部落格',back_projects:'← 返回項目',back_philosophy:'← 返回哲學',post_title:'文章標題',note_title:'筆記標題',philosophy_note:'哲學筆記',mdx_loading:'文章內容將通過 MDX 加載。',philosophy_loading:'哲學讀書筆記將通過 MDX 加載。',project_loading:'項目內容將通過 MDX 加載。',coming_soon:'尚在整理中，敬請期待。',no_content:'還沒有內容。',comment:'評論',comment_disabled:'評論功能 (Giscus) 將在部署後啟用。' },
   },
   de: {
@@ -72,6 +76,7 @@ const translations: Record<string, any> = {
     inspiration: { title:'Quick Ideas',desc:'Flüchtige Gedanken jederzeit und überall festhalten.',placeholder:'Eine Idee festhalten...',add:'Hinzufügen' },
     timeline: { title:'Zeitleiste',desc:'Wichtige Meilensteine & Momente des Lebens.' },
     friends: { title:'Freunde',desc:'Freundes persönliche Seiten & empfohlene Links.' },
+    contact: { eyebrow:'连接与回响',title:'Connect & Continue',desc:'Schöpfung geht weiter und Wissen wächst. Entdecke ZhuQing Studio weiter und bleibe mit Technologie, Gedanken und dem Alltag verbunden.' },
     common: { back_home:'← Zurück',back_blog:'← Zurück zum Blog',back_projects:'← Zurück zu Projekten',back_philosophy:'← Zurück zur Philosophie',post_title:'Titel des Beitrags',note_title:'Notiztitel',philosophy_note:'Philosophie-Notiz',mdx_loading:'Inhalt wird über MDX geladen.',philosophy_loading:'Philosophie-Notizen werden über MDX geladen.',project_loading:'Projektinhalte werden über MDX geladen.',coming_soon:'Kommt bald.',no_content:'Noch kein Inhalt.',comment:'Kommentare',comment_disabled:'Kommentare (Giscus) werden nach dem Deployment aktiviert.' },
   },
 };
