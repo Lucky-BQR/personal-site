@@ -45,7 +45,7 @@ export const siteConfig: SiteConfig = {
   name: 'personal-site',
   title: '竹青小筑',
   description: '技术与生活交织的个人数字花园。关注创新、编程、古典文化与生活之美。',
-  url: 'https://your-site.vercel.app',
+  url: 'https://lucky-bqr.github.io/personal-site',
   brand: {
     name: '竹青小筑',
     englishName: 'ZhuQing Studio',

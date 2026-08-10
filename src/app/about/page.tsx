@@ -12,7 +12,7 @@ import { createPageMetadata } from '@/lib/seo/metadata';
 import { JsonLd } from '@/lib/seo/jsonld';
 import { personSchema } from '@/lib/seo/schema';
 
-export const metadata: Metadata = createPageMetadata('About the Creator | ZhuQing Studio', 'Creator identity, philosophy, and a long-term digital garden.', '/about');
+export const metadata: Metadata = createPageMetadata('About the Creator', 'Creator identity, philosophy, and a long-term digital garden.', '/about');
 
 export default function AboutPage() {
   const content = getCreatorContent();

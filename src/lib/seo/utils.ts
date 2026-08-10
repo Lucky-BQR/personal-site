@@ -1,3 +1,4 @@
-export const siteUrl = 'https://your-site.vercel.app';
-export function absoluteUrl(pathname = '/') { return new URL(pathname, siteUrl).toString(); }
-export function cleanText(value: string) { return value.replace(/\s+/g, ' ').trim(); }
+import { siteConfig } from '@/data/site';
+
+export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') || siteConfig.url;
+export function absoluteUrl(pathname = '/') { return `${siteUrl}/${pathname.replace(/^\//, '')}`; }

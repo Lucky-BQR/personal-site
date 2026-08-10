@@ -5,4 +5,4 @@ export const generateWebsiteSchema = websiteSchema;
 export const generateArticleSchema = articleSchema;
 export const generateProjectSchema = projectSchema;
 export const generateSoftwareSchema = softwareSchema;
-export function JsonLd({ schema }: { schema: Record<string, unknown> | Record<string, unknown>[] }) { return React.createElement('script', { type: 'application/ld+json', dangerouslySetInnerHTML: { __html: JSON.stringify(schema) } }); }
+export function JsonLd({ schema }: { schema: Record<string, unknown> | Record<string, unknown>[] }) { return React.createElement('script', { type: 'application/ld+json', dangerouslySetInnerHTML: { __html: JSON.stringify(schema).replace(/</g, '\\u003c') } }); }

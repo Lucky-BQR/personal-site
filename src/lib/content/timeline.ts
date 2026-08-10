@@ -1,23 +1,20 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import type { TimelineEntry } from '@/types/timeline';
+import { parseFrontmatter } from './loader';
 
 const timelineDirectory = path.join(process.cwd(), 'content', 'timeline');
 
 function parseEntry(fileName: string): TimelineEntry {
   const raw = fs.readFileSync(path.join(timelineDirectory, fileName), 'utf8');
-  const [, frontmatter = '', content = ''] = raw.split(/^---\s*$/m);
-  const fields = Object.fromEntries(frontmatter.split('\n').flatMap((line) => {
-    const match = line.match(/^([\w-]+):\s*(.*)$/);
-    return match ? [[match[1], match[2].trim().replace(/^['"]|['"]$/g, '')]] : [];
-  }));
+  const { fields, content } = parseFrontmatter(raw);
   return {
     slug: fields.slug || fileName.replace(/\.mdx?$/, ''),
     year: fields.year || '',
     title: fields.title || '',
     excerpt: fields.excerpt || '',
     phase: fields.phase || 'chapter',
-    content: content.trim(),
+    content,
   };
 }
 

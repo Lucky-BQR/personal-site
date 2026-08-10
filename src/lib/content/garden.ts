@@ -1,18 +1,13 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import type { GardenEntry } from '@/types/garden';
+import { parseFrontmatter } from './loader';
 
 const gardenDirectory = path.join(process.cwd(), 'content', 'garden');
 
 function parseEntry(fileName: string): GardenEntry {
   const raw = fs.readFileSync(path.join(gardenDirectory, fileName), 'utf8');
-  const [, frontmatter = '', content = ''] = raw.split(/^---\s*$/m);
-  const fields = Object.fromEntries(
-    frontmatter.split('\n').flatMap((line) => {
-      const match = line.match(/^([\w-]+):\s*(.*)$/);
-      return match ? [[match[1], match[2].trim().replace(/^['"]|['"]$/g, '')]] : [];
-    }),
-  );
+  const { fields, content } = parseFrontmatter(raw);
 
   return {
     slug: fields.slug || fileName.replace(/\.mdx?$/, ''),
@@ -22,7 +17,7 @@ function parseEntry(fileName: string): GardenEntry {
     category: (fields.category || 'reflection') as GardenEntry['category'],
     featured: fields.featured === 'true',
     tags: (fields.tags || '').split(',').map((tag) => tag.trim()).filter(Boolean),
-    content: content.trim(),
+    content,
   };
 }
 

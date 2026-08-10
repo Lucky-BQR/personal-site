@@ -9,14 +9,19 @@ function parseRelations(value = ''): ContentRelation[] {
   });
 }
 
-export function parseContent<T extends ContentMetadata = ContentMetadata>(raw: string, fallbackSlug = ''): ContentDocument<T> {
+export function parseFrontmatter(raw: string) {
   const [, frontmatter = '', content = ''] = raw.split(/^---\s*$/m);
   const fields = Object.fromEntries(frontmatter.split('\n').flatMap((line) => {
     const match = line.match(/^([\w-]+):\s*(.*)$/);
     return match ? [[match[1], match[2].trim().replace(/^['"]|['"]$/g, '')]] : [];
   }));
+  return { fields, content: content.trim() };
+}
+
+export function parseContent<T extends ContentMetadata = ContentMetadata>(raw: string, fallbackSlug = ''): ContentDocument<T> {
+  const { fields, content } = parseFrontmatter(raw);
   const metadata = { slug: fields.slug || fallbackSlug, title: fields.title || '', excerpt: fields.excerpt || '', date: fields.date || '', year: fields.year || '', category: fields.category || '', tags: (fields.tags || '').split(',').map((tag) => tag.trim()).filter(Boolean), status: (fields.status || 'published') as ContentMetadata['status'], featured: fields.featured === 'true', relations: parseRelations(fields.relations) } as T;
-  return { metadata, content: content.trim() };
+  return { metadata, content };
 }
 
 export function loadContentDirectory<T extends ContentMetadata = ContentMetadata>(directory: string): ContentDocument<T>[] {
