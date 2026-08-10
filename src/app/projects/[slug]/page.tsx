@@ -9,7 +9,7 @@ import { getProject, getProjects } from '@/lib/content/projects';
 import { buildKnowledgeIndex, findKnowledgeNode, getRelatedKnowledgeNodes } from '@/lib/knowledge';
 import { JsonLd } from '@/lib/seo/jsonld';
 import { createProjectMetadata } from '@/lib/seo/metadata';
-import { projectSchema } from '@/lib/seo/schema';
+import { breadcrumbSchema, projectSchema } from '@/lib/seo/schema';
 
 export function generateStaticParams() {
   return getProjects().map((project) => ({ slug: project.slug }));
@@ -29,7 +29,14 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
   return (
     <div className="container-reading spatial-section">
-      <JsonLd schema={projectSchema(project.title, project.summary, project.slug)} />
+      <JsonLd schema={[
+        projectSchema(project.title, project.summary, project.slug),
+        breadcrumbSchema([
+          { name: '首页', path: '/' },
+          { name: '项目', path: '/projects' },
+          { name: project.title, path: `/projects/${project.slug}` },
+        ]),
+      ]} />
       <header className="section-header motion-reveal mb-12">
         <p className="section-header-eyebrow type-meta">{project.category} · {project.year}</p>
         <h1 className="section-header-title type-heading-xl">{project.title}</h1>

@@ -3,7 +3,9 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import KnowledgeCard from '@/components/knowledge/KnowledgeCard';
 import { buildKnowledgeIndex, findTopic, getTopicNodes } from '@/lib/knowledge';
+import { JsonLd } from '@/lib/seo/jsonld';
 import { createPageMetadata } from '@/lib/seo/metadata';
+import { breadcrumbSchema, collectionPageSchema } from '@/lib/seo/schema';
 
 type TopicPageProps = {
   params: Promise<{ slug: string }>;
@@ -26,9 +28,22 @@ export default async function TopicPage({ params }: TopicPageProps) {
   const topic = findTopic(index, (await params).slug);
   if (!topic) notFound();
   const nodes = getTopicNodes(index, topic.slug);
+  const path = `/topics/${topic.slug}`;
+  const description = `${nodes.length} 条与 ${topic.label} 相关的内容，连接不同阶段的创造、学习与思考。`;
 
   return (
     <div className="container-reading spatial-section">
+      <JsonLd schema={[
+        breadcrumbSchema([
+          { name: '首页', path: '/' },
+          { name: '主题索引', path: '/topics' },
+          { name: `#${topic.label}`, path },
+        ]),
+        collectionPageSchema(`#${topic.label}`, description, path, nodes.map((node) => ({
+          name: node.title,
+          path: node.route,
+        }))),
+      ]} />
       <header className="section-header motion-reveal mb-12">
         <Link href="/topics" className="type-meta transition-opacity hover:opacity-70" style={{ color: 'var(--color-accent)' }}>← 全部主题</Link>
         <h1 className="section-header-title type-heading-xl mt-4">#{topic.label}</h1>

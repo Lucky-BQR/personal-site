@@ -1,15 +1,23 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { buildKnowledgeIndex } from '@/lib/knowledge';
+import { JsonLd } from '@/lib/seo/jsonld';
 import { createPageMetadata } from '@/lib/seo/metadata';
+import { collectionPageSchema } from '@/lib/seo/schema';
 
-export const metadata: Metadata = createPageMetadata('Knowledge Topics', '浏览竹青小筑中持续生长的主题与内容连接。', '/topics');
+const description = '浏览竹青小筑中持续生长的主题与内容连接。';
+
+export const metadata: Metadata = createPageMetadata('Knowledge Topics', description, '/topics');
 
 export default function TopicsPage() {
   const { topics } = buildKnowledgeIndex();
 
   return (
     <div className="container-main spatial-section">
+      <JsonLd schema={collectionPageSchema('Knowledge Topics', description, '/topics', topics.map((topic) => ({
+        name: `#${topic.label}`,
+        path: `/topics/${topic.slug}`,
+      })))} />
       <header className="section-header motion-reveal mb-12">
         <p className="section-header-eyebrow type-meta">KNOWLEDGE INDEX</p>
         <h1 className="section-header-title type-heading-xl">主题索引</h1>

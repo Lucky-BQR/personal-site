@@ -12,7 +12,7 @@ import { getGardenEntries, getGardenEntry } from '@/lib/content/garden';
 import { buildKnowledgeIndex, findKnowledgeNode, getRelatedKnowledgeNodes } from '@/lib/knowledge';
 import { JsonLd } from '@/lib/seo/jsonld';
 import { createArticleMetadata } from '@/lib/seo/metadata';
-import { articleSchema } from '@/lib/seo/schema';
+import { articleSchema, breadcrumbSchema } from '@/lib/seo/schema';
 
 const mdxComponents = { Architecture, Callout, ImageFrame, Quote, TimelineNode };
 
@@ -47,7 +47,14 @@ export default async function GardenDetailPage({ params }: GardenDetailPageProps
 
   return (
     <article className="container-reading spatial-section">
-      <JsonLd schema={articleSchema(entry.title, entry.excerpt, entry.date, entry.slug)} />
+      <JsonLd schema={[
+        articleSchema(entry.title, entry.excerpt, entry.date, entry.slug),
+        breadcrumbSchema([
+          { name: '首页', path: '/' },
+          { name: '花园', path: '/garden' },
+          { name: entry.title, path: `/garden/${entry.slug}` },
+        ]),
+      ]} />
       <header className="section-header motion-reveal mb-12">
         <p className="section-header-eyebrow type-meta">
           {entry.category} · <time dateTime={entry.date}>{entry.date}</time>
