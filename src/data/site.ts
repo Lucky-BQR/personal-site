@@ -3,6 +3,18 @@ export interface SiteConfig {
   title: string;
   description: string;
   url: string;
+  brand: {
+    name: string;
+    englishName: string;
+    positioning: string;
+    philosophy: string;
+  };
+  creator: {
+    name: string;
+    englishName: string;
+    courtesyName: string;
+    penName: string;
+  };
   author: {
     name: string;
     email: string;
@@ -34,6 +46,18 @@ export const siteConfig: SiteConfig = {
   title: '竹青小筑',
   description: '技术与生活交织的个人数字花园。关注创新、编程、古典文化与生活之美。',
   url: 'https://your-site.vercel.app',
+  brand: {
+    name: '竹青小筑',
+    englishName: 'ZhuQing Studio',
+    positioning: '有思想的技术创造者',
+    philosophy: '探索技术、知识与东方智慧之间的连接方式。',
+  },
+  creator: {
+    name: '白清如',
+    englishName: 'Selene Bai',
+    courtesyName: '厚朴',
+    penName: '苏木',
+  },
   author: {
     name: '白清如',
     email: '',
