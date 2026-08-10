@@ -6,7 +6,10 @@ import Callout from '@/components/content/Callout';
 import ImageFrame from '@/components/content/ImageFrame';
 import Quote from '@/components/content/Quote';
 import TimelineNode from '@/components/content/TimelineNode';
+import RelatedKnowledge from '@/components/knowledge/RelatedKnowledge';
+import TopicLinks from '@/components/knowledge/TopicLinks';
 import { getGardenEntries, getGardenEntry } from '@/lib/content/garden';
+import { buildKnowledgeIndex, findKnowledgeNode, getRelatedKnowledgeNodes } from '@/lib/knowledge';
 import { JsonLd } from '@/lib/seo/jsonld';
 import { createArticleMetadata } from '@/lib/seo/metadata';
 import { articleSchema } from '@/lib/seo/schema';
@@ -38,6 +41,9 @@ export async function generateMetadata({ params }: GardenDetailPageProps): Promi
 export default async function GardenDetailPage({ params }: GardenDetailPageProps) {
   const entry = getPublishedGardenEntry((await params).slug);
   if (!entry) notFound();
+  const knowledgeIndex = buildKnowledgeIndex();
+  const knowledgeNode = findKnowledgeNode(knowledgeIndex, 'garden', entry.slug);
+  const related = getRelatedKnowledgeNodes(knowledgeIndex, 'garden', entry.slug);
 
   return (
     <article className="container-reading spatial-section">
@@ -48,15 +54,12 @@ export default async function GardenDetailPage({ params }: GardenDetailPageProps
         </p>
         <h1 className="section-header-title type-heading-xl">{entry.title}</h1>
         {entry.excerpt && <p className="section-header-description type-body">{entry.excerpt}</p>}
-        {entry.tags.length > 0 && (
-          <div className="flex flex-wrap gap-2 mt-6">
-            {entry.tags.map((tag) => <span key={tag} className="card-meta">#{tag}</span>)}
-          </div>
-        )}
+        <TopicLinks topics={knowledgeNode?.topics || []} />
       </header>
       <div className="prose-custom">
         <MDXRemote source={entry.content} components={mdxComponents} />
       </div>
+      <RelatedKnowledge items={related} />
     </article>
   );
 }

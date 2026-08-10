@@ -1,5 +1,6 @@
 import { getGardenEntries } from '@/lib/content/garden';
 import { getProjects } from '@/lib/content/projects';
+import type { KnowledgeIndex } from '@/lib/knowledge';
 import { absoluteUrl } from './utils';
 
 function parseDate(value: string): Date | undefined {
@@ -7,8 +8,8 @@ function parseDate(value: string): Date | undefined {
   return Number.isNaN(date.getTime()) ? undefined : date;
 }
 
-export function getSitemapEntries() {
-  const staticPaths = ['/about', '/timeline', '/projects', '/garden'];
+export function getSitemapEntries(knowledgeIndex: KnowledgeIndex) {
+  const staticPaths = ['/about', '/timeline', '/projects', '/garden', '/topics'];
   const gardenEntries = getGardenEntries()
     .filter((entry) => entry.status === 'published')
     .map((entry) => {
@@ -18,10 +19,12 @@ export function getSitemapEntries() {
         ...(lastModified ? { lastModified } : {}),
       };
     });
+  const topicEntries = knowledgeIndex.topics.map((topic) => ({ url: absoluteUrl(`/topics/${topic.slug}`) }));
 
   return [
     ...staticPaths.map((path) => ({ url: absoluteUrl(path), lastModified: new Date() })),
     ...getProjects().map((project) => ({ url: absoluteUrl(`/projects/${project.slug}`), lastModified: new Date(`${project.year}-01-01`) })),
     ...gardenEntries,
+    ...topicEntries,
   ];
 }

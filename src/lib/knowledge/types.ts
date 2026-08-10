@@ -1,4 +1,4 @@
-import type { ContentKind, ContentRelation, ContentMetadata } from '@/types/content';
+import type { ContentKind, ContentRelation, ContentRelationType, ContentMetadata } from '@/types/content';
 
 export interface KnowledgeTopic {
   slug: string;
@@ -26,4 +26,11 @@ export interface TopicRegistryEntry extends KnowledgeTopic {
 export interface KnowledgeIndex {
   nodes: KnowledgeNode[];
   topics: TopicRegistryEntry[];
+}
+
+export interface RelatedKnowledgeNode {
+  node: KnowledgeNode;
+  relation: ContentRelationType;
+  direction: 'outgoing' | 'incoming';
+  label?: string;
 }

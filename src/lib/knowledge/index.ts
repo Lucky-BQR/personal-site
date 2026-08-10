@@ -1,2 +1,3 @@
 export { buildKnowledgeIndex, buildKnowledgeNodes, buildTopicRegistry, getAllContentDocuments, knowledgeNodeId } from './builder';
-export type { KnowledgeIndex, KnowledgeNode, KnowledgeTopic, TopicRegistryEntry } from './types';
+export { findKnowledgeNode, findTopic, getRelatedKnowledgeNodes, getTopicNodes } from './queries';
+export type { KnowledgeIndex, KnowledgeNode, KnowledgeTopic, RelatedKnowledgeNode, TopicRegistryEntry } from './types';
