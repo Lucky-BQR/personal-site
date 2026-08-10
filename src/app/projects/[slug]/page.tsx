@@ -3,10 +3,11 @@ import { notFound } from 'next/navigation';
 import ArchitectureBlock from '@/components/projects/ArchitectureBlock';
 import CaseStudySection from '@/components/projects/CaseStudySection';
 import ReflectionSection from '@/components/projects/ReflectionSection';
+import AIRecommendations from '@/components/knowledge/AIRecommendations';
 import RelatedKnowledge from '@/components/knowledge/RelatedKnowledge';
 import TopicLinks from '@/components/knowledge/TopicLinks';
 import { getProject, getProjects } from '@/lib/content/projects';
-import { buildKnowledgeIndex, findKnowledgeNode, getRelatedKnowledgeNodes } from '@/lib/knowledge';
+import { buildKnowledgeIndex, findKnowledgeNode, getLocalKnowledgeRecommendations, getRelatedKnowledgeNodes } from '@/lib/knowledge';
 import { JsonLd } from '@/lib/seo/jsonld';
 import { createProjectMetadata } from '@/lib/seo/metadata';
 import { breadcrumbSchema, projectSchema } from '@/lib/seo/schema';
@@ -26,6 +27,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   const knowledgeIndex = buildKnowledgeIndex();
   const knowledgeNode = findKnowledgeNode(knowledgeIndex, 'project', project.slug);
   const related = getRelatedKnowledgeNodes(knowledgeIndex, 'project', project.slug);
+  const recommendations = knowledgeNode ? getLocalKnowledgeRecommendations(knowledgeIndex, knowledgeNode.id) : [];
 
   return (
     <div className="container-reading spatial-section">
@@ -49,6 +51,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       <CaseStudySection title="创作背景">{project.challenge}</CaseStudySection>
       <CaseStudySection title="系统架构"><ArchitectureBlock items={project.architecture} /></CaseStudySection>
       <ReflectionSection text={project.reflection} />
+      {knowledgeNode && <AIRecommendations sourceId={knowledgeNode.id} fallback={recommendations} />}
       <RelatedKnowledge items={related} />
     </div>
   );

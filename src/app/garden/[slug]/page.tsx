@@ -6,10 +6,11 @@ import Callout from '@/components/content/Callout';
 import ImageFrame from '@/components/content/ImageFrame';
 import Quote from '@/components/content/Quote';
 import TimelineNode from '@/components/content/TimelineNode';
+import AIRecommendations from '@/components/knowledge/AIRecommendations';
 import RelatedKnowledge from '@/components/knowledge/RelatedKnowledge';
 import TopicLinks from '@/components/knowledge/TopicLinks';
 import { getGardenEntries, getGardenEntry } from '@/lib/content/garden';
-import { buildKnowledgeIndex, findKnowledgeNode, getRelatedKnowledgeNodes } from '@/lib/knowledge';
+import { buildKnowledgeIndex, findKnowledgeNode, getLocalKnowledgeRecommendations, getRelatedKnowledgeNodes } from '@/lib/knowledge';
 import { JsonLd } from '@/lib/seo/jsonld';
 import { createArticleMetadata } from '@/lib/seo/metadata';
 import { articleSchema, breadcrumbSchema } from '@/lib/seo/schema';
@@ -44,6 +45,7 @@ export default async function GardenDetailPage({ params }: GardenDetailPageProps
   const knowledgeIndex = buildKnowledgeIndex();
   const knowledgeNode = findKnowledgeNode(knowledgeIndex, 'garden', entry.slug);
   const related = getRelatedKnowledgeNodes(knowledgeIndex, 'garden', entry.slug);
+  const recommendations = knowledgeNode ? getLocalKnowledgeRecommendations(knowledgeIndex, knowledgeNode.id) : [];
 
   return (
     <article className="container-reading spatial-section">
@@ -66,6 +68,7 @@ export default async function GardenDetailPage({ params }: GardenDetailPageProps
       <div className="prose-custom">
         <MDXRemote source={entry.content} components={mdxComponents} />
       </div>
+      {knowledgeNode && <AIRecommendations sourceId={knowledgeNode.id} fallback={recommendations} />}
       <RelatedKnowledge items={related} />
     </article>
   );

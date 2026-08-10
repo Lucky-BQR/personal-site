@@ -7,7 +7,7 @@ import { useLanguage } from '@/components/language/LanguageProvider';
 import { siteConfig, NavItem } from '@/data/site';
 
 const PRIMARY_ITEMS = ['/', '/about', '/projects', '/blog', '/guanwo', '/pinjian'];
-const SECONDARY_ITEMS = ['/garden', '/topics', '/pets', '/inspiration', '/timeline', '/friends'];
+const SECONDARY_ITEMS = ['/garden', '/topics', '/knowledge', '/pets', '/inspiration', '/timeline', '/friends'];
 
 function getNavItems() {
   return siteConfig.nav;

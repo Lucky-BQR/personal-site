@@ -1,5 +1,7 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+Phase 5 knowledge intelligence setup is documented in [`docs/PHASE5_FULLSTACK.md`](docs/PHASE5_FULLSTACK.md).
+
 ## Getting Started
 
 First, run the development server:

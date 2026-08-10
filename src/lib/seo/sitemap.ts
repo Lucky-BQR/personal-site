@@ -26,7 +26,7 @@ function getLatestNodeDate(nodeIds: string[], nodesById: Map<string, KnowledgeIn
 }
 
 export function getSitemapEntries(knowledgeIndex: KnowledgeIndex) {
-  const staticPaths = ['/', '/about', '/timeline', '/projects', '/garden', '/topics'];
+  const staticPaths = ['/', '/about', '/timeline', '/projects', '/garden', '/topics', '/knowledge'];
   const nodesById = new Map(knowledgeIndex.nodes.map((node) => [node.id, node]));
   const latestKnowledgeDate = getLatestNodeDate(knowledgeIndex.nodes.map((node) => node.id), nodesById);
   const gardenEntries = getGardenEntries()
@@ -49,7 +49,7 @@ export function getSitemapEntries(knowledgeIndex: KnowledgeIndex) {
   return [
     ...staticPaths.map((path) => ({
       url: absoluteUrl(path),
-      ...(path === '/topics' && latestKnowledgeDate ? { lastModified: latestKnowledgeDate } : {}),
+      ...((path === '/topics' || path === '/knowledge') && latestKnowledgeDate ? { lastModified: latestKnowledgeDate } : {}),
     })),
     ...getProjects().map((project) => ({ url: absoluteUrl(`/projects/${project.slug}`), lastModified: new Date(`${project.year}-01-01`) })),
     ...gardenEntries,

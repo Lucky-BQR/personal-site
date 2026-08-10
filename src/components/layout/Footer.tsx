@@ -12,6 +12,7 @@ export default function Footer() {
           <nav aria-label="页脚内容导航" className="flex items-center gap-3 text-[11px]" style={{ color: 'var(--color-textMuted)' }}>
             <Link href="/garden" className="transition-opacity hover:opacity-70">花园</Link>
             <Link href="/topics" className="transition-opacity hover:opacity-70">主题索引</Link>
+            <Link href="/knowledge" className="transition-opacity hover:opacity-70">知识网络</Link>
             <span>Built with Next.js</span>
           </nav>
         </div>

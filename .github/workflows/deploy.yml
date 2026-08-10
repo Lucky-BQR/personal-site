@@ -10,6 +10,10 @@ permissions:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    env:
+      NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+      NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY }}
+      KNOWLEDGE_SYNC_SECRET: ${{ secrets.KNOWLEDGE_SYNC_SECRET }}
     concurrency:
       group: deploy
       cancel-in-progress: true
@@ -28,3 +32,6 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./out
+      - name: Sync Phase 5 knowledge database
+        if: ${{ env.NEXT_PUBLIC_SUPABASE_URL != '' && env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY != '' && env.KNOWLEDGE_SYNC_SECRET != '' }}
+        run: npm run knowledge:sync

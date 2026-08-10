@@ -1,0 +1,8 @@
+[functions.knowledge-sync]
+verify_jwt = false
+
+[functions.knowledge-graph]
+verify_jwt = false
+
+[functions.knowledge-recommendations]
+verify_jwt = false
