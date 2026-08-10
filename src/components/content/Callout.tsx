@@ -1,0 +1,1 @@
+export default function Callout({ children, title = 'Note' }: { children: React.ReactNode; title?: string }) { return <aside className="card-base my-6" role="note"><p className="card-meta mb-2">{title}</p><div className="type-body" style={{ color: 'var(--color-textSecondary)' }}>{children}</div></aside>; }

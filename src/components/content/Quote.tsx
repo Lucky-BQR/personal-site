@@ -1,0 +1,1 @@
+export default function Quote({ children, cite }: { children: React.ReactNode; cite?: string }) { return <blockquote className="border-l-2 pl-5 py-2 my-6 type-body" style={{ borderColor: 'var(--color-accent)', color: 'var(--color-textSecondary)' }}><p>{children}</p>{cite && <cite className="card-meta mt-3 block not-italic">{cite}</cite>}</blockquote>; }

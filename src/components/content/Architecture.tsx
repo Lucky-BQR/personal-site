@@ -1,0 +1,1 @@
+export default function Architecture({ items }: { items: string[] }) { return <ol className="space-y-3 my-6">{items.map((item, index) => <li key={item} className="flex gap-3 type-body"><span className="type-meta" style={{ color: 'var(--color-accent)' }}>0{index + 1}</span><span>{item}</span></li>)}</ol>; }
