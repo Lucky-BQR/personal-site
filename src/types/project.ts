@@ -8,4 +8,5 @@ export interface ProjectCaseStudy {
   challenge: string;
   architecture: string[];
   reflection: string;
+  featured?: boolean;
 }

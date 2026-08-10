@@ -21,6 +21,7 @@ function parseEntry(fileName: string): GardenEntry {
     date: fields.date || '',
     category: (fields.category || 'reflection') as GardenEntry['category'],
     featured: fields.featured === 'true',
+    tags: (fields.tags || '').split(',').map((tag) => tag.trim()).filter(Boolean),
     content: content.trim(),
   };
 }
@@ -35,4 +36,10 @@ export function getGardenEntries(): GardenEntry[] {
 
 export function getFeaturedThoughts(): GardenEntry[] {
   return getGardenEntries().filter((entry) => entry.featured);
+}
+
+export function getFeaturedPosts(limit = 3): GardenEntry[] {
+  const entries = getGardenEntries();
+  const featured = entries.filter((entry) => entry.featured);
+  return (featured.length ? featured : entries).slice(0, limit);
 }

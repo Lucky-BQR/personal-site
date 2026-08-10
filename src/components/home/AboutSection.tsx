@@ -5,6 +5,7 @@ import HomeSectionHeader from './HomeSectionHeader';
 import { useLanguage } from '@/components/language/LanguageProvider';
 import { profile } from '@/data/profile';
 import { siteConfig } from '@/data/site';
+import type { CreatorContent } from '@/types/creator';
 
 const localizedCopy = {
   zh: {
@@ -54,7 +55,7 @@ const localizedCopy = {
   },
 } as const;
 
-export default function AboutSection() {
+export default function AboutSection({ creatorContent }: { creatorContent: CreatorContent }) {
   const { lang } = useLanguage();
   const copy = localizedCopy[lang];
   const { creator, brand } = siteConfig;
@@ -83,7 +84,7 @@ export default function AboutSection() {
             {copy.identity} · {profile.title}
           </p>
           <p className="text-[14px]" style={{ color: 'var(--color-textSecondary)', lineHeight: 1.8 }}>
-            {profile.bio}
+            {creatorContent.philosophy || profile.bio}
           </p>
 
           <div className="mt-7 pt-5 border-t" style={{ borderColor: 'var(--color-border)' }}>
@@ -91,7 +92,7 @@ export default function AboutSection() {
               {copy.connections}
             </p>
             <div className="flex flex-wrap gap-2">
-              {copy.connectionLabels.map((label) => (
+              {(creatorContent.explorations.length ? creatorContent.explorations : copy.connectionLabels).map((label) => (
                 <span key={label} className="text-[11px] px-3 py-1.5 rounded-full" style={{ color: 'var(--color-tagText)', backgroundColor: 'var(--color-tagBg)' }}>
                   {label}
                 </span>

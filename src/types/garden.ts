@@ -8,4 +8,5 @@ export interface GardenEntry {
   category: GardenCategory;
   content: string;
   featured?: boolean;
+  tags: string[];
 }

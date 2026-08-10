@@ -25,3 +25,7 @@ export function getTimelineEntries(): TimelineEntry[] {
   if (!fs.existsSync(timelineDirectory)) return [];
   return fs.readdirSync(timelineDirectory).filter((fileName) => /\.mdx?$/.test(fileName)).map(parseEntry).sort((a, b) => a.year.localeCompare(b.year));
 }
+
+export function getTimeline(limit = 3): TimelineEntry[] {
+  return getTimelineEntries().slice(-limit);
+}
