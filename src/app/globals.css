@@ -198,6 +198,32 @@ p  { font-size: var(--font-size-body); font-weight: var(--font-weight-body); let
   padding-block: var(--space-section-hero);
 }
 
+.hero-section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  min-height: min(760px, calc(100svh - 3.5rem));
+  background:
+    radial-gradient(circle at 82% 18%, var(--color-accentLight), transparent 32%),
+    var(--color-background);
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: -12rem;
+  right: -10rem;
+  width: 28rem;
+  height: 28rem;
+  border-radius: var(--radius-full);
+  background: var(--color-accentSubtle);
+  filter: blur(12px);
+  pointer-events: none;
+}
+
 .spatial-section {
   padding-block: var(--space-section-normal);
 }
@@ -221,6 +247,11 @@ p  { font-size: var(--font-size-body); font-weight: var(--font-weight-body); let
     --space-section-hero: 6rem;
     --space-section-normal: 4.5rem;
     --space-section-compact: 4.5rem;
+  }
+
+  .hero-section {
+    min-height: auto;
+    align-items: stretch;
   }
 }
 
