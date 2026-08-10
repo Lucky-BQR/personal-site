@@ -1,19 +1,17 @@
-import type { GardenDocument, GardenEntry } from '@/types/garden';
+import type { ContentMetadata } from '@/types/content';
+import type { GardenDocument, GardenEntry, GardenMetadata } from '@/types/garden';
 import { loadContentDirectory } from './loader';
 
 const gardenDirectory = 'content/garden';
 
-function normalizeDocument(document: GardenDocument): GardenDocument {
+function toGardenMetadata(metadata: ContentMetadata): GardenMetadata {
   return {
-    ...document,
-    metadata: {
-      ...document.metadata,
-      title: document.metadata.title || 'Untitled thought',
-      excerpt: document.metadata.excerpt || '',
-      date: document.metadata.date || '',
-      category: document.metadata.category || 'reflection',
-      tags: document.metadata.tags || [],
-    },
+    ...metadata,
+    title: metadata.title || 'Untitled thought',
+    excerpt: metadata.excerpt || '',
+    date: metadata.date || '',
+    category: (metadata.category || 'reflection') as GardenMetadata['category'],
+    tags: metadata.tags || [],
   };
 }
 
@@ -25,8 +23,7 @@ function toGardenEntry(document: GardenDocument): GardenEntry {
 }
 
 export function getGardenDocuments(): GardenDocument[] {
-  return loadContentDirectory<GardenDocument['metadata']>(gardenDirectory)
-    .map(normalizeDocument)
+  return loadContentDirectory<GardenMetadata>(gardenDirectory, 'garden', toGardenMetadata)
     .sort((a, b) => b.metadata.date.localeCompare(a.metadata.date));
 }
 

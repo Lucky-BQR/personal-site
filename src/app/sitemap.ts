@@ -1,4 +1,8 @@
 import type { MetadataRoute } from 'next';
+import { buildKnowledgeIndex } from '@/lib/knowledge';
 import { getSitemapEntries } from '@/lib/seo/sitemap';
 export const dynamic = 'force-static';
-export default function sitemap(): MetadataRoute.Sitemap { return getSitemapEntries(); }
+export default function sitemap(): MetadataRoute.Sitemap {
+  buildKnowledgeIndex();
+  return getSitemapEntries();
+}

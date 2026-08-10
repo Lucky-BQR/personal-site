@@ -1,26 +1,29 @@
-import fs from 'node:fs';
-import path from 'node:path';
-import type { TimelineEntry } from '@/types/timeline';
-import { parseFrontmatter } from './loader';
+import type { ContentMetadata } from '@/types/content';
+import type { TimelineDocument, TimelineEntry, TimelineMetadata } from '@/types/timeline';
+import { loadContentDirectory } from './loader';
 
-const timelineDirectory = path.join(process.cwd(), 'content', 'timeline');
+const timelineDirectory = 'content/timeline';
 
-function parseEntry(fileName: string): TimelineEntry {
-  const raw = fs.readFileSync(path.join(timelineDirectory, fileName), 'utf8');
-  const { fields, content } = parseFrontmatter(raw);
+function toTimelineMetadata(metadata: ContentMetadata, fields: Record<string, string>): TimelineMetadata {
   return {
-    slug: fields.slug || fileName.replace(/\.mdx?$/, ''),
-    year: fields.year || '',
-    title: fields.title || '',
-    excerpt: fields.excerpt || '',
+    ...metadata,
+    year: metadata.year || '',
+    excerpt: metadata.excerpt || '',
     phase: fields.phase || 'chapter',
-    content,
   };
 }
 
+function toTimelineEntry(document: TimelineDocument): TimelineEntry {
+  return { ...document.metadata, content: document.content };
+}
+
+export function getTimelineDocuments(): TimelineDocument[] {
+  return loadContentDirectory<TimelineMetadata>(timelineDirectory, 'timeline', toTimelineMetadata)
+    .sort((a, b) => a.metadata.year.localeCompare(b.metadata.year));
+}
+
 export function getTimelineEntries(): TimelineEntry[] {
-  if (!fs.existsSync(timelineDirectory)) return [];
-  return fs.readdirSync(timelineDirectory).filter((fileName) => /\.mdx?$/.test(fileName)).map(parseEntry).sort((a, b) => a.year.localeCompare(b.year));
+  return getTimelineDocuments().map(toTimelineEntry);
 }
 
 export function getTimeline(limit = 3): TimelineEntry[] {

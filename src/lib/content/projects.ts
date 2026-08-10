@@ -1,16 +1,60 @@
-import fs from 'node:fs';
-import path from 'node:path';
-import type { ProjectCaseStudy } from '@/types/project';
-import { parseFrontmatter } from './loader';
+import type { ContentMetadata } from '@/types/content';
+import type { ProjectCaseStudy, ProjectDocument, ProjectMetadata } from '@/types/project';
+import { loadContentDirectory } from './loader';
 
-const directory = path.join(process.cwd(), 'content', 'projects');
-function parse(fileName: string): ProjectCaseStudy {
-  const raw = fs.readFileSync(path.join(directory, fileName), 'utf8');
-  const { fields, content: body } = parseFrontmatter(raw);
-  const sections = Object.fromEntries(body.split(/^##\s+/m).slice(1).map((part) => { const [heading, ...lines] = part.trim().split('\n'); return [heading.toLowerCase(), lines.join('\n').trim()]; }));
-  const list = (value = '') => value.split('\n').map((line) => line.replace(/^[-*]\s*/, '').trim()).filter(Boolean);
-  return { slug: fields.slug || fileName.replace(/\.mdx?$/, ''), title: fields.title || '', summary: fields.summary || '', year: fields.year || '', category: fields.category || '', technologies: (fields.technologies || '').split(',').map((item) => item.trim()).filter(Boolean), challenge: sections.challenge || '', architecture: list(sections.architecture), reflection: sections.reflection || '', featured: fields.featured === 'true' };
+const projectDirectory = 'content/projects';
+
+function parseList(value = ''): string[] {
+  return value.split(',').map((item) => item.trim()).filter(Boolean);
 }
-export function getProjects(): ProjectCaseStudy[] { if (!fs.existsSync(directory)) return []; return fs.readdirSync(directory).filter((file) => /\.mdx?$/.test(file)).map(parse).sort((a, b) => b.year.localeCompare(a.year)); }
-export function getProject(slug: string) { return getProjects().find((project) => project.slug === slug); }
-export function getFeaturedProjects(limit = 3): ProjectCaseStudy[] { const projects = getProjects(); const featured = projects.filter((project) => project.featured); return (featured.length ? featured : projects).slice(0, limit); }
+
+function toProjectMetadata(metadata: ContentMetadata, fields: Record<string, string>): ProjectMetadata {
+  const summary = fields.summary || metadata.excerpt || '';
+  return {
+    ...metadata,
+    summary,
+    excerpt: summary,
+    year: metadata.year || '',
+    category: metadata.category || '',
+    technologies: parseList(fields.technologies),
+  };
+}
+
+function toProject(document: ProjectDocument): ProjectCaseStudy {
+  const sections = Object.fromEntries(document.content.split(/^##\s+/m).slice(1).map((part) => {
+    const [heading, ...lines] = part.trim().split('\n');
+    return [heading.toLowerCase(), lines.join('\n').trim()];
+  }));
+  const list = (value = '') => value.split('\n').map((line) => line.replace(/^[-*]\s*/, '').trim()).filter(Boolean);
+
+  return {
+    ...document.metadata,
+    challenge: sections.challenge || '',
+    architecture: list(sections.architecture),
+    reflection: sections.reflection || '',
+  };
+}
+
+export function getProjectDocuments(): ProjectDocument[] {
+  return loadContentDirectory<ProjectMetadata>(projectDirectory, 'project', toProjectMetadata)
+    .sort((a, b) => b.metadata.year.localeCompare(a.metadata.year));
+}
+
+export function getProjectDocument(slug: string): ProjectDocument | undefined {
+  return getProjectDocuments().find((document) => document.metadata.slug === slug);
+}
+
+export function getProjects(): ProjectCaseStudy[] {
+  return getProjectDocuments().map(toProject);
+}
+
+export function getProject(slug: string): ProjectCaseStudy | undefined {
+  const document = getProjectDocument(slug);
+  return document ? toProject(document) : undefined;
+}
+
+export function getFeaturedProjects(limit = 3): ProjectCaseStudy[] {
+  const projects = getProjects();
+  const featured = projects.filter((project) => project.featured);
+  return (featured.length ? featured : projects).slice(0, limit);
+}
