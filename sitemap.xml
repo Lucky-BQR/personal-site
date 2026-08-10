@@ -1,27 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>https://your-site.vercel.app/about</loc>
-<lastmod>2026-08-10T12:33:23.364Z</lastmod>
+<loc>https://lucky-bqr.github.io/personal-site/about</loc>
+<lastmod>2026-08-10T12:46:38.341Z</lastmod>
 </url>
 <url>
-<loc>https://your-site.vercel.app/timeline</loc>
-<lastmod>2026-08-10T12:33:23.364Z</lastmod>
+<loc>https://lucky-bqr.github.io/personal-site/timeline</loc>
+<lastmod>2026-08-10T12:46:38.341Z</lastmod>
 </url>
 <url>
-<loc>https://your-site.vercel.app/projects</loc>
-<lastmod>2026-08-10T12:33:23.364Z</lastmod>
+<loc>https://lucky-bqr.github.io/personal-site/projects</loc>
+<lastmod>2026-08-10T12:46:38.341Z</lastmod>
 </url>
 <url>
-<loc>https://your-site.vercel.app/garden</loc>
-<lastmod>2026-08-10T12:33:23.364Z</lastmod>
+<loc>https://lucky-bqr.github.io/personal-site/garden</loc>
+<lastmod>2026-08-10T12:46:38.341Z</lastmod>
 </url>
 <url>
-<loc>https://your-site.vercel.app/projects/ai-assistant</loc>
+<loc>https://lucky-bqr.github.io/personal-site/projects/ai-assistant</loc>
 <lastmod>2026-01-01T00:00:00.000Z</lastmod>
-</url>
-<url>
-<loc>https://your-site.vercel.app/garden/building-a-digital-garden</loc>
-<lastmod>2026-08-10T00:00:00.000Z</lastmod>
 </url>
 </urlset>
