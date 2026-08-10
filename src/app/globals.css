@@ -25,6 +25,49 @@
   --color-terminalText: #b5cca0;
   --color-tagBg: rgba(90, 122, 74, 0.08);
   --color-tagText: #4a6a3a;
+
+  /* === ZhuQing Studio Design Tokens v1.0 === */
+  /* Semantic color aliases keep existing theme values in sync. */
+  --color-background: var(--color-bg);
+  --color-surface: var(--color-card);
+  --color-primary: var(--color-accent);
+  --color-secondary: var(--color-textSecondary);
+  --color-text-primary: var(--color-text);
+  --color-text-secondary: var(--color-textSecondary);
+
+  /* Spacing */
+  --space-0: 0;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  /* Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 0.875rem;
+  --radius-xl: 1.25rem;
+  --radius-2xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px var(--color-shadow-sm), 0 2px 8px var(--color-shadow-sm);
+  --shadow-md: 0 2px 4px var(--color-shadow-md), 0 8px 24px var(--color-shadow-md);
+  --shadow-lg: 0 8px 16px var(--color-shadow-sm), 0 16px 40px var(--color-shadow-sm);
+  --shadow-card: var(--shadow-sm), 0 8px 16px var(--color-shadow-sm);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 300ms cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-slow: 500ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @theme inline {
@@ -82,21 +125,17 @@ html { transition: background-color 0.3s ease, color 0.3s ease; }
 .card {
   background: var(--color-card);
   border: 1px solid var(--color-border);
-  border-radius: 1.25rem;
-  padding: 1.5rem;
-  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-              box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-              background-color 0.15s ease;
-  box-shadow: 0 1px 2px var(--color-shadow-sm),
-              0 2px 8px var(--color-shadow-sm),
-              0 8px 16px var(--color-shadow-sm);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  transition: transform var(--transition-normal),
+              box-shadow var(--transition-normal),
+              background-color var(--transition-fast);
+  box-shadow: var(--shadow-card);
 }
 
 .card:hover {
   background: var(--color-cardHover);
-  box-shadow: 0 2px 4px var(--color-shadow-md),
-              0 8px 24px var(--color-shadow-md),
-              0 16px 40px var(--color-shadow-sm);
+  box-shadow: var(--shadow-md), var(--shadow-lg);
   transform: translateY(-2px);
 }
 
