@@ -1,78 +1,113 @@
 1:"$Sreact.fragment"
-8:I[68027,["/personal-site/_next/static/chunks/3fntmmi971322.js","/personal-site/_next/static/chunks/0osmgftsnvtln.js"],"default",1]
-:HL["/personal-site/_next/static/chunks/3187203-79mux.css","style"]
+8:I[68027,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3epa9iw12to2z.js"],"default",1]
+:HL["/personal-site/_next/static/chunks/1bqzqwoa610vt.css","style"]
 :HL["/personal-site/_next/static/media/797e433ab948586e-s.p.0r6juujl39pe6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/personal-site/_next/static/media/caa3a2e1cccd8315-s.p.0wgildi0cnwt9.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-2:Tf7c,
+2:T1823,
               (function() {
                 try {
-                  var theme = localStorage.getItem('site-theme') || 'zhuqing';
+                  var theme = localStorage.getItem('site-theme-v2') || 'zhuqing';
                   document.documentElement.setAttribute('data-theme', theme);
+                  var language = localStorage.getItem('site-language') || 'zh';
+                  document.documentElement.setAttribute('lang', language === 'zh-TW' ? 'zh-Hant' : language);
 
                   // Set CSS variables for the saved theme to avoid flash
                   var themes = {
                     zhuqing: {
-                      '--color-bg': '#f5f9f3',
-                      '--color-text': '#2d3a28',
-                      '--color-textSecondary': '#4a5a42',
-                      '--color-textMuted': '#7d8e75',
-                      '--color-accent': '#7d9b6a',
-                      '--color-accentLight': '#c5d8b5',
-                      '--color-border': 'rgba(139,160,120,0.2)',
-                      '--color-card': '#ffffff',
-                      '--color-cardHover': '#f0f5ec',
-                      '--color-bgSecondary': '#edf4e9',
-                      '--color-bgTertiary': '#e2ecdc',
-                      '--color-navBg': 'rgba(245,249,243,0.85)',
-                      '--color-glass': 'rgba(245,249,243,0.72)',
-                      '--color-glassBorder': 'rgba(139,160,120,0.18)',
+                      '--color-bg': '#f5f2ea',
+                      '--color-text': '#20251f',
+                      '--color-textSecondary': '#4f594c',
+                      '--color-textMuted': '#788073',
+                      '--color-accent': '#48684c',
+                      '--color-accentLight': 'rgba(72,104,76,0.09)',
+                      '--color-accentSubtle': 'rgba(72,104,76,0.045)',
+                      '--color-accentContrast': '#ffffff',
+                      '--color-border': 'rgba(66,88,65,0.14)',
+                      '--color-rule': 'rgba(72,104,76,0.22)',
+                      '--color-card': 'rgba(255,255,252,0.68)',
+                      '--color-cardHover': '#fffefa',
+                      '--color-bgSecondary': '#eeeee6',
+                      '--color-bgTertiary': '#e4e8de',
+                      '--color-navBg': 'rgba(245,242,234,0.9)',
+                      '--color-glass': 'rgba(245,242,234,0.86)',
+                      '--color-glassBorder': 'rgba(66,88,65,0.12)',
                       '--color-terminal': '#1a2315',
                       '--color-terminalText': '#b5cca0',
-                      '--color-tagBg': '#e2ecdc',
-                      '--color-tagText': '#4a6a3a',
-                      '--color-accentHover': '#6a8558'
+                      '--color-tagBg': 'rgba(72,104,76,0.09)',
+                      '--color-tagText': '#38563d',
+                      '--color-accentHover': '#38563d'
                     },
                     moyun: {
-                      '--color-bg': '#1a1d1a',
-                      '--color-text': '#d4d9cf',
-                      '--color-textSecondary': '#a3aa9d',
-                      '--color-textMuted': '#6b7265',
-                      '--color-accent': '#8aab74',
-                      '--color-accentLight': '#3a4a30',
-                      '--color-border': 'rgba(100,120,90,0.15)',
-                      '--color-card': '#242724',
-                      '--color-cardHover': '#2a2e29',
-                      '--color-bgSecondary': '#222522',
-                      '--color-bgTertiary': '#2a2e29',
-                      '--color-navBg': 'rgba(26,29,26,0.88)',
-                      '--color-glass': 'rgba(26,29,26,0.78)',
-                      '--color-glassBorder': 'rgba(100,120,90,0.12)',
-                      '--color-terminal': '#0d0f0c',
-                      '--color-terminalText': '#8aab74',
-                      '--color-tagBg': '#2a3a20',
-                      '--color-tagText': '#9cbd85',
-                      '--color-accentHover': '#9cbd85'
+                      '--color-bg': '#171b18',
+                      '--color-text': '#dce3da',
+                      '--color-textSecondary': '#b3bcb0',
+                      '--color-textMuted': '#8f9a8d',
+                      '--color-accent': '#a7c3a8',
+                      '--color-accentLight': 'rgba(167,195,168,0.12)',
+                      '--color-accentSubtle': 'rgba(167,195,168,0.05)',
+                      '--color-accentContrast': '#172018',
+                      '--color-border': 'rgba(215,230,213,0.15)',
+                      '--color-rule': 'rgba(167,195,168,0.28)',
+                      '--color-card': '#202620',
+                      '--color-cardHover': '#293029',
+                      '--color-bgSecondary': '#202620',
+                      '--color-bgTertiary': '#293029',
+                      '--color-navBg': 'rgba(23,27,24,0.92)',
+                      '--color-glass': 'rgba(23,27,24,0.86)',
+                      '--color-glassBorder': 'rgba(215,230,213,0.14)',
+                      '--color-terminal': '#0e110f',
+                      '--color-terminalText': '#a7c3a8',
+                      '--color-tagBg': 'rgba(167,195,168,0.12)',
+                      '--color-tagText': '#b9d2ba',
+                      '--color-accentHover': '#b9d2ba'
                     },
                     subai: {
-                      '--color-bg': '#fafafa',
-                      '--color-text': '#1d1d1f',
-                      '--color-textSecondary': '#555555',
-                      '--color-textMuted': '#999999',
-                      '--color-accent': '#0071e3',
-                      '--color-accentLight': '#dbeafe',
-                      '--color-border': 'rgba(0,0,0,0.08)',
+                      '--color-bg': '#f7f7f4',
+                      '--color-text': '#202326',
+                      '--color-textSecondary': '#51575d',
+                      '--color-textMuted': '#7c8389',
+                      '--color-accent': '#4d5964',
+                      '--color-accentLight': 'rgba(77,89,100,0.09)',
+                      '--color-accentSubtle': 'rgba(77,89,100,0.04)',
+                      '--color-accentContrast': '#ffffff',
+                      '--color-border': 'rgba(32,35,38,0.14)',
+                      '--color-rule': 'rgba(77,89,100,0.22)',
                       '--color-card': '#ffffff',
-                      '--color-cardHover': '#f9f9f9',
-                      '--color-bgSecondary': '#f5f5f5',
-                      '--color-bgTertiary': '#eeeeee',
-                      '--color-navBg': 'rgba(250,250,250,0.82)',
-                      '--color-glass': 'rgba(250,250,250,0.75)',
-                      '--color-glassBorder': 'rgba(0,0,0,0.08)',
-                      '--color-terminal': '#1d1d1f',
-                      '--color-terminalText': '#34c759',
-                      '--color-tagBg': '#f0f0f0',
-                      '--color-tagText': '#555555',
-                      '--color-accentHover': '#0077ed'
+                      '--color-cardHover': '#f2f3f1',
+                      '--color-bgSecondary': '#f0f0ed',
+                      '--color-bgTertiary': '#e7e8e5',
+                      '--color-navBg': 'rgba(247,247,244,0.92)',
+                      '--color-glass': 'rgba(247,247,244,0.88)',
+                      '--color-glassBorder': 'rgba(32,35,38,0.1)',
+                      '--color-terminal': '#202326',
+                      '--color-terminalText': '#d8e2d8',
+                      '--color-tagBg': 'rgba(77,89,100,0.09)',
+                      '--color-tagText': '#4d5964',
+                      '--color-accentHover': '#3f4a54'
+                    },
+                    qingci: {
+                      '--color-bg': '#e6eeea',
+                      '--color-text': '#20302c',
+                      '--color-textSecondary': '#49625c',
+                      '--color-textMuted': '#70847f',
+                      '--color-accent': '#4f7c72',
+                      '--color-accentLight': 'rgba(79,124,114,0.11)',
+                      '--color-accentSubtle': 'rgba(79,124,114,0.05)',
+                      '--color-accentContrast': '#f1f7f4',
+                      '--color-border': 'rgba(32,70,62,0.16)',
+                      '--color-rule': 'rgba(79,124,114,0.26)',
+                      '--color-card': 'rgba(241,247,244,0.74)',
+                      '--color-cardHover': '#f0f6f3',
+                      '--color-bgSecondary': '#dce8e3',
+                      '--color-bgTertiary': '#ceded7',
+                      '--color-navBg': 'rgba(230,238,234,0.92)',
+                      '--color-glass': 'rgba(230,238,234,0.88)',
+                      '--color-glassBorder': 'rgba(32,70,62,0.13)',
+                      '--color-terminal': '#1d2b27',
+                      '--color-terminalText': '#b7d2c8',
+                      '--color-tagBg': 'rgba(79,124,114,0.11)',
+                      '--color-tagText': '#416c63',
+                      '--color-accentHover': '#416c63'
                     }
                   };
 
@@ -84,29 +119,34 @@
                 } catch(e) {}
               })();
             6:X
-0:{"P":null,"c":["","timeline"],"q":"","i":false,"f":[[["",{"children":["timeline",{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/personal-site/_next/static/chunks/3187203-79mux.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/personal-site/_next/static/chunks/3fntmmi971322.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/personal-site/_next/static/chunks/0osmgftsnvtln.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable h-full","suppressHydrationWarning":true,"children":[["$","head",null,{"children":["$","script",null,{"dangerouslySetInnerHTML":{"__html":"$2"}}]}],"$L3"]}]]}],{"children":["$L4",{"children":["$L5",{},null,false,null]},null,false,"$6"]},null,false,null],"$L7",false]],"m":"$undefined","G":["$8",["$L9"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"4qzXwJXPaVyxYv3DOzUQI"}
-a:I[65150,["/personal-site/_next/static/chunks/3fntmmi971322.js","/personal-site/_next/static/chunks/0osmgftsnvtln.js"],"ThemeProvider"]
-b:I[5233,["/personal-site/_next/static/chunks/3fntmmi971322.js","/personal-site/_next/static/chunks/0osmgftsnvtln.js"],"LanguageProvider"]
-c:I[3374,["/personal-site/_next/static/chunks/3fntmmi971322.js","/personal-site/_next/static/chunks/0osmgftsnvtln.js"],"default"]
-d:I[39756,["/personal-site/_next/static/chunks/3fntmmi971322.js","/personal-site/_next/static/chunks/0osmgftsnvtln.js"],"default"]
-e:I[37457,["/personal-site/_next/static/chunks/3fntmmi971322.js","/personal-site/_next/static/chunks/0osmgftsnvtln.js"],"default"]
-f:I[22016,["/personal-site/_next/static/chunks/3fntmmi971322.js","/personal-site/_next/static/chunks/0osmgftsnvtln.js","/personal-site/_next/static/chunks/35ty34tfk5mqn.js"],""]
-10:I[77750,["/personal-site/_next/static/chunks/3fntmmi971322.js","/personal-site/_next/static/chunks/0osmgftsnvtln.js","/personal-site/_next/static/chunks/35ty34tfk5mqn.js"],"default"]
-15:I[97367,["/personal-site/_next/static/chunks/3fntmmi971322.js","/personal-site/_next/static/chunks/0osmgftsnvtln.js"],"ViewportBoundary"]
-17:I[97367,["/personal-site/_next/static/chunks/3fntmmi971322.js","/personal-site/_next/static/chunks/0osmgftsnvtln.js"],"MetadataBoundary"]
-18:"$Sreact.suspense"
-3:["$","body",null,{"className":"min-h-full flex flex-col antialiased transition-colors duration-300","style":{"backgroundColor":"var(--color-bg)","color":"var(--color-text)"},"children":["$","$La",null,{"children":["$","$Lb",null,{"children":[["$","$Lc",null,{}],["$","main",null,{"className":"flex-1 animate-fade-in","children":["$","$Ld",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$Le",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","footer",null,{"className":"mt-auto","children":[["$","div",null,{"className":"h-px","style":{"background":"linear-gradient(to right, transparent 0%, var(--color-glassBorder) 50%, transparent 100%)"}}],["$","div",null,{"className":"max-w-5xl mx-auto px-6 py-8","children":["$","div",null,{"className":"flex flex-wrap items-center justify-between gap-3","children":[["$","p",null,{"className":"text-[11px]","style":{"color":"var(--color-textMuted)"},"children":["竹青小筑 © ",2026]}],["$","nav",null,{"aria-label":"页脚内容导航","className":"flex items-center gap-3 text-[11px]","style":{"color":"var(--color-textMuted)"},"children":[["$","$Lf",null,{"href":"/garden","className":"transition-opacity hover:opacity-70","children":"花园"}],["$","$Lf",null,{"href":"/topics","className":"transition-opacity hover:opacity-70","children":"主题索引"}],["$","$Lf",null,{"href":"/knowledge","className":"transition-opacity hover:opacity-70","children":"知识网络"}],["$","span",null,{"children":"Built with Next.js"}]]}]]}]}]]}]]}]}]}]
+0:{"P":null,"c":["","timeline"],"q":"","i":false,"f":[[["",{"children":["timeline",{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/personal-site/_next/static/chunks/1bqzqwoa610vt.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/personal-site/_next/static/chunks/3epa9iw12to2z.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable h-full","suppressHydrationWarning":true,"children":[["$","head",null,{"children":["$","script",null,{"dangerouslySetInnerHTML":{"__html":"$2"}}]}],"$L3"]}]]}],{"children":["$L4",{"children":["$L5",{},null,false,null]},null,false,"$6"]},null,false,null],"$L7",false]],"m":"$undefined","G":["$8",["$L9"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"ap83Q04REJ8B7bUSbXDb7"}
+a:I[65150,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3epa9iw12to2z.js"],"ThemeProvider"]
+b:I[5233,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3epa9iw12to2z.js"],"LanguageProvider"]
+c:I[3374,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3epa9iw12to2z.js"],"default"]
+d:I[39756,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3epa9iw12to2z.js"],"default"]
+e:I[37457,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3epa9iw12to2z.js"],"default"]
+f:I[58234,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3epa9iw12to2z.js"],"default"]
+10:I[48559,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3epa9iw12to2z.js"],"default"]
+11:I[77750,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3epa9iw12to2z.js","/personal-site/_next/static/chunks/11px7bb-c3yn0.js"],"default"]
+12:I[22016,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3epa9iw12to2z.js","/personal-site/_next/static/chunks/11px7bb-c3yn0.js"],""]
+1a:I[97367,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3epa9iw12to2z.js"],"ViewportBoundary"]
+1c:I[97367,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3epa9iw12to2z.js"],"MetadataBoundary"]
+1d:"$Sreact.suspense"
+3:["$","body",null,{"className":"min-h-full flex flex-col antialiased transition-colors duration-300","style":{"backgroundColor":"var(--color-bg)","color":"var(--color-text)"},"children":["$","$La",null,{"children":["$","$Lb",null,{"children":[["$","$Lc",null,{}],["$","main",null,{"className":"flex-1 animate-fade-in","children":["$","$Ld",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$Le",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$Lf",null,{}],["$","$L10",null,{}]]}]}]}]
 4:["$","$1","c",{"children":[null,["$","$Ld",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$Le",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
-5:["$","$1","c",{"children":[["$","div",null,{"className":"container-reading spatial-section","children":[["$","$L10",null,{}],["$","section",null,{"aria-labelledby":"journey-chapters-title","children":[["$","h2",null,{"id":"journey-chapters-title","className":"type-heading mb-8","children":"Journey Chapters"}],["$","div",null,{"className":"relative border-l pl-0","style":{"borderColor":"var(--color-border)"},"children":[["$","article","engineering-beginnings",{"id":"engineering-beginnings","className":"relative scroll-mt-24 pl-8 sm:pl-12 pb-12 last:pb-0 motion-reveal","style":{"animationDelay":"0ms"},"children":[["$","span",null,{"className":"absolute left-0 top-1.5 h-3 w-3 rounded-full border-2","style":{"backgroundColor":"var(--color-background)","borderColor":"var(--color-accent)"}}],["$","div",null,{"className":"flex flex-wrap items-baseline gap-x-4 gap-y-1 mb-2","children":[["$","time",null,{"className":"type-meta","style":{"color":"var(--color-accent)"},"children":"2022"}],["$","span",null,{"className":"card-meta","children":"creation"}]]}],["$","h2",null,{"className":"type-heading mb-2","children":"工程实践的起点"}],["$","p",null,{"className":"type-body","style":{"color":"var(--color-textSecondary)"},"children":"从软件工程与产品实践出发，建立创造者的基本功。"}],["$","div",null,{"className":"flex flex-wrap gap-2 mt-4","children":[["$","$Lf","creation",{"href":"/topics/creation","className":"card-meta rounded-full border px-3 py-1 transition-opacity hover:opacity-70","style":{"borderColor":"var(--color-border)"},"children":["#","creation"]}],["$","$Lf","engineering",{"href":"/topics/engineering","className":"card-meta rounded-full border px-3 py-1 transition-opacity hover:opacity-70","style":{"borderColor":"var(--color-border)"},"children":["#","engineering"]}]]}]]}],["$","article","knowledge-garden",{"id":"knowledge-garden","className":"relative scroll-mt-24 pl-8 sm:pl-12 pb-12 last:pb-0 motion-reveal","style":{"animationDelay":"80ms"},"children":[["$","span",null,{"className":"absolute left-0 top-1.5 h-3 w-3 rounded-full border-2","style":{"backgroundColor":"var(--color-background)","borderColor":"var(--color-accent)"}}],["$","div",null,{"className":"flex flex-wrap items-baseline gap-x-4 gap-y-1 mb-2","children":[["$","time",null,{"className":"type-meta","style":{"color":"var(--color-accent)"},"children":"2025"}],["$","span",null,{"className":"card-meta","children":"accumulation"}]]}],["$","h2",null,{"className":"type-heading mb-2","children":"知识花园成形"}],["$","p",null,{"className":"type-body","style":{"color":"var(--color-textSecondary)"},"children":"将学习、阅读与思考整理为可以持续生长的数字空间。"}],["$","div",null,{"className":"flex flex-wrap gap-2 mt-4","children":[["$","$Lf","knowledge",{"href":"/topics/knowledge","className":"card-meta rounded-full border px-3 py-1 transition-opacity hover:opacity-70","style":{"borderColor":"var(--color-border)"},"children":["#","knowledge"]}],["$","$Lf","learning",{"href":"/topics/learning","className":"card-meta rounded-full border px-3 py-1 transition-opacity hover:opacity-70","style":{"borderColor":"var(--color-border)"},"children":["#","learning"]}]]}]]}],["$","article","future-oriental-lab",{"id":"future-oriental-lab","className":"relative scroll-mt-24 pl-8 sm:pl-12 pb-12 last:pb-0 motion-reveal","style":{"animationDelay":"160ms"},"children":[["$","span",null,{"className":"absolute left-0 top-1.5 h-3 w-3 rounded-full border-2","style":{"backgroundColor":"var(--color-background)","borderColor":"var(--color-accent)"}}],["$","div",null,{"className":"flex flex-wrap items-baseline gap-x-4 gap-y-1 mb-2","children":[["$","time",null,{"className":"type-meta","style":{"color":"var(--color-accent)"},"children":"2026"}],["$","span",null,{"className":"card-meta","children":"exploration"}]]}],["$","h2",null,{"className":"type-heading mb-2","children":"未来东方实验室"}],["$","p",null,{"className":"type-body","style":{"color":"var(--color-textSecondary)"},"children":"探索技术创造、知识积累与东方思想之间的新连接。"}],["$","div",null,{"className":"flex flex-wrap gap-2 mt-4","children":[["$","$Lf","eastern-thought",{"href":"/topics/eastern-thought","className":"card-meta rounded-full border px-3 py-1 transition-opacity hover:opacity-70","style":{"borderColor":"var(--color-border)"},"children":["#","eastern-thought"]}],"$L11"]}]]}]]}]]}],"$L12"]}],["$L13"],"$L14"]}]
-7:["$","$1","h",{"children":[null,["$","$L15",null,{"children":"$L16"}],["$","div",null,{"hidden":true,"children":["$","$L17",null,{"children":["$","$18",null,{"name":"Next.Metadata","children":"$L19"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]
-9:["$","link","0",{"rel":"stylesheet","href":"/personal-site/_next/static/chunks/3187203-79mux.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
-1a:I[97367,["/personal-site/_next/static/chunks/3fntmmi971322.js","/personal-site/_next/static/chunks/0osmgftsnvtln.js"],"OutletBoundary"]
+5:["$","$1","c",{"children":[["$","div",null,{"className":"timeline-page container-main","children":[["$","$L11",null,{"entries":[{"slug":"engineering-beginnings","title":"工程实践的起点","excerpt":"从软件工程与产品实践出发，建立创造者的基本功。","date":"","year":"2022","category":"","tags":["engineering","creation"],"topics":[],"status":"published","featured":false,"relations":[],"phase":"creation","content":"通过真实项目理解技术，也通过技术回应真实问题。"},{"slug":"knowledge-garden","title":"知识花园成形","excerpt":"将学习、阅读与思考整理为可以持续生长的数字空间。","date":"","year":"2025","category":"","tags":["learning","knowledge"],"topics":[],"status":"published","featured":false,"relations":[{"relation":"related_to","target":{"kind":"garden","slug":"building-a-digital-garden"},"label":"知识花园"}],"phase":"accumulation","content":"记录、整理、实践、总结，最终沉淀为自己的知识系统。"},{"slug":"future-oriental-lab","title":"未来东方实验室","excerpt":"探索技术创造、知识积累与东方思想之间的新连接。","date":"","year":"2026","category":"","tags":["technology","eastern-thought"],"topics":[],"status":"published","featured":false,"relations":[],"phase":"exploration","content":"让创造持续发生，让思想在技术构建的空间中回响。"}]}],["$","section",null,{"className":"timeline-journey","aria-labelledby":"journey-chapters-title","children":[["$","div",null,{"className":"timeline-journey-header","children":[["$","div",null,{"children":[["$","p",null,{"className":"timeline-section-label","children":"Growth Archive"}],["$","h2",null,{"id":"journey-chapters-title","children":"成长章节"}],["$","p",null,{"children":"从工程实践到知识花园，记录方向如何在行动中逐渐成形。"}]]}],["$","div",null,{"className":"timeline-legend","aria-label":"时间线状态","children":[["$","a",null,{"href":"#future-oriental-lab","children":[["$","span",null,{"aria-hidden":"true"}]," 最新节点 · ","2026"]}],["$","span",null,{"children":[3," 个章节 · 持续更新"]}]]}]]}],["$","div",null,{"className":"timeline-track","role":"list","children":[["$","article","engineering-beginnings",{"id":"engineering-beginnings","className":"timeline-node motion-reveal","style":{"animationDelay":"0ms"},"role":"listitem","children":[["$","div",null,{"className":"timeline-node-card","children":[["$","div",null,{"className":"timeline-node-meta","children":[["$","span",null,{"children":"Chapter"}],["$","span",null,{"children":"01"}]]}],["$","p",null,{"className":"timeline-node-phase","children":"creation"}],["$","h3",null,{"children":"工程实践的起点"}],["$","p",null,{"className":"timeline-node-excerpt","children":"从软件工程与产品实践出发，建立创造者的基本功。"}],["$","div",null,{"className":"flex flex-wrap gap-2 timeline-node-topics","children":[["$","$L12","creation",{"href":"/topics/creation","className":"card-meta rounded-full border px-3 py-1 transition-opacity hover:opacity-70","style":{"borderColor":"var(--color-border)"},"children":["#","creation"]}],["$","$L12","engineering",{"href":"/topics/engineering","className":"card-meta rounded-full border px-3 py-1 transition-opacity hover:opacity-70","style":{"borderColor":"var(--color-border)"},"children":["#","engineering"]}]]}]]}],["$","div",null,{"className":"timeline-node-marker","aria-hidden":"true"}],["$","time",null,{"dateTime":"2022","children":"2022"}],["$","span",null,{"className":"timeline-node-caption","children":"成长节点"}]]}],["$","article","knowledge-garden",{"id":"knowledge-garden","className":"timeline-node motion-reveal","style":{"animationDelay":"80ms"},"role":"listitem","children":[["$","div",null,{"className":"timeline-node-card","children":[["$","div",null,{"className":"timeline-node-meta","children":[["$","span",null,{"children":"Chapter"}],["$","span",null,{"children":"02"}]]}],["$","p",null,{"className":"timeline-node-phase","children":"accumulation"}],["$","h3",null,{"children":"知识花园成形"}],["$","p",null,{"className":"timeline-node-excerpt","children":"将学习、阅读与思考整理为可以持续生长的数字空间。"}],["$","div",null,{"className":"flex flex-wrap gap-2 timeline-node-topics","children":[["$","$L12","knowledge",{"href":"/topics/knowledge","className":"card-meta rounded-full border px-3 py-1 transition-opacity hover:opacity-70","style":{"borderColor":"var(--color-border)"},"children":["#","knowledge"]}],["$","$L12","learning",{"href":"/topics/learning","className":"card-meta rounded-full border px-3 py-1 transition-opacity hover:opacity-70","style":{"borderColor":"var(--color-border)"},"children":["#","learning"]}]]}]]}],["$","div",null,{"className":"timeline-node-marker","aria-hidden":"true"}],["$","time",null,{"dateTime":"2025","children":"2025"}],["$","span",null,{"className":"timeline-node-caption","children":"成长节点"}]]}],["$","article","future-oriental-lab",{"id":"future-oriental-lab","className":"timeline-node motion-reveal is-latest","style":{"animationDelay":"160ms"},"role":"listitem","children":["$L13","$L14","$L15","$L16"]}]]}]]}],"$L17"]}],["$L18"],"$L19"]}]
+7:["$","$1","h",{"children":[null,["$","$L1a",null,{"children":"$L1b"}],["$","div",null,{"hidden":true,"children":["$","$L1c",null,{"children":["$","$1d",null,{"name":"Next.Metadata","children":"$L1e"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]
+9:["$","link","0",{"rel":"stylesheet","href":"/personal-site/_next/static/chunks/1bqzqwoa610vt.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
+1f:I[97367,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3epa9iw12to2z.js"],"OutletBoundary"]
 6:C
-11:["$","$Lf","technology",{"href":"/topics/technology","className":"card-meta rounded-full border px-3 py-1 transition-opacity hover:opacity-70","style":{"borderColor":"var(--color-border)"},"children":["#","technology"]}]
-12:["$","section",null,{"className":"card-base mt-16","aria-labelledby":"future-vision-title","children":[["$","p",null,{"className":"card-meta mb-3","children":"NEXT HORIZON"}],["$","h2",null,{"id":"future-vision-title","className":"type-heading mb-3","children":"面向未来的持续创造"}],["$","p",null,{"className":"type-body","style":{"color":"var(--color-textSecondary)"},"children":"在技术、知识与东方智慧之间继续行走，构建属于未来的数字空间。"}]]}]
-13:["$","script","script-0",{"src":"/personal-site/_next/static/chunks/35ty34tfk5mqn.js","async":true,"nonce":"$undefined"}]
-14:["$","$L1a",null,{"children":["$","$18",null,{"name":"Next.MetadataOutlet","children":"$@1b"}]}]
-16:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
-1c:I[27201,["/personal-site/_next/static/chunks/3fntmmi971322.js","/personal-site/_next/static/chunks/0osmgftsnvtln.js"],"IconMark"]
-19:[["$","title","0",{"children":"Creator Journey | 竹青小筑"}],["$","meta","1",{"name":"description","content":"记录技术创造者的成长轨迹、长期实践与未来探索。"}],["$","link","2",{"rel":"canonical","href":"https://lucky-bqr.github.io/personal-site/timeline"}],["$","meta","3",{"property":"og:title","content":"Creator Journey"}],["$","meta","4",{"property":"og:description","content":"记录技术创造者的成长轨迹、长期实践与未来探索。"}],["$","meta","5",{"property":"og:url","content":"https://lucky-bqr.github.io/personal-site/timeline"}],["$","meta","6",{"property":"og:site_name","content":"ZhuQing Studio"}],["$","meta","7",{"property":"og:type","content":"website"}],["$","meta","8",{"name":"twitter:card","content":"summary"}],["$","meta","9",{"name":"twitter:title","content":"Creator Journey"}],["$","meta","10",{"name":"twitter:description","content":"记录技术创造者的成长轨迹、长期实践与未来探索。"}],["$","link","11",{"rel":"icon","href":"/personal-site/favicon.ico?favicon.2vob68tjqpejf.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L1c","12",{}]]
-1b:null
+13:["$","div",null,{"className":"timeline-node-card","children":[["$","div",null,{"className":"timeline-node-meta","children":[["$","span",null,{"children":"Latest Chapter"}],["$","span",null,{"children":"03"}]]}],["$","p",null,{"className":"timeline-node-phase","children":"exploration"}],["$","h3",null,{"children":"未来东方实验室"}],["$","p",null,{"className":"timeline-node-excerpt","children":"探索技术创造、知识积累与东方思想之间的新连接。"}],["$","div",null,{"className":"flex flex-wrap gap-2 timeline-node-topics","children":[["$","$L12","eastern-thought",{"href":"/topics/eastern-thought","className":"card-meta rounded-full border px-3 py-1 transition-opacity hover:opacity-70","style":{"borderColor":"var(--color-border)"},"children":["#","eastern-thought"]}],["$","$L12","technology",{"href":"/topics/technology","className":"card-meta rounded-full border px-3 py-1 transition-opacity hover:opacity-70","style":{"borderColor":"var(--color-border)"},"children":["#","technology"]}]]}]]}]
+14:["$","div",null,{"className":"timeline-node-marker","aria-hidden":"true"}]
+15:["$","time",null,{"dateTime":"2026","children":"2026"}]
+16:["$","span",null,{"className":"timeline-node-caption","children":"正在发生"}]
+17:["$","section",null,{"className":"timeline-future","aria-labelledby":"future-vision-title","children":[["$","div",null,{"children":[["$","p",null,{"className":"timeline-section-label","children":"Next Horizon"}],["$","h2",null,{"id":"future-vision-title","children":"下一章，仍在书写"}]]}],["$","p",null,{"children":"在技术、知识与东方智慧之间继续行走，构建属于未来的数字空间。"}],["$","span",null,{"aria-hidden":"true","children":"未完待续  →"}]]}]
+18:["$","script","script-0",{"src":"/personal-site/_next/static/chunks/11px7bb-c3yn0.js","async":true,"nonce":"$undefined"}]
+19:["$","$L1f",null,{"children":["$","$1d",null,{"name":"Next.MetadataOutlet","children":"$@20"}]}]
+1b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+21:I[27201,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3epa9iw12to2z.js"],"IconMark"]
+1e:[["$","title","0",{"children":"Creator Journey | 竹青小筑"}],["$","meta","1",{"name":"description","content":"记录实践轨迹、长期学习与持续探索。"}],["$","link","2",{"rel":"canonical","href":"https://lucky-bqr.github.io/personal-site/timeline"}],["$","meta","3",{"property":"og:title","content":"Creator Journey"}],["$","meta","4",{"property":"og:description","content":"记录实践轨迹、长期学习与持续探索。"}],["$","meta","5",{"property":"og:url","content":"https://lucky-bqr.github.io/personal-site/timeline"}],["$","meta","6",{"property":"og:site_name","content":"ZhuQing Studio"}],["$","meta","7",{"property":"og:type","content":"website"}],["$","meta","8",{"name":"twitter:card","content":"summary"}],["$","meta","9",{"name":"twitter:title","content":"Creator Journey"}],["$","meta","10",{"name":"twitter:description","content":"记录实践轨迹、长期学习与持续探索。"}],["$","link","11",{"rel":"icon","href":"/personal-site/favicon.ico?favicon.2vob68tjqpejf.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L21","12",{}]]
+20:null

@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; width: 1600px; height: 1100px; overflow: hidden; background: #fff; }
+    body { color: #18211d; font-family: "Microsoft YaHei", "PingFang SC", sans-serif; }
+    .poster { position: relative; width: 1600px; height: 1100px; padding: 64px 82px 48px; background: linear-gradient(180deg, #fff 0%, #fbfcfa 100%); }
+    .poster::before { position: absolute; inset: 24px; border: 1px solid #dce5df; content: ""; pointer-events: none; }
+    .serial { position: absolute; top: 48px; right: 64px; color: #76917f; font: 600 14px/1.2 "Courier New", monospace; letter-spacing: 2px; }
+    .header { text-align: center; }
+    .kicker { color: #557762; font: 700 15px/1.2 "Courier New", monospace; letter-spacing: 3px; }
+    h1 { margin: 14px 0 0; font-family: "SimSun", serif; font-size: 54px; line-height: 1.15; letter-spacing: -2px; }
+    h1 em { color: #27804c; font-style: normal; }
+    .subtitle { margin-top: 12px; color: #77817b; font-size: 17px; }
+    .diagram { position: relative; width: 1400px; height: 720px; margin: 30px auto 0; }
+    .tag { font: 700 13px/1.2 "Courier New", monospace; letter-spacing: 1.2px; }
+    .sources { position: absolute; top: 0; left: 0; display: grid; grid-template-columns: repeat(2, 310px); gap: 24px; }
+    .source { min-height: 134px; padding: 20px 22px; border: 2px solid; border-radius: 18px; }
+    .source.user { border-color: #8ec59c; background: #eff9ef; }
+    .source.external { border-color: #e5b966; background: #fff9ed; }
+    .source .tag { display: block; margin-bottom: 9px; }
+    .source.user .tag { color: #277449; }
+    .source.external .tag { color: #a26a1d; }
+    .source strong { font-family: "SimSun", serif; font-size: 24px; }
+    .source p { margin: 9px 0 0; color: #5f6d65; font-size: 14px; line-height: 1.6; }
+    .down-a, .down-b { position: absolute; top: 134px; width: 2px; height: 70px; background: #26352d; }
+    .down-a { left: 155px; }
+    .down-b { left: 489px; }
+    .down-a::after, .down-b::after, .down-core::after, .down-write::after { position: absolute; right: -5px; bottom: 0; width: 10px; height: 10px; border-right: 2px solid #26352d; border-bottom: 2px solid #26352d; content: ""; transform: rotate(45deg); }
+    .builder { position: absolute; top: 202px; left: 102px; width: 440px; min-height: 210px; padding: 25px 28px; border: 2px dashed #6495b7; border-radius: 22px; background: #f2f8fd; }
+    .builder .tag { color: #347aa7; }
+    .builder h2, .active h2, .candidate h2 { margin: 8px 0 15px; font-family: "SimSun", serif; font-size: 28px; }
+    .steps { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .steps span { padding: 10px 12px; border: 1px solid #b6d2e5; border-radius: 9px; background: #fff; color: #536871; font-size: 14px; text-align: center; }
+    .right-arrow { position: absolute; top: 300px; left: 542px; width: 92px; height: 2px; background: #26352d; }
+    .right-arrow::after, .right-context::after { position: absolute; top: -5px; right: 0; width: 10px; height: 10px; border-top: 2px solid #26352d; border-right: 2px solid #26352d; content: ""; transform: rotate(45deg); }
+    .active { position: absolute; top: 186px; left: 634px; display: grid; place-content: center; width: 310px; height: 250px; border: 2px solid #56836a; border-radius: 50%; background: radial-gradient(circle, #eff8f1 0 64%, #fff 65%); box-shadow: 0 0 0 10px #edf5ef; text-align: center; }
+    .active .tag { color: #2e7250; }
+    .active h2 { margin-bottom: 13px; }
+    .active-grid { display: grid; grid-template-columns: repeat(2, 108px); gap: 8px; justify-content: center; }
+    .active-grid span { padding: 8px 5px; border: 1px solid #aac5b2; border-radius: 8px; background: #fff; color: #506156; font-size: 13px; }
+    .right-context { position: absolute; top: 310px; left: 944px; width: 92px; height: 2px; background: #26352d; }
+    .agent { position: absolute; top: 228px; right: 0; width: 364px; min-height: 170px; padding: 24px 26px; border: 2px solid #b9a5d8; border-radius: 20px; background: #faf7ff; }
+    .agent .tag { color: #7656a0; }
+    .agent strong { display: block; margin-top: 10px; font-family: "SimSun", serif; font-size: 27px; }
+    .agent p { margin: 12px 0 0; color: #655e6b; font-size: 15px; line-height: 1.65; }
+    .down-core { position: absolute; top: 436px; left: 788px; width: 2px; height: 62px; background: #26352d; }
+    .candidate { position: absolute; top: 500px; left: 548px; display: grid; grid-template-columns: 150px 1fr 120px; gap: 18px; align-items: center; width: 486px; min-height: 102px; padding: 18px 22px; border: 2px solid #e79889; border-radius: 17px; background: #fff2ef; }
+    .candidate .tag { color: #a64e40; }
+    .candidate h2 { margin: 0; font-size: 22px; }
+    .candidate small { color: #7e645e; font-size: 13px; text-align: right; }
+    .down-write { position: absolute; top: 602px; left: 788px; width: 2px; height: 52px; background: #26352d; }
+    .stores { position: absolute; right: 0; bottom: 0; left: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .store { min-height: 150px; padding: 19px 20px; border: 2px solid; border-radius: 18px; background: #fff; }
+    .store.project { border-color: #88bce0; background: #f2f8fd; }
+    .store.knowledge { border-color: #e5b966; background: #fff9ed; }
+    .store.memory { border-color: #8ec59c; background: #eff9ef; }
+    .store.audit { border-color: #e79889; background: #fff2ef; }
+    .store .tag { display: block; margin-bottom: 7px; }
+    .store.project .tag { color: #337ba8; }
+    .store.knowledge .tag { color: #a26a1d; }
+    .store.memory .tag { color: #277449; }
+    .store.audit .tag { color: #a64e40; }
+    .store strong { font-family: "SimSun", serif; font-size: 22px; }
+    .store p { margin: 9px 0 0; color: #5f6963; font-size: 13px; line-height: 1.7; }
+    .governance { display: grid; grid-template-columns: 180px 1fr 370px; gap: 20px; align-items: center; margin-top: 15px; padding: 15px 22px; border: 2px dashed #9e86c2; border-radius: 16px; background: #faf7ff; }
+    .governance .tag { color: #72549a; }
+    .controls { display: grid; grid-template-columns: repeat(5, 1fr); }
+    .controls span { color: #5e5865; font-size: 14px; text-align: center; }
+    .controls span + span { border-left: 1px solid #d6cce4; }
+    .governance strong { color: #4b544f; font-family: "SimSun", serif; font-size: 18px; text-align: right; }
+    .foot { display: flex; justify-content: space-between; margin-top: 12px; color: #707b74; font-size: 14px; }
+    .foot strong { color: #27804c; }
+  </style>
+</head>
+<body>
+  <main class="poster">
+    <span class="serial">DATA &amp; MEMORY ARCHITECTURE / v0.1</span>
+    <header class="header">
+      <div class="kicker">CONTEXT · MEMORY · GOVERNANCE</div>
+      <h1>一张图讲清 <em>AI 智能助手</em> 的数据与记忆如何流动</h1>
+      <p class="subtitle">对话不等于记忆；只有经过筛选、组织和用户确认的信息，才进入长期上下文</p>
+    </header>
+
+    <section class="diagram">
+      <div class="sources">
+        <article class="source user"><span class="tag">USER INPUT</span><strong>用户输入</strong><p>目标、消息、文件、链接与明确限制</p></article>
+        <article class="source external"><span class="tag">EXTERNAL DATA</span><strong>外部与工具结果</strong><p>网页资料、文档内容、检索结果与工具输出</p></article>
+      </div>
+      <div class="down-a"></div><div class="down-b"></div>
+
+      <section class="builder"><span class="tag">CONTEXT BUILDER</span><h2>上下文构建器</h2><div class="steps"><span>解析与标准化</span><span>识别来源</span><span>关联项目</span><span>筛选相关内容</span></div></section>
+      <div class="right-arrow"></div>
+
+      <section class="active"><span class="tag">ACTIVE CONTEXT</span><h2>本次任务上下文</h2><div class="active-grid"><span>当前目标</span><span>限制条件</span><span>已确认计划</span><span>相关资料</span></div></section>
+      <div class="right-context"></div>
+
+      <section class="agent"><span class="tag">TASK ORCHESTRATOR</span><strong>任务编排层</strong><p>只读取完成当前任务所需的上下文，并在执行过程中产生结果、决策与进度。</p></section>
+      <div class="down-core"></div>
+
+      <section class="candidate"><span class="tag">WRITE BACK</span><h2>候选记忆</h2><small>用户确认后写入</small></section>
+      <div class="down-write"></div>
+
+      <div class="stores">
+        <article class="store project"><span class="tag">PROJECT</span><strong>项目工作区</strong><p>项目 · 任务 · 计划<br />决策 · 当前进度</p></article>
+        <article class="store knowledge"><span class="tag">KNOWLEDGE</span><strong>知识与来源</strong><p>文档 · 笔记 · 来源<br />引用 · 可复用结论</p></article>
+        <article class="store memory"><span class="tag">MEMORY</span><strong>长期记忆</strong><p>已确认偏好 · 重要事实<br />历史决策 · 可复用方法</p></article>
+        <article class="store audit"><span class="tag">AUDIT</span><strong>执行账本</strong><p>确认记录 · 工具调用<br />执行结果 · 错误信息</p></article>
+      </div>
+    </section>
+
+    <section class="governance"><span class="tag">MEMORY CONTROL</span><div class="controls"><span>查看</span><span>修正</span><span>删除</span><span>导出</span><span>保留期限</span></div><strong>长期记忆始终由用户管理</strong></section>
+    <footer class="foot"><span><strong>原则：</strong>默认保存项目结构与已确认结论，而不是永久保存全部对话。</span><span>竹青小筑 · AI Systems</span></footer>
+  </main>
+</body>
+</html>

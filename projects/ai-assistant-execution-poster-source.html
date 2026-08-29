@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; width: 1600px; height: 1100px; overflow: hidden; background: #fff; }
+    body { color: #18211d; font-family: "Microsoft YaHei", "PingFang SC", sans-serif; }
+    .poster { position: relative; width: 1600px; height: 1100px; padding: 62px 78px 42px; background: linear-gradient(180deg, #fff 0%, #fbfcfa 100%); }
+    .poster::before { position: absolute; inset: 24px; border: 1px solid #dce5df; content: ""; pointer-events: none; }
+    .serial { position: absolute; top: 48px; right: 62px; color: #76917f; font: 600 14px/1.2 "Courier New", monospace; letter-spacing: 2px; }
+    .header { text-align: center; }
+    .kicker { color: #557762; font: 700 15px/1.2 "Courier New", monospace; letter-spacing: 3px; }
+    h1 { margin: 14px 0 0; font-family: "SimSun", serif; font-size: 53px; line-height: 1.15; letter-spacing: -2px; }
+    h1 em { color: #27804c; font-style: normal; }
+    .subtitle { margin-top: 11px; color: #77817b; font-size: 17px; }
+    .diagram { position: relative; width: 1440px; height: 740px; margin: 28px auto 0; }
+    .tag { font: 700 12px/1.2 "Courier New", monospace; letter-spacing: 1.3px; }
+
+    .control-rail { display: grid; grid-template-columns: 180px 1fr 310px; align-items: center; gap: 20px; height: 76px; padding: 14px 22px; border: 2px dashed #8aa995; border-radius: 17px; background: #f3f9f4; }
+    .control-rail .tag { color: #36704d; }
+    .control-actions { display: grid; grid-template-columns: repeat(5, 1fr); }
+    .control-actions span { color: #52645a; font-size: 14px; text-align: center; }
+    .control-actions span + span { border-left: 1px solid #cbdccf; }
+    .control-rail strong { color: #304b39; font-family: "SimSun", serif; font-size: 18px; text-align: right; }
+
+    .lane-label { position: absolute; top: 104px; left: 0; display: flex; align-items: center; gap: 12px; color: #6e7a73; font: 700 12px/1.2 "Courier New", monospace; letter-spacing: 1.4px; }
+    .lane-label::after { width: 1214px; height: 1px; background: #dce4df; content: ""; }
+    .main-flow { position: absolute; top: 136px; left: 0; display: grid; grid-template-columns: repeat(8, 160px); gap: 23px; width: 1440px; }
+    .state { position: relative; min-height: 150px; padding: 17px 16px 15px; border: 2px solid; border-radius: 18px; background: #fff; }
+    .state:not(:last-child)::after { position: absolute; top: 72px; right: -25px; width: 23px; height: 2px; background: #25352d; content: ""; }
+    .state:not(:last-child)::before { position: absolute; z-index: 2; top: 67px; right: -25px; width: 10px; height: 10px; border-top: 2px solid #25352d; border-right: 2px solid #25352d; content: ""; transform: rotate(45deg); }
+    .state .number { position: absolute; top: 13px; right: 14px; color: rgba(37, 53, 45, 0.36); font: 700 12px/1 "Courier New", monospace; }
+    .state .tag { display: block; margin-bottom: 11px; }
+    .state strong { display: block; font-family: "SimSun", serif; font-size: 22px; line-height: 1.2; }
+    .state p { margin: 9px 0 0; color: #5e6a63; font-size: 12px; line-height: 1.65; }
+    .draft { border-color: #9fc6df; background: #f2f8fd; }
+    .draft .tag, .clarify .tag { color: #347aa7; }
+    .clarify { border-color: #88bce0; background: #eef7fd; }
+    .planned { border-color: #e3bd69; background: #fff9ed; }
+    .planned .tag, .confirm .tag { color: #9a691e; }
+    .confirm { border-color: #e4ab58; background: #fff7e6; box-shadow: 0 0 0 6px #fffaf0; }
+    .ready { border-color: #8ec59c; background: #eff9ef; }
+    .ready .tag, .running .tag, .completed .tag { color: #277449; }
+    .running { border-color: #4d9a68; background: #eaf7ed; box-shadow: 0 0 0 6px #edf7ef; }
+    .review { border-color: #b9a5d8; background: #faf7ff; }
+    .review .tag { color: #7656a0; }
+    .completed { border-color: #6aad7e; background: #edf8ef; }
+
+    .branch-origin { position: absolute; top: 286px; left: 998px; width: 2px; height: 55px; background: #26352d; }
+    .branch-origin::after { position: absolute; right: -5px; bottom: 0; width: 10px; height: 10px; border-right: 2px solid #26352d; border-bottom: 2px solid #26352d; content: ""; transform: rotate(45deg); }
+    .branch-label { position: absolute; top: 318px; left: 1020px; color: #8a5b52; font: 700 11px/1.2 "Courier New", monospace; letter-spacing: 1px; }
+    .branches { position: absolute; top: 354px; left: 560px; display: grid; grid-template-columns: repeat(3, 270px); gap: 22px; }
+    .branch { min-height: 122px; padding: 17px 19px; border: 2px solid; border-radius: 17px; }
+    .branch .tag { display: block; margin-bottom: 8px; }
+    .branch strong { font-family: "SimSun", serif; font-size: 21px; }
+    .branch p { margin: 8px 0 0; color: #695f5b; font-size: 13px; line-height: 1.55; }
+    .blocked { border-color: #e3bd69; background: #fff9ed; }
+    .blocked .tag { color: #9a691e; }
+    .failed { border-color: #e79889; background: #fff2ef; }
+    .failed .tag { color: #a64e40; }
+    .paused { border-color: #adb7b1; background: #f4f6f4; }
+    .paused .tag { color: #68756d; }
+    .recovery { position: absolute; top: 487px; left: 560px; display: grid; grid-template-columns: repeat(3, 270px); gap: 22px; }
+    .recovery span { color: #667169; font-size: 12px; text-align: center; }
+    .recovery b { color: #27804c; font-weight: 700; }
+    .return-line { position: absolute; top: 507px; left: 530px; width: 870px; height: 54px; border-right: 2px dashed #72907d; border-bottom: 2px dashed #72907d; border-left: 2px dashed #72907d; border-radius: 0 0 18px 18px; }
+    .return-line::after { position: absolute; top: -6px; left: -6px; width: 10px; height: 10px; border-top: 2px solid #72907d; border-left: 2px solid #72907d; content: ""; transform: rotate(45deg); }
+    .return-note { position: absolute; top: 542px; left: 890px; padding: 0 10px; color: #557762; background: #fbfcfa; font: 700 11px/1.2 "Courier New", monospace; letter-spacing: 1px; }
+
+    .rules { position: absolute; right: 0; bottom: 0; left: 0; display: grid; grid-template-columns: 210px repeat(4, 1fr); min-height: 132px; border: 2px solid #a992c8; border-radius: 18px; background: #faf7ff; overflow: hidden; }
+    .rules-title { display: grid; align-content: center; gap: 9px; padding: 21px; background: #f2ecfa; }
+    .rules-title .tag { color: #72549a; }
+    .rules-title strong { font-family: "SimSun", serif; font-size: 22px; }
+    .rule { display: grid; align-content: center; gap: 8px; padding: 20px; border-left: 1px solid #d9cfe6; }
+    .rule span { color: #7656a0; font: 700 11px/1.2 "Courier New", monospace; }
+    .rule strong { font-family: "SimSun", serif; font-size: 17px; }
+    .rule p { margin: 0; color: #66606a; font-size: 12px; line-height: 1.55; }
+
+    .foot { display: flex; justify-content: space-between; margin-top: 12px; color: #707b74; font-size: 14px; }
+    .foot strong { color: #27804c; }
+  </style>
+</head>
+<body>
+  <main class="poster">
+    <span class="serial">TASK EXECUTION LIFECYCLE / v0.1</span>
+    <header class="header">
+      <div class="kicker">STATE · CONTROL · RECOVERY</div>
+      <h1>一张图讲清 <em>AI 智能助手</em> 如何安全地推进一个任务</h1>
+      <p class="subtitle">任务不是一句提示词，而是一组可追踪的状态；每次推进都有条件、责任人与恢复路径</p>
+    </header>
+
+    <section class="diagram">
+      <section class="control-rail">
+        <span class="tag">USER CONTROL</span>
+        <div class="control-actions"><span>修改目标</span><span>确认计划</span><span>批准操作</span><span>暂停 / 终止</span><span>验收结果</span></div>
+        <strong>用户始终拥有最终决定权</strong>
+      </section>
+
+      <div class="lane-label">PRIMARY PATH</div>
+      <section class="main-flow">
+        <article class="state draft"><span class="number">01</span><span class="tag">DRAFT</span><strong>新建任务</strong><p>接收目标、限制、资料与期望结果</p></article>
+        <article class="state clarify"><span class="number">02</span><span class="tag">CLARIFYING</span><strong>澄清上下文</strong><p>只补齐会影响结果的关键信息</p></article>
+        <article class="state planned"><span class="number">03</span><span class="tag">PLANNED</span><strong>形成计划</strong><p>拆解步骤、依赖、工具与风险</p></article>
+        <article class="state confirm"><span class="number">04</span><span class="tag">CONFIRMING</span><strong>等待确认</strong><p>关键决策与外部操作由用户批准</p></article>
+        <article class="state ready"><span class="number">05</span><span class="tag">READY</span><strong>准备执行</strong><p>权限、上下文和工具均已就绪</p></article>
+        <article class="state running"><span class="number">06</span><span class="tag">RUNNING</span><strong>逐步执行</strong><p>记录状态、工具调用与阶段结果</p></article>
+        <article class="state review"><span class="number">07</span><span class="tag">REVIEWING</span><strong>整理验收</strong><p>汇总结果、来源与不确定性</p></article>
+        <article class="state completed"><span class="number">08</span><span class="tag">COMPLETED</span><strong>完成归档</strong><p>用户验收，形成记录与记忆候选</p></article>
+      </section>
+
+      <div class="branch-origin"></div><span class="branch-label">EXCEPTION PATH</span>
+      <section class="branches">
+        <article class="branch blocked"><span class="tag">BLOCKED</span><strong>等待补充</strong><p>信息不足、权限缺失或需要新的用户判断</p></article>
+        <article class="branch failed"><span class="tag">FAILED</span><strong>执行失败</strong><p>保留错误现场，按重试、替代或回滚处理</p></article>
+        <article class="branch paused"><span class="tag">PAUSED / CANCELLED</span><strong>暂停或终止</strong><p>用户可随时暂停；终止后保留已完成记录</p></article>
+      </section>
+      <div class="recovery"><span><b>补齐信息</b> → 回到准备执行</span><span><b>恢复成功</b> → 从安全检查点继续</span><span><b>用户决定</b> → 恢复或结束任务</span></div>
+      <div class="return-line"></div><span class="return-note">RECOVER TO SAFE CHECKPOINT</span>
+
+      <section class="rules">
+        <div class="rules-title"><span class="tag">STATE RULES</span><strong>状态机约束</strong></div>
+        <article class="rule"><span>01 · SOURCE OF TRUTH</span><strong>状态是唯一事实源</strong><p>界面、执行器和记录读取同一任务状态。</p></article>
+        <article class="rule"><span>02 · TRACEABILITY</span><strong>每次变化可追踪</strong><p>记录触发者、时间、原因与前后状态。</p></article>
+        <article class="rule"><span>03 · SAFE EXECUTION</span><strong>工具调用属于步骤</strong><p>设置权限、超时、重试预算与幂等标识。</p></article>
+        <article class="rule"><span>04 · VISIBLE FAILURE</span><strong>失败不得静默吞掉</strong><p>明确展示影响、恢复方案和所需决定。</p></article>
+      </section>
+    </section>
+
+    <footer class="foot"><span><strong>原则：</strong>AI 可以推动进度，但不能绕过确认、隐藏失败或替用户完成关键判断。</span><span>竹青小筑 · AI Systems</span></footer>
+  </main>
+</body>
+</html>

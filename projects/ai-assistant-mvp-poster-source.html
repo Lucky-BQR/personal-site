@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; width: 1600px; height: 1100px; overflow: hidden; background: #fff; }
+    body { color: #18211d; font-family: "Microsoft YaHei", "PingFang SC", sans-serif; }
+    .poster { position: relative; width: 1600px; height: 1100px; padding: 72px 86px 54px; background: linear-gradient(180deg, #fff 0%, #fbfcfa 100%); }
+    .poster::before { position: absolute; inset: 24px; border: 1px solid #dce5df; content: ""; pointer-events: none; }
+    .serial { position: absolute; top: 48px; right: 64px; color: #76917f; font: 600 14px/1.2 "Courier New", monospace; letter-spacing: 2px; }
+    .header { text-align: center; }
+    .kicker { color: #557762; font: 700 15px/1.2 "Courier New", monospace; letter-spacing: 3px; text-transform: uppercase; }
+    h1 { margin: 16px 0 0; font-family: "SimSun", serif; font-size: 58px; line-height: 1.15; letter-spacing: -2px; }
+    h1 em { color: #27804c; font-style: normal; }
+    .subtitle { margin-top: 12px; color: #77817b; font-size: 18px; }
+    .goal { display: grid; grid-template-columns: 160px 1fr 240px; gap: 28px; align-items: center; width: 1080px; margin: 42px auto 0; padding: 20px 28px; border: 2px solid #8ec59c; border-radius: 18px; background: #eff9ef; box-shadow: 0 10px 28px rgba(43, 90, 57, .08); }
+    .goal-label { color: #237347; font: 700 15px/1.2 "Courier New", monospace; letter-spacing: 1.5px; }
+    .goal strong { font-family: "SimSun", serif; font-size: 26px; line-height: 1.4; }
+    .goal small { color: #5e7466; font-size: 15px; text-align: right; }
+    .stage { display: grid; grid-template-columns: 420px 80px 380px 80px 420px; align-items: center; justify-content: center; margin-top: 44px; }
+    .panel { min-height: 498px; padding: 25px 26px; border: 2px solid; border-radius: 20px; background: #fff; }
+    .panel.must { border-color: #88bce0; background: #f2f8fd; }
+    .panel.guard { border-color: #e7b768; background: #fff9ee; }
+    .panel-head { display: flex; align-items: baseline; justify-content: space-between; padding-bottom: 16px; border-bottom: 1px solid rgba(24, 33, 29, .15); }
+    .panel-head span { font: 700 15px/1.2 "Courier New", monospace; letter-spacing: 1.4px; }
+    .panel.must .panel-head span { color: #337ba8; }
+    .panel.guard .panel-head span { color: #a46a1e; }
+    .panel-head small { color: #7d8781; font-size: 13px; }
+    .items { display: grid; gap: 10px; margin-top: 15px; }
+    .item { display: grid; grid-template-columns: 42px 1fr; gap: 13px; align-items: center; min-height: 66px; padding: 10px 4px; border-bottom: 1px solid rgba(24, 33, 29, .12); }
+    .num { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; font: 700 13px/1 "Courier New", monospace; }
+    .must .num { color: #236b98; background: #dceffc; }
+    .guard .num { color: #98611b; background: #f9e6bd; }
+    .item p { margin: 0; font-size: 18px; line-height: 1.5; }
+    .arrow { color: #28362e; font-size: 34px; text-align: center; }
+    .core { position: relative; display: grid; place-content: center; width: 350px; height: 350px; margin: auto; border: 2px dashed #517461; border-radius: 50%; background: radial-gradient(circle, #f0f8f1 0 58%, #fff 59%); text-align: center; }
+    .core::before, .core::after { position: absolute; inset: 28px; border: 1px solid #a8c2b0; border-radius: 50%; content: ""; }
+    .core::after { inset: -18px; border-style: dotted; opacity: .65; }
+    .core-label { position: relative; z-index: 2; color: #2c7550; font: 700 14px/1.2 "Courier New", monospace; letter-spacing: 1.5px; }
+    .core strong { position: relative; z-index: 2; margin-top: 14px; font-family: "SimSun", serif; font-size: 32px; line-height: 1.3; }
+    .cycle { position: relative; z-index: 2; margin-top: 18px; color: #58695f; font-size: 15px; line-height: 1.9; }
+    .deferred { display: grid; grid-template-columns: 170px 1fr; gap: 18px; align-items: center; margin-top: 32px; padding: 18px 24px; border: 2px dashed #b9a9d3; border-radius: 16px; background: #faf7ff; }
+    .deferred > span { color: #72549a; font: 700 15px/1.2 "Courier New", monospace; letter-spacing: 1.4px; }
+    .deferred-list { display: grid; grid-template-columns: repeat(5, 1fr); }
+    .deferred-list span { padding: 4px 16px; color: #5f5867; font-size: 15px; text-align: center; }
+    .deferred-list span + span { border-left: 1px solid #d7cde4; }
+    .foot { display: flex; justify-content: space-between; margin-top: 26px; color: #707b74; font-size: 14px; }
+    .foot strong { color: #27804c; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <main class="poster">
+    <span class="serial">PRODUCT BLUEPRINT / 03</span>
+    <header class="header">
+      <div class="kicker">MVP Scope Map · v0.1</div>
+      <h1>一张图讲清 <em>AI 智能助手</em> 的第一版边界</h1>
+      <p class="subtitle">第一版不是功能的集合，而是一条能被真实验证的完整协作闭环</p>
+    </header>
+
+    <section class="goal">
+      <span class="goal-label">验证目标</span>
+      <strong>用户愿意把一个真实项目交给系统持续推进</strong>
+      <small>并在下一次回来时接着工作</small>
+    </section>
+
+    <section class="stage">
+      <div class="panel must">
+        <header class="panel-head"><span>MUST HAVE</span><small>闭环成立的必要能力</small></header>
+        <div class="items">
+          <div class="item"><span class="num">01</span><p>统一的对话与任务入口</p></div>
+          <div class="item"><span class="num">02</span><p>可查看、可确认的任务计划</p></div>
+          <div class="item"><span class="num">03</span><p>网页研究、文档处理与知识检索</p></div>
+          <div class="item"><span class="num">04</span><p>项目上下文与可编辑记忆</p></div>
+          <div class="item"><span class="num">05</span><p>执行记录与失败恢复提示</p></div>
+        </div>
+      </div>
+
+      <div class="arrow">→</div>
+
+      <div class="core">
+        <span class="core-label">CORE LOOP</span>
+        <strong>真实项目<br />持续推进</strong>
+        <p class="cycle">目标 → 计划 → 确认<br />执行 → 结果 → 继续</p>
+      </div>
+
+      <div class="arrow">→</div>
+
+      <div class="panel guard">
+        <header class="panel-head"><span>GUARDRAILS</span><small>能力越强，边界越清楚</small></header>
+        <div class="items">
+          <div class="item"><span class="num">G1</span><p>关键操作必须由用户确认</p></div>
+          <div class="item"><span class="num">G2</span><p>研究结论保留来源与执行记录</p></div>
+          <div class="item"><span class="num">G3</span><p>记忆允许查看、修正和删除</p></div>
+          <div class="item"><span class="num">G4</span><p>失败与不确定性可见、可恢复</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="deferred">
+      <span>NOT IN v0.1</span>
+      <div class="deferred-list">
+        <span>多人协作</span><span>长期自主运行</span><span>完整第三方生态</span><span>语音与原生客户端</span><span>专属模型训练</span>
+      </div>
+    </section>
+
+    <footer class="foot"><span><strong>结论：</strong>先验证最重要的产品假设，再扩展能力。</span><span>竹青小筑 · AI Systems</span></footer>
+  </main>
+</body>
+</html>
