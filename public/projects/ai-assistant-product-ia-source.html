@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; width: 1600px; height: 1100px; overflow: hidden; background: #fff; }
+    body { color: #18211d; font-family: "Microsoft YaHei", "PingFang SC", sans-serif; }
+    .poster { position: relative; width: 1600px; height: 1100px; padding: 60px 78px 40px; background: linear-gradient(180deg, #fff 0%, #fbfcfa 100%); }
+    .poster::before { position: absolute; inset: 24px; border: 1px solid #dce5df; content: ""; pointer-events: none; }
+    .serial { position: absolute; top: 48px; right: 62px; color: #76917f; font: 600 14px/1.2 "Courier New", monospace; letter-spacing: 2px; }
+    .header { text-align: center; }
+    .kicker { color: #557762; font: 700 15px/1.2 "Courier New", monospace; letter-spacing: 3px; }
+    h1 { margin: 14px 0 0; font-family: "SimSun", serif; font-size: 50px; line-height: 1.15; letter-spacing: -2px; }
+    h1 em { color: #27804c; font-style: normal; }
+    .subtitle { margin-top: 10px; color: #77817b; font-size: 17px; }
+    .diagram { width: 1440px; margin: 22px auto 0; }
+    .tag { font: 700 11px/1.2 "Courier New", monospace; letter-spacing: 1.2px; }
+
+    .principle { display: grid; grid-template-columns: 180px 1fr 390px; align-items: center; min-height: 58px; padding: 9px 18px; border: 2px dashed #8aa995; border-radius: 16px; background: #f3f9f4; }
+    .principle .tag { color: #36704d; }
+    .principle p { margin: 0; color: #53645a; font-size: 14px; }
+    .principle strong { color: #304b39; font-family: "SimSun", serif; font-size: 18px; text-align: right; }
+
+    .main { display: grid; grid-template-columns: 390px minmax(0, 1fr); gap: 22px; min-height: 570px; margin-top: 14px; }
+    .map { position: relative; padding: 20px 20px 16px; border: 2px solid #8bbfe2; border-radius: 18px; background: #f4f9fd; }
+    .map-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 16px; }
+    .map-head .tag { color: #347aa7; }
+    .map-head strong { font-family: "SimSun", serif; font-size: 20px; }
+    .root { padding: 13px 15px; border: 2px solid #4d9a68; border-radius: 13px; background: #eff9ef; box-shadow: 0 0 0 5px #edf7ef; }
+    .root span { color: #277449; }
+    .root strong { display: block; margin-top: 4px; font-family: "SimSun", serif; font-size: 20px; }
+    .tree { position: relative; display: grid; gap: 5px; margin-top: 18px; padding-left: 32px; }
+    .tree::before { position: absolute; top: -20px; bottom: 22px; left: 15px; width: 2px; background: #7e9b88; content: ""; }
+    .page { position: relative; display: grid; grid-template-columns: 98px 1fr; gap: 10px; align-items: center; min-height: 46px; padding: 6px 11px; border: 1px solid #b9d6e8; border-radius: 11px; background: #fff; }
+    .page::before { position: absolute; top: 50%; left: -17px; width: 17px; height: 2px; background: #7e9b88; content: ""; }
+    .page b { font-family: "SimSun", serif; font-size: 16px; }
+    .page span { color: #617067; font-size: 11px; line-height: 1.45; }
+    .page.active { border: 2px solid #4d9a68; background: #eff9ef; box-shadow: 0 0 0 4px #edf7ef; }
+    .page.active b { color: #256d44; }
+    .subtree { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; margin: -1px 0 2px 16px; }
+    .subtree span { padding: 6px 3px; border: 1px solid #c9dccf; border-radius: 7px; color: #577061; background: #f8fbf9; font-size: 10px; text-align: center; }
+    .map-note { position: absolute; right: 18px; bottom: 15px; left: 18px; padding-top: 11px; border-top: 1px solid #c8dce8; color: #65746c; font-size: 11px; line-height: 1.55; }
+    .map-note b { color: #27804c; }
+
+    .workspace { padding: 14px; border: 2px solid #b39bd1; border-radius: 18px; background: #faf7ff; }
+    .workspace-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 10px; }
+    .workspace-head .tag { color: #7656a0; }
+    .workspace-head strong { font-family: "SimSun", serif; font-size: 20px; }
+    .window { overflow: hidden; height: 514px; border: 2px solid #708279; border-radius: 15px; background: #fff; box-shadow: 0 12px 34px rgba(35, 54, 44, .09); }
+    .topbar { display: grid; grid-template-columns: 190px 1fr 210px; align-items: center; min-height: 48px; padding: 0 14px; border-bottom: 1px solid #d7e0da; background: #f7faf8; }
+    .brand { color: #277449; font: 700 12px/1.2 "Courier New", monospace; }
+    .project-title { display: flex; align-items: center; gap: 9px; font-family: "SimSun", serif; font-size: 16px; }
+    .status { padding: 4px 8px; border: 1px solid #9bc3a6; border-radius: 999px; color: #277449; background: #eff9ef; font: 700 9px/1.2 "Courier New", monospace; }
+    .top-actions { color: #69766f; font-size: 11px; text-align: right; }
+    .workbody { display: grid; grid-template-columns: 185px minmax(0, 1fr) 230px; height: 464px; }
+    .sidebar { padding: 13px 11px; border-right: 1px solid #d7e0da; background: #f8faf9; }
+    .sidebar .label, .inspector .label { color: #748079; font: 700 9px/1.2 "Courier New", monospace; letter-spacing: 1px; }
+    .navitem { margin-top: 8px; padding: 8px 9px; border-radius: 8px; color: #55635b; font-size: 11px; }
+    .navitem.active { color: #1f653d; background: #eaf6ed; font-weight: 700; }
+    .task-label { display: block; margin-top: 20px; }
+    .task-item { display: grid; gap: 3px; margin-top: 8px; padding: 9px; border: 1px solid #d5dfd9; border-radius: 9px; background: #fff; }
+    .task-item b { font-size: 11px; }
+    .task-item span { color: #7a857e; font-size: 9px; }
+    .task-item.active { border-color: #8ebd9b; background: #f0f8f2; }
+
+    .collab { display: grid; grid-template-rows: 1fr auto; min-width: 0; background: #fff; }
+    .conversation { overflow: hidden; padding: 16px 18px 10px; }
+    .screen-title { display: flex; align-items: center; justify-content: space-between; padding-bottom: 10px; border-bottom: 1px solid #e0e6e2; }
+    .screen-title strong { font-family: "SimSun", serif; font-size: 17px; }
+    .screen-title span { color: #6c7b72; font-size: 10px; }
+    .bubble { margin-top: 12px; padding: 10px 12px; border-radius: 10px; color: #4f5e56; font-size: 11px; line-height: 1.55; }
+    .bubble.user { margin-left: 70px; background: #eef7fd; }
+    .bubble.ai { margin-right: 30px; border: 1px solid #d7e0da; background: #fff; }
+    .plan { margin-top: 12px; padding: 12px; border: 2px solid #dfb55e; border-radius: 12px; background: #fff9ed; }
+    .plan-head { display: flex; justify-content: space-between; align-items: center; }
+    .plan-head b { font-family: "SimSun", serif; font-size: 15px; }
+    .plan-head span { color: #9a691e; font: 700 9px/1.2 "Courier New", monospace; }
+    .steps { display: grid; gap: 6px; margin-top: 9px; }
+    .steps div { display: grid; grid-template-columns: 19px 1fr 55px; gap: 7px; align-items: center; padding: 6px 7px; border-top: 1px solid #ecd8aa; color: #59665e; font-size: 10px; }
+    .steps i { display: grid; place-content: center; width: 18px; height: 18px; border: 1px solid #d3aa50; border-radius: 50%; color: #8d671e; font-style: normal; }
+    .steps small { color: #8a7960; text-align: right; }
+    .plan-actions { display: flex; justify-content: flex-end; gap: 7px; margin-top: 9px; }
+    .plan-actions span { padding: 6px 10px; border: 1px solid #d8b668; border-radius: 7px; color: #765a22; background: #fff; font-size: 10px; }
+    .plan-actions span:last-child { color: #fff; background: #397c53; border-color: #397c53; }
+    .composer { margin: 0 14px 13px; padding: 10px 12px; border: 1px solid #aebdb4; border-radius: 11px; color: #8a958e; font-size: 10px; box-shadow: 0 4px 14px rgba(35, 54, 44, .06); }
+
+    .inspector { padding: 13px 12px; border-left: 1px solid #d7e0da; background: #fbfcfb; }
+    .tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; margin-top: 9px; padding: 3px; border-radius: 8px; background: #edf2ef; }
+    .tabs span { padding: 6px 2px; color: #69766f; font-size: 9px; text-align: center; }
+    .tabs span:first-child { border-radius: 6px; color: #276d45; background: #fff; font-weight: 700; }
+    .context-card { margin-top: 10px; padding: 10px; border: 1px solid #d7e0da; border-radius: 9px; background: #fff; }
+    .context-card b { display: block; font-family: "SimSun", serif; font-size: 13px; }
+    .context-card p { margin: 6px 0 0; color: #69766f; font-size: 9px; line-height: 1.55; }
+    .source { display: flex; gap: 6px; margin-top: 8px; color: #53665b; font-size: 9px; }
+    .source i { color: #347aa7; font-style: normal; }
+    .memory-candidate { border-color: #b9a5d8; background: #faf7ff; }
+    .memory-candidate span { display: inline-block; margin-top: 7px; padding: 4px 7px; border: 1px solid #bca8d5; border-radius: 6px; color: #7656a0; font-size: 9px; }
+
+    .callout { position: absolute; z-index: 4; display: grid; place-content: center; width: 24px; height: 24px; border: 2px solid #fff; border-radius: 50%; color: #fff; background: #2d7650; box-shadow: 0 2px 8px rgba(30, 70, 45, .24); font: 700 10px/1 "Courier New", monospace; }
+    .c1 { top: 86px; left: 186px; } .c2 { top: 86px; left: 405px; } .c3 { top: 86px; right: 19px; } .c4 { bottom: 28px; left: 405px; }
+    .window-wrap { position: relative; }
+
+    .responsibilities { display: grid; grid-template-columns: 170px repeat(6, 1fr); min-height: 118px; margin-top: 14px; border: 2px solid #cbd8d0; border-radius: 16px; background: #fff; overflow: hidden; }
+    .responsibilities > span { display: grid; align-content: center; padding-left: 18px; color: #557762; background: #f4f7f5; }
+    .responsibilities article { display: grid; align-content: center; gap: 6px; padding: 12px 14px; border-left: 1px solid #d6e0da; }
+    .responsibilities article b { color: #27804c; font: 700 10px/1.2 "Courier New", monospace; }
+    .responsibilities article strong { font-family: "SimSun", serif; font-size: 15px; }
+    .responsibilities article p { margin: 0; color: #68756e; font-size: 10px; line-height: 1.45; }
+    .foot { display: flex; justify-content: space-between; margin-top: 9px; color: #707b74; font-size: 13px; }
+    .foot strong { color: #27804c; }
+  </style>
+</head>
+<body>
+  <main class="poster">
+    <span class="serial">PRODUCT INFORMATION ARCHITECTURE / v0.1</span>
+    <header class="header">
+      <div class="kicker">PROJECT · TASK · CONVERSATION · CONTEXT</div>
+      <h1>一张图讲清 <em>AI 智能助手</em> 的产品界面如何组织</h1>
+      <p class="subtitle">项目承载长期目标，任务组织工作状态，对话负责协作；资料、记忆与活动记录提供可管理的上下文</p>
+    </header>
+
+    <section class="diagram">
+      <section class="principle"><span class="tag">PRODUCT STRUCTURE</span><p>对话不是信息架构的中心，而是进入任务、计划、执行与结果的主要交互方式。</p><strong>项目是容器 · 任务是对象 · 对话是界面</strong></section>
+
+      <section class="main">
+        <aside class="map">
+          <header class="map-head"><span class="tag">PRODUCT MAP</span><strong>第一版信息架构</strong></header>
+          <div class="root"><span class="tag">ROOT</span><strong>AI 智能助手</strong></div>
+          <div class="tree">
+            <article class="page"><b>项目首页</b><span>创建项目、查看进展、继续最近工作</span></article>
+            <article class="page active"><b>协作工作台</b><span>提出目标、确认计划、跟踪执行、验收结果</span></article>
+            <div class="subtree"><span>对话</span><span>计划</span><span>执行</span><span>结果</span></div>
+            <article class="page"><b>资料</b><span>文件、链接、来源、引用与处理状态</span></article>
+            <article class="page"><b>记忆</b><span>候选、已确认、作用范围、修正与删除</span></article>
+            <article class="page"><b>活动记录</b><span>确认、工具调用、错误、恢复与审计</span></article>
+            <article class="page"><b>工具与设置</b><span>连接器、权限、模型偏好与数据保留</span></article>
+          </div>
+          <p class="map-note"><b>默认入口：</b>用户从项目首页继续工作，进入具体项目后留在同一个协作工作台，不在多个聊天页面间迷失上下文。</p>
+        </aside>
+
+        <section class="workspace">
+          <header class="workspace-head"><span class="tag">CORE WORKSPACE ANATOMY</span><strong>核心协作工作台</strong></header>
+          <div class="window-wrap">
+            <div class="window">
+              <header class="topbar"><div class="brand">AI ASSISTANT</div><div class="project-title">AI Agent 产品研究 <span class="status">RUNNING</span></div><div class="top-actions">搜索　工具　用户</div></header>
+              <div class="workbody">
+                <aside class="sidebar"><span class="label">PROJECT NAV</span><div class="navitem active">协作工作台</div><div class="navitem">资料</div><div class="navitem">记忆</div><div class="navitem">活动记录</div><span class="label task-label">TASKS</span><div class="task-item active"><b>完成竞品研究</b><span>执行中 · 2 / 4</span></div><div class="task-item"><b>整理产品需求</b><span>等待开始</span></div></aside>
+                <main class="collab"><div class="conversation"><div class="screen-title"><strong>完成竞品研究</strong><span>任务详情　···</span></div><div class="bubble user">请研究主流 AI Agent 产品，重点比较任务执行、记忆和用户控制。</div><div class="bubble ai">我已经整理了研究范围。下面是可调整的执行计划，外部检索将在你确认后开始。</div><section class="plan"><div class="plan-head"><b>执行计划</b><span>WAITING FOR CONFIRMATION</span></div><div class="steps"><div><i>1</i><span>确定产品名单与比较维度</span><small>已完成</small></div><div><i>2</i><span>检索官方资料并保存来源</span><small>待确认</small></div><div><i>3</i><span>整理差异、证据与不确定性</span><small>等待</small></div></div><div class="plan-actions"><span>调整计划</span><span>确认并执行</span></div></section></div><div class="composer">继续说明目标，或对当前计划提出修改……</div></main>
+                <aside class="inspector"><span class="label">CONTEXT INSPECTOR</span><div class="tabs"><span>上下文</span><span>来源</span><span>记忆</span></div><article class="context-card"><b>本次任务</b><p>比较任务执行、长期记忆和用户控制；优先使用官方资料。</p></article><article class="context-card"><b>已关联资料</b><div class="source"><i>01</i><span>产品官方文档</span></div><div class="source"><i>02</i><span>研究范围说明</span></div></article><article class="context-card memory-candidate"><b>记忆候选</b><p>用户偏好使用官方来源，并希望结论保留不确定性。</p><span>任务完成后确认</span></article></aside>
+              </div>
+            </div>
+            <span class="callout c1">01</span><span class="callout c2">02</span><span class="callout c3">03</span><span class="callout c4">04</span>
+          </div>
+        </section>
+      </section>
+
+      <section class="responsibilities"><span class="tag">PAGE RESPONSIBILITY</span><article><b>01</b><strong>项目首页</strong><p>开始、恢复和观察长期工作。</p></article><article><b>02</b><strong>协作工作台</strong><p>理解、计划、确认、执行与验收。</p></article><article><b>03</b><strong>资料</strong><p>管理输入、来源、引用和产物。</p></article><article><b>04</b><strong>记忆</strong><p>查看、确认、修正、删除和过期。</p></article><article><b>05</b><strong>活动记录</strong><p>追踪行为、错误、恢复和审计。</p></article><article><b>06</b><strong>工具与设置</strong><p>控制连接、权限、模型和保留策略。</p></article></section>
+    </section>
+
+    <footer class="foot"><span><strong>原则：</strong>工作台呈现当前任务最需要的信息；复杂执行细节按需展开，不让技术日志淹没用户目标。</span><span>竹青小筑 · AI Systems</span></footer>
+  </main>
+</body>
+</html>

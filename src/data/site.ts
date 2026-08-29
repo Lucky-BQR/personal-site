@@ -49,7 +49,7 @@ export const siteConfig: SiteConfig = {
   brand: {
     name: '竹青小筑',
     englishName: 'ZhuQing Studio',
-    positioning: '有思想的技术创造者',
+    positioning: '技术、学习与东方思考的数字花园',
     philosophy: '探索技术、知识与东方智慧之间的连接方式。',
   },
   creator: {
@@ -80,7 +80,7 @@ export const siteConfig: SiteConfig = {
       href: '/guanwo',
       children: [
         { label: 'philosophy', labelZh: '哲学', href: '/guanwo/yishu' },
-        { label: 'tcm', labelZh: '中医', href: '/guanwo/zhongyi' },
+        { label: 'tcm', labelZh: '医学', href: '/guanwo/zhongyi' },
         { label: 'calligraphy', labelZh: '书法', href: '/guanwo/shufa' },
       ],
     },

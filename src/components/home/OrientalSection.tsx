@@ -12,7 +12,12 @@ export default function OrientalSection() {
   return (
     <section className="col-span-full spatial-section" aria-labelledby="oriental-perspectives-title">
       <div id="oriental-perspectives-title">
-        <HomeSectionHeader number="05" eyebrow={content.eyebrow} title={content.title} description={content.statement} />
+        <HomeSectionHeader
+          number="06"
+          eyebrow={content.eyebrow}
+          title={content.title}
+          description={content.statement}
+        />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 spatial-card-grid">
@@ -23,7 +28,7 @@ export default function OrientalSection() {
             icon={direction.icon}
             label={direction.label}
             description={direction.description}
-            animationDelay={index * 60}
+            animationDelay={index * 80}
           />
         ))}
       </div>

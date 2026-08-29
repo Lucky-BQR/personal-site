@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import { LanguageProvider } from "@/components/language/LanguageProvider";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import BackToTop from "@/components/layout/BackToTop";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -41,73 +42,108 @@ export default function RootLayout({
             __html: `
               (function() {
                 try {
-                  var theme = localStorage.getItem('site-theme') || 'zhuqing';
+                  var theme = localStorage.getItem('site-theme-v2') || 'zhuqing';
                   document.documentElement.setAttribute('data-theme', theme);
+                  var language = localStorage.getItem('site-language') || 'zh';
+                  document.documentElement.setAttribute('lang', language === 'zh-TW' ? 'zh-Hant' : language);
 
                   // Set CSS variables for the saved theme to avoid flash
                   var themes = {
                     zhuqing: {
-                      '--color-bg': '#f5f9f3',
-                      '--color-text': '#2d3a28',
-                      '--color-textSecondary': '#4a5a42',
-                      '--color-textMuted': '#7d8e75',
-                      '--color-accent': '#7d9b6a',
-                      '--color-accentLight': '#c5d8b5',
-                      '--color-border': 'rgba(139,160,120,0.2)',
-                      '--color-card': '#ffffff',
-                      '--color-cardHover': '#f0f5ec',
-                      '--color-bgSecondary': '#edf4e9',
-                      '--color-bgTertiary': '#e2ecdc',
-                      '--color-navBg': 'rgba(245,249,243,0.85)',
-                      '--color-glass': 'rgba(245,249,243,0.72)',
-                      '--color-glassBorder': 'rgba(139,160,120,0.18)',
+                      '--color-bg': '#f5f2ea',
+                      '--color-text': '#20251f',
+                      '--color-textSecondary': '#4f594c',
+                      '--color-textMuted': '#788073',
+                      '--color-accent': '#48684c',
+                      '--color-accentLight': 'rgba(72,104,76,0.09)',
+                      '--color-accentSubtle': 'rgba(72,104,76,0.045)',
+                      '--color-accentContrast': '#ffffff',
+                      '--color-border': 'rgba(66,88,65,0.14)',
+                      '--color-rule': 'rgba(72,104,76,0.22)',
+                      '--color-card': 'rgba(255,255,252,0.68)',
+                      '--color-cardHover': '#fffefa',
+                      '--color-bgSecondary': '#eeeee6',
+                      '--color-bgTertiary': '#e4e8de',
+                      '--color-navBg': 'rgba(245,242,234,0.9)',
+                      '--color-glass': 'rgba(245,242,234,0.86)',
+                      '--color-glassBorder': 'rgba(66,88,65,0.12)',
                       '--color-terminal': '#1a2315',
                       '--color-terminalText': '#b5cca0',
-                      '--color-tagBg': '#e2ecdc',
-                      '--color-tagText': '#4a6a3a',
-                      '--color-accentHover': '#6a8558'
+                      '--color-tagBg': 'rgba(72,104,76,0.09)',
+                      '--color-tagText': '#38563d',
+                      '--color-accentHover': '#38563d'
                     },
                     moyun: {
-                      '--color-bg': '#1a1d1a',
-                      '--color-text': '#d4d9cf',
-                      '--color-textSecondary': '#a3aa9d',
-                      '--color-textMuted': '#6b7265',
-                      '--color-accent': '#8aab74',
-                      '--color-accentLight': '#3a4a30',
-                      '--color-border': 'rgba(100,120,90,0.15)',
-                      '--color-card': '#242724',
-                      '--color-cardHover': '#2a2e29',
-                      '--color-bgSecondary': '#222522',
-                      '--color-bgTertiary': '#2a2e29',
-                      '--color-navBg': 'rgba(26,29,26,0.88)',
-                      '--color-glass': 'rgba(26,29,26,0.78)',
-                      '--color-glassBorder': 'rgba(100,120,90,0.12)',
-                      '--color-terminal': '#0d0f0c',
-                      '--color-terminalText': '#8aab74',
-                      '--color-tagBg': '#2a3a20',
-                      '--color-tagText': '#9cbd85',
-                      '--color-accentHover': '#9cbd85'
+                      '--color-bg': '#171b18',
+                      '--color-text': '#dce3da',
+                      '--color-textSecondary': '#b3bcb0',
+                      '--color-textMuted': '#8f9a8d',
+                      '--color-accent': '#a7c3a8',
+                      '--color-accentLight': 'rgba(167,195,168,0.12)',
+                      '--color-accentSubtle': 'rgba(167,195,168,0.05)',
+                      '--color-accentContrast': '#172018',
+                      '--color-border': 'rgba(215,230,213,0.15)',
+                      '--color-rule': 'rgba(167,195,168,0.28)',
+                      '--color-card': '#202620',
+                      '--color-cardHover': '#293029',
+                      '--color-bgSecondary': '#202620',
+                      '--color-bgTertiary': '#293029',
+                      '--color-navBg': 'rgba(23,27,24,0.92)',
+                      '--color-glass': 'rgba(23,27,24,0.86)',
+                      '--color-glassBorder': 'rgba(215,230,213,0.14)',
+                      '--color-terminal': '#0e110f',
+                      '--color-terminalText': '#a7c3a8',
+                      '--color-tagBg': 'rgba(167,195,168,0.12)',
+                      '--color-tagText': '#b9d2ba',
+                      '--color-accentHover': '#b9d2ba'
                     },
                     subai: {
-                      '--color-bg': '#fafafa',
-                      '--color-text': '#1d1d1f',
-                      '--color-textSecondary': '#555555',
-                      '--color-textMuted': '#999999',
-                      '--color-accent': '#0071e3',
-                      '--color-accentLight': '#dbeafe',
-                      '--color-border': 'rgba(0,0,0,0.08)',
+                      '--color-bg': '#f7f7f4',
+                      '--color-text': '#202326',
+                      '--color-textSecondary': '#51575d',
+                      '--color-textMuted': '#7c8389',
+                      '--color-accent': '#4d5964',
+                      '--color-accentLight': 'rgba(77,89,100,0.09)',
+                      '--color-accentSubtle': 'rgba(77,89,100,0.04)',
+                      '--color-accentContrast': '#ffffff',
+                      '--color-border': 'rgba(32,35,38,0.14)',
+                      '--color-rule': 'rgba(77,89,100,0.22)',
                       '--color-card': '#ffffff',
-                      '--color-cardHover': '#f9f9f9',
-                      '--color-bgSecondary': '#f5f5f5',
-                      '--color-bgTertiary': '#eeeeee',
-                      '--color-navBg': 'rgba(250,250,250,0.82)',
-                      '--color-glass': 'rgba(250,250,250,0.75)',
-                      '--color-glassBorder': 'rgba(0,0,0,0.08)',
-                      '--color-terminal': '#1d1d1f',
-                      '--color-terminalText': '#34c759',
-                      '--color-tagBg': '#f0f0f0',
-                      '--color-tagText': '#555555',
-                      '--color-accentHover': '#0077ed'
+                      '--color-cardHover': '#f2f3f1',
+                      '--color-bgSecondary': '#f0f0ed',
+                      '--color-bgTertiary': '#e7e8e5',
+                      '--color-navBg': 'rgba(247,247,244,0.92)',
+                      '--color-glass': 'rgba(247,247,244,0.88)',
+                      '--color-glassBorder': 'rgba(32,35,38,0.1)',
+                      '--color-terminal': '#202326',
+                      '--color-terminalText': '#d8e2d8',
+                      '--color-tagBg': 'rgba(77,89,100,0.09)',
+                      '--color-tagText': '#4d5964',
+                      '--color-accentHover': '#3f4a54'
+                    },
+                    qingci: {
+                      '--color-bg': '#e6eeea',
+                      '--color-text': '#20302c',
+                      '--color-textSecondary': '#49625c',
+                      '--color-textMuted': '#70847f',
+                      '--color-accent': '#4f7c72',
+                      '--color-accentLight': 'rgba(79,124,114,0.11)',
+                      '--color-accentSubtle': 'rgba(79,124,114,0.05)',
+                      '--color-accentContrast': '#f1f7f4',
+                      '--color-border': 'rgba(32,70,62,0.16)',
+                      '--color-rule': 'rgba(79,124,114,0.26)',
+                      '--color-card': 'rgba(241,247,244,0.74)',
+                      '--color-cardHover': '#f0f6f3',
+                      '--color-bgSecondary': '#dce8e3',
+                      '--color-bgTertiary': '#ceded7',
+                      '--color-navBg': 'rgba(230,238,234,0.92)',
+                      '--color-glass': 'rgba(230,238,234,0.88)',
+                      '--color-glassBorder': 'rgba(32,70,62,0.13)',
+                      '--color-terminal': '#1d2b27',
+                      '--color-terminalText': '#b7d2c8',
+                      '--color-tagBg': 'rgba(79,124,114,0.11)',
+                      '--color-tagText': '#416c63',
+                      '--color-accentHover': '#416c63'
                     }
                   };
 
@@ -134,6 +170,7 @@ export default function RootLayout({
             <Header />
             <main className="flex-1 animate-fade-in">{children}</main>
             <Footer />
+            <BackToTop />
           </LanguageProvider>
         </ThemeProvider>
       </body>

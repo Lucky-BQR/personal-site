@@ -1,0 +1,1596 @@
+.page {
+  width: min(calc(100% - 3rem), 70rem);
+  margin-inline: auto;
+  padding: 4.5rem 0 8rem;
+}
+
+.hero {
+  position: relative;
+  padding-bottom: 3.25rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.hero::after {
+  position: absolute;
+  right: 1rem;
+  bottom: -1px;
+  width: 28%;
+  height: 1px;
+  content: '';
+  background: linear-gradient(90deg, transparent, var(--color-accent));
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 3.5rem;
+  color: var(--color-textMuted);
+  font-size: 0.75rem;
+  transition: color var(--transition-fast);
+}
+
+.backLink:hover {
+  color: var(--color-accent);
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 3rem;
+}
+
+.eyebrow,
+.panelHeading p,
+.emptyEyebrow,
+.listHeading p {
+  margin: 0 0 0.75rem;
+  color: var(--color-accent);
+  font-size: 0.6875rem;
+  font-weight: 650;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  margin: 0;
+  color: var(--color-text);
+  font-family: 'Songti SC', 'STSong', 'Noto Serif SC', serif;
+  font-size: clamp(2.6rem, 8vw, 5.4rem);
+  font-weight: 500;
+  letter-spacing: -0.055em;
+  line-height: 1;
+}
+
+.intro {
+  max-width: 36rem;
+  margin: 1.4rem 0 0;
+  color: var(--color-textSecondary);
+  font-family: 'Songti SC', 'STSong', 'Noto Serif SC', serif;
+  font-size: clamp(0.95rem, 2vw, 1.075rem);
+  line-height: 1.9;
+}
+
+.heroAside {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  min-width: 11rem;
+  padding: 1rem 1.15rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-accentSubtle);
+}
+
+.heroAside div {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.heroAside strong {
+  color: var(--color-text);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.heroAside span:not(.seal) {
+  color: var(--color-textMuted);
+  font-size: 0.6875rem;
+}
+
+.seal,
+.noteMark,
+.emptyMark {
+  display: grid;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--color-accent) 55%, transparent);
+  color: var(--color-accent);
+  font-family: 'Songti SC', 'STSong', serif;
+}
+
+.seal {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.45rem;
+  font-size: 1.1rem;
+}
+
+.workspace {
+  padding-top: 2rem;
+}
+
+.cloudPanel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 1rem 2rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-accentSubtle);
+}
+
+.cloudCopy {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  min-width: 0;
+}
+
+.cloudCopy strong {
+  display: block;
+  color: var(--color-text);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.cloudCopy p,
+.cloudMessage {
+  margin: 0.2rem 0 0;
+  color: var(--color-textMuted);
+  font-size: 0.68rem;
+  line-height: 1.55;
+}
+
+.cloudDot {
+  flex: none;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin-top: 0.32rem;
+  border-radius: 50%;
+  background: var(--color-textMuted);
+  box-shadow: 0 0 0 0.28rem var(--color-border);
+}
+
+.cloudDot[data-active='true'] {
+  background: var(--color-accent);
+  box-shadow: 0 0 0 0.28rem var(--color-accentLight);
+}
+
+.authForm,
+.cloudActions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+
+.authForm input {
+  width: min(14rem, 38vw);
+  min-height: 2.35rem;
+  padding: 0 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  outline: 0;
+  color: var(--color-text);
+  background: var(--color-cardHover);
+  font-size: 0.72rem;
+}
+
+.authForm input:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accentLight);
+}
+
+.authForm button,
+.cloudActions button,
+.imageToolbar button {
+  flex: none;
+  min-height: 2.35rem;
+  padding: 0 0.85rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  color: var(--color-accent);
+  background: var(--color-card);
+  font-size: 0.7rem;
+  font-weight: 600;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.authForm button:hover,
+.cloudActions button:hover,
+.imageToolbar button:hover {
+  border-color: var(--color-rule);
+  background: var(--color-accentLight);
+}
+
+.cloudMessage {
+  grid-column: 1 / -1;
+  margin-left: 1.3rem;
+  color: var(--color-accent);
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.toolbarActions,
+.editorPrimaryActions,
+.formFooter > div {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.searchBox {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 0.6rem;
+  max-width: 32rem;
+  padding: 0 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background: var(--color-card);
+  color: var(--color-textMuted);
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.searchBox:focus-within {
+  border-color: var(--color-rule);
+  background: var(--color-cardHover);
+}
+
+.searchBox input {
+  width: 100%;
+  min-height: 2.7rem;
+  border: 0;
+  outline: 0;
+  color: var(--color-text);
+  background: transparent;
+  font-size: 0.8125rem;
+}
+
+.searchBox input::placeholder,
+.form input::placeholder,
+.form textarea::placeholder {
+  color: var(--color-textMuted);
+  opacity: 0.72;
+}
+
+.primaryButton,
+.saveButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 2.75rem;
+  padding: 0 1.2rem;
+  border-radius: var(--radius-full);
+  color: var(--color-accentContrast, #fff);
+  background: var(--color-accent);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.secondaryButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  color: var(--color-accent);
+  background: var(--color-card);
+  font-size: 0.75rem;
+  font-weight: 600;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.secondaryButton:hover {
+  border-color: var(--color-rule);
+  background: var(--color-accentLight);
+}
+
+.primaryButton:hover,
+.saveButton:hover {
+  background: var(--color-accentHover);
+  transform: translateY(-1px);
+}
+
+.categoryRail {
+  display: flex;
+  gap: 0.45rem;
+  margin-top: 1rem;
+  padding-bottom: 0.35rem;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.categoryRail button {
+  flex: none;
+  padding: 0.5rem 0.8rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-full);
+  color: var(--color-textMuted);
+  background: transparent;
+  font-size: 0.75rem;
+  transition: all var(--transition-fast);
+}
+
+.categoryRail button:hover,
+.categoryRail .activeCategory {
+  border-color: var(--color-border);
+  color: var(--color-accent);
+  background: var(--color-accentLight);
+}
+
+.categoryRail span {
+  margin-left: 0.25rem;
+  font-size: 0.625rem;
+  opacity: 0.7;
+}
+
+.editorPanel {
+  margin-top: 2rem;
+  padding: clamp(1.25rem, 4vw, 2.25rem);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  background: var(--color-card);
+  box-shadow: var(--shadow-md);
+}
+
+.panelHeading,
+.listHeading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+.panelHeading h1,
+.panelHeading h2,
+.emptyState h2,
+.listHeading h2 {
+  margin: 0;
+  color: var(--color-text);
+  font-family: 'Songti SC', 'STSong', 'Noto Serif SC', serif;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  font-weight: 500;
+}
+
+.iconButton {
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  color: var(--color-textMuted);
+  font-size: 1.35rem;
+  line-height: 1;
+  transition: color var(--transition-fast), background var(--transition-fast);
+}
+
+.iconButton:hover {
+  color: var(--color-text);
+  background: var(--color-accentLight);
+}
+
+.form,
+.contentField {
+  display: grid;
+  gap: 1rem;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.formRow:first-of-type {
+  grid-template-columns: minmax(0, 1.7fr) minmax(9rem, 0.65fr) minmax(10rem, 0.85fr);
+}
+
+.form label {
+  display: grid;
+  gap: 0.45rem;
+  color: var(--color-textSecondary);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.form input,
+.form select,
+.form textarea {
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  outline: 0;
+  color: var(--color-text);
+  background: var(--color-cardHover);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 400;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.form input,
+.form select {
+  min-height: 2.85rem;
+  padding: 0 0.85rem;
+}
+
+.form textarea {
+  min-height: 17rem;
+  padding: 1rem;
+  font-family: 'Songti SC', 'STSong', 'Noto Serif SC', serif;
+  line-height: 1.85;
+  resize: vertical;
+}
+
+.imageToolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: -0.2rem;
+}
+
+.imageToolbar span {
+  color: var(--color-textMuted);
+  font-size: 0.66rem;
+}
+
+.imageToolbar button:disabled,
+.saveButton:disabled {
+  cursor: wait;
+  opacity: 0.62;
+  transform: none;
+}
+
+.imageGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.imageGrid figure {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  margin: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bgSecondary);
+  overflow: hidden;
+}
+
+.imageGrid figure img {
+  object-fit: cover;
+}
+
+.imageGrid figure button {
+  position: absolute;
+  right: 0.4rem;
+  bottom: 0.4rem;
+  padding: 0.28rem 0.5rem;
+  border-radius: var(--radius-full);
+  color: #fff;
+  background: rgba(25, 31, 26, 0.72);
+  font-size: 0.62rem;
+  backdrop-filter: blur(8px);
+}
+
+.imagePlaceholder {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  place-items: center;
+  color: var(--color-textMuted);
+  font-size: 0.7rem;
+}
+
+.form input:focus,
+.form select:focus,
+.form textarea:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accentLight);
+}
+
+.formFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.formFooter p {
+  margin: 0;
+  color: var(--color-textMuted);
+  font-size: 0.7rem;
+}
+
+.saveButton {
+  min-width: 7rem;
+  border: 0;
+}
+
+.emptyState {
+  margin-top: 3.5rem;
+  padding: clamp(3rem, 8vw, 5.5rem) clamp(1.25rem, 5vw, 4rem);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  background: var(--color-card);
+  text-align: center;
+}
+
+.emptyMark {
+  width: 3.5rem;
+  height: 3.5rem;
+  margin: 0 auto 1.5rem;
+  border-radius: 50%;
+  font-size: 1.35rem;
+}
+
+.emptyState > p:not(.emptyEyebrow) {
+  max-width: 34rem;
+  margin: 1rem auto 0;
+  color: var(--color-textMuted);
+  font-family: 'Songti SC', 'STSong', 'Noto Serif SC', serif;
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+.promptGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  max-width: 43rem;
+  margin: 2.25rem auto 0;
+}
+
+.promptGrid button,
+.promptGrid a {
+  display: grid;
+  justify-items: start;
+  gap: 0.25rem;
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  color: var(--color-text);
+  background: var(--color-accentSubtle);
+  text-align: left;
+  transition: border-color var(--transition-fast), transform var(--transition-fast), background var(--transition-fast);
+}
+
+.promptGrid button:hover,
+.promptGrid a:hover {
+  border-color: var(--color-rule);
+  background: var(--color-accentLight);
+  transform: translateY(-2px);
+}
+
+.promptGrid button > span,
+.promptGrid a > span {
+  margin-bottom: 0.3rem;
+  color: var(--color-accent);
+  font-family: 'Songti SC', 'STSong', serif;
+  font-size: 1.2rem;
+}
+
+.promptGrid strong {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.promptGrid small {
+  color: var(--color-textMuted);
+  font-size: 0.65rem;
+}
+
+.noteSection {
+  margin-top: 4rem;
+}
+
+.libraryLayout {
+  display: grid;
+  grid-template-columns: 16rem minmax(0, 1fr);
+  align-items: start;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.libraryContent {
+  min-width: 0;
+}
+
+.libraryContent .noteSection,
+.libraryContent .emptyState {
+  margin-top: 0;
+}
+
+.bookShelf {
+  position: sticky;
+  top: 1.25rem;
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-card);
+}
+
+.bookShelfHeading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.bookShelfHeading p,
+.bookShelfHeading h2 {
+  margin: 0;
+}
+
+.bookShelfHeading p {
+  margin-bottom: 0.25rem;
+  color: var(--color-accent);
+  font-size: 0.58rem;
+  font-weight: 650;
+  letter-spacing: 0.12em;
+}
+
+.bookShelfHeading h2 {
+  color: var(--color-text);
+  font-family: 'Songti SC', 'STSong', serif;
+  font-size: 1.15rem;
+  font-weight: 550;
+}
+
+.bookShelfHeading > button {
+  flex: none;
+  padding: 0.35rem 0.55rem;
+  border-radius: var(--radius-full);
+  color: var(--color-accent);
+  background: var(--color-accentSubtle);
+  font-size: 0.62rem;
+}
+
+.bookForm {
+  display: grid;
+  gap: 0.55rem;
+  margin-top: 0.8rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.bookForm input,
+.bookForm textarea,
+.bulkBar select {
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  outline: 0;
+  color: var(--color-text);
+  background: var(--color-cardHover);
+  font: inherit;
+  font-size: 0.7rem;
+}
+
+.bookForm input {
+  min-height: 2.35rem;
+  padding: 0 0.65rem;
+}
+
+.bookForm textarea {
+  padding: 0.6rem;
+  line-height: 1.55;
+  resize: vertical;
+}
+
+.bookForm input:focus,
+.bookForm textarea:focus,
+.bulkBar select:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accentLight);
+}
+
+.bookForm button {
+  min-height: 2.25rem;
+  border-radius: var(--radius-md);
+  color: var(--color-accentContrast, #fff);
+  background: var(--color-accent);
+  font-size: 0.68rem;
+  font-weight: 600;
+}
+
+.bookList {
+  display: grid;
+  gap: 0.3rem;
+  margin-top: 0.75rem;
+}
+
+.bookList > button,
+.bookRow > button {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem;
+  min-width: 0;
+  padding: 0.65rem;
+  border-radius: var(--radius-md);
+  color: var(--color-textSecondary);
+  text-align: left;
+  transition: color var(--transition-fast), background var(--transition-fast);
+}
+
+.bookList > button:hover,
+.bookList > button[data-active='true'],
+.bookRow[data-active='true'] > button {
+  color: var(--color-accent);
+  background: var(--color-accentLight);
+}
+
+.bookList span,
+.bookRow span {
+  display: grid;
+  min-width: 0;
+  gap: 0.18rem;
+}
+
+.bookList b,
+.bookRow b {
+  overflow: hidden;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bookList small,
+.bookRow small {
+  display: -webkit-box;
+  overflow: hidden;
+  color: var(--color-textMuted);
+  font-size: 0.58rem;
+  font-weight: 400;
+  line-height: 1.4;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.bookList em,
+.bookRow em {
+  flex: none;
+  color: var(--color-textMuted);
+  font-size: 0.62rem;
+  font-style: normal;
+}
+
+.bookRow {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  border-radius: var(--radius-md);
+}
+
+.bookRow[data-active='true'] {
+  background: var(--color-accentLight);
+}
+
+.bookRow > div {
+  display: grid;
+  gap: 0.1rem;
+  padding-right: 0.25rem;
+}
+
+.bookRow > div button {
+  padding: 0.2rem;
+  color: var(--color-textMuted);
+  font-size: 0.54rem;
+}
+
+.bookRow > div button:hover {
+  color: var(--color-accent);
+}
+
+.listHeading {
+  align-items: end;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.listHeading > span {
+  color: var(--color-textMuted);
+  font-size: 0.75rem;
+}
+
+.listHeading small {
+  display: block;
+  max-width: 38rem;
+  margin-top: 0.55rem;
+  color: var(--color-textMuted);
+  font-family: 'Songti SC', 'STSong', serif;
+  font-size: 0.72rem;
+  font-weight: 400;
+  line-height: 1.65;
+}
+
+.bulkBar {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 0.85rem;
+  padding: 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-accentSubtle);
+}
+
+.bulkBar > span {
+  flex: none;
+  color: var(--color-accent);
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.bulkBar select {
+  min-height: 2.2rem;
+  max-width: 13rem;
+  padding: 0 0.65rem;
+}
+
+.bulkBar button {
+  flex: none;
+  min-height: 2.2rem;
+  padding: 0 0.7rem;
+  border-radius: var(--radius-full);
+  color: var(--color-accent);
+  background: var(--color-card);
+  font-size: 0.64rem;
+}
+
+.noteGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.noteCard {
+  position: relative;
+  display: grid;
+  min-width: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-card);
+  overflow: hidden;
+  transition: border-color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast);
+}
+
+.noteCard[data-selected='true'] {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accentLight);
+}
+
+.selectNote {
+  position: absolute;
+  z-index: 2;
+  top: 0.7rem;
+  right: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--color-textMuted);
+  font-size: 0.58rem;
+  cursor: pointer;
+}
+
+.selectNote input {
+  accent-color: var(--color-accent);
+}
+
+.noteCard:hover {
+  border-color: var(--color-rule);
+  background: var(--color-cardHover);
+  transform: translateY(-2px);
+}
+
+.noteMain,
+.articleLink {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  min-width: 0;
+  padding: 1.5rem 1.25rem 0.9rem;
+  color: inherit;
+  text-align: left;
+}
+
+.noteMark {
+  flex: none;
+  width: 2.35rem;
+  height: 2.35rem;
+  border-radius: 50%;
+  font-size: 0.9rem;
+}
+
+.noteCopy {
+  display: grid;
+  min-width: 0;
+}
+
+.noteMeta {
+  margin-bottom: 0.35rem;
+  color: var(--color-textMuted);
+  font-size: 0.625rem;
+  letter-spacing: 0.04em;
+}
+
+.noteCopy > strong {
+  color: var(--color-text);
+  font-family: 'Songti SC', 'STSong', 'Noto Serif SC', serif;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.excerpt {
+  display: -webkit-box;
+  margin-top: 0.55rem;
+  overflow: hidden;
+  color: var(--color-textSecondary);
+  font-size: 0.75rem;
+  line-height: 1.65;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  white-space: pre-line;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+}
+
+.tags span {
+  color: var(--color-tagText);
+  font-size: 0.625rem;
+}
+
+.imageCount {
+  margin-top: 0.55rem;
+  color: var(--color-accent);
+  font-size: 0.625rem;
+}
+
+.cardActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.25rem;
+  margin-top: auto;
+  padding: 0.6rem 0.8rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.cardActions button {
+  padding: 0.35rem 0.55rem;
+  border-radius: var(--radius-sm);
+  color: var(--color-textMuted);
+  font-size: 0.65rem;
+  transition: color var(--transition-fast), background var(--transition-fast);
+}
+
+.cardActions a {
+  padding: 0.35rem 0.55rem;
+  border-radius: var(--radius-sm);
+  color: var(--color-textMuted);
+  font-size: 0.65rem;
+  transition: color var(--transition-fast), background var(--transition-fast);
+}
+
+.cardActions button:hover,
+.cardActions a:hover {
+  color: var(--color-accent);
+  background: var(--color-accentLight);
+}
+
+.subPage {
+  width: min(calc(100% - 3rem), 70rem);
+  min-height: 70vh;
+  margin-inline: auto;
+  padding: 3.5rem 0 8rem;
+}
+
+.subPageNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  color: var(--color-textMuted);
+  font-size: 0.75rem;
+}
+
+.subPageNav > div {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.subPageNav button,
+.subPageNav > a {
+  color: var(--color-textMuted);
+  transition: color var(--transition-fast);
+}
+
+.subPageNav button:hover,
+.subPageNav > a:hover {
+  color: var(--color-accent);
+}
+
+.subPageNav .primaryButton {
+  min-height: 2.5rem;
+  color: var(--color-accentContrast, #fff);
+}
+
+.articleShell {
+  width: min(100%, 51rem);
+  margin-inline: auto;
+  padding: clamp(1.5rem, 5vw, 4.5rem);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  background: var(--color-card);
+  box-shadow: var(--shadow-sm);
+}
+
+.articleHeader {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.articleHeader h1 {
+  max-width: 42rem;
+  margin: 0;
+  color: var(--color-text);
+  font-family: 'Songti SC', 'STSong', 'Noto Serif SC', serif;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 550;
+  letter-spacing: -0.035em;
+  line-height: 1.25;
+}
+
+.articleMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem 1rem;
+  margin-top: 1.25rem;
+  color: var(--color-textMuted);
+  font-size: 0.7rem;
+}
+
+.articleFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border);
+  color: var(--color-textMuted);
+  font-size: 0.72rem;
+}
+
+.articleFooter a:hover {
+  color: var(--color-accent);
+}
+
+.articleFooter button {
+  color: var(--color-textMuted);
+}
+
+.articleFooter button:hover {
+  color: #a34b43;
+}
+
+.markdownBody {
+  min-width: 0;
+  color: var(--color-textSecondary);
+  font-family: 'Songti SC', 'STSong', 'Noto Serif SC', serif;
+  font-size: 0.98rem;
+  line-height: 1.95;
+  overflow-wrap: anywhere;
+}
+
+.markdownBody > :first-child {
+  margin-top: 0;
+}
+
+.markdownBody > :last-child {
+  margin-bottom: 0;
+}
+
+.markdownBody h1,
+.markdownBody h2,
+.markdownBody h3,
+.markdownBody h4 {
+  margin: 2em 0 0.75em;
+  color: var(--color-text);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.markdownBody h1 { font-size: 1.9rem; }
+.markdownBody h2 { font-size: 1.5rem; }
+.markdownBody h3 { font-size: 1.2rem; }
+.markdownBody h4 { font-size: 1rem; }
+
+.markdownBody p,
+.markdownBody ul,
+.markdownBody ol,
+.markdownBody blockquote,
+.markdownBody pre,
+.markdownBody table {
+  margin: 1em 0;
+}
+
+.markdownBody ul,
+.markdownBody ol {
+  padding-left: 1.5rem;
+}
+
+.markdownBody li + li {
+  margin-top: 0.3rem;
+}
+
+.markdownBody blockquote {
+  padding: 0.2rem 0 0.2rem 1.2rem;
+  border-left: 3px solid var(--color-accent);
+  color: var(--color-textMuted);
+}
+
+.markdownBody code {
+  padding: 0.16em 0.38em;
+  border-radius: var(--radius-sm);
+  background: var(--color-bgSecondary);
+  font-family: var(--font-mono, monospace);
+  font-size: 0.86em;
+}
+
+.markdownBody pre {
+  padding: 1rem;
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bgSecondary);
+  line-height: 1.65;
+}
+
+.markdownBody pre code {
+  padding: 0;
+  background: transparent;
+}
+
+.markdownBody a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.markdownBody img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.5rem auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.markdownBody hr {
+  height: 1px;
+  margin: 2.5rem 0;
+  border: 0;
+  background: var(--color-border);
+}
+
+.markdownBody table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-family: inherit;
+  font-size: 0.85rem;
+}
+
+.markdownBody th,
+.markdownBody td {
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--color-border);
+  text-align: left;
+}
+
+.markdownBody th {
+  color: var(--color-text);
+  background: var(--color-accentSubtle);
+}
+
+.markdownBody input[type='checkbox'] {
+  margin-right: 0.45rem;
+  accent-color: var(--color-accent);
+}
+
+.markdownEmpty {
+  margin: 0;
+  color: var(--color-textMuted);
+  font-family: 'Songti SC', 'STSong', 'Noto Serif SC', serif;
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+.editorPage {
+  width: min(calc(100% - 3rem), 80rem);
+}
+
+.editorPage .editorPanel {
+  margin-top: 0;
+}
+
+.editorPage .panelHeading {
+  align-items: center;
+}
+
+.templateStrip {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+  padding: 0.8rem 0;
+  border-block: 1px solid var(--color-border);
+}
+
+.templateStrip span {
+  margin-right: 0.35rem;
+  color: var(--color-textMuted);
+  font-size: 0.7rem;
+}
+
+.templateStrip button,
+.editorTabs button {
+  padding: 0.4rem 0.7rem;
+  border-radius: var(--radius-full);
+  color: var(--color-textMuted);
+  background: var(--color-accentSubtle);
+  font-size: 0.68rem;
+}
+
+.templateStrip button:hover,
+.editorTabs button:hover,
+.editorTabs button[data-active='true'] {
+  color: var(--color-accent);
+  background: var(--color-accentLight);
+}
+
+.editorTabs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.editorTabs > span {
+  color: var(--color-textSecondary);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.editorTabs > div {
+  display: flex;
+  gap: 0.25rem;
+  padding: 0.2rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+}
+
+.editorTabs button {
+  min-width: 3.5rem;
+  background: transparent;
+}
+
+.markdownWorkspace {
+  display: grid;
+  min-height: 32rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-cardHover);
+  overflow: hidden;
+}
+
+.markdownWorkspace[data-mode='split'] {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+
+.editorPane,
+.previewPane {
+  min-width: 0;
+  min-height: 32rem;
+}
+
+.editorPane + .previewPane {
+  border-left: 1px solid var(--color-border);
+}
+
+.editorPane textarea {
+  width: 100%;
+  height: 100%;
+  min-height: 32rem;
+  padding: 1.25rem;
+  border: 0;
+  outline: 0;
+  color: var(--color-text);
+  background: transparent;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.82rem;
+  line-height: 1.75;
+  resize: vertical;
+}
+
+.editorPane textarea:focus {
+  box-shadow: inset 0 0 0 2px var(--color-accentLight);
+}
+
+.previewPane {
+  padding: 1.25rem clamp(1rem, 3vw, 2rem);
+  overflow-y: auto;
+  background: var(--color-card);
+}
+
+.loadingState {
+  display: grid;
+  min-height: 50vh;
+  margin: 0;
+  place-items: center;
+  color: var(--color-textMuted);
+  font-family: 'Songti SC', 'STSong', serif;
+}
+
+.notFound {
+  display: grid;
+  min-height: 55vh;
+  place-items: center;
+  align-content: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+.notFound > span {
+  display: grid;
+  width: 3.5rem;
+  height: 3.5rem;
+  place-items: center;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  color: var(--color-accent);
+  font-family: 'Songti SC', 'STSong', serif;
+}
+
+.notFound h1,
+.notFound p {
+  margin: 0;
+}
+
+.notFound h1 {
+  color: var(--color-text);
+  font-family: 'Songti SC', 'STSong', serif;
+  font-weight: 500;
+}
+
+.notFound p {
+  color: var(--color-textMuted);
+  font-size: 0.8rem;
+}
+
+.noResults {
+  padding: 4rem 1rem;
+  color: var(--color-textMuted);
+  text-align: center;
+  font-size: 0.8125rem;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 900px) {
+  .libraryLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .bookShelf {
+    position: static;
+  }
+
+  .bookList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .bookRow {
+    border: 1px solid var(--color-border);
+  }
+}
+
+@media (max-width: 700px) {
+  .page {
+    width: min(calc(100% - 2rem), 70rem);
+    padding: 2.5rem 0 5rem;
+  }
+
+  .subPage,
+  .editorPage {
+    width: min(calc(100% - 2rem), 70rem);
+    padding: 2rem 0 5rem;
+  }
+
+  .backLink {
+    margin-bottom: 2.5rem;
+  }
+
+  .heroGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .heroAside {
+    width: fit-content;
+  }
+
+  .toolbar {
+    align-items: stretch;
+  }
+
+  .toolbarActions {
+    flex: none;
+  }
+
+  .cloudPanel {
+    grid-template-columns: 1fr;
+  }
+
+  .authForm {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .authForm label,
+  .authForm input,
+  .authForm button {
+    width: 100%;
+  }
+
+  .primaryButton {
+    padding-inline: 1rem;
+  }
+
+  .formRow,
+  .formRow:first-of-type,
+  .noteGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .bulkBar {
+    align-items: stretch;
+    flex-wrap: wrap;
+  }
+
+  .bulkBar select {
+    max-width: none;
+  }
+
+  .formFooter {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .formFooter > div,
+  .editorPrimaryActions {
+    width: 100%;
+  }
+
+  .formFooter > div > *,
+  .editorPrimaryActions > * {
+    flex: 1;
+  }
+
+  .editorPage .panelHeading {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .markdownWorkspace[data-mode='split'] {
+    grid-template-columns: 1fr;
+  }
+
+  .editorPane + .previewPane {
+    border-top: 1px solid var(--color-border);
+    border-left: 0;
+  }
+
+  .articleShell {
+    padding: 1.5rem;
+  }
+
+  .promptGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .imageGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 440px) {
+  .toolbar {
+    flex-direction: column;
+  }
+
+  .toolbarActions,
+  .subPageNav,
+  .subPageNav > div {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .toolbarActions > *,
+  .subPageNav .primaryButton {
+    width: 100%;
+  }
+
+  .bookList {
+    grid-template-columns: 1fr;
+  }
+
+  .bulkBar > * {
+    width: 100%;
+  }
+
+  .searchBox {
+    max-width: none;
+  }
+
+  .primaryButton {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .primaryButton,
+  .saveButton,
+  .promptGrid button,
+  .noteCard {
+    transition: none;
+  }
+}

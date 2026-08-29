@@ -5,41 +5,34 @@ const explorationFields = [
   {
     href: '/blog',
     icon: '✦',
-    label: 'AI 与未来智能 · AI & Future Intelligence',
-    description: '探索人工智能、大模型与未来人机协作方式。',
-  },
-  {
-    href: '/blog',
-    icon: '🌐',
-    label: '数字文明 · Digital Civilization',
-    description: '思考数字技术如何改变人与社会。',
+    label: 'AI 与未来智能',
+    description: '记录对模型、代理与协作方式的判断与试验。',
   },
   {
     href: '/garden',
     icon: '📖',
-    label: '未来教育 · Future Education',
-    description: '探索知识获取、学习方式与个人成长。',
-  },
-  {
-    href: '/guanwo/yishu',
-    icon: '☯',
-    label: '东方哲学 · Eastern Philosophy',
-    description: '探索东方思想、自然观与未来文明关系。',
+    label: '学习系统化',
+    description: '围绕技术与文化做长期观察，形成可更新的认知框架。',
   },
   {
     href: '/timeline',
     icon: '🌱',
-    label: '个人成长 · Personal Growth',
-    description: '记录长期主义、创造者成长路径。',
+    label: '成长与方法',
+    description: '从阶段实践中提炼方法，避免“只记录、不复用”。',
   },
 ] as const;
 
 export default function ExplorationSection() {
   return (
-    <section className="order-first col-span-full spatial-section">
-      <HomeSectionHeader number="02" eyebrow="Exploration" title="探索方向" description="在技术快速发展的时代，探索人与智能、知识与文明之间的新连接。" />
+    <section className="spatial-section">
+      <HomeSectionHeader
+        number="04"
+        eyebrow="Exploration"
+        title="探索方向"
+        description="在技术、学习和文化交叉点持续试错，把问题拆解为可执行的学习任务。"
+      />
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 spatial-card-grid">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 spatial-card-grid">
         {explorationFields.map((field, index) => (
           <HomeModuleCard
             key={field.label}
@@ -47,7 +40,7 @@ export default function ExplorationSection() {
             icon={field.icon}
             label={field.label}
             description={field.description}
-            animationDelay={index * 60}
+            animationDelay={index * 80}
           />
         ))}
       </div>

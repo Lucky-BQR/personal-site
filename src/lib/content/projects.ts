@@ -17,6 +17,9 @@ function toProjectMetadata(metadata: ContentMetadata, fields: Record<string, str
     year: metadata.year || '',
     category: metadata.category || '',
     technologies: parseList(fields.technologies),
+    stage: fields.stage || 'Concept',
+    role: fields.role || 'Product & Engineering',
+    focus: fields.focus || '',
   };
 }
 
@@ -29,8 +32,21 @@ function toProject(document: ProjectDocument): ProjectCaseStudy {
 
   return {
     ...document.metadata,
+    overview: sections.overview || '',
     challenge: sections.challenge || '',
+    users: list(sections.users),
+    useCases: list(sections['use cases']),
+    principles: list(sections.principles),
     architecture: list(sections.architecture),
+    dataArchitecture: list(sections['data architecture']),
+    coreDataModel: list(sections['core data model']),
+    executionLifecycle: list(sections['execution lifecycle']),
+    securityPermissions: list(sections['security and permissions']),
+    technicalArchitecture: list(sections['technical architecture']),
+    productInformationArchitecture: list(sections['product information architecture']),
+    workflow: list(sections.workflow),
+    mvp: list(sections.mvp),
+    statusNote: sections.status || '',
     reflection: sections.reflection || '',
   };
 }

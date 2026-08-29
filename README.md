@@ -1,38 +1,108 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<!-- markdownlint-disable first-line-heading -->
 
-Phase 5 knowledge intelligence setup is documented in [`docs/PHASE5_FULLSTACK.md`](docs/PHASE5_FULLSTACK.md).
+# 竹青小筑（Zhu Qing 小筑）
 
-## Getting Started
+一个面向长期成长的中文个人数字花园，聚焦技术创造、持续学习与东方思考。
 
-First, run the development server:
+本项目基于 [Next.js](https://nextjs.org) App Router 构建，面向个人网站、内容输出和项目展示场景。
+
+Phase 5 知识智能化的对接说明见：[docs/PHASE5_FULLSTACK.md](docs/PHASE5_FULLSTACK.md)。
+
+---
+
+## 核心目标
+
+1. 记录真实的技术实践与项目创作过程
+2. 建立可持续更新的学习与知识沉淀系统
+3. 用“技术 + 东方文化 + 个人思考”构建稳定的数字花园
+
+---
+
+## 快速开始
+
+### 1. 安装依赖
+
+```bash
+npm install
+```
+
+### 2. 配置环境变量（可选）
+
+复制 `.env.example` 为 `.env.local`，按需配置公开变量：
+
+```bash
+cp .env.example .env.local
+```
+
+可配置项：
+
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+
+说明：文档仅建议公开变量，构建后的静态页面会注入这些值。
+
+### 3. 启动开发环境
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+浏览器打开 [http://localhost:3000](http://localhost:3000)。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 4. 其他脚本
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `npm run build`：构建站点（项目采用 `output: "export"`）
+- `npm run start`：启动生产服务（适用于 Node 服务器场景）
+- `npm run lint`：运行 ESLint 检查
+- `npm run knowledge:sync`：同步知识图谱/学习数据
+- `npm run phase5:verify`：Phase 5 校验脚本
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 项目结构（重点）
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```text
+src/
+├─ app/                # 页面与路由（App Router）
+├─ components/         # UI 组件（布局/主题/内容块）
+├─ content/            # 纯内容源（博客/项目/花园/古文/音乐等）
+├─ data/               # 静态数据配置
+├─ lib/                # 数据解析、内容加载、工具方法
+├─ types/              # 类型定义
+└─ i18n/               # 国际化配置
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+scripts/                # 维护脚本（如知识同步）
+content/                # 本地内容备份/素材目录（与项目内容系统配套）
+public/                 # 静态资源
+```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 关键入口文件
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- 全局布局：`src/app/layout.tsx`
+- 首页：`src/app/page.tsx`
+- 全局样式：`src/app/globals.css`
+- Next 配置：`next.config.ts`（包含 GitHub Pages 导出配置）
+- 路由入口目录：`src/app`
+
+---
+
+## 部署说明
+
+项目默认兼容静态导出，适配 GitHub Pages 场景：
+
+- 本地：`npm run dev`
+- 构建：`npm run build`
+- 输出目录由 Next.js 导出到默认静态产物
+- 启用 GitHub Pages 时，可通过环境变量 `GITHUB_PAGES=true` 配合 `basePath/assetPrefix` 发布
+
+---
+
+## 说明
+
+- 路由与内容均由源码内约定驱动，建议优先在 `src/content` 中维护内容文件，再通过对应 `lib/content/*` 的解析逻辑读取。
+- 提交时可直接更新内容文件与组件，不必反复改动核心框架配置。
+- 首次开发优先理解：`src/app`、`src/components`、`src/lib/content`。
+

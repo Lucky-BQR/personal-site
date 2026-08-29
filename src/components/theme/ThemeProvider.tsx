@@ -13,8 +13,8 @@ interface ThemeContextValue {
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 
-const THEME_STORAGE_KEY = 'site-theme';
-const themeIds: ThemeId[] = ['zhuqing', 'moyun', 'subai'];
+const THEME_STORAGE_KEY = 'site-theme-v2';
+const themeIds: ThemeId[] = ['zhuqing', 'moyun', 'subai', 'qingci'];
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [themeId, setThemeId] = useState<ThemeId>('zhuqing');

@@ -4,45 +4,43 @@ import HomeSectionHeader from './HomeSectionHeader';
 const creationFields = [
   {
     icon: '🧠',
-    label: 'AI 智能系统 · AI Systems',
-    description: '探索人工智能、大语言模型与智能协作方式。',
+    href: '/projects',
+    label: 'AI Agent 与系统设计',
+    description: '把大模型落地到可执行的工作流，而不是停留在概念演示。',
   },
   {
     icon: '⚙️',
-    label: '软件工程 · Software Engineering',
-    description: '构建稳定、可持续的软件系统。',
+    href: '/projects',
+    label: '全栈产品与体验',
+    description: '从技术方案、交互到发布，保证从想法到上线的完整链路。',
   },
   {
     icon: '🧭',
-    label: '数字产品 · Digital Products',
-    description: '探索技术、设计与用户体验的结合。',
-  },
-  {
-    icon: '🔁',
-    label: '自动化工具 · Automation',
-    description: '利用技术减少重复劳动，提升创造效率。',
-  },
-  {
-    icon: '🌐',
-    label: '开源探索 · Open Source',
-    description: '通过开放协作，连接全球创造者。',
+    href: '/garden',
+    label: '个人知识工程',
+    description: '把学习、记录、复盘打造成可复制的成长系统。',
   },
 ] as const;
 
 export default function CreationSection() {
   return (
-    <section className="order-first col-span-full spatial-section">
-      <HomeSectionHeader number="01" eyebrow="Creation Fields" title="创造领域" description="通过技术创造工具、系统与数字产品，探索人与智能世界之间的新连接。" />
+    <section className="spatial-section">
+      <HomeSectionHeader
+        number="02"
+        eyebrow="Creation"
+        title="创造领域"
+        description="优先展示正在持续迭代的方向，强调“长期创造、可复用、可演进”。"
+      />
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 spatial-card-grid">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 spatial-card-grid">
         {creationFields.map((field, index) => (
           <HomeModuleCard
             key={field.label}
-            href="/projects"
+            href={field.href}
             icon={field.icon}
             label={field.label}
             description={field.description}
-            animationDelay={index * 60}
+            animationDelay={index * 80}
           />
         ))}
       </div>

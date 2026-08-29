@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; width: 1600px; height: 1100px; overflow: hidden; background: #fff; }
+    body { color: #18211d; font-family: "Microsoft YaHei", "PingFang SC", sans-serif; }
+    .poster { position: relative; width: 1600px; height: 1100px; padding: 60px 78px 40px; background: linear-gradient(180deg, #fff 0%, #fbfcfa 100%); }
+    .poster::before { position: absolute; inset: 24px; border: 1px solid #dce5df; content: ""; pointer-events: none; }
+    .serial { position: absolute; top: 48px; right: 62px; color: #76917f; font: 600 14px/1.2 "Courier New", monospace; letter-spacing: 2px; }
+    .header { text-align: center; }
+    .kicker { color: #557762; font: 700 15px/1.2 "Courier New", monospace; letter-spacing: 3px; }
+    h1 { margin: 14px 0 0; font-family: "SimSun", serif; font-size: 50px; line-height: 1.15; letter-spacing: -2px; }
+    h1 em { color: #27804c; font-style: normal; }
+    .subtitle { margin-top: 10px; color: #77817b; font-size: 17px; }
+    .diagram { width: 1440px; margin: 22px auto 0; }
+    .tag { font: 700 11px/1.2 "Courier New", monospace; letter-spacing: 1.2px; }
+
+    .decision { display: grid; grid-template-columns: 190px 1fr 360px; align-items: center; min-height: 58px; padding: 9px 18px; border: 2px dashed #8aa995; border-radius: 16px; background: #f3f9f4; }
+    .decision .tag { color: #36704d; }
+    .decision p { margin: 0; color: #53645a; font-size: 14px; }
+    .decision strong { color: #304b39; font-family: "SimSun", serif; font-size: 18px; text-align: right; }
+
+    .layer { display: grid; grid-template-columns: 135px minmax(0, 1fr); align-items: stretch; border: 2px solid; border-radius: 17px; overflow: hidden; }
+    .layer-label { display: grid; align-content: center; gap: 6px; padding: 14px 16px; border-right: 1px solid; }
+    .layer-label strong { font-family: "SimSun", serif; font-size: 18px; }
+    .layer-content { display: grid; align-items: stretch; gap: 12px; padding: 11px 14px; }
+    .module { display: grid; align-content: center; gap: 5px; padding: 10px 14px; border: 1px solid; border-radius: 12px; background: rgba(255,255,255,.78); }
+    .module b { font-family: "SimSun", serif; font-size: 17px; }
+    .module span { color: #5b6961; font-size: 12px; line-height: 1.4; }
+    .module.focus { border-width: 2px; box-shadow: 0 0 0 5px rgba(72, 145, 95, .09); }
+
+    .client { min-height: 82px; margin-top: 12px; border-color: #8bbfe2; background: #f3f9fd; }
+    .client .layer-label { border-color: #c6dfef; background: #eaf5fc; }
+    .client .layer-label .tag, .access .layer-label .tag { color: #347aa7; }
+    .client .layer-content { grid-template-columns: 3fr 1fr; }
+    .client .module { border-color: #b8d7ea; }
+
+    .access { min-height: 82px; border-color: #8bbfe2; background: #f6fafc; }
+    .access .layer-label { border-color: #c6dfef; background: #edf6fb; }
+    .access .layer-content { grid-template-columns: 1.25fr 1fr 1fr 1fr; }
+    .access .module { border-color: #bdd9e9; }
+
+    .core { min-height: 140px; border-color: #73ad84; background: #f1f9f3; }
+    .core .layer-label { border-color: #bad7c1; background: #e7f4ea; }
+    .core .layer-label .tag { color: #277449; }
+    .core .layer-content { grid-template-columns: repeat(4, 1fr); }
+    .core .module { border-color: #b4d4bd; }
+    .core .module.focus { border-color: #4d9a68; }
+    .unit-note { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; margin: -2px 2px 0; color: #51705d; font-size: 11px; }
+    .unit-note b { color: #277449; font: 700 11px/1.2 "Courier New", monospace; }
+
+    .runtime { min-height: 130px; border-color: #dfb55e; background: #fffaf0; }
+    .runtime .layer-label { border-color: #ecd39b; background: #fff3da; }
+    .runtime .layer-label .tag { color: #9a691e; }
+    .runtime .layer-content { grid-template-columns: 1.05fr .85fr 1.1fr 1.15fr; }
+    .runtime .module { border-color: #e9ce94; }
+    .runtime .module.focus { border-color: #d9a844; }
+
+    .connector { position: relative; display: grid; place-content: center; height: 18px; color: #557762; font: 700 10px/1.2 "Courier New", monospace; letter-spacing: 1px; }
+    .connector::before { position: absolute; top: 0; left: 50%; width: 2px; height: 16px; background: #2a3b31; content: ""; transform: translateX(-50%); }
+    .connector::after { position: absolute; bottom: 1px; left: calc(50% - 5px); width: 10px; height: 10px; border-right: 2px solid #2a3b31; border-bottom: 2px solid #2a3b31; content: ""; transform: rotate(45deg); }
+    .connector span { position: relative; z-index: 2; padding: 0 8px; background: #fbfcfa; }
+
+    .services { display: grid; grid-template-columns: 1.45fr 1fr; gap: 14px; min-height: 142px; }
+    .service-group { border: 2px solid; border-radius: 17px; overflow: hidden; }
+    .service-group header { display: flex; align-items: center; justify-content: space-between; min-height: 38px; padding: 8px 15px; border-bottom: 1px solid; }
+    .service-group header strong { font-family: "SimSun", serif; font-size: 17px; }
+    .service-modules { display: grid; gap: 9px; padding: 10px 12px; }
+    .data { border-color: #b39bd1; background: #faf7ff; }
+    .data header { border-color: #d6c8e5; background: #f3edfa; }
+    .data header .tag { color: #7656a0; }
+    .data .service-modules { grid-template-columns: repeat(4, 1fr); }
+    .data .module { border-color: #d3c5e2; }
+    .external { border-color: #df9486; background: #fff5f2; }
+    .external header { border-color: #edc2b9; background: #ffebe7; }
+    .external header .tag { color: #a64e40; }
+    .external .service-modules { grid-template-columns: repeat(3, 1fr); }
+    .external .module { border-color: #e9b7ad; }
+
+    .observability { display: grid; grid-template-columns: 175px repeat(5, 1fr) 265px; align-items: center; min-height: 64px; margin-top: 12px; border: 2px dashed #9f88c0; border-radius: 16px; background: #faf7ff; overflow: hidden; }
+    .observability > span { padding-left: 18px; color: #72549a; }
+    .observability article { display: grid; place-content: center; gap: 4px; min-height: 62px; border-left: 1px solid #d8cde5; text-align: center; }
+    .observability article b { color: #7656a0; font: 700 10px/1.2 "Courier New", monospace; }
+    .observability article strong { font-family: "SimSun", serif; font-size: 15px; }
+    .observability > strong { padding-right: 18px; color: #4e4754; font-family: "SimSun", serif; font-size: 15px; text-align: right; }
+
+    .foot { display: flex; justify-content: space-between; margin-top: 9px; color: #707b74; font-size: 13px; }
+    .foot strong { color: #27804c; }
+  </style>
+</head>
+<body>
+  <main class="poster">
+    <span class="serial">TECHNICAL DEPLOYMENT ARCHITECTURE / v0.1</span>
+    <header class="header">
+      <div class="kicker">REQUEST · ORCHESTRATION · ASYNC EXECUTION · STORAGE</div>
+      <h1>一张图讲清 <em>AI 智能助手</em> 第一版如何部署与可靠运行</h1>
+      <p class="subtitle">短请求由模块化 API 处理，耗时任务进入队列与独立 Worker；执行结果通过事件流持续返回用户界面</p>
+    </header>
+
+    <section class="diagram">
+      <section class="decision"><span class="tag">MVP DEPLOYMENT DECISION</span><p>模块是代码边界，不等于微服务；第一版只拆分需要独立伸缩和故障隔离的异步执行器。</p><strong>Web 客户端 + 模块化 API + 独立 Worker</strong></section>
+
+      <section class="layer client">
+        <header class="layer-label"><span class="tag">CLIENT</span><strong>用户界面</strong></header>
+        <div class="layer-content"><article class="module"><b>Web App</b><span>目标输入 · 计划确认 · 流式进度 · 结果验收</span></article><article class="module"><b>Future Clients</b><span>桌面端 / 移动端以后复用同一 API</span></article></div>
+      </section>
+      <div class="connector"><span>HTTPS · SSE / WEBSOCKET</span></div>
+
+      <section class="layer access">
+        <header class="layer-label"><span class="tag">ACCESS</span><strong>接入层</strong></header>
+        <div class="layer-content"><article class="module"><b>API Gateway</b><span>统一请求入口与版本边界</span></article><article class="module"><b>认证与会话</b><span>身份、项目归属、会话状态</span></article><article class="module"><b>请求防护</b><span>校验、限流、大小与超时限制</span></article><article class="module"><b>事件通道</b><span>任务状态与阶段结果实时推送</span></article></div>
+      </section>
+      <div class="connector"><span>SYNCHRONOUS APPLICATION PATH</span></div>
+
+      <section class="layer core">
+        <header class="layer-label"><span class="tag">APP CORE</span><strong>模块化后端</strong></header>
+        <div class="layer-content"><article class="module"><b>对话服务</b><span>消息、会话、流式响应</span></article><article class="module focus"><b>任务编排器</b><span>意图、计划、状态机、结果整合</span></article><article class="module"><b>权限策略</b><span>风险判断、确认门与授权范围</span></article><article class="module"><b>上下文与记忆</b><span>检索、上下文组装、记忆候选</span></article><div class="unit-note"><b>DEPLOY UNIT · APPLICATION API</b><span>共享事务与数据模型，先保持为一个可维护的后端部署单元</span></div></div>
+      </section>
+      <div class="connector"><span>LONG-RUNNING TASK → ENQUEUE</span></div>
+
+      <section class="layer runtime">
+        <header class="layer-label"><span class="tag">ASYNC RUNTIME</span><strong>执行层</strong></header>
+        <div class="layer-content"><article class="module"><b>任务队列 / 事件总线</b><span>任务入队、状态事件、削峰与解耦</span></article><article class="module"><b>调度与恢复</b><span>定时、重试预算、检查点、死信</span></article><article class="module focus"><b>Worker Pool</b><span>领取步骤、执行任务、保存阶段结果</span></article><article class="module"><b>工具适配与隔离</b><span>统一调用协议、权限、超时和资源边界</span></article></div>
+      </section>
+      <div class="connector"><span>READ / WRITE · MODEL &amp; TOOL CALLS · RESULT EVENTS</span></div>
+
+      <section class="services">
+        <section class="service-group data"><header><span class="tag">MANAGED DATA SERVICES</span><strong>数据基础设施</strong></header><div class="service-modules"><article class="module"><b>关系数据库</b><span>项目、任务、状态、确认与审计</span></article><article class="module"><b>向量索引</b><span>资料片段与语义检索</span></article><article class="module"><b>对象存储</b><span>文件、导出物与执行产物</span></article><article class="module"><b>缓存</b><span>短期状态、限流与热点上下文</span></article></div></section>
+        <section class="service-group external"><header><span class="tag">EXTERNAL SERVICES</span><strong>模型与工具</strong></header><div class="service-modules"><article class="module"><b>模型网关</b><span>路由、预算、降级与供应商切换</span></article><article class="module"><b>模型服务</b><span>理解、规划、生成与嵌入</span></article><article class="module"><b>工具连接器</b><span>网页、文档、知识与自动化服务</span></article></div></section>
+      </section>
+
+      <section class="observability"><span class="tag">OBSERVABILITY</span><article><b>LOGS</b><strong>结构化日志</strong></article><article><b>METRICS</b><strong>指标与成本</strong></article><article><b>TRACES</b><strong>全链路追踪</strong></article><article><b>AUDIT</b><strong>行为审计</strong></article><article><b>ALERTS</b><strong>告警与值守</strong></article><strong>每个任务 ID 贯穿请求、队列、执行与结果</strong></section>
+    </section>
+
+    <footer class="foot"><span><strong>演进：</strong>只有当负载、团队或故障边界真正要求时，再把编排、模型网关或工具运行时拆成独立服务。</span><span>竹青小筑 · AI Systems</span></footer>
+  </main>
+</body>
+</html>

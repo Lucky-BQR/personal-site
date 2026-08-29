@@ -32,7 +32,7 @@ export const orientalContent: Record<LanguageCode, OrientalContent> = {
         href: '/guanwo/zhongyi',
         icon: '☷',
         label: '传统智慧',
-        description: '由中医与传统知识出发，观察自然、身体与生命。',
+        description: '由医学与传统知识出发，观察自然、身体与生命。',
       },
       {
         href: '/pinjian',
@@ -57,7 +57,7 @@ export const orientalContent: Record<LanguageCode, OrientalContent> = {
         href: '/guanwo/zhongyi',
         icon: '☷',
         label: 'Traditional Wisdom',
-        description: 'Observing nature, the body, and life through traditional medicine and knowledge.',
+        description: 'Observing nature, the body, and life through medicine and traditional knowledge.',
       },
       {
         href: '/pinjian',
@@ -82,7 +82,7 @@ export const orientalContent: Record<LanguageCode, OrientalContent> = {
         href: '/guanwo/zhongyi',
         icon: '☷',
         label: '伝統の知恵',
-        description: '中医学と伝統知から、自然・身体・生命を見つめる。',
+        description: '医学と伝統知から、自然・身体・生命を見つめる。',
       },
       {
         href: '/pinjian',
@@ -107,7 +107,7 @@ export const orientalContent: Record<LanguageCode, OrientalContent> = {
         href: '/guanwo/zhongyi',
         icon: '☷',
         label: '傳統智慧',
-        description: '由中醫與傳統知識出發，觀察自然、身體與生命。',
+        description: '由醫學與傳統知識出發，觀察自然、身體與生命。',
       },
       {
         href: '/pinjian',

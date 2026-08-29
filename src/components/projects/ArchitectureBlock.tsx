@@ -1,1 +1,12 @@
-export default function ArchitectureBlock({ items }: { items: string[] }) { return <div className="card-base"><p className="card-meta mb-4">SYSTEM ARCHITECTURE</p><ol className="space-y-3">{items.map((item, index) => <li key={item} className="flex gap-3 type-body"><span className="type-meta" style={{ color: 'var(--color-accent)' }}>0{index + 1}</span><span>{item}</span></li>)}</ol></div>; }
+import ZoomablePoster from './ZoomablePoster';
+
+export default function ArchitectureBlock() {
+  return (
+    <ZoomablePoster
+      src="/projects/ai-assistant-architecture-poster.png"
+      alt="AI 智能助手功能架构图：用户通过交互层连接任务编排核心，编排核心协调工具能力层和上下文数据层，安全控制面覆盖全部系统模块"
+      label="Functional Architecture Poster · v0.2"
+      caption="白底架构图解：展示用户、交互层、编排核心、工具、上下文与安全控制面的关系。"
+    />
+  );
+}

@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; width: 1600px; height: 1100px; overflow: hidden; background: #fff; }
+    body { color: #18211d; font-family: "Microsoft YaHei", "PingFang SC", sans-serif; }
+    .poster { position: relative; width: 1600px; height: 1100px; padding: 68px 82px 52px; background: linear-gradient(180deg, #fff 0%, #fbfcfa 100%); }
+    .poster::before { position: absolute; inset: 24px; border: 1px solid #dce5df; content: ""; pointer-events: none; }
+    .serial { position: absolute; top: 48px; right: 64px; color: #76917f; font: 600 14px/1.2 "Courier New", monospace; letter-spacing: 2px; }
+    .header { text-align: center; }
+    .kicker { color: #557762; font: 700 15px/1.2 "Courier New", monospace; letter-spacing: 3px; }
+    h1 { margin: 14px 0 0; font-family: "SimSun", serif; font-size: 56px; line-height: 1.15; letter-spacing: -2px; }
+    h1 em { color: #27804c; font-style: normal; }
+    .subtitle { margin-top: 12px; color: #77817b; font-size: 18px; }
+    .diagram { position: relative; width: 1400px; height: 720px; margin: 40px auto 0; }
+    .user { position: absolute; top: 254px; left: 0; display: grid; place-content: center; width: 150px; height: 150px; border: 2px solid #8ec59c; border-radius: 50%; background: #eff9ef; text-align: center; }
+    .tag { font: 700 13px/1.2 "Courier New", monospace; letter-spacing: 1.2px; }
+    .user .tag { color: #277449; }
+    .user strong { margin-top: 8px; font-family: "SimSun", serif; font-size: 26px; }
+    .user small { max-width: 110px; margin-top: 7px; color: #637269; font-size: 12px; line-height: 1.5; }
+    .line-user { position: absolute; top: 328px; left: 150px; width: 128px; height: 2px; background: #26352d; }
+    .line-user::after { position: absolute; top: -5px; right: 0; width: 10px; height: 10px; border-top: 2px solid #26352d; border-right: 2px solid #26352d; content: ""; transform: rotate(45deg); }
+    .boundary { position: absolute; top: 22px; right: 0; width: 1122px; height: 640px; border: 2px dashed #67806f; border-radius: 24px; background: rgba(250, 252, 249, .84); }
+    .control { display: grid; grid-template-columns: 190px 1fr; align-items: center; min-height: 76px; padding: 14px 24px; border-bottom: 1px solid #d1dcd5; background: #f7faf7; border-radius: 22px 22px 0 0; }
+    .control .tag { color: #496b55; }
+    .control-items { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .control-items span { color: #5d6962; font-size: 15px; text-align: center; }
+    .control-items span + span { border-left: 1px solid #cbd7cf; }
+    .flow { display: grid; grid-template-columns: 230px 70px 350px 70px 290px; align-items: center; justify-content: center; height: 564px; padding: 30px 24px; }
+    .node { padding: 22px; border: 2px solid; border-radius: 18px; background: #fff; }
+    .experience { border-color: #89bce1; background: #f1f8fd; }
+    .tools { border-color: #e5b966; background: #fff9ed; }
+    .context { border-color: #b9a5d8; background: #faf7ff; }
+    .node-head { padding-bottom: 13px; border-bottom: 1px solid rgba(24, 33, 29, .16); }
+    .node-head .tag { display: block; margin-bottom: 6px; }
+    .experience .tag { color: #347aa7; }
+    .tools .tag { color: #a26a1d; }
+    .context .tag { color: #7656a0; }
+    .node h2 { margin: 0; font-family: "SimSun", serif; font-size: 25px; }
+    .list { display: grid; gap: 10px; margin-top: 14px; }
+    .list span { position: relative; padding-left: 17px; color: #4f5c55; font-size: 16px; line-height: 1.5; }
+    .list span::before { position: absolute; top: 9px; left: 0; width: 6px; height: 6px; border-radius: 50%; background: currentColor; content: ""; }
+    .arrow { color: #28362e; font-size: 30px; text-align: center; }
+    .core { display: grid; place-content: center; width: 340px; height: 340px; border: 2px solid #56836a; border-radius: 50%; background: radial-gradient(circle, #eff8f1 0 62%, #fff 63%); box-shadow: 0 0 0 12px #edf5ef; text-align: center; }
+    .core .tag { color: #2e7250; }
+    .core h2 { margin: 10px 0 16px; font-family: "SimSun", serif; font-size: 30px; }
+    .core-grid { display: grid; grid-template-columns: repeat(2, 118px); gap: 8px; justify-content: center; }
+    .core-grid span { padding: 10px 6px; border: 1px solid #a8c3b1; border-radius: 8px; background: #fff; color: #4a5d51; font-size: 14px; }
+    .branch { display: grid; gap: 115px; color: #28362e; font-size: 30px; text-align: center; }
+    .supports { display: grid; gap: 22px; }
+    .supports .node { min-height: 205px; }
+    .result { position: absolute; right: 280px; bottom: -44px; display: grid; grid-template-columns: 150px 1fr 110px; gap: 18px; align-items: center; width: 660px; padding: 17px 22px; border: 2px solid #e79889; border-radius: 16px; background: #fff2ef; }
+    .result .tag { color: #a64e40; }
+    .result strong { font-family: "SimSun", serif; font-size: 21px; }
+    .result small { color: #75645f; font-size: 13px; text-align: right; }
+    .foot { display: flex; justify-content: space-between; margin-top: 42px; color: #707b74; font-size: 14px; }
+    .foot strong { color: #27804c; }
+  </style>
+</head>
+<body>
+  <main class="poster">
+    <span class="serial">FUNCTIONAL ARCHITECTURE / v0.2</span>
+    <header class="header">
+      <div class="kicker">HUMAN–AI COLLABORATION SYSTEM</div>
+      <h1>一张图讲清 <em>AI 智能助手</em> 如何完成一次协作</h1>
+      <p class="subtitle">用户控制方向，任务编排负责推进，工具与上下文提供支撑，安全控制贯穿全过程</p>
+    </header>
+
+    <section class="diagram">
+      <div class="user"><span class="tag">USER</span><strong>用户</strong><small>提出目标 · 确认计划 · 判断结果</small></div>
+      <div class="line-user"></div>
+
+      <div class="boundary">
+        <header class="control">
+          <span class="tag">安全控制面</span>
+          <div class="control-items"><span>权限确认</span><span>失败恢复</span><span>行为审计</span></div>
+        </header>
+
+        <div class="flow">
+          <section class="node experience">
+            <header class="node-head"><span class="tag">EXPERIENCE</span><h2>用户交互层</h2></header>
+            <div class="list"><span>目标输入</span><span>计划确认</span><span>过程反馈</span><span>结果呈现</span></div>
+          </section>
+
+          <div class="arrow">↔</div>
+
+          <section class="core">
+            <span class="tag">CORE ENGINE</span>
+            <h2>任务编排层</h2>
+            <div class="core-grid"><span>意图理解</span><span>计划拆解</span><span>状态管理</span><span>结果整合</span></div>
+          </section>
+
+          <div class="branch"><span>↗</span><span>↘</span></div>
+
+          <div class="supports">
+            <section class="node tools">
+              <header class="node-head"><span class="tag">ACTION</span><h2>工具能力层</h2></header>
+              <div class="list"><span>网页研究</span><span>文档处理</span><span>知识检索</span></div>
+            </section>
+            <section class="node context">
+              <header class="node-head"><span class="tag">CONTEXT</span><h2>上下文数据层</h2></header>
+              <div class="list"><span>项目记忆</span><span>来源引用</span><span>执行记录</span></div>
+            </section>
+          </div>
+        </div>
+      </div>
+
+      <div class="result"><span class="tag">OUTPUT</span><strong>可追踪、可确认、可继续的协作结果</strong><small>返回用户判断</small></div>
+    </section>
+
+    <footer class="foot"><span><strong>关键关系：</strong>编排层连接用户意图、工具行动与长期上下文。</span><span>竹青小筑 · AI Systems</span></footer>
+  </main>
+</body>
+</html>

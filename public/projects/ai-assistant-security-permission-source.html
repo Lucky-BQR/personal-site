@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; width: 1600px; height: 1100px; overflow: hidden; background: #fff; }
+    body { color: #18211d; font-family: "Microsoft YaHei", "PingFang SC", sans-serif; }
+    .poster { position: relative; width: 1600px; height: 1100px; padding: 62px 78px 42px; background: linear-gradient(180deg, #fff 0%, #fbfcfa 100%); }
+    .poster::before { position: absolute; inset: 24px; border: 1px solid #dce5df; content: ""; pointer-events: none; }
+    .serial { position: absolute; top: 48px; right: 62px; color: #76917f; font: 600 14px/1.2 "Courier New", monospace; letter-spacing: 2px; }
+    .header { text-align: center; }
+    .kicker { color: #557762; font: 700 15px/1.2 "Courier New", monospace; letter-spacing: 3px; }
+    h1 { margin: 14px 0 0; font-family: "SimSun", serif; font-size: 51px; line-height: 1.15; letter-spacing: -2px; }
+    h1 em { color: #27804c; font-style: normal; }
+    .subtitle { margin-top: 11px; color: #77817b; font-size: 17px; }
+    .diagram { width: 1440px; margin: 26px auto 0; }
+    .tag { font: 700 11px/1.2 "Courier New", monospace; letter-spacing: 1.2px; }
+
+    .scope { display: grid; grid-template-columns: 180px repeat(4, 1fr) 280px; align-items: center; min-height: 76px; border: 2px dashed #8aa995; border-radius: 17px; background: #f3f9f4; overflow: hidden; }
+    .scope > span { padding-left: 22px; color: #36704d; }
+    .scope article { display: grid; gap: 5px; padding: 12px 18px; border-left: 1px solid #cbdccf; }
+    .scope article b { color: #2f6c48; font: 700 11px/1.2 "Courier New", monospace; }
+    .scope article strong { font-family: "SimSun", serif; font-size: 17px; }
+    .scope > strong { padding-right: 22px; color: #304b39; font-family: "SimSun", serif; font-size: 18px; text-align: right; }
+
+    .decision { position: relative; display: grid; grid-template-columns: 205px 44px 255px 44px 255px 44px 205px 44px 354px; align-items: center; min-height: 210px; margin-top: 14px; }
+    .node { min-height: 140px; padding: 15px 18px; border: 2px solid; border-radius: 18px; background: #fff; }
+    .node .tag { display: block; margin-bottom: 8px; }
+    .node strong { display: block; font-family: "SimSun", serif; font-size: 22px; }
+    .node p { margin: 9px 0 0; color: #5d6962; font-size: 13px; line-height: 1.65; }
+    .proposal { border-color: #8bbfe2; background: #f2f8fd; }
+    .proposal .tag, .inspect .tag { color: #347aa7; }
+    .inspect { border-color: #8bbfe2; background: #f5fafd; }
+    .policy { border-color: #b39bd1; background: #faf7ff; }
+    .policy .tag { color: #7656a0; }
+    .gate { display: grid; place-content: center; width: 184px; height: 184px; margin: 0 auto; border: 2px solid #dfb55e; background: #fff8e8; box-shadow: 0 0 0 7px #fffaf0; text-align: center; transform: rotate(45deg); }
+    .gate > div { width: 130px; transform: rotate(-45deg); }
+    .gate .tag { color: #9a691e; }
+    .gate strong { display: block; margin-top: 7px; font-family: "SimSun", serif; font-size: 21px; }
+    .arrow { position: relative; height: 2px; background: #26352d; }
+    .arrow::after { position: absolute; top: -5px; right: 0; width: 10px; height: 10px; border-top: 2px solid #26352d; border-right: 2px solid #26352d; content: ""; transform: rotate(45deg); }
+    .outcomes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .outcome { min-height: 140px; padding: 13px 14px; border: 2px solid; border-radius: 16px; text-align: center; }
+    .outcome span { display: block; margin-bottom: 9px; font: 700 11px/1.2 "Courier New", monospace; letter-spacing: 1px; }
+    .outcome strong { display: block; font-family: "SimSun", serif; font-size: 20px; }
+    .outcome p { margin: 9px 0 0; font-size: 12px; line-height: 1.55; }
+    .auto { border-color: #73ad84; background: #eff9ef; }
+    .auto span { color: #277449; }
+    .confirm { border-color: #dfb55e; background: #fff9ed; }
+    .confirm span { color: #9a691e; }
+    .deny { border-color: #df9486; background: #fff2ef; }
+    .deny span { color: #a64e40; }
+    .audit-note { position: absolute; right: 0; bottom: -3px; display: flex; align-items: center; gap: 9px; color: #66736b; font-size: 12px; }
+    .audit-note::before { width: 70px; height: 1px; background: #8c9d93; content: ""; }
+    .audit-note b { color: #27804c; font: 700 11px/1.2 "Courier New", monospace; }
+
+    .matrix { margin-top: 10px; border: 2px solid #cbd8d0; border-radius: 18px; overflow: hidden; }
+    .matrix-head, .risk-row { display: grid; grid-template-columns: 130px 260px 1fr 280px; }
+    .matrix-head { min-height: 38px; color: #607068; background: #f4f7f5; font: 700 11px/1.2 "Courier New", monospace; letter-spacing: 1px; }
+    .matrix-head span { display: grid; place-content: center start; padding: 0 18px; }
+    .matrix-head span + span { border-left: 1px solid #d5dfd9; }
+    .risk-row { min-height: 65px; border-top: 1px solid #d5dfd9; }
+    .risk-row > * { display: grid; align-content: center; padding: 10px 18px; }
+    .risk-row > * + * { border-left: 1px solid #d5dfd9; }
+    .level { gap: 3px; }
+    .level b { font: 700 15px/1.2 "Courier New", monospace; }
+    .level strong { font-family: "SimSun", serif; font-size: 16px; }
+    .examples { color: #4f5e56; font-size: 13px; line-height: 1.55; }
+    .decision-text strong { font-family: "SimSun", serif; font-size: 17px; }
+    .decision-text span { margin-top: 4px; color: #6c7871; font-size: 12px; line-height: 1.45; }
+    .guard { color: #5e6b64; font-size: 12px; line-height: 1.5; }
+    .l0 { background: #f1f9f3; } .l0 .level b, .l0 .decision-text strong { color: #277449; }
+    .l1 { background: #f5faf6; } .l1 .level b, .l1 .decision-text strong { color: #3f7954; }
+    .l2 { background: #fffaf0; } .l2 .level b, .l2 .decision-text strong { color: #9a691e; }
+    .l3 { background: #fff5f2; } .l3 .level b, .l3 .decision-text strong { color: #a64e40; }
+    .l4 { background: #f6f3f3; } .l4 .level b, .l4 .decision-text strong { color: #7f4b45; }
+
+    .baseline { display: grid; grid-template-columns: 190px repeat(6, 1fr); align-items: stretch; min-height: 72px; margin-top: 12px; border: 2px dashed #9f88c0; border-radius: 16px; background: #faf7ff; overflow: hidden; }
+    .baseline > span { display: grid; align-content: center; padding-left: 20px; color: #72549a; }
+    .baseline article { display: grid; place-content: center; gap: 5px; padding: 10px 12px; border-left: 1px solid #d8cde5; text-align: center; }
+    .baseline article b { color: #7656a0; font: 700 11px/1.2 "Courier New", monospace; }
+    .baseline article strong { font-family: "SimSun", serif; font-size: 15px; }
+    .foot { display: flex; justify-content: space-between; margin-top: 8px; color: #707b74; font-size: 13px; }
+    .foot strong { color: #27804c; }
+  </style>
+</head>
+<body>
+  <main class="poster">
+    <span class="serial">SECURITY &amp; PERMISSION MODEL / v0.1</span>
+    <header class="header">
+      <div class="kicker">SCOPE · RISK · CONSENT · AUDIT</div>
+      <h1>一张图讲清 <em>AI 智能助手</em> 何时可以行动，何时必须停下</h1>
+      <p class="subtitle">权限不是一次授权后永久放行；每次操作都要结合身份、动作、资源、时间与真实外部影响重新判断</p>
+    </header>
+
+    <section class="diagram">
+      <section class="scope">
+        <span class="tag">PERMISSION SCOPE</span>
+        <article><b>WHO</b><strong>谁发起</strong></article>
+        <article><b>WHAT</b><strong>做什么</strong></article>
+        <article><b>WHERE</b><strong>作用于何处</strong></article>
+        <article><b>WHEN</b><strong>有效到何时</strong></article>
+        <strong>工具可用 ≠ 本次操作已获授权</strong>
+      </section>
+
+      <section class="decision">
+        <article class="node proposal"><span class="tag">01 · PROPOSE</span><strong>提出动作</strong><p>明确工具、目标对象、具体内容与预期副作用。</p></article>
+        <div class="arrow"></div>
+        <article class="node inspect"><span class="tag">02 · INSPECT</span><strong>识别真实影响</strong><p>检查敏感数据、外部接收者、可逆性、费用和影响范围。</p></article>
+        <div class="arrow"></div>
+        <article class="node policy"><span class="tag">03 · EVALUATE</span><strong>评估权限策略</strong><p>合并任务范围、用户设置、临时授权与禁止规则。</p></article>
+        <div class="arrow"></div>
+        <div class="gate"><div><span class="tag">DECISION GATE</span><strong>允许怎样继续？</strong></div></div>
+        <div class="arrow"></div>
+        <div class="outcomes">
+          <article class="outcome auto"><span>AUTO</span><strong>自动执行</strong><p>低风险且处于已授权范围</p></article>
+          <article class="outcome confirm"><span>CONFIRM</span><strong>请求确认</strong><p>展示对象、内容和影响后再执行</p></article>
+          <article class="outcome deny"><span>DENY</span><strong>拒绝执行</strong><p>越权、禁止或无法建立安全边界</p></article>
+        </div>
+        <div class="audit-note"><b>ALWAYS</b><span>决定、执行结果与失败原因进入审计记录</span></div>
+      </section>
+
+      <section class="matrix">
+        <header class="matrix-head"><span>RISK LEVEL</span><span>典型动作</span><span>系统决定</span><span>必须存在的控制</span></header>
+        <div class="risk-row l0"><div class="level"><b>L0</b><strong>只读观察</strong></div><div class="examples">搜索、阅读、检索个人知识、总结资料</div><div class="decision-text"><strong>范围内自动执行</strong><span>不产生外部副作用，不改变用户数据</span></div><div class="guard">来源引用 · 数据最小化 · 查询范围限制</div></div>
+        <div class="risk-row l1"><div class="level"><b>L1</b><strong>低风险可逆</strong></div><div class="examples">生成草稿、整理本地内容、创建未共享文档</div><div class="decision-text"><strong>按计划或用户设置执行</strong><span>结果可预览，并且能够撤销或恢复</span></div><div class="guard">预览 · 快照 · 撤销 · 幂等标识</div></div>
+        <div class="risk-row l2"><div class="level"><b>L2</b><strong>对外代表用户</strong></div><div class="examples">发送、发布、分享、邀请、创建外部预约</div><div class="decision-text"><strong>行动时明确确认</strong><span>确认必须指向本次具体内容和接收对象</span></div><div class="guard">对象 + 内容 + 渠道 · 单次授权 · 结果回执</div></div>
+        <div class="risk-row l3"><div class="level"><b>L3</b><strong>高影响或敏感</strong></div><div class="examples">删除数据、改变权限、外发敏感资料、运行高风险操作</div><div class="decision-text"><strong>强确认或交由用户完成</strong><span>默认不批量、不扩大范围，不保存长期凭证</span></div><div class="guard">二次检查 · 最小范围 · 恢复方案 · 用户接管</div></div>
+        <div class="risk-row l4"><div class="level"><b>L4</b><strong>禁止边界</strong></div><div class="examples">绕过安全限制、泄露凭证、隐蔽冒充、无范围批量操作</div><div class="decision-text"><strong>直接拒绝</strong><span>说明边界，且不触发任何工具调用</span></div><div class="guard">拒绝原因 · 安全替代方案 · 异常审计</div></div>
+      </section>
+
+      <section class="baseline">
+        <span class="tag">SECURITY BASELINE</span>
+        <article><b>01</b><strong>最小权限</strong></article>
+        <article><b>02</b><strong>即时确认</strong></article>
+        <article><b>03</b><strong>目的限定</strong></article>
+        <article><b>04</b><strong>默认可恢复</strong></article>
+        <article><b>05</b><strong>全程可追踪</strong></article>
+        <article><b>06</b><strong>随时可撤销</strong></article>
+      </section>
+    </section>
+
+    <footer class="foot"><span><strong>原则：</strong>系统拥有的能力越强，越需要更小的默认权限、更具体的确认和更完整的执行证据。</span><span>竹青小筑 · AI Systems</span></footer>
+  </main>
+</body>
+</html>

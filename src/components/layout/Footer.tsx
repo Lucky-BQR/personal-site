@@ -1,21 +1,22 @@
+'use client';
+
 import Link from 'next/link';
+import { useLanguage } from '@/components/language/LanguageProvider';
+import { siteConfig } from '@/data/site';
 
 export default function Footer() {
+  const { t } = useLanguage();
+
   return (
-    <footer className="mt-auto">
-      <div className="h-px" style={{ background: `linear-gradient(to right, transparent 0%, var(--color-glassBorder) 50%, transparent 100%)` }} />
-      <div className="max-w-5xl mx-auto px-6 py-8">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <p className="text-[11px]" style={{ color: 'var(--color-textMuted)' }}>
-            竹青小筑 © {new Date().getFullYear()}
-          </p>
-          <nav aria-label="页脚内容导航" className="flex items-center gap-3 text-[11px]" style={{ color: 'var(--color-textMuted)' }}>
-            <Link href="/garden" className="transition-opacity hover:opacity-70">花园</Link>
-            <Link href="/topics" className="transition-opacity hover:opacity-70">主题索引</Link>
-            <Link href="/knowledge" className="transition-opacity hover:opacity-70">知识网络</Link>
-            <span>Built with Next.js</span>
-          </nav>
-        </div>
+    <footer className="site-minimal-footer">
+      <div className="site-minimal-footer-inner">
+        <p>{siteConfig.title} © {new Date().getFullYear()}</p>
+        <nav aria-label={t('minimal', 'footer_navigation')}>
+          <Link href="/projects">{t('minimal', 'projects')}</Link>
+          <Link href="/garden">{t('minimal', 'notes')}</Link>
+          <Link href="/guanwo/zhongyi">{t('nav', 'tcm')}</Link>
+          <Link href="/about">{t('minimal', 'about')}</Link>
+        </nav>
       </div>
     </footer>
   );

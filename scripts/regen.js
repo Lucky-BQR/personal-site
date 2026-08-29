@@ -10,7 +10,7 @@ const modules = [
   { href: '/about', icon: '👤', label: '关于我', desc: '经历、技能与价值观', span: true },
   { href: '/projects', icon: '💻', label: '项目', desc: '用技术解决问题' },
   { href: '/blog', icon: '✍️', label: '博客', desc: '技术与生活思考' },
-  { href: '/guanwo', icon: '💡', label: '观我', desc: '哲学、中医、书法' },
+  { href: '/guanwo', icon: '💡', label: '观我', desc: '哲学、医学、书法' },
   { href: '/pinjian', icon: '🖌️', label: '品鉴', desc: '书法、诗歌、曲艺' },
   { href: '/garden', icon: '🌱', label: '花园', desc: '读书与技术笔记' },
   { href: '/pets', icon: '🐾', label: '宠物', desc: '毛孩子日常' },
@@ -29,7 +29,7 @@ export default function HomePage() {
             白清如
           </h1>
           <p className="text-[15px] max-w-[32rem] mb-10" style={{ color: 'var(--color-textSecondary)', lineHeight: 1.75, letterSpacing: '-0.008em' }}>
-            探索技术，热爱创新，也热爱生活本身。工作之余研习中国哲学、中医与书法，在思考与实践中寻找平衡。相信技术的尽头是人文，创新的源泉是生活。
+            探索技术，热爱创新，也热爱生活本身。工作之余研习中国哲学、医学与书法，在思考与实践中寻找平衡。相信技术的尽头是人文，创新的源泉是生活。
           </p>
           <div className="flex flex-wrap gap-3">
             <Link href="/about" className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl font-medium text-[13px] transition-all duration-200" style={{ backgroundColor: 'var(--color-accent)', color: '#ffffff', boxShadow: '0 1px 3px rgba(90,122,74,0.2), 0 1px 2px rgba(90,122,74,0.15)' }}>
@@ -171,7 +171,7 @@ export default function BlogPage() {
 files['src/app/guanwo/page.tsx'] = `import Link from 'next/link';
 const modules = [
   { href: '/guanwo/yishu', icon: '💡', label: '哲学', desc: '中西哲学、思维方法、人生智慧。含读书笔记。' },
-  { href: '/guanwo/zhongyi', icon: '🌿', label: '中医', desc: '阴阳五行、经络藏象、本草方剂的学习笔记。' },
+  { href: '/guanwo/zhongyi', icon: '🌿', label: '医学', desc: '阴阳五行、经络藏象、本草方剂的学习笔记。' },
   { href: '/guanwo/shufa', icon: '🖊️', label: '书法', desc: '临池学书，墨香为伴。习字心得与作品记录。' },
 ];
 export default function GuanwoPage() {
@@ -212,7 +212,7 @@ export default function PinjianPage() {
 }`;
 
 // Subpages (smaller titles)
-files['src/app/guanwo/zhongyi/page.tsx'] = subPageTemplate('中医', '🌿', '/guanwo', '阴阳五行、经络藏象、本草方剂——学习与实践的记录。');
+files['src/app/guanwo/zhongyi/page.tsx'] = subPageTemplate('医学', '🌿', '/guanwo', '阴阳五行、经络藏象、本草方剂——学习与实践的记录。');
 files['src/app/guanwo/shufa/page.tsx'] = subPageTemplate('书法', '🖊️', '/guanwo', '临池学书，墨香为伴。习字心得与作品记录。');
 files['src/app/pinjian/shufa/page.tsx'] = subPageTemplate('书法赏析', '🖌️', '/pinjian', '古帖临习心得、名家作品赏析、书论研究。');
 files['src/app/pinjian/poetry/page.tsx'] = subPageTemplate('诗歌文学', '📜', '/pinjian', '诗词文章、文学评论、原创文字。');

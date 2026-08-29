@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; width: 1600px; height: 1100px; overflow: hidden; background: #fff; }
+    body { color: #18211d; font-family: "Microsoft YaHei", "PingFang SC", sans-serif; }
+    .poster { position: relative; width: 1600px; height: 1100px; padding: 62px 78px 42px; background: linear-gradient(180deg, #fff 0%, #fbfcfa 100%); }
+    .poster::before { position: absolute; inset: 24px; border: 1px solid #dce5df; content: ""; pointer-events: none; }
+    .serial { position: absolute; top: 48px; right: 62px; color: #76917f; font: 600 14px/1.2 "Courier New", monospace; letter-spacing: 2px; }
+    .header { text-align: center; }
+    .kicker { color: #557762; font: 700 15px/1.2 "Courier New", monospace; letter-spacing: 3px; }
+    h1 { margin: 14px 0 0; font-family: "SimSun", serif; font-size: 53px; line-height: 1.15; letter-spacing: -2px; }
+    h1 em { color: #27804c; font-style: normal; }
+    .subtitle { margin-top: 11px; color: #77817b; font-size: 17px; }
+    .diagram { position: relative; width: 1440px; height: 780px; margin: 26px auto 0; }
+    .tag { font: 700 11px/1.2 "Courier New", monospace; letter-spacing: 1.2px; }
+
+    .entity { position: absolute; z-index: 2; overflow: hidden; border: 2px solid; border-radius: 17px; background: #fff; box-shadow: 0 8px 24px rgba(39, 61, 48, 0.045); }
+    .entity header { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 13px 16px 11px; border-bottom: 1px solid; }
+    .entity header strong { font-family: "SimSun", serif; font-size: 20px; }
+    .entity header .tag { flex: 0 0 auto; }
+    .fields { display: grid; gap: 4px; padding: 10px 15px 12px; }
+    .field { display: grid; grid-template-columns: 37px 1fr; gap: 7px; color: #536159; font: 12px/1.35 "Microsoft YaHei", sans-serif; }
+    .field b { color: #7f8d84; font: 700 10px/1.35 "Courier New", monospace; }
+    .field b.pk { color: #27804c; }
+    .field b.fk { color: #8d6aaa; }
+    .field em { color: #8a9690; font-style: normal; }
+
+    .ownership { border-color: #8bbfe2; background: #f4f9fd; }
+    .ownership header { border-color: #c7dfef; background: #eaf5fc; }
+    .ownership .tag { color: #347aa7; }
+    .core { border-color: #73ad84; background: #f1f9f3; }
+    .core header { border-color: #bad7c1; background: #e8f5eb; }
+    .core .tag { color: #277449; }
+    .control { border-color: #dfb55e; background: #fffaf0; }
+    .control header { border-color: #ecd39b; background: #fff5df; }
+    .control .tag { color: #9a691e; }
+    .knowledge { border-color: #b39bd1; background: #fbf8ff; }
+    .knowledge header { border-color: #d6c8e5; background: #f4effb; }
+    .knowledge .tag { color: #7656a0; }
+    .audit { border-color: #df9486; background: #fff5f2; }
+    .audit header { border-color: #edc2b9; background: #ffebe7; }
+    .audit .tag { color: #a64e40; }
+    .focus { box-shadow: 0 0 0 7px #edf7ef, 0 14px 36px rgba(39, 89, 58, 0.11); }
+
+    .user { top: 10px; left: 0; width: 230px; height: 165px; }
+    .project { top: 10px; left: 292px; width: 255px; height: 165px; }
+    .task { top: 0; left: 625px; width: 285px; height: 185px; }
+    .step { top: 10px; left: 995px; width: 260px; height: 165px; }
+    .toolrun { top: 10px; right: 0; width: 155px; height: 165px; }
+    .conversation { top: 260px; left: 0; width: 230px; height: 165px; }
+    .message { top: 260px; left: 292px; width: 255px; height: 165px; }
+    .approval { top: 260px; left: 625px; width: 285px; height: 165px; }
+    .resource { top: 510px; left: 0; width: 255px; height: 165px; }
+    .citation { top: 510px; left: 322px; width: 255px; height: 165px; }
+    .memory { top: 510px; left: 655px; width: 310px; height: 165px; }
+    .audit-event { top: 510px; right: 0; width: 365px; height: 165px; }
+
+    .line { position: absolute; z-index: 1; background: #26352d; }
+    .line.dashed { background: none; border-color: #718d7a; border-style: dashed; }
+    .h { height: 2px; }
+    .v { width: 2px; }
+    .h.arrow::after { position: absolute; top: -5px; right: 0; width: 10px; height: 10px; border-top: 2px solid #26352d; border-right: 2px solid #26352d; content: ""; transform: rotate(45deg); }
+    .v.arrow::after { position: absolute; right: -5px; bottom: 0; width: 10px; height: 10px; border-right: 2px solid #26352d; border-bottom: 2px solid #26352d; content: ""; transform: rotate(45deg); }
+    .relation { position: absolute; z-index: 3; padding: 2px 6px; border: 1px solid #d8e2dc; border-radius: 999px; color: #516259; background: #fff; font: 700 10px/1.2 "Courier New", monospace; }
+
+    .user-project { top: 91px; left: 230px; width: 62px; }
+    .project-task { top: 91px; left: 547px; width: 78px; }
+    .task-step { top: 91px; left: 910px; width: 85px; }
+    .step-tool { top: 91px; left: 1255px; width: 30px; }
+    .rel-user-project { top: 78px; left: 246px; }
+    .rel-project-task { top: 78px; left: 570px; }
+    .rel-task-step { top: 78px; left: 936px; }
+    .rel-step-tool { top: 78px; left: 1261px; }
+
+    .project-conv-a { top: 175px; left: 418px; height: 42px; }
+    .project-conv-b { top: 215px; left: 114px; width: 306px; }
+    .project-conv-c { top: 215px; left: 114px; height: 45px; }
+    .rel-project-conv { top: 204px; left: 245px; }
+    .conv-message { top: 341px; left: 230px; width: 62px; }
+    .rel-conv-message { top: 328px; left: 246px; }
+
+    .message-task-a { top: 341px; left: 547px; width: 42px; }
+    .message-task-b { top: 183px; left: 587px; height: 159px; }
+    .message-task-c { top: 183px; left: 587px; width: 38px; }
+    .rel-message-task { top: 328px; left: 554px; }
+    .task-approval { top: 185px; left: 767px; height: 75px; }
+    .rel-task-approval { top: 211px; left: 776px; }
+    .step-toolrun { top: 175px; left: 1124px; height: 85px; }
+    .toolrun-placeholder { position: absolute; top: 260px; left: 995px; width: 445px; min-height: 165px; padding: 18px 20px; border: 2px dashed #73ad84; border-radius: 17px; background: #f5faf6; }
+    .toolrun-placeholder .tag { color: #277449; }
+    .toolrun-placeholder h2 { margin: 8px 0 7px; font-family: "SimSun", serif; font-size: 22px; }
+    .toolrun-placeholder p { margin: 0; color: #5c6a61; font-size: 13px; line-height: 1.65; }
+    .toolrun-placeholder .mini { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; margin-top: 12px; }
+    .toolrun-placeholder .mini span { padding: 7px 5px; border: 1px solid #bfdbc7; border-radius: 7px; background: #fff; color: #526158; font-size: 11px; text-align: center; }
+    .rel-step-execution { top: 205px; left: 1133px; }
+
+    .project-resource-a { top: 175px; left: 478px; height: 290px; }
+    .project-resource-b { top: 463px; left: 127px; width: 353px; }
+    .project-resource-c { top: 463px; left: 127px; height: 47px; }
+    .rel-project-resource { top: 451px; left: 274px; }
+    .resource-citation { top: 591px; left: 255px; width: 67px; }
+    .rel-resource-citation { top: 578px; left: 270px; }
+    .citation-message-a { top: 425px; left: 449px; height: 85px; }
+    .rel-citation-message { top: 458px; left: 458px; }
+
+    .task-memory-a { top: 185px; left: 851px; height: 283px; }
+    .task-memory-b { top: 466px; left: 810px; width: 43px; }
+    .task-memory-c { top: 466px; left: 810px; height: 44px; }
+    .rel-task-memory { top: 452px; left: 821px; }
+    .audit-spine { top: 467px; left: 1080px; width: 182px; border-top-width: 2px; }
+    .audit-down { top: 467px; left: 1260px; height: 43px; border-left-width: 2px; }
+    .rel-audit { top: 453px; left: 1130px; }
+
+    .legend { position: absolute; right: 0; bottom: 1px; left: 0; display: grid; grid-template-columns: 210px 1fr 1fr 1fr; align-items: center; min-height: 76px; padding: 12px 20px; border: 2px dashed #92a69a; border-radius: 16px; background: #f7faf8; }
+    .legend .tag { color: #557762; }
+    .legend div { display: flex; align-items: center; justify-content: center; gap: 8px; color: #58665e; font-size: 13px; }
+    .legend div + div { border-left: 1px solid #d5dfd9; }
+    .legend b { font-family: "Courier New", monospace; font-size: 11px; }
+    .legend .pk { color: #27804c; }
+    .legend .fk { color: #7656a0; }
+    .legend strong { color: #304b39; font-family: "SimSun", serif; font-size: 16px; }
+    .foot { display: flex; justify-content: space-between; margin-top: 11px; color: #707b74; font-size: 14px; }
+    .foot strong { color: #27804c; }
+  </style>
+</head>
+<body>
+  <main class="poster">
+    <span class="serial">CORE DATA MODEL / v0.1</span>
+    <header class="header">
+      <div class="kicker">ENTITY · RELATION · TRACEABILITY</div>
+      <h1>一张图讲清 <em>AI 智能助手</em> 的核心数据模型</h1>
+      <p class="subtitle">项目组织长期工作，任务承载目标，步骤和工具执行推进过程；资料、记忆与审计保留可追踪上下文</p>
+    </header>
+
+    <section class="diagram">
+      <article class="entity ownership user"><header><strong>用户</strong><span class="tag">USER</span></header><div class="fields"><div class="field"><b class="pk">PK</b><span>id</span></div><div class="field"><b></b><span>profile · locale</span></div><div class="field"><b></b><span>timezone · settings</span></div></div></article>
+      <article class="entity ownership project"><header><strong>项目</strong><span class="tag">PROJECT</span></header><div class="fields"><div class="field"><b class="pk">PK</b><span>id</span></div><div class="field"><b class="fk">FK</b><span>owner_id</span></div><div class="field"><b></b><span>title · status</span></div><div class="field"><b></b><span>summary · created_at</span></div></div></article>
+      <article class="entity core focus task"><header><strong>任务</strong><span class="tag">TASK</span></header><div class="fields"><div class="field"><b class="pk">PK</b><span>id</span></div><div class="field"><b class="fk">FK</b><span>project_id · parent_task_id</span></div><div class="field"><b></b><span>goal · status · plan_version</span></div><div class="field"><b></b><span>checkpoint_id · timestamps</span></div></div></article>
+      <article class="entity core step"><header><strong>任务步骤</strong><span class="tag">TASK_STEP</span></header><div class="fields"><div class="field"><b class="pk">PK</b><span>id</span></div><div class="field"><b class="fk">FK</b><span>task_id</span></div><div class="field"><b></b><span>sequence · type · status</span></div><div class="field"><b></b><span>input · output · retry_count</span></div></div></article>
+      <article class="entity core toolrun"><header><strong>执行</strong><span class="tag">RUN</span></header><div class="fields"><div class="field"><b class="pk">PK</b><span>id</span></div><div class="field"><b class="fk">FK</b><span>step_id</span></div><div class="field"><b></b><span>tool_key</span></div><div class="field"><b></b><span>status · error</span></div></div></article>
+
+      <article class="entity ownership conversation"><header><strong>会话</strong><span class="tag">CONVERSATION</span></header><div class="fields"><div class="field"><b class="pk">PK</b><span>id</span></div><div class="field"><b class="fk">FK</b><span>project_id · task_id</span></div><div class="field"><b></b><span>title · status</span></div><div class="field"><b></b><span>created_at</span></div></div></article>
+      <article class="entity ownership message"><header><strong>消息</strong><span class="tag">MESSAGE</span></header><div class="fields"><div class="field"><b class="pk">PK</b><span>id</span></div><div class="field"><b class="fk">FK</b><span>conversation_id</span></div><div class="field"><b></b><span>role · content</span></div><div class="field"><b></b><span>created_at</span></div></div></article>
+      <article class="entity control approval"><header><strong>确认记录</strong><span class="tag">APPROVAL</span></header><div class="fields"><div class="field"><b class="pk">PK</b><span>id</span></div><div class="field"><b class="fk">FK</b><span>task_id · step_id</span></div><div class="field"><b></b><span>action_type · payload_hash</span></div><div class="field"><b></b><span>decision · decided_at</span></div></div></article>
+      <section class="toolrun-placeholder"><span class="tag">TOOL EXECUTION DETAIL</span><h2>工具执行记录属于具体步骤</h2><p>每次调用都保存请求、结果、错误和幂等标识，不把“工具能力”与某次“执行事实”混为一张表。</p><div class="mini"><span>request</span><span>result</span><span>idempotency_key</span><span>started / ended</span></div></section>
+
+      <article class="entity knowledge resource"><header><strong>资料</strong><span class="tag">RESOURCE</span></header><div class="fields"><div class="field"><b class="pk">PK</b><span>id</span></div><div class="field"><b class="fk">FK</b><span>project_id</span></div><div class="field"><b></b><span>type · uri / storage_key</span></div><div class="field"><b></b><span>checksum · metadata</span></div></div></article>
+      <article class="entity knowledge citation"><header><strong>引用</strong><span class="tag">CITATION</span></header><div class="fields"><div class="field"><b class="pk">PK</b><span>id</span></div><div class="field"><b class="fk">FK</b><span>resource_id</span></div><div class="field"><b class="fk">FK</b><span>message_id / run_id</span></div><div class="field"><b></b><span>locator · excerpt</span></div></div></article>
+      <article class="entity knowledge memory"><header><strong>记忆条目</strong><span class="tag">MEMORY_ITEM</span></header><div class="fields"><div class="field"><b class="pk">PK</b><span>id</span></div><div class="field"><b class="fk">FK</b><span>owner / project / source_task</span></div><div class="field"><b></b><span>kind · content · scope</span></div><div class="field"><b></b><span>status · expires_at</span></div></div></article>
+      <article class="entity audit audit-event"><header><strong>审计事件</strong><span class="tag">AUDIT_EVENT</span></header><div class="fields"><div class="field"><b class="pk">PK</b><span>id</span></div><div class="field"><b></b><span>actor · event_type</span></div><div class="field"><b></b><span>entity_type · entity_id</span></div><div class="field"><b></b><span>before / after · created_at</span></div></div></article>
+
+      <div class="line h arrow user-project"></div><div class="relation rel-user-project">1 : N</div>
+      <div class="line h arrow project-task"></div><div class="relation rel-project-task">1 : N</div>
+      <div class="line h arrow task-step"></div><div class="relation rel-task-step">1 : N</div>
+      <div class="line h arrow step-tool"></div><div class="relation rel-step-tool">1 : N</div>
+      <div class="line v project-conv-a"></div><div class="line h project-conv-b"></div><div class="line v arrow project-conv-c"></div><div class="relation rel-project-conv">1 : N</div>
+      <div class="line h arrow conv-message"></div><div class="relation rel-conv-message">1 : N</div>
+      <div class="line h message-task-a"></div><div class="line v message-task-b"></div><div class="line h arrow message-task-c"></div><div class="relation rel-message-task">N : 1</div>
+      <div class="line v arrow task-approval"></div><div class="relation rel-task-approval">1 : N</div>
+      <div class="line v arrow step-toolrun"></div><div class="relation rel-step-execution">1 : N</div>
+      <div class="line v project-resource-a"></div><div class="line h project-resource-b"></div><div class="line v arrow project-resource-c"></div><div class="relation rel-project-resource">1 : N</div>
+      <div class="line h arrow resource-citation"></div><div class="relation rel-resource-citation">1 : N</div>
+      <div class="line v arrow citation-message-a"></div><div class="relation rel-citation-message">N : 1</div>
+      <div class="line v task-memory-a"></div><div class="line h task-memory-b"></div><div class="line v arrow task-memory-c"></div><div class="relation rel-task-memory">1 : N</div>
+      <div class="line dashed audit-spine"></div><div class="line dashed audit-down"></div><div class="relation rel-audit">STATE CHANGES</div>
+
+      <section class="legend"><span class="tag">RELATION LEGEND</span><div><b class="pk">PK</b><span>主键：实体自身标识</span></div><div><b class="fk">FK</b><span>外键：连接另一个实体</span></div><div><strong>1 : N</strong><span>一个对象拥有多个子对象</span></div></section>
+    </section>
+
+    <footer class="foot"><span><strong>边界：</strong>这是产品级逻辑模型；字段会在实现阶段补充类型、索引、约束与数据保留策略。</span><span>竹青小筑 · AI Systems</span></footer>
+  </main>
+</body>
+</html>

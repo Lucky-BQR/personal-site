@@ -2,6 +2,22 @@ import TopicLinks from '@/components/knowledge/TopicLinks';
 import type { KnowledgeTopic } from '@/lib/knowledge';
 import type { TimelineEntry } from '@/types/timeline';
 
-export default function TimelineNode({ entry, index, topics = [] }: { entry: TimelineEntry; index: number; topics?: KnowledgeTopic[] }) {
-  return <article id={entry.slug} className="relative scroll-mt-24 pl-8 sm:pl-12 pb-12 last:pb-0 motion-reveal" style={{ animationDelay: `${index * 80}ms` }}><span className="absolute left-0 top-1.5 h-3 w-3 rounded-full border-2" style={{ backgroundColor: 'var(--color-background)', borderColor: 'var(--color-accent)' }} /><div className="flex flex-wrap items-baseline gap-x-4 gap-y-1 mb-2"><time className="type-meta" style={{ color: 'var(--color-accent)' }}>{entry.year}</time><span className="card-meta">{entry.phase}</span></div><h2 className="type-heading mb-2">{entry.title}</h2><p className="type-body" style={{ color: 'var(--color-textSecondary)' }}>{entry.excerpt}</p><TopicLinks topics={topics} className="mt-4" /></article>;
+export default function TimelineNode({ entry, index, isLatest = false, topics = [] }: { entry: TimelineEntry; index: number; isLatest?: boolean; topics?: KnowledgeTopic[] }) {
+  return (
+    <article id={entry.slug} className={`timeline-node motion-reveal${isLatest ? ' is-latest' : ''}`} style={{ animationDelay: `${index * 80}ms` }} role="listitem">
+      <div className="timeline-node-card">
+        <div className="timeline-node-meta">
+          <span>{isLatest ? 'Latest Chapter' : 'Chapter'}</span>
+          <span>{String(index + 1).padStart(2, '0')}</span>
+        </div>
+        <p className="timeline-node-phase">{entry.phase}</p>
+        <h3>{entry.title}</h3>
+        <p className="timeline-node-excerpt">{entry.excerpt}</p>
+        <TopicLinks topics={topics} className="timeline-node-topics" />
+      </div>
+      <div className="timeline-node-marker" aria-hidden="true" />
+      <time dateTime={entry.year}>{entry.year}</time>
+      <span className="timeline-node-caption">{isLatest ? '正在发生' : '成长节点'}</span>
+    </article>
+  );
 }

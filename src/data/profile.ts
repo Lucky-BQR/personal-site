@@ -37,9 +37,9 @@ export interface Profile {
 export const profile: Profile = {
   name: '白清如',
   nickname: '竹青',
-  title: '技术创造者 · 数字空间构建者',
+  title: '数字空间实践者',
   tagline: '在代码、知识与东方智慧之间，构建属于未来的数字空间。',
-  bio: `白清如（Selene Bai）是一名技术创造者，关注软件工程、人工智能与数字产品的设计和实践。
+  bio: `白清如（Selene Bai）长期关注软件工程、人工智能与数字产品的设计和实践。
 她也持续探索东方思想，思考技术、知识与东方智慧之间的连接，并以此构建面向未来的数字空间。`,
   location: '中国',
   avatar: '/images/avatar.jpg',

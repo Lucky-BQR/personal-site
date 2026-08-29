@@ -1,0 +1,298 @@
+.figure {
+  margin-top: 2.25rem;
+}
+
+.trigger {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  cursor: zoom-in;
+  text-align: inherit;
+}
+
+.frame {
+  display: block;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: #ffffff;
+  box-shadow: 0 1.25rem 4rem rgba(25, 42, 32, 0.08);
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.trigger:hover .frame {
+  border-color: color-mix(in srgb, var(--color-accent) 45%, var(--color-border));
+  box-shadow: 0 1.45rem 4.5rem rgba(25, 42, 32, 0.13);
+  transform: translateY(-2px);
+}
+
+.trigger:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 5px;
+  border-radius: var(--radius-lg);
+}
+
+.zoomHint {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 2.2rem;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  color: #ffffff;
+  background: rgba(18, 40, 29, 0.88);
+  box-shadow: 0 0.5rem 1.5rem rgba(14, 30, 22, 0.18);
+  backdrop-filter: blur(8px);
+  font-family: var(--font-geist-sans), sans-serif;
+  font-size: 0.7rem;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+}
+
+.zoomHint span {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.caption {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.25rem;
+  margin-top: 0.85rem;
+  color: var(--color-textMuted);
+  font-size: 0.6rem;
+  line-height: 1.65;
+}
+
+.caption span {
+  flex: 0 0 auto;
+  color: var(--color-accent);
+  font-family: var(--font-geist-mono), monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.caption p {
+  text-align: right;
+}
+
+.dialog {
+  width: 100vw;
+  max-width: none;
+  height: 100vh;
+  height: 100dvh;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: #f4f6f4;
+  background: #111713;
+}
+
+.dialog::backdrop {
+  background: rgba(7, 11, 8, 0.94);
+}
+
+.viewer {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  width: 100%;
+  height: 100%;
+}
+
+.toolbar {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  min-height: 4.5rem;
+  padding: 0.7rem 1rem 0.7rem 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(17, 23, 19, 0.96);
+  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.24);
+}
+
+.viewerTitle {
+  display: grid;
+  min-width: 0;
+  gap: 0.15rem;
+}
+
+.viewerTitle span {
+  color: #8fb39b;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.12em;
+}
+
+.viewerTitle strong {
+  overflow: hidden;
+  color: #f4f6f4;
+  font-size: 0.8rem;
+  font-weight: 550;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.zoomControls {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex: 0 0 auto;
+}
+
+.zoomControls button,
+.zoomControls a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.5rem;
+  min-height: 2.5rem;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 0.55rem;
+  color: #eef3ef;
+  background: rgba(255, 255, 255, 0.06);
+  font: inherit;
+  font-size: 0.7rem;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.zoomControls button:hover,
+.zoomControls a:hover {
+  border-color: rgba(156, 199, 171, 0.55);
+  background: rgba(143, 179, 155, 0.14);
+}
+
+.zoomControls button:focus-visible,
+.zoomControls a:focus-visible {
+  outline: 2px solid #9cc7ab;
+  outline-offset: 2px;
+}
+
+.zoomControls button:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.zoomControls output {
+  min-width: 3.5rem;
+  color: #cbd7ce;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.65rem;
+  text-align: center;
+}
+
+.zoomControls .closeButton {
+  margin-left: 0.35rem;
+  color: #14251b;
+  background: #dbeade;
+}
+
+.stage {
+  overflow: auto;
+  overscroll-behavior: contain;
+  background:
+    radial-gradient(circle at 50% 20%, rgba(65, 91, 73, 0.32), transparent 42rem),
+    #0b0f0c;
+  scrollbar-color: #526458 #151c17;
+}
+
+.canvas {
+  display: flex;
+  align-items: safe center;
+  justify-content: safe center;
+  min-width: 100%;
+  min-height: 100%;
+  width: max-content;
+  padding: 1.5rem;
+}
+
+.fullImage {
+  display: block;
+  max-width: none;
+  flex: 0 0 auto;
+  background: #ffffff;
+  box-shadow: 0 1.5rem 5rem rgba(0, 0, 0, 0.42);
+  transition: width 140ms ease, height 140ms ease;
+}
+
+@media (max-width: 640px) {
+  .frame {
+    border-radius: var(--radius-md);
+  }
+
+  .caption {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .caption p {
+    text-align: left;
+  }
+
+  .zoomHint {
+    right: 0.65rem;
+    bottom: 0.65rem;
+    min-height: 2rem;
+    padding: 0.35rem 0.6rem;
+    font-size: 0.62rem;
+  }
+
+  .toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.55rem;
+    padding: 0.7rem;
+  }
+
+  .viewerTitle {
+    width: 100%;
+  }
+
+  .zoomControls {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 0.15rem;
+  }
+
+  .zoomControls button,
+  .zoomControls a {
+    min-height: 2.75rem;
+    white-space: nowrap;
+  }
+
+  .canvas {
+    padding: 0.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .frame,
+  .fullImage {
+    transition: none;
+  }
+}
