@@ -21,6 +21,16 @@ function clampZoom(value: number) {
   return Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, value));
 }
 
+function withBasePath(src: string) {
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
+
+  if (!basePath || !src.startsWith('/') || src.startsWith(`${basePath}/`)) {
+    return src;
+  }
+
+  return `${basePath}${src}`;
+}
+
 export default function ZoomablePoster({
   src,
   alt,
@@ -31,6 +41,7 @@ export default function ZoomablePoster({
 }: ZoomablePosterProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [zoom, setZoom] = useState(1);
+  const imageSrc = withBasePath(src);
 
   function fitToScreen() {
     const horizontalSpace = Math.max(window.innerWidth - 48, 240);
@@ -63,7 +74,7 @@ export default function ZoomablePoster({
       >
         <span className={styles.frame}>
           <Image
-            src={src}
+            src={imageSrc}
             alt={alt}
             width={width}
             height={height}
@@ -119,7 +130,7 @@ export default function ZoomablePoster({
               >
                 ＋
               </button>
-              <a href={src} target="_blank" rel="noreferrer">
+              <a href={imageSrc} target="_blank" rel="noreferrer">
                 查看原图
               </a>
               <button type="button" className={styles.closeButton} onClick={closeViewer}>
@@ -132,7 +143,7 @@ export default function ZoomablePoster({
             <div className={styles.canvas}>
               <Image
                 className={styles.fullImage}
-                src={src}
+                src={imageSrc}
                 alt={alt}
                 width={width}
                 height={height}
