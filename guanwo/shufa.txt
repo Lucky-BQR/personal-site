@@ -1,8 +1,8 @@
 1:"$Sreact.fragment"
-9:I[68027,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3epa9iw12to2z.js"],"default",1]
-:HL["/personal-site/_next/static/chunks/1bqzqwoa610vt.css","style"]
-:HL["/personal-site/_next/static/media/797e433ab948586e-s.p.0r6juujl39pe6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-:HL["/personal-site/_next/static/media/caa3a2e1cccd8315-s.p.0wgildi0cnwt9.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+9:I[68027,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/1t2-njap-o4go.js"],"default",1]
+:HL["/personal-site/_next/static/chunks/1havfdirpqths.css","style"]
+:HL["/personal-site/_next/static/media/geist_latin-s.p.0wgildi0cnwt9.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/personal-site/_next/static/media/geist_mono_latin-s.p.0r6juujl39pe6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 2:T1823,
               (function() {
                 try {
@@ -119,30 +119,27 @@
                 } catch(e) {}
               })();
             7:X
-0:{"P":null,"c":["","guanwo","shufa"],"q":"","i":false,"f":[[["",{"children":["guanwo",{"children":["shufa",{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/personal-site/_next/static/chunks/1bqzqwoa610vt.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/personal-site/_next/static/chunks/3epa9iw12to2z.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable h-full","suppressHydrationWarning":true,"children":[["$","head",null,{"children":["$","script",null,{"dangerouslySetInnerHTML":{"__html":"$2"}}]}],"$L3"]}]]}],{"children":["$L4",{"children":["$L5",{"children":["$L6",{},null,false,null]},null,false,"$7"]},null,false,"$7"]},null,false,null],"$L8",false]],"m":"$undefined","G":["$9",["$La"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"jUOXvz2As57jbu-lcmBUg"}
-b:I[65150,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3epa9iw12to2z.js"],"ThemeProvider"]
-c:I[5233,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3epa9iw12to2z.js"],"LanguageProvider"]
-d:I[3374,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3epa9iw12to2z.js"],"default"]
-e:I[39756,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3epa9iw12to2z.js"],"default"]
-f:I[37457,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3epa9iw12to2z.js"],"default"]
-10:I[58234,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3epa9iw12to2z.js"],"default"]
-11:I[48559,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3epa9iw12to2z.js"],"default"]
-12:I[47257,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3epa9iw12to2z.js"],"ClientPageRoot"]
-13:I[65049,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3epa9iw12to2z.js","/personal-site/_next/static/chunks/3msku6qxziazk.js"],"default"]
-16:I[97367,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3epa9iw12to2z.js"],"OutletBoundary"]
-17:"$Sreact.suspense"
-19:I[97367,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3epa9iw12to2z.js"],"ViewportBoundary"]
-1b:I[97367,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3epa9iw12to2z.js"],"MetadataBoundary"]
+0:{"P":null,"c":["","guanwo","shufa"],"q":"","i":false,"f":[[["",{"children":["guanwo",{"children":["shufa",{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/personal-site/_next/static/chunks/1havfdirpqths.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/personal-site/_next/static/chunks/1t2-njap-o4go.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","className":"geistsans_c4c1ab9-module__8HqI_G__variable geistmono_3afd0436-module__SyuElG__variable h-full","suppressHydrationWarning":true,"children":[["$","head",null,{"children":["$","script",null,{"dangerouslySetInnerHTML":{"__html":"$2"}}]}],"$L3"]}]]}],{"children":["$L4",{"children":["$L5",{"children":["$L6",{},null,false,null]},null,false,"$7"]},null,false,"$7"]},null,false,null],"$L8",false]],"m":"$undefined","G":["$9",["$La"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"NktK756hy3NhEatvr3q5E"}
+b:I[65150,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/1t2-njap-o4go.js"],"ThemeProvider"]
+c:I[5233,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/1t2-njap-o4go.js"],"LanguageProvider"]
+d:I[3374,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/1t2-njap-o4go.js"],"default"]
+e:I[39756,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/1t2-njap-o4go.js"],"default"]
+f:I[37457,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/1t2-njap-o4go.js"],"default"]
+10:I[58234,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/1t2-njap-o4go.js"],"default"]
+11:I[48559,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/1t2-njap-o4go.js"],"default"]
+12:I[22016,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/1t2-njap-o4go.js"],""]
+13:I[97367,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/1t2-njap-o4go.js"],"OutletBoundary"]
+14:"$Sreact.suspense"
+16:I[97367,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/1t2-njap-o4go.js"],"ViewportBoundary"]
+18:I[97367,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/1t2-njap-o4go.js"],"MetadataBoundary"]
 3:["$","body",null,{"className":"min-h-full flex flex-col antialiased transition-colors duration-300","style":{"backgroundColor":"var(--color-bg)","color":"var(--color-text)"},"children":["$","$Lb",null,{"children":["$","$Lc",null,{"children":[["$","$Ld",null,{}],["$","main",null,{"className":"flex-1 animate-fade-in","children":["$","$Le",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$Lf",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$L10",null,{}],["$","$L11",null,{}]]}]}]}]
 4:["$","$1","c",{"children":[null,["$","$Le",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$Lf",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
 5:["$","$1","c",{"children":[null,["$","$Le",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$Lf",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
-6:["$","$1","c",{"children":[["$","$L12",null,{"Component":"$13","serverProvidedParams":{"searchParams":{},"params":{},"promises":["$@14","$@15"]}}],[["$","script","script-0",{"src":"/personal-site/_next/static/chunks/3msku6qxziazk.js","async":true,"nonce":"$undefined"}]],["$","$L16",null,{"children":["$","$17",null,{"name":"Next.MetadataOutlet","children":"$@18"}]}]]}]
-8:["$","$1","h",{"children":[null,["$","$L19",null,{"children":"$L1a"}],["$","div",null,{"hidden":true,"children":["$","$L1b",null,{"children":["$","$17",null,{"name":"Next.Metadata","children":"$L1c"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]
-a:["$","link","0",{"rel":"stylesheet","href":"/personal-site/_next/static/chunks/1bqzqwoa610vt.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
+6:["$","$1","c",{"children":[["$","div",null,{"className":"container-main spatial-section","children":[["$","header",null,{"className":"page-heading","children":[["$","nav",null,{"className":"page-path","aria-label":"页面路径","children":[["$","$L12",null,{"href":"/life","children":["← ","生活"]}],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","span",null,{"children":"书法"}]]}],"$undefined",["$","h1",null,{"className":"type-heading-xl","children":"书法"}],["$","p",null,{"className":"type-body mt-4","children":"临帖、日常习字与自己的作品。"}]]}],"$undefined",["$","p",null,{"className":"empty-note","children":"还没有公开的习字作品。等下一次落笔，再留下记录。"}]]}],null,["$","$L13",null,{"children":["$","$14",null,{"name":"Next.MetadataOutlet","children":"$@15"}]}]]}]
+8:["$","$1","h",{"children":[null,["$","$L16",null,{"children":"$L17"}],["$","div",null,{"hidden":true,"children":["$","$L18",null,{"children":["$","$14",null,{"name":"Next.Metadata","children":"$L19"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]
+a:["$","link","0",{"rel":"stylesheet","href":"/personal-site/_next/static/chunks/1havfdirpqths.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
 7:C
-14:{}
-15:"$6:props:children:0:props:serverProvidedParams:params"
-1a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
-1d:I[27201,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3epa9iw12to2z.js"],"IconMark"]
-18:null
-1c:[["$","title","0",{"children":"竹青小筑 — 技术与生活交织的个人花园"}],["$","meta","1",{"name":"description","content":"探索技术、热爱创新、记录生活。关注编程、设计、古典文化与生活之美。"}],["$","link","2",{"rel":"icon","href":"/personal-site/favicon.ico?favicon.2vob68tjqpejf.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L1d","3",{}]]
+17:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+1a:I[27201,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/1t2-njap-o4go.js"],"IconMark"]
+15:null
+19:[["$","title","0",{"children":"竹青小筑 — 技术与生活交织的个人花园"}],["$","meta","1",{"name":"description","content":"探索技术、热爱创新、记录生活。关注编程、设计、古典文化与生活之美。"}],["$","link","2",{"rel":"icon","href":"/personal-site/favicon.ico?favicon.2vob68tjqpejf.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L1a","3",{}]]

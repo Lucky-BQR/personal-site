@@ -1,0 +1,147 @@
+1:"$Sreact.fragment"
+9:I[68027,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/1t2-njap-o4go.js"],"default",1]
+:HL["/personal-site/_next/static/chunks/1havfdirpqths.css","style"]
+:HL["/personal-site/_next/static/media/geist_latin-s.p.0wgildi0cnwt9.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/personal-site/_next/static/media/geist_mono_latin-s.p.0r6juujl39pe6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+2:T1823,
+              (function() {
+                try {
+                  var theme = localStorage.getItem('site-theme-v2') || 'zhuqing';
+                  document.documentElement.setAttribute('data-theme', theme);
+                  var language = localStorage.getItem('site-language') || 'zh';
+                  document.documentElement.setAttribute('lang', language === 'zh-TW' ? 'zh-Hant' : language);
+
+                  // Set CSS variables for the saved theme to avoid flash
+                  var themes = {
+                    zhuqing: {
+                      '--color-bg': '#f5f2ea',
+                      '--color-text': '#20251f',
+                      '--color-textSecondary': '#4f594c',
+                      '--color-textMuted': '#788073',
+                      '--color-accent': '#48684c',
+                      '--color-accentLight': 'rgba(72,104,76,0.09)',
+                      '--color-accentSubtle': 'rgba(72,104,76,0.045)',
+                      '--color-accentContrast': '#ffffff',
+                      '--color-border': 'rgba(66,88,65,0.14)',
+                      '--color-rule': 'rgba(72,104,76,0.22)',
+                      '--color-card': 'rgba(255,255,252,0.68)',
+                      '--color-cardHover': '#fffefa',
+                      '--color-bgSecondary': '#eeeee6',
+                      '--color-bgTertiary': '#e4e8de',
+                      '--color-navBg': 'rgba(245,242,234,0.9)',
+                      '--color-glass': 'rgba(245,242,234,0.86)',
+                      '--color-glassBorder': 'rgba(66,88,65,0.12)',
+                      '--color-terminal': '#1a2315',
+                      '--color-terminalText': '#b5cca0',
+                      '--color-tagBg': 'rgba(72,104,76,0.09)',
+                      '--color-tagText': '#38563d',
+                      '--color-accentHover': '#38563d'
+                    },
+                    moyun: {
+                      '--color-bg': '#171b18',
+                      '--color-text': '#dce3da',
+                      '--color-textSecondary': '#b3bcb0',
+                      '--color-textMuted': '#8f9a8d',
+                      '--color-accent': '#a7c3a8',
+                      '--color-accentLight': 'rgba(167,195,168,0.12)',
+                      '--color-accentSubtle': 'rgba(167,195,168,0.05)',
+                      '--color-accentContrast': '#172018',
+                      '--color-border': 'rgba(215,230,213,0.15)',
+                      '--color-rule': 'rgba(167,195,168,0.28)',
+                      '--color-card': '#202620',
+                      '--color-cardHover': '#293029',
+                      '--color-bgSecondary': '#202620',
+                      '--color-bgTertiary': '#293029',
+                      '--color-navBg': 'rgba(23,27,24,0.92)',
+                      '--color-glass': 'rgba(23,27,24,0.86)',
+                      '--color-glassBorder': 'rgba(215,230,213,0.14)',
+                      '--color-terminal': '#0e110f',
+                      '--color-terminalText': '#a7c3a8',
+                      '--color-tagBg': 'rgba(167,195,168,0.12)',
+                      '--color-tagText': '#b9d2ba',
+                      '--color-accentHover': '#b9d2ba'
+                    },
+                    subai: {
+                      '--color-bg': '#f7f7f4',
+                      '--color-text': '#202326',
+                      '--color-textSecondary': '#51575d',
+                      '--color-textMuted': '#7c8389',
+                      '--color-accent': '#4d5964',
+                      '--color-accentLight': 'rgba(77,89,100,0.09)',
+                      '--color-accentSubtle': 'rgba(77,89,100,0.04)',
+                      '--color-accentContrast': '#ffffff',
+                      '--color-border': 'rgba(32,35,38,0.14)',
+                      '--color-rule': 'rgba(77,89,100,0.22)',
+                      '--color-card': '#ffffff',
+                      '--color-cardHover': '#f2f3f1',
+                      '--color-bgSecondary': '#f0f0ed',
+                      '--color-bgTertiary': '#e7e8e5',
+                      '--color-navBg': 'rgba(247,247,244,0.92)',
+                      '--color-glass': 'rgba(247,247,244,0.88)',
+                      '--color-glassBorder': 'rgba(32,35,38,0.1)',
+                      '--color-terminal': '#202326',
+                      '--color-terminalText': '#d8e2d8',
+                      '--color-tagBg': 'rgba(77,89,100,0.09)',
+                      '--color-tagText': '#4d5964',
+                      '--color-accentHover': '#3f4a54'
+                    },
+                    qingci: {
+                      '--color-bg': '#e6eeea',
+                      '--color-text': '#20302c',
+                      '--color-textSecondary': '#49625c',
+                      '--color-textMuted': '#70847f',
+                      '--color-accent': '#4f7c72',
+                      '--color-accentLight': 'rgba(79,124,114,0.11)',
+                      '--color-accentSubtle': 'rgba(79,124,114,0.05)',
+                      '--color-accentContrast': '#f1f7f4',
+                      '--color-border': 'rgba(32,70,62,0.16)',
+                      '--color-rule': 'rgba(79,124,114,0.26)',
+                      '--color-card': 'rgba(241,247,244,0.74)',
+                      '--color-cardHover': '#f0f6f3',
+                      '--color-bgSecondary': '#dce8e3',
+                      '--color-bgTertiary': '#ceded7',
+                      '--color-navBg': 'rgba(230,238,234,0.92)',
+                      '--color-glass': 'rgba(230,238,234,0.88)',
+                      '--color-glassBorder': 'rgba(32,70,62,0.13)',
+                      '--color-terminal': '#1d2b27',
+                      '--color-terminalText': '#b7d2c8',
+                      '--color-tagBg': 'rgba(79,124,114,0.11)',
+                      '--color-tagText': '#416c63',
+                      '--color-accentHover': '#416c63'
+                    }
+                  };
+
+                  var vars = themes[theme] || themes.zhuqing;
+                  var root = document.documentElement;
+                  for (var key in vars) {
+                    root.style.setProperty(key, vars[key]);
+                  }
+                } catch(e) {}
+              })();
+            7:X
+0:{"P":null,"c":["","garden","hello-world"],"q":"","i":false,"f":[[["",{"children":["garden",{"children":[["slug","hello-world","d",[]],{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/personal-site/_next/static/chunks/1havfdirpqths.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/personal-site/_next/static/chunks/1t2-njap-o4go.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","className":"geistsans_c4c1ab9-module__8HqI_G__variable geistmono_3afd0436-module__SyuElG__variable h-full","suppressHydrationWarning":true,"children":[["$","head",null,{"children":["$","script",null,{"dangerouslySetInnerHTML":{"__html":"$2"}}]}],"$L3"]}]]}],{"children":["$L4",{"children":["$L5",{"children":["$L6",{},null,false,null]},null,false,"$7"]},null,false,"$7"]},null,false,null],"$L8",false]],"m":"$undefined","G":["$9",["$La"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"NktK756hy3NhEatvr3q5E"}
+b:I[65150,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/1t2-njap-o4go.js"],"ThemeProvider"]
+c:I[5233,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/1t2-njap-o4go.js"],"LanguageProvider"]
+d:I[3374,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/1t2-njap-o4go.js"],"default"]
+e:I[39756,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/1t2-njap-o4go.js"],"default"]
+f:I[37457,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/1t2-njap-o4go.js"],"default"]
+10:I[58234,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/1t2-njap-o4go.js"],"default"]
+11:I[48559,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/1t2-njap-o4go.js"],"default"]
+13:I[97367,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/1t2-njap-o4go.js"],"OutletBoundary"]
+14:"$Sreact.suspense"
+16:I[97367,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/1t2-njap-o4go.js"],"ViewportBoundary"]
+18:I[97367,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/1t2-njap-o4go.js"],"MetadataBoundary"]
+3:["$","body",null,{"className":"min-h-full flex flex-col antialiased transition-colors duration-300","style":{"backgroundColor":"var(--color-bg)","color":"var(--color-text)"},"children":["$","$Lb",null,{"children":["$","$Lc",null,{"children":[["$","$Ld",null,{}],["$","main",null,{"className":"flex-1 animate-fade-in","children":["$","$Le",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$Lf",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$L10",null,{}],["$","$L11",null,{}]]}]}]}]
+4:["$","$1","c",{"children":[null,["$","$Le",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$Lf",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+5:["$","$1","c",{"children":[null,["$","$Le",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$Lf",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+6:["$","$1","c",{"children":["$L12",[["$","script","script-0",{"src":"/personal-site/_next/static/chunks/1b_j4-typs_6z.js","async":true,"nonce":"$undefined"}]],["$","$L13",null,{"children":["$","$14",null,{"name":"Next.MetadataOutlet","children":"$@15"}]}]]}]
+8:["$","$1","h",{"children":[null,["$","$L16",null,{"children":"$L17"}],["$","div",null,{"hidden":true,"children":["$","$L18",null,{"children":["$","$14",null,{"name":"Next.Metadata","children":"$L19"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]
+a:["$","link","0",{"rel":"stylesheet","href":"/personal-site/_next/static/chunks/1havfdirpqths.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
+1a:I[22016,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/1t2-njap-o4go.js","/personal-site/_next/static/chunks/1b_j4-typs_6z.js"],""]
+7:C
+12:["$","article",null,{"className":"container-reading spatial-section","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"[{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"开始写博客了\",\"description\":\"第一篇博客，聊聊为什么要建立这个个人花园。\",\"datePublished\":\"2026-08-07\",\"author\":{\"@type\":\"Person\",\"name\":\"白清如\",\"url\":\"https://lucky-bqr.github.io/personal-site/about\"},\"url\":\"https://lucky-bqr.github.io/personal-site/garden/hello-world\"},{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"首页\",\"item\":\"https://lucky-bqr.github.io/personal-site/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"笔记\",\"item\":\"https://lucky-bqr.github.io/personal-site/garden\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"开始写博客了\",\"item\":\"https://lucky-bqr.github.io/personal-site/garden/hello-world\"}]}]"}}],["$","header",null,{"className":"page-heading","children":[["$","nav",null,{"className":"page-path","aria-label":"页面路径","children":[["$","$L1a",null,{"href":"/garden?category=reflection","children":["← ","生活感悟"]}],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","span",null,{"children":"开始写博客了"}]]}],"$undefined",["$","h1",null,{"className":"type-heading-xl","children":"开始写博客了"}],"$undefined"]}],["$","p",null,{"className":"article-date","children":[["$","time",null,{"dateTime":"2026-08-07","children":"2026-08-07"}]," · ","生活感悟"]}],["$","div",null,{"className":"prose-custom article-body","children":"$L1b"}],["$","$L1a",null,{"href":"/garden?category=reflection","className":"reading-back","children":["← 返回","生活感悟"]}]]}]
+1b:[["$","h2",null,{"children":"为什么要建这个网站"}],"\n",["$","p",null,{"children":"在信息爆炸的时代，我们被各种社交平台的算法和信息流冲刷。真正属于自己的数字空间越来越少。"}],"\n",["$","p",null,{"children":["这里是我的",["$","strong",null,{"children":"数字花园"}],"——不是修剪整齐的花坛，而是让想法自然生长的地方。"]}],"\n",["$","h3",null,{"children":"它会是什么样子"}],"\n",["$","ul",null,{"children":["\n",["$","li",null,{"children":"记录技术思考和工作项目"}],"\n",["$","li",null,{"children":"存放术数、医学、书法的学习笔记"}],"\n",["$","li",null,{"children":"随手记录一闪而过的灵感"}],"\n",["$","li",null,{"children":"分享读书观影的感悟"}],"\n",["$","li",null,{"children":"毛孩子的日常照片"}],"\n"]}],"\n",["$","blockquote",null,{"children":["\n",["$","p",null,{"children":"不求完美，但求真实。不求高产，但求持续。"}],"\n"]}],"\n",["$","p",null,{"children":"慢慢来，不着急。"}]]
+17:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+1c:I[27201,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/1t2-njap-o4go.js"],"IconMark"]
+15:null
+19:[["$","title","0",{"children":"开始写博客了 | 竹青小筑"}],["$","meta","1",{"name":"description","content":"第一篇博客，聊聊为什么要建立这个个人花园。"}],["$","meta","2",{"name":"author","content":"Selene Bai"}],["$","link","3",{"rel":"canonical","href":"https://lucky-bqr.github.io/personal-site/garden/hello-world"}],["$","meta","4",{"property":"og:title","content":"开始写博客了"}],["$","meta","5",{"property":"og:description","content":"第一篇博客，聊聊为什么要建立这个个人花园。"}],["$","meta","6",{"property":"og:url","content":"https://lucky-bqr.github.io/personal-site/garden/hello-world"}],["$","meta","7",{"property":"og:type","content":"article"}],["$","meta","8",{"property":"article:published_time","content":"2026-08-07"}],["$","meta","9",{"name":"twitter:card","content":"summary"}],["$","meta","10",{"name":"twitter:title","content":"开始写博客了"}],["$","meta","11",{"name":"twitter:description","content":"第一篇博客，聊聊为什么要建立这个个人花园。"}],["$","link","12",{"rel":"icon","href":"/personal-site/favicon.ico?favicon.2vob68tjqpejf.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L1c","13",{}]]
