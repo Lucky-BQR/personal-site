@@ -1,0 +1,27 @@
+.shortcuts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-bottom: 3.5rem; }
+.shortcuts > a { padding: 1.6rem; border: 1px solid var(--color-border); border-radius: .7rem; background: var(--color-card); min-width: 0; }
+.shortcuts > a:hover { border-color: var(--color-accent); }
+.shortcuts > .start { border-color: var(--color-accent); }
+.kicker { font-size: .8rem; color: var(--color-accent); }
+.shortcuts h2 { display: flex; justify-content: space-between; gap: 1rem; font-size: 1.3rem; font-weight: 600; margin: .7rem 0; }
+.shortcuts h2 span { color: var(--color-accent); }
+.shortcuts p { color: var(--color-textSecondary); font-size: .875rem; line-height: 1.9; }
+.sectionHeading { margin-bottom: 1.4rem; }
+.sectionHeading h2 { font-size: 1.25rem; font-weight: 600; }
+.sectionHeading p { margin-top: .5rem; color: var(--color-textMuted); font-size: .85rem; line-height: 1.8; }
+.recent { margin-bottom: 3.5rem; }
+.recentList { list-style: none; padding: 0; border-top: 1px solid var(--color-border); }
+.recentList a { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.2rem 0; border-bottom: 1px solid var(--color-border); }
+.recentList a > div { min-width: 0; }
+.recentList h3 { margin-top: .35rem; font-size: 1.05rem; overflow-wrap: anywhere; }
+.recentList a:hover h3 { color: var(--color-accent); }
+.meta { font-size: .8rem; color: var(--color-textMuted); }
+.continue { flex-shrink: 0; font-size: .85rem; color: var(--color-accent); }
+.empty { padding: 1.5rem 0; border-block: 1px solid var(--color-border); font-size: .9rem; color: var(--color-textMuted); line-height: 1.9; }
+.empty a, .empty button { display: inline-block; color: var(--color-accent); margin-top: .7rem; min-height: 44px; padding-block: .5rem; }
+@media (max-width: 680px) {
+  .shortcuts { grid-template-columns: 1fr; gap: .75rem; margin-bottom: 2.5rem; }
+  .shortcuts > a { padding: 1.2rem 1.3rem; }
+  .shortcuts h2 { font-size: 1.2rem; margin: .3rem 0; }
+  .recent { margin-bottom: 2.5rem; }
+}

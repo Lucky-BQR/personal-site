@@ -32,12 +32,12 @@ export default function MarkdownArticle({
           return defaultUrlTransform(url);
         }}
         components={{
-          img: ({ src, alt, title }) => createElement('img', {
+          img: ({ src, alt, title }) => src ? createElement('img', {
             src,
             alt: alt || '笔记图片',
             title,
             loading: 'lazy',
-          }),
+          }) : createElement('span', { role: 'status' }, '正在载入图片…'),
         }}
       >
         {content}
