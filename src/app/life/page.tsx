@@ -11,6 +11,7 @@ const sections = [
 export const metadata = { title: '生活' };
 export default function LifePage() {
   return <div className="container-main spatial-section"><PageHeading title="生活" description="日常有所记，心中有所爱。" eyebrow="EVERYDAY LIFE" />
+    <p className="text-links"><Link href="/life/review">每周回顾 →</Link><Link href="/life/drafts">文章草稿 · 从记录整理成文 →</Link></p>
     <div className="life-sections">{sections.map((section) => <Link key={section.href} href={section.href} className="life-section"><span className="life-mark" aria-hidden="true">{section.mark}</span><h2>{section.title}<span aria-hidden="true">↗</span></h2><p>{section.description}</p></Link>)}</div>
   </div>;
 }

@@ -21,7 +21,8 @@ async function load(file, imports = {}) {
   }, exports);
   return exports;
 }
-const records = await load('src/lib/life/records.ts');
+const weekly = await load('src/lib/life/weekly.ts');
+const records = await load('src/lib/life/records.ts', { './weekly': weekly });
 const backup = await load('src/lib/life/backup.ts', { './records': records });
 for (const category of Object.keys(records.lifeCategories)) {
   const record = { ...records.newRecord(category), title: '中文标题', content: '## 正文\n\n**记录**', url: 'https://example.com/me' };

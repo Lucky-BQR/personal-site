@@ -1,4 +1,5 @@
 import { legacyInspirations, validateRecord, type LifeRecord } from './records';
+import { articleFromRecord } from './articles';
 
 const DATABASE = 'zhuqing-life-notebook';
 const LEGACY_KEY = '***';
@@ -50,6 +51,31 @@ export async function saveRecord(record: LifeRecord, expectedRevision: string | 
     if (conflict) throw new Error('这条记录已在其他页面修改或删除。请先复制当前正文，再重新打开记录。');
     throw error;
   }
+}
+// The read and create share one transaction: two tabs cannot create two drafts
+// from the same source. Work with the latest saved source, not a stale UI copy.
+export async function getOrCreateArticle(sourceId: string): Promise<LifeRecord> {
+  const db = await connect();
+  const tx = db.transaction('records', 'readwrite');
+  const done = complete(tx, db);
+  const store = tx.objectStore('records');
+  let result: LifeRecord | undefined;
+  let failure: unknown;
+  store.getAll().onsuccess = event => {
+    try {
+      const records = (event.target as IDBRequest<LifeRecord[]>).result;
+      result = records.find(record => record.article?.sourceId === sourceId);
+      if (result) return;
+      const source = records.find(record => record.id === sourceId);
+      if (!source) throw new Error('原记录已被删除，请刷新列表。');
+      result = articleFromRecord(source);
+      validateRecord(result);
+      store.add(result);
+    } catch (error) { failure = error; tx.abort(); }
+  };
+  try { await done; } catch (error) { throw failure || error; }
+  if (!result) throw new Error('未能创建草稿，请重试。');
+  return result;
 }
 export async function deleteRecord(record: LifeRecord) {
   const db = await connect();

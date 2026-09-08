@@ -11,6 +11,8 @@
     "knowledge:sync": "node scripts/sync-knowledge.mjs",
     "site:verify": "node scripts/verify-site.mjs",
     "life:verify": "node scripts/test-life-records.mjs",
+    "articles:verify": "node scripts/test-article-drafts.mjs",
+    "weekly:verify": "node scripts/test-weekly-review.mjs",
     "phase5:verify": "node scripts/verify-phase5.mjs"
   },
   "dependencies": {

@@ -3,6 +3,7 @@ import type { ContentDocument, ContentMetadata } from './content';
 export type GardenCategory = 'technology' | 'reading' | 'reflection';
 
 export interface GardenMetadata extends ContentMetadata {
+  format?: 'mdx' | 'markdown';
   excerpt: string;
   date: string;
   category: GardenCategory;

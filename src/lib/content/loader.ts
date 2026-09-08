@@ -46,10 +46,16 @@ function parseRelations(value = ''): ContentRelation[] {
 export function parseFrontmatter(raw: string) {
   // Git checkouts on Windows may use CRLF; parse all content with LF line endings.
   const normalized = raw.replace(/\r\n?/g, '\n');
-  const [, frontmatter = '', content = ''] = normalized.split(/^---\s*$/m);
+  const match = /^---\s*\n([\s\S]*?)\n---[^\S\n]*(?:\n|$)([\s\S]*)$/.exec(normalized);
+  const [, frontmatter = '', content = ''] = match || [];
   const fields = Object.fromEntries(frontmatter.split('\n').flatMap((line) => {
     const match = line.match(/^([\w-]+):\s*(.*)$/);
-    return match ? [[match[1], match[2].trim().replace(/^['"]|['"]$/g, '')]] : [];
+    if (!match) return [];
+    const value = match[2].trim();
+    if (value.startsWith('"')) {
+      try { const parsed: unknown = JSON.parse(value); if (typeof parsed === 'string') return [[match[1], parsed]]; } catch { /* Legacy unescaped quoted values. */ }
+    }
+    return [[match[1], value.replace(/^['"]|['"]$/g, '')]];
   }));
   return { fields, content: content.trim() };
 }

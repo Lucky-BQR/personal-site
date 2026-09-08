@@ -4,9 +4,10 @@ import { isPublishedContent, loadContentDirectory } from './loader';
 
 const gardenDirectory = 'content/garden';
 
-function toGardenMetadata(metadata: ContentMetadata): GardenMetadata {
+function toGardenMetadata(metadata: ContentMetadata, fields: Record<string, string>): GardenMetadata {
   return {
     ...metadata,
+    format: fields.format === 'markdown' ? 'markdown' : 'mdx',
     title: metadata.title || 'Untitled thought',
     excerpt: metadata.excerpt || '',
     date: metadata.date || '',

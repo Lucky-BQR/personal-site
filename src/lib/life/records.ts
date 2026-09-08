@@ -1,3 +1,5 @@
+import { isWeekStart } from './weekly';
+
 export const lifeCategories = {
   appreciation: { title: '书法赏析', href: '/pinjian/shufa', description: '读帖、赏字，留下自己的体会。', parent: { href: '/pinjian', label: '品鉴' } },
   poetry: { title: '诗歌', href: '/pinjian/poetry', description: '读到的诗句，与自己的感受。', parent: { href: '/pinjian', label: '品鉴' } },
@@ -11,10 +13,17 @@ export const lifeCategories = {
 
 export type LifeCategory = keyof typeof lifeCategories;
 export interface LifeImage { id: string; name: string; blob: Blob }
+export interface ArticleDraft {
+  sourceId: string; sourceRevision: string; sourceTitle: string; sourceCategory: LifeCategory;
+  excerpt: string; category: '' | 'technology' | 'reading' | 'reflection'; date: string;
+  slug: string; exportedAt?: string;
+}
 export interface LifeRecord {
   id: string; category: LifeCategory; title: string; content: string;
   url: string; tags: string[]; status: 'draft' | 'finished';
   images: LifeImage[]; createdAt: string; updatedAt: string; revision: string;
+  article?: ArticleDraft;
+  reviewWeek?: string;
 }
 export const imageTypes = ['image/png', 'image/jpeg', 'image/webp', 'image/gif'];
 export function safeWebUrl(value: string) {
@@ -25,8 +34,8 @@ export function validateRecord(value: unknown): asserts value is LifeRecord {
   if (!value || typeof value !== 'object') throw new Error('记录格式不正确。');
   const r = value as LifeRecord;
   if (typeof r.id !== 'string' || !r.id || !Object.hasOwn(lifeCategories, r.category) ||
-    typeof r.title !== 'string' || !r.title.trim() || typeof r.content !== 'string' ||
-    typeof r.url !== 'string' || (r.url && !safeWebUrl(r.url)) ||
+    typeof r.title !== 'string' || (!r.title.trim() && !r.article) || typeof r.content !== 'string' ||
+    typeof r.url !== 'string' || (r.url && !r.article && !safeWebUrl(r.url)) ||
     !Array.isArray(r.tags) || !r.tags.every(tag => typeof tag === 'string') ||
     !['draft', 'finished'].includes(r.status) ||
     typeof r.createdAt !== 'string' || !Number.isFinite(Date.parse(r.createdAt)) ||
@@ -35,6 +44,21 @@ export function validateRecord(value: unknown): asserts value is LifeRecord {
     !r.images.every(i => i && typeof i.id === 'string' && /^[\w-]+$/.test(i.id) &&
       typeof i.name === 'string' && i.blob instanceof Blob && imageTypes.includes(i.blob.type))) {
     throw new Error('记录字段不完整，或链接、图片格式不受支持。');
+  }
+  if (r.article !== undefined) {
+    const a = r.article;
+    if (!a || typeof a !== 'object' || r.category !== 'writing' || typeof a.sourceId !== 'string' || !a.sourceId || a.sourceId === r.id ||
+      typeof a.sourceRevision !== 'string' || !a.sourceRevision || typeof a.sourceTitle !== 'string' ||
+      !Object.hasOwn(lifeCategories, a.sourceCategory) || typeof a.excerpt !== 'string' ||
+      !['', 'technology', 'reading', 'reflection'].includes(a.category) || typeof a.date !== 'string' ||
+      typeof a.slug !== 'string' || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(a.slug) ||
+      (a.exportedAt !== undefined && (typeof a.exportedAt !== 'string' || !Number.isFinite(Date.parse(a.exportedAt))))) {
+      throw new Error('文章草稿的来源或字段不正确。');
+    }
+  }
+  if (r.reviewWeek !== undefined && (!isWeekStart(r.reviewWeek) || r.category !== 'writing' ||
+    r.article !== undefined || r.id !== `weekly-${r.reviewWeek}`)) {
+    throw new Error('每周回顾的日期或编号不正确。');
   }
   if (new Set(r.images.map(i => i.id)).size !== r.images.length) throw new Error('图片编号重复。');
   for (const match of r.content.matchAll(/indexeddb:\/\/([\w-]+)/g)) {
@@ -47,6 +71,8 @@ export function newRecord(category: LifeCategory): LifeRecord {
     status: 'draft', images: [], createdAt: now, updatedAt: now, revision: crypto.randomUUID() };
 }
 export function recordHref(record: LifeRecord, edit = false) {
+  if (record.reviewWeek) return `/life/review?week=${record.reviewWeek}`;
+  if (record.article) return `/life/drafts?record=${encodeURIComponent(record.id)}`;
   return `${lifeCategories[record.category].href}?record=${encodeURIComponent(record.id)}${edit ? '&edit=1' : ''}`;
 }
 export function errorText(error: unknown) {

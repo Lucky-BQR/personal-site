@@ -5,7 +5,7 @@ import { useCallback, useEffect, useState } from 'react';
 import PageHeading from '@/components/layout/PageHeading';
 import { appreciationTabs } from '@/components/content/CollectionPage';
 import { downloadFile, errorText, fileTitle, lifeCategories, recordHref, type LifeCategory, type LifeRecord } from '@/lib/life/records';
-import { deleteRecord, importRecords, listRecords, migrateInspirations } from '@/lib/life/database';
+import { deleteRecord, getOrCreateArticle, importRecords, listRecords, migrateInspirations } from '@/lib/life/database';
 import { decodeBackup, encodeBackup, exportMarkdown } from '@/lib/life/backup';
 import RecordEditor from './RecordEditor';
 import RecordContent from './RecordContent';
@@ -47,11 +47,11 @@ export default function LifeNotebook({ category }: { category: LifeCategory }) {
     window.addEventListener('focus', reload);
     return () => window.removeEventListener('focus', reload);
   }, [editing, creating, refresh]);
-  const record = records.find(item => item.id === id && item.category === category);
-  const visible = records.filter(item => item.category === category &&
+  const record = records.find(item => item.id === id && item.category === category && !item.article && !item.reviewWeek);
+  const visible = records.filter(item => item.category === category && !item.article && !item.reviewWeek &&
     (status === 'all' || item.status === status) &&
     [item.title, item.content, item.url, ...item.tags].join(' ').toLocaleLowerCase().includes(query.trim().toLocaleLowerCase()));
-  const count = records.filter(item => item.category === category).length;
+  const count = records.filter(item => item.category === category && !item.article && !item.reviewWeek).length;
   async function run(action: () => Promise<void>) {
     if (busy) return;
     setBusy(true); setMessage('');
@@ -70,6 +70,9 @@ export default function LifeNotebook({ category }: { category: LifeCategory }) {
       record ? <>
         <div className={styles.toolbar}><span className={styles.muted}>更新于 {new Date(record.updatedAt).toLocaleString('zh-CN')}{category === 'writing' ? ' · ' + (record.status === 'draft' ? '草稿' : '定稿') : ''}</span>
           <div className={styles.actions}><Link href={recordHref(record, true)}>编辑</Link>
+            <button type="button" disabled={busy} onClick={() => void run(async () => {
+              const draft = await getOrCreateArticle(record.id); router.push(recordHref(draft));
+            })}>整理为文章 →</button>
             <button type="button" disabled={busy} onClick={() => void run(async () => { downloadFile(new Blob([await exportMarkdown(record)], { type: 'text/markdown;charset=utf-8' }), fileTitle(record.title) + '.md'); setMessage('已导出 Markdown，正文图片已包含在文件内。'); })}>导出 .md</button>
             <button type="button" onClick={() => setPendingDelete(record)}>删除</button>
           </div></div>
@@ -88,7 +91,7 @@ export default function LifeNotebook({ category }: { category: LifeCategory }) {
         </Link><div className={styles.actions}><Link href={recordHref(item, true)}>编辑</Link><button type="button" onClick={() => setPendingDelete(item)}>删除</button></div></div>)}</div>
         {!visible.length && <p className="empty-note">{count ? '没有找到匹配的记录，试试其他关键词。' : '还没有记录。从今天的一点想法开始。'}</p>}
         <details className={styles.backup}><summary>备份与导入</summary>
-          <p>备份包含全部生活栏目（含创作、链接）的文字与图片；中医笔记使用自己的备份入口。</p>
+          <p>备份包含全部生活栏目、文章草稿和每周回顾的文字与图片；中医笔记使用自己的备份入口。<Link href="/life/drafts">查看文章草稿 →</Link></p>
           <p>本机记录只保存在当前浏览器，清除网站数据会丢失。localhost 和线上网站的记录互相独立。</p>
           <div className={styles.actions}>
             <button type="button" disabled={busy} onClick={() => void run(async () => {

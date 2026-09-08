@@ -26,6 +26,10 @@ jobs:
       - run: npm ci --no-audit --no-fund
       - name: Verify local notebook data and backups
         run: npm run life:verify
+      - name: Verify article drafts and export
+        run: npm run articles:verify
+      - name: Verify weekly review
+        run: npm run weekly:verify
       - run: npx next build
         env:
           GITHUB_PAGES: 'true'
