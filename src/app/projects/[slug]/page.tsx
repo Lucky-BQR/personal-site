@@ -73,7 +73,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       </header>
 
 
-      <section className="project-summary"><h2>要解决的问题</h2><p>{project.challenge}</p><h2>设计方向</h2><p>{project.overview}</p><h2>当前进展</h2><p>{project.statusNote || project.stage}</p></section><details className="project-details"><summary>展开详细设计与实践记录</summary><div className="project-case-story">
+      <section className="project-summary"><h2>要解决的问题</h2><p>{project.challenge}</p><h2>设计方向</h2><p>{project.overview}</p><h2>当前进展</h2><p>{project.statusNote || project.stage}</p></section>
+      {project.slug === 'ai-assistant' ? <details className="project-details"><summary>展开详细设计与实践记录</summary><div className="project-case-story">
         <aside className="project-case-index" aria-label="案例章节">
           <p>Case Index</p>
           <nav>
@@ -155,7 +156,24 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           <ReflectionSection text={project.reflection} />
         </div>
       </div>
-      </details>
+      </details> : <div className="project-case-content">
+        {[
+          { id: 'users', title: '为谁而做', items: project.users },
+          { id: 'principles', title: '设计取舍', items: project.principles },
+          { id: 'architecture', title: '实现结构', items: project.architecture },
+          { id: 'workflow', title: '从记录到公开阅读', items: project.workflow },
+        ].filter(section => section.items.length).map((section, index) => (
+          <CaseStudySection key={section.id} id={section.id} number={String(index + 1).padStart(2, '0')} eyebrow="Practice" title={section.title}>
+            <ul>{section.items.map(item => <li key={item}>{item}</li>)}</ul>
+          </CaseStudySection>
+        ))}
+        <CaseStudySection id="reflection" number="05" eyebrow="Reflection" title="阶段反思">
+          <p>{project.reflection}</p>
+          {(project.relations ?? []).filter(relation => relation.target.kind === 'garden').map(relation => (
+            <p key={relation.target.slug}><Link href={`/garden/${relation.target.slug}`}>{relation.label || '阅读相关笔记'} →</Link></p>
+          ))}
+        </CaseStudySection>
+      </div>}
       <Link href="/projects" className="reading-back">← 返回项目</Link>
     </div>
   );

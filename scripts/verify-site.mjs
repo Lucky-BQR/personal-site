@@ -42,4 +42,12 @@ const article=await readFile(path.join(root,'garden/building-a-digital-garden.ht
 assert(!article.includes('智能推荐') && !article.includes('关联内容'),'Reader must not include duplicate recommendation blocks');
 const graph=JSON.parse(await readFile(path.join(root,'knowledge.json'),'utf8'));
 assert(graph.nodes.every(n=>n.title && n.status==='published'),'Only titled published content may be indexed');
+const siteCase=await readFile(path.join(root,'projects/zhuqing-studio.html'),'utf8');
+assert(siteCase.includes('从记录到公开阅读') && siteCase.includes('IndexedDB'),'Website case renders its own practice');
+assert(!siteCase.includes('让 AI 进入可执行工作流'),'Website case must not inherit AI assistant content');
+const aiCase=await readFile(path.join(root,'projects/ai-assistant.html'),'utf8');
+assert(aiCase.includes('让 AI 进入可执行工作流'),'AI assistant keeps its specialized case study');
+const home=await readFile(path.join(root,'index.html'),'utf8');
+assert(/<time\b[^>]*datetime="2026-09-08"/i.test(home) && home.includes('精选项目'),'Homepage shows dated status and curated project');
+assert(home.includes(base+'/garden/building-zhuqing-studio'),'Homepage exposes the new retrospective');
 console.log('PASS: ' + pages + ' pages, ' + links + ' internal links/assets, navigation, reading layout and knowledge index.');

@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useLanguage } from '@/components/language/LanguageProvider';
+import { now } from '@/data/now';
 
 interface FeaturedProject {
   slug: string;
@@ -24,7 +25,10 @@ export default function HomePageContent({
   project?: FeaturedProject;
   post?: FeaturedPost;
 }) {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
+  const updatedAt = new Intl.DateTimeFormat(lang, {
+    year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC',
+  }).format(new Date(`${now.updatedAt}T00:00:00Z`));
 
   return (
     <div className="home-onepage">
@@ -59,24 +63,24 @@ export default function HomePageContent({
               <span>{t('minimal', 'now_status')}</span>
             </div>
             <h2 id="home-now-title">{t('minimal', 'now')}</h2>
-            <time dateTime="2026-08">{t('minimal', 'now_period')}</time>
+            <time dateTime={now.updatedAt}>{t('minimal', 'updated_at')} · {updatedAt}</time>
           </div>
 
           <div className="home-now-list">
-            <Link href={project ? `/projects/${project.slug}` : '/projects'} className="home-now-item">
+            <Link href={now.creating.href} className="home-now-item">
               <span className="home-now-index">01</span>
               <span className="home-now-copy">
                 <span className="home-now-label">{t('minimal', 'now_creating')}</span>
-                <strong>{project?.title ?? t('minimal', 'now_creating_fallback')}</strong>
+                <strong>{now.creating.title}</strong>
               </span>
               <span className="home-now-arrow" aria-hidden="true">↗</span>
             </Link>
 
-            <Link href={post ? `/garden/${post.slug}` : '/garden'} className="home-now-item">
+            <Link href={now.learning.href} className="home-now-item">
               <span className="home-now-index">02</span>
               <span className="home-now-copy">
                 <span className="home-now-label">{t('minimal', 'now_learning')}</span>
-                <strong>{post?.title ?? t('minimal', 'now_learning_fallback')}</strong>
+                <strong>{now.learning.title}</strong>
               </span>
               <span className="home-now-arrow" aria-hidden="true">↗</span>
             </Link>
