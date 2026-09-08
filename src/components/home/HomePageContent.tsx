@@ -28,7 +28,7 @@ export default function HomePageContent({
 
   return (
     <div className="home-onepage">
-      <main className="home-onepage-main">
+      <div className="home-onepage-main">
         <section className="home-onepage-hero" aria-labelledby="home-title">
           <div>
             <p className="home-onepage-sign">SUMU · PERSONAL SITE</p>
@@ -124,7 +124,7 @@ export default function HomePageContent({
             </article>
           )}
         </section>
-      </main>
+      </div>
     </div>
   );
 }

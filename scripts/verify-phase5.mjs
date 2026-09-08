@@ -26,16 +26,13 @@ assert(new Set(knowledge.nodes.map((node) => node.id)).size === knowledge.nodes.
 
 const graphHtml = await readFile(join(output, 'knowledge.html'), 'utf8');
 assert(graphHtml.includes('知识网络') && graphHtml.includes('LOCAL INDEX'), 'The static knowledge graph fallback is missing.');
-assert(graphHtml.includes('href="/personal-site/knowledge"'), 'The knowledge route must preserve the GitHub Pages basePath.');
+assert(graphHtml.includes('href="/personal-site/garden"'), 'The knowledge route must preserve the GitHub Pages basePath.');
 for (const node of knowledge.nodes) assert(graphHtml.includes(node.title), `Knowledge graph is missing node: ${node.id}`);
 assert((graphHtml.match(/<main/g) || []).length === 1, 'Knowledge page must have one main landmark.');
 
-for (const kind of ['garden', 'project']) {
-  const node = knowledge.nodes.find((candidate) => candidate.kind === kind);
-  if (!node) continue;
-  const detailHtml = await readFile(join(output, `${node.route.replace(/^\//, '')}.html`), 'utf8');
-  assert(detailHtml.includes('智能推荐'), `${kind} detail must include the recommendation fallback.`);
-  assert(detailHtml.includes('基于站内主题与关系'), `${kind} detail must disclose local fallback mode.`);
+for (const node of knowledge.nodes.filter((item) => item.kind === 'garden' || item.kind === 'project')) {
+  const detailHtml = await readFile(join(output, node.route.slice(1) + '.html'), 'utf8');
+  assert(detailHtml.includes(node.title), 'Indexed content must have a readable detail page: ' + node.id);
 }
 
 const sitemap = await readFile(join(output, 'sitemap.xml'), 'utf8');
@@ -54,4 +51,4 @@ for (const path of publicArtifacts) {
   assert(!content.includes('KNOWLEDGE_SYNC_SECRET'), `Knowledge sync secret name leaked into ${path}.`);
 }
 
-console.log(`Phase 5 verification passed: ${knowledge.nodes.length} published nodes, static graph fallback, recommendations, RLS migration, and secret boundary.`);
+console.log(`Phase 5 verification passed: ${knowledge.nodes.length} published nodes, static graph fallback, indexed detail pages, RLS migration, and secret boundary.`);

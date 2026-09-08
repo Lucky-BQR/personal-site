@@ -258,24 +258,24 @@ export default function TcmNotebook() {
   return (
     <div className={styles.page}>
       <header className={styles.hero}>
-        <Link href="/guanwo" className={styles.backLink}>{t('common', 'back_home')}</Link>
+        <Link href="/garden" className={styles.backLink}>← {t('minimal', 'notes')}</Link>
         <div className={styles.heroGrid}>
           <div>
             <p className={styles.eyebrow}>东方医理 · 学习札记</p>
             <h1>{t('guanwo', 'tcm')}笔记</h1>
-            <p className={styles.intro}>先按书籍建立知识脉络，再在每本书下积累独立笔记。点击文章进入阅读页，只有明确点击“编辑”才会修改内容。</p>
+            <p className={styles.intro}>按书籍整理学习记录，慢慢积累自己的理解。</p>
           </div>
           <div className={styles.heroAside} aria-label="笔记保存说明">
             <span className={styles.seal} aria-hidden="true">记</span>
             <div>
               <strong>{loading ? '正在读取…' : `${books.length} 本 · ${notes.length} 篇`}</strong>
-              <span>本地数据库 · 完全免费</span>
+              <span>本机笔记 · 不自动公开</span>
             </div>
           </div>
         </div>
       </header>
 
-      <main className={styles.workspace}>
+      <div className={styles.workspace}>
         <section className={styles.cloudPanel} aria-label="本地数据保护">
           <div className={styles.cloudCopy}>
             <span className={styles.cloudDot} data-active={persistent} aria-hidden="true" />
@@ -328,7 +328,7 @@ export default function TcmNotebook() {
                 event.target.value = '';
               }}
             />
-            <Link className={styles.primaryButton} href={newArticleHref}><span aria-hidden="true">＋</span>新建文章</Link>
+            <Link className={styles.primaryButton} href={newArticleHref}><span aria-hidden="true">＋</span>新建笔记</Link>
           </div>
         </section>
 
@@ -455,12 +455,12 @@ export default function TcmNotebook() {
                       );
                     })}
                   </div>
-                ) : <div className={styles.noResults}>这里还没有相符的笔记，可以新建文章或调整筛选条件。</div>}
+                ) : <div className={styles.noResults}>这里还没有相符的笔记，可以新建笔记或调整筛选条件。</div>}
               </section>
             )}
           </div>
         </div>
-      </main>
+      </div>
     </div>
   );
 }

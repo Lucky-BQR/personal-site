@@ -71,13 +71,9 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           </div>
         </dl>
       </header>
-      <div className="project-case-statement">
-        <span>01</span>
-        <p>{project.overview}</p>
-        <span aria-hidden="true">↘</span>
-      </div>
 
-      <div className="project-case-story">
+
+      <section className="project-summary"><h2>要解决的问题</h2><p>{project.challenge}</p><h2>设计方向</h2><p>{project.overview}</p><h2>当前进展</h2><p>{project.statusNote || project.stage}</p></section><details className="project-details"><summary>展开详细设计与实践记录</summary><div className="project-case-story">
         <aside className="project-case-index" aria-label="案例章节">
           <p>Case Index</p>
           <nav>
@@ -159,8 +155,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           <ReflectionSection text={project.reflection} />
         </div>
       </div>
-
-
+      </details>
+      <Link href="/projects" className="reading-back">← 返回项目</Link>
     </div>
   );
 }

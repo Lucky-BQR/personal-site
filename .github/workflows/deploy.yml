@@ -21,12 +21,14 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: 'npm'
-      - run: npm install --prefer-offline --no-audit --no-fund
+      - run: npm ci --no-audit --no-fund
       - run: npx next build
         env:
           GITHUB_PAGES: 'true'
+      - name: Verify static site
+        run: npm run site:verify
       - name: Deploy to gh-pages branch
         uses: peaceiris/actions-gh-pages@v4
         with:

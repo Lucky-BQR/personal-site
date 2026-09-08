@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useLanguage } from '@/components/language/LanguageProvider';
 import { siteConfig } from '@/data/site';
+import { primaryNavigation } from '@/data/navigation';
 
 export default function Footer() {
   const { t } = useLanguage();
@@ -12,10 +13,7 @@ export default function Footer() {
       <div className="site-minimal-footer-inner">
         <p>{siteConfig.title} © {new Date().getFullYear()}</p>
         <nav aria-label={t('minimal', 'footer_navigation')}>
-          <Link href="/projects">{t('minimal', 'projects')}</Link>
-          <Link href="/garden">{t('minimal', 'notes')}</Link>
-          <Link href="/guanwo/zhongyi">{t('nav', 'tcm')}</Link>
-          <Link href="/about">{t('minimal', 'about')}</Link>
+          {primaryNavigation.map((link) => <Link key={link.href} href={link.href}>{t('minimal', link.label)}</Link>)}
         </nav>
       </div>
     </footer>

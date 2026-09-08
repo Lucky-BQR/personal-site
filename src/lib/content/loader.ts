@@ -44,7 +44,9 @@ function parseRelations(value = ''): ContentRelation[] {
 }
 
 export function parseFrontmatter(raw: string) {
-  const [, frontmatter = '', content = ''] = raw.split(/^---\s*$/m);
+  // Git checkouts on Windows may use CRLF; parse all content with LF line endings.
+  const normalized = raw.replace(/\r\n?/g, '\n');
+  const [, frontmatter = '', content = ''] = normalized.split(/^---\s*$/m);
   const fields = Object.fromEntries(frontmatter.split('\n').flatMap((line) => {
     const match = line.match(/^([\w-]+):\s*(.*)$/);
     return match ? [[match[1], match[2].trim().replace(/^['"]|['"]$/g, '')]] : [];

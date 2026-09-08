@@ -1,3 +1,4 @@
+import PageHeading from '@/components/layout/PageHeading';
 import type { Metadata } from 'next';
 import KnowledgeGraphExplorer from '@/components/knowledge/KnowledgeGraphExplorer';
 import { buildKnowledgeIndex, buildLocalKnowledgeGraph } from '@/lib/knowledge';
@@ -19,11 +20,7 @@ export default function KnowledgePage() {
         name: node.title,
         path: node.route,
       })))} />
-      <header className="section-header motion-reveal mb-12">
-        <p className="section-header-eyebrow type-meta">KNOWLEDGE INTELLIGENCE</p>
-        <h1 className="section-header-title type-heading-xl">知识网络</h1>
-        <p className="section-header-description type-body">从主题、人工关系与语义相似度中，看见内容之间持续生长的连接。</p>
-      </header>
+      <PageHeading title="知识网络" description="从内容之间的连接，发现下一条阅读线索。" parent={{ href: '/garden', label: '笔记' }} />
       <KnowledgeGraphExplorer initialGraph={graph} />
     </div>
   );

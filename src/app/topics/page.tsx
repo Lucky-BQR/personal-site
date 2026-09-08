@@ -1,3 +1,4 @@
+import PageHeading from '@/components/layout/PageHeading';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { buildKnowledgeIndex } from '@/lib/knowledge';
@@ -18,15 +19,11 @@ export default function TopicsPage() {
         name: `#${topic.label}`,
         path: `/topics/${topic.slug}`,
       })))} />
-      <header className="section-header motion-reveal mb-12">
-        <p className="section-header-eyebrow type-meta">KNOWLEDGE INDEX</p>
-        <h1 className="section-header-title type-heading-xl">主题索引</h1>
-        <p className="section-header-description type-body">从主题进入项目、笔记、成长记录与创造方法之间的连接。</p>
-      </header>
+      <PageHeading title="主题索引" description="从一个主题，找到相关的项目与笔记。" parent={{ href: '/garden', label: '笔记' }} />
       {topics.length > 0 ? <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 spatial-card-grid">
         {topics.map((topic) => (
           <Link key={topic.slug} href={`/topics/${topic.slug}`} className="card-base group">
-            <p className="card-meta mb-3">{topic.nodeIds.length} ITEMS</p>
+            <p className="card-meta mb-3">{topic.nodeIds.length} 条内容</p>
             <h2 className="card-title">#{topic.label}</h2>
           </Link>
         ))}

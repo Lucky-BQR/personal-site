@@ -2634,3 +2634,82 @@ a:active {
   .card,
   .card-base { padding: 1.5rem; }
 }
+
+/* Shared editorial pages */
+.container-reading {
+  width: min(calc(100% - 3rem), var(--container-reading-max));
+  margin-inline: auto;
+}
+.site-minimal-header nav a[aria-current="page"] { color: var(--color-accent); text-decoration: underline; text-underline-offset: .65rem; }
+.page-heading { margin-bottom: 3rem; }
+.page-heading h1 { color: var(--color-text); }
+.page-heading > p { max-width: 42rem; color: var(--color-textSecondary); }
+.page-path { display: flex; flex-wrap: wrap; gap: .75rem; margin-bottom: 2.5rem; font-size: .8rem; color: var(--color-textMuted); }
+.page-path a:hover, .text-links a:hover, .reading-back:hover { color: var(--color-accent); }
+.section-toolbar { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.text-links { display: flex; flex-wrap: wrap; gap: 1rem 1.75rem; color: var(--color-accent); font-size: .8rem; }
+.category-tabs { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; border-bottom: 1px solid var(--color-border); margin-bottom: 2rem; }
+.category-tabs a, .category-tabs button { padding: .7rem 0; color: var(--color-textSecondary); border-bottom: 2px solid transparent; font-size: .875rem; }
+.category-tabs [aria-current="page"], .category-tabs [aria-pressed="true"] { color: var(--color-accent); border-bottom-color: var(--color-accent); }
+.empty-note { border-block: 1px solid var(--color-border); padding: 3rem 0; color: var(--color-textMuted); font-size: .95rem; line-height: 1.9; }
+.empty-note a { display: block; margin-top: 1rem; color: var(--color-accent); font-size: .8rem; }
+.life-sections { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem; }
+.life-section { padding: 2rem 0; border-top: 1px solid var(--color-rule); }
+.life-mark { display: block; margin-bottom: 2rem; font-family: 'Songti SC', serif; color: var(--color-accent); font-size: 2.5rem; }
+.life-section h2 { display: flex; justify-content: space-between; font-size: 1.25rem; font-weight: 600; }
+.life-section h2 span { color: var(--color-textMuted); font-size: 1rem; }
+.life-section p { margin-top: 1rem; line-height: 1.9; font-size: .9rem; color: var(--color-textSecondary); }
+.life-section:hover h2 { color: var(--color-accent); }
+.record-list { border-top: 1px solid var(--color-border); }
+.record-row { display: flex; align-items: baseline; gap: 1.5rem; padding: 1.6rem 0; border-bottom: 1px solid var(--color-border); }
+.record-row > div, .record-row > h2, .record-row > p { flex: 1; min-width: 0; }
+.record-row h2 { font-size: 1.1rem; font-weight: 600; }
+.record-row p { margin-top: .5rem; color: var(--color-textSecondary); line-height: 1.8; }
+.record-row time, .record-row > span, .record-row button { font-size: .75rem; color: var(--color-textMuted); }
+a.record-row:hover h2 { color: var(--color-accent); }
+.about-sections { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 3rem 0; padding-top: 2rem; border-top: 1px solid var(--color-border); }
+.about-sections h2 { margin-bottom: 1rem; color: var(--color-accent); font-weight: 600; }
+.about-sections li { margin-block: .7rem; color: var(--color-textSecondary); font-size: .95rem; }
+.section-rule { border-top: 1px solid var(--color-border); padding-top: 1.5rem; }
+.article-date { margin-top: -1.5rem; margin-bottom: 3rem; font-size: .8rem; color: var(--color-textMuted); }
+.article-body { overflow-wrap: anywhere; }
+.reading-back { display: inline-block; margin-top: 3rem; color: var(--color-accent); font-size: .85rem; }
+.journey-list { padding-left: 1.5rem; border-left: 1px solid var(--color-rule); }
+.journey-list > li { position: relative; display: grid; grid-template-columns: 4rem 1fr; gap: 2rem; padding-bottom: 3rem; scroll-margin-top: 2rem; }
+.journey-list > li::before { content: ''; position: absolute; top: .5rem; left: -1.8rem; width: .55rem; height: .55rem; border-radius: 50%; background: var(--color-accent); }
+.journey-list time { color: var(--color-accent); font-size: .85rem; }
+.journey-list h2 { font-size: 1.2rem; font-weight: 600; }
+.journey-list p { color: var(--color-textSecondary); margin-top: .75rem; line-height: 1.9; }
+.inspiration-form { display: flex; align-items: flex-end; gap: 1rem; }
+.inspiration-form textarea { flex: 1; min-width: 0; padding: 1rem; border: 1px solid var(--color-border); border-radius: .5rem; background: var(--color-card); resize: vertical; line-height: 1.8; }
+.inspiration-form button { padding: .8rem 1.4rem; background: var(--color-accent); color: var(--color-accentContrast); border-radius: .5rem; }
+.inspiration-form button:disabled { opacity: .45; }
+.inspiration-row > p { white-space: pre-wrap; overflow-wrap: anywhere; margin: 0; }
+.inspiration-row button:hover { color: var(--color-accent); }
+.project-case-page .project-case-hero { padding-block: 2rem; min-height: auto; }
+.project-case-page .project-case-heading h1 { font-size: clamp(2rem, 5vw, 3.25rem); }
+.project-details { margin-top: 3rem; border-top: 1px solid var(--color-border); padding-top: 1.5rem; }
+.project-details > summary { cursor: pointer; color: var(--color-accent); font-size: 1rem; }
+.project-summary { margin-top: 2rem; }
+.project-summary h2 { margin-top: 2rem; font-size: 1.25rem; font-weight: 600; }
+.project-summary p { color: var(--color-textSecondary); line-height: 1.9; margin-top: 1rem; }
+.graph-stats { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; font-size: .8rem; color: var(--color-textMuted); }
+:where(a, button, input, textarea, select, summary):focus-visible { outline: 2px solid var(--color-accent); outline-offset: 4px; }
+@media (max-width: 760px) {
+  .life-sections { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .about-sections { grid-template-columns: 1fr; }
+  .site-minimal-header-inner { flex-wrap: wrap; padding-block: 1rem; }
+  .site-minimal-header-right { flex-wrap: wrap; gap: .8rem; }
+  .site-minimal-header nav { gap: 1.1rem; }
+  .journey-list > li { grid-template-columns: 1fr; gap: .5rem; }
+  .record-row { flex-wrap: wrap; gap: .75rem; }
+  .inspiration-row time { width: 100%; }
+}
+@media (max-width: 420px) {
+  .site-minimal-header-right { width: 100%; }
+  .site-minimal-header nav { flex: 1; }
+  .life-sections { gap: 1rem; }
+  .inspiration-form { flex-direction: column; align-items: stretch; }
+}
+
+.spatial-section::before { inset-inline: 0; }

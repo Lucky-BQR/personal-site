@@ -6,8 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "preview": "node scripts/preview.mjs",
     "lint": "eslint",
     "knowledge:sync": "node scripts/sync-knowledge.mjs",
+    "site:verify": "node scripts/verify-site.mjs",
     "phase5:verify": "node scripts/verify-phase5.mjs"
   },
   "dependencies": {

@@ -61,37 +61,37 @@ export default function TcmNoteReader() {
   }
 
   if (loading) {
-    return <main className={styles.subPage}><p className={styles.loadingState}>正在打开笔记…</p></main>;
+    return <div className={styles.subPage}><p className={styles.loadingState}>正在打开笔记…</p></div>;
   }
 
   if (!note) {
     return (
-      <main className={styles.subPage}>
+      <div className={styles.subPage}>
         <section className={styles.notFound}>
           <span aria-hidden="true">空</span>
           <h1>没有找到这篇笔记</h1>
           <p>它可能已经被删除，或者链接不完整。</p>
-          <Link className={styles.primaryButton} href="/guanwo/zhongyi">返回文章列表</Link>
+          <Link className={styles.primaryButton} href="/guanwo/zhongyi">返回中医笔记</Link>
         </section>
-      </main>
+      </div>
     );
   }
 
   const category = categoryFor(note.category);
 
   return (
-    <main className={styles.subPage}>
+    <div className={styles.subPage}>
       <nav className={styles.subPageNav} aria-label="文章操作">
-        <Link href="/guanwo/zhongyi">← 返回文章列表</Link>
+        <Link href="/guanwo/zhongyi">← 中医笔记</Link>
         <div>
           <button type="button" onClick={() => downloadTcmNote(note)}>导出 Markdown</button>
-          <Link className={styles.primaryButton} href={noteEditHref(note.id)}>编辑文章</Link>
+          <Link className={styles.primaryButton} href={noteEditHref(note.id)}>编辑笔记</Link>
         </div>
       </nav>
 
       <article className={styles.articleShell}>
         <header className={styles.articleHeader}>
-          <p className={styles.eyebrow}>{category.label}</p>
+          <p className={styles.eyebrow}>{category.label} · 本机笔记</p>
           <h1>{note.title}</h1>
           <div className={styles.articleMeta}>
             {book && <span>书籍：《{book.name}》</span>}
@@ -106,6 +106,6 @@ export default function TcmNoteReader() {
           <button type="button" onClick={() => void handleDelete()}>删除这篇笔记</button>
         </footer>
       </article>
-    </main>
+    </div>
   );
 }

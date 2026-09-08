@@ -1,5 +1,6 @@
+import PageHeading from '@/components/layout/PageHeading';
 import type { Metadata } from 'next';
-import Link from 'next/link';
+
 import { notFound } from 'next/navigation';
 import KnowledgeCard from '@/components/knowledge/KnowledgeCard';
 import { buildKnowledgeIndex, findTopic, getTopicNodes } from '@/lib/knowledge';
@@ -44,11 +45,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
           path: node.route,
         }))),
       ]} />
-      <header className="section-header motion-reveal mb-12">
-        <Link href="/topics" className="type-meta transition-opacity hover:opacity-70" style={{ color: 'var(--color-accent)' }}>← 全部主题</Link>
-        <h1 className="section-header-title type-heading-xl mt-4">#{topic.label}</h1>
-        <p className="section-header-description type-body">共 {nodes.length} 条内容，连接不同阶段的创造、学习与思考。</p>
-      </header>
+      <PageHeading title={topic.label} description={`共 ${nodes.length} 条相关内容。`} parent={{ href: '/topics', label: '主题索引' }} />
       <div className="grid grid-cols-1 spatial-card-grid">
         {nodes.map((node) => <KnowledgeCard key={node.id} node={node} />)}
       </div>

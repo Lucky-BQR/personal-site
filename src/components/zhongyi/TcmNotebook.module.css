@@ -1594,3 +1594,15 @@
     transition: none;
   }
 }
+
+/* Keep the notebook within the shared quiet reading layout. */
+.page { width: min(calc(100% - 3rem), 64rem); padding: 4rem 0 6rem; }
+.hero { padding-bottom: 2rem; }
+.hero::after { display: none; }
+.hero h1 { font-size: clamp(2rem, 5vw, 3rem); letter-spacing: -.03em; line-height: 1.25; }
+.backLink { margin-bottom: 2rem; }
+.intro { font-family: inherit; font-size: .95rem; }
+.heroAside { background: transparent; }
+.seal { display: none; }
+.cloudPanel { background: transparent; }
+.subPage { width: min(calc(100% - 3rem), 64rem); margin-inline: auto; }

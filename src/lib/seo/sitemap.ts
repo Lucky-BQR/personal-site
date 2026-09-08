@@ -26,7 +26,7 @@ function getLatestNodeDate(nodeIds: string[], nodesById: Map<string, KnowledgeIn
 }
 
 export function getSitemapEntries(knowledgeIndex: KnowledgeIndex) {
-  const staticPaths = ['/', '/about', '/timeline', '/projects', '/garden', '/topics', '/knowledge'];
+  const staticPaths = ['/', '/about', '/timeline', '/projects', '/garden', '/topics', '/knowledge', '/life', '/pinjian', '/pinjian/shufa', '/pinjian/poetry', '/pinjian/music', '/guanwo/yishu', '/guanwo/shufa', '/guanwo/zhongyi', '/pets', '/friends', '/inspiration'];
   const nodesById = new Map(knowledgeIndex.nodes.map((node) => [node.id, node]));
   const latestKnowledgeDate = getLatestNodeDate(knowledgeIndex.nodes.map((node) => node.id), nodesById);
   const gardenEntries = getGardenEntries()

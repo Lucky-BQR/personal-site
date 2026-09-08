@@ -247,25 +247,25 @@ export default function TcmNoteEditor() {
     }));
   }
 
-  if (loading) return <main className={styles.subPage}><p className={styles.loadingState}>正在准备编辑页…</p></main>;
+  if (loading) return <div className={styles.subPage}><p className={styles.loadingState}>正在准备编辑页…</p></div>;
 
   if (notFound) {
     return (
-      <main className={styles.subPage}>
+      <div className={styles.subPage}>
         <section className={styles.notFound}>
           <span aria-hidden="true">空</span>
           <h1>没有找到要编辑的笔记</h1>
-          <Link className={styles.primaryButton} href="/guanwo/zhongyi">返回文章列表</Link>
+          <Link className={styles.primaryButton} href="/guanwo/zhongyi">返回中医笔记</Link>
         </section>
-      </main>
+      </div>
     );
   }
 
   return (
-    <main className={`${styles.subPage} ${styles.editorPage}`}>
+    <div className={`${styles.subPage} ${styles.editorPage}`}>
       <nav className={styles.subPageNav} aria-label="编辑页导航">
         <button type="button" onClick={() => void cancelEditing()}>← 取消并返回</button>
-        <span>{noteId ? '编辑文章' : '新建文章'} · Markdown</span>
+        <span>{noteId ? '编辑笔记' : '新建笔记'} · 保存到当前浏览器</span>
       </nav>
 
       <form className={styles.editorPanel} onSubmit={handleSaveNote}>
@@ -429,6 +429,6 @@ export default function TcmNoteEditor() {
           </div>
         </div>
       </form>
-    </main>
+    </div>
   );
 }

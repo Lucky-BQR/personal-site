@@ -41,6 +41,7 @@ function nodePositions(nodes: KnowledgeGraphNode[]) {
 
 export default function KnowledgeGraphExplorer({ initialGraph }: { initialGraph: KnowledgeGraphSnapshot }) {
   const [graph, setGraph] = useState(initialGraph);
+  const [view, setView] = useState<'graph' | 'list'>('graph');
   const [filter, setFilter] = useState<KindFilter>('all');
   const [selectedId, setSelectedId] = useState(initialGraph.nodes[0]?.id || '');
 
@@ -72,7 +73,7 @@ export default function KnowledgeGraphExplorer({ initialGraph }: { initialGraph:
     [graph.edges, visibleNodeIds]
   );
   const positions = useMemo(() => nodePositions(visibleNodes), [visibleNodes]);
-  const selected = graph.nodes.find((node) => node.id === selectedId) || visibleNodes[0];
+  const selected = visibleNodes.find((node) => node.id === selectedId) || visibleNodes[0];
   const selectedEdges = selected ? graph.edges.filter((edge) => edge.sourceId === selected.id || edge.targetId === selected.id) : [];
   const topicCount = new Set(graph.nodes.flatMap((node) => node.topics.map((topic) => topic.slug))).size;
 
@@ -84,29 +85,18 @@ export default function KnowledgeGraphExplorer({ initialGraph }: { initialGraph:
 
   return (
     <section aria-labelledby="knowledge-graph-title">
-      <div className="mb-8 grid grid-cols-3 gap-3">
-        {[
-          ['内容节点', graph.nodes.length],
-          ['知识连接', graph.edges.length],
-          ['主题', topicCount],
-        ].map(([label, value]) => (
-          <div key={label} className="rounded-2xl border p-4 text-center" style={{ borderColor: 'var(--color-border)', backgroundColor: 'var(--color-card)' }}>
-            <p className="type-heading">{value}</p>
-            <p className="card-meta mt-1">{label}</p>
-          </div>
-        ))}
-      </div>
+      <div className="graph-stats"><span>{graph.nodes.length} 条内容</span><span>{graph.edges.length} 条连接</span><span>{topicCount} 个主题</span></div>
 
       <div className="rounded-3xl border p-5 sm:p-7" style={{ borderColor: 'var(--color-border)', backgroundColor: 'var(--color-card)' }}>
         <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
           <div>
-            <p className="type-meta mb-2" style={{ color: 'var(--color-accent)' }}>INTERACTIVE KNOWLEDGE GRAPH</p>
+            <p className="type-meta mb-2" style={{ color: 'var(--color-accent)' }}>KNOWLEDGE CONNECTIONS</p>
             <h2 id="knowledge-graph-title" className="type-heading">连接视图</h2>
           </div>
           <span className="card-meta rounded-full border px-3 py-1" style={{ borderColor: 'var(--color-border)' }}>{modeLabels[graph.mode]}</span>
         </div>
 
-        <div className="mb-5 flex flex-wrap gap-2" aria-label="按内容类型筛选">
+        <div className="category-tabs" aria-label="查看方式"><button type="button" aria-pressed={view === 'graph'} onClick={() => setView('graph')}>图谱</button><button type="button" aria-pressed={view === 'list'} onClick={() => setView('list')}>列表</button></div><div className="mb-5 flex flex-wrap gap-2" aria-label="按内容类型筛选">
           {([['all', '全部'], ...Object.entries(kindLabels)] as [KindFilter, string][]).map(([kind, label]) => (
             <button
               key={kind}
@@ -127,7 +117,7 @@ export default function KnowledgeGraphExplorer({ initialGraph }: { initialGraph:
 
         <div className="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(240px,1fr)]">
           <div className="min-w-0">
-            <svg viewBox="0 0 820 490" className="w-full rounded-2xl border" style={{ borderColor: 'var(--color-border)', backgroundColor: 'var(--color-bgSecondary)' }} role="img" aria-label="知识节点与关系图">
+            {view === 'graph' && <svg viewBox="0 0 820 490" className="w-full rounded-2xl border" style={{ borderColor: 'var(--color-border)', backgroundColor: 'var(--color-bgSecondary)' }} role="img" aria-label="知识节点与关系图">
               {visibleEdges.map((edge) => {
                 const source = positions.get(edge.sourceId);
                 const target = positions.get(edge.targetId);
@@ -151,15 +141,15 @@ export default function KnowledgeGraphExplorer({ initialGraph }: { initialGraph:
                 if (!position) return null;
                 const isSelected = selected?.id === node.id;
                 return (
-                  <g key={node.id} onClick={() => setSelectedId(node.id)} className="cursor-pointer">
+                  <g key={node.id} onClick={() => setSelectedId(node.id)} className="cursor-pointer" role="button" tabIndex={0} aria-label={node.title} aria-pressed={isSelected} onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); setSelectedId(node.id); } }}>
                     <circle cx={position.x} cy={position.y} r={isSelected ? 31 : 25} fill={kindColors[node.kind]} fillOpacity={isSelected ? 1 : 0.78} stroke={isSelected ? 'var(--color-text)' : 'var(--color-card)'} strokeWidth={isSelected ? 3 : 2} />
                     <text x={position.x} y={position.y + 48} textAnchor="middle" fontSize="13" fill="var(--color-textSecondary)">{node.title.length > 10 ? `${node.title.slice(0, 10)}…` : node.title}</text>
                   </g>
                 );
               })}
-            </svg>
+            </svg>}
 
-            <div className="mt-4 flex flex-wrap gap-2" aria-label="选择知识节点">
+            <div className={view === 'list' ? 'grid gap-3' : 'mt-4 flex flex-wrap gap-2'} aria-label="选择知识节点">
               {visibleNodes.map((node) => (
                 <button
                   key={node.id}
@@ -201,7 +191,7 @@ export default function KnowledgeGraphExplorer({ initialGraph }: { initialGraph:
         <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-xs" style={{ color: 'var(--color-textMuted)' }}>
           <span>实线：人工关系</span>
           <span>虚线：主题或语义推导</span>
-          <span>外部服务不可用时自动使用本地索引</span>
+
         </div>
       </div>
     </section>

@@ -106,3 +106,7 @@ public/                 # 静态资源
 - 提交时可直接更新内容文件与组件，不必反复改动核心框架配置。
 - 首次开发优先理解：`src/app`、`src/components`、`src/lib/content`。
 
+
+## 当前页面结构
+
+栏目归属、内容来源与本地预览方式见 [docs/SITE_STRUCTURE.md](docs/SITE_STRUCTURE.md)。静态导出请使用 npm run preview 预览；next start 不用于静态导出产物。

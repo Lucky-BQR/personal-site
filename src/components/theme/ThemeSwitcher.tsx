@@ -48,6 +48,7 @@ export default function ThemeSwitcher() {
       <button
         type="button"
         className="theme-menu-trigger"
+        aria-label={`选择主题，当前${themes[themeId].nameZh}`}
         aria-expanded={open}
         aria-controls="site-theme-menu"
         onClick={() => setOpen((value) => !value)}

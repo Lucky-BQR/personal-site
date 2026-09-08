@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function TcmNoteReadPage() {
   return (
-    <Suspense fallback={<main className={styles.subPage}><p className={styles.loadingState}>正在打开笔记…</p></main>}>
+    <Suspense fallback={<div className={styles.subPage}><p className={styles.loadingState}>正在打开笔记…</p></div>}>
       <TcmNoteReader />
     </Suspense>
   );
