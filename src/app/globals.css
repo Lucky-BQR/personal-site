@@ -2653,7 +2653,7 @@ a:active {
 .category-tabs [aria-current="page"], .category-tabs [aria-pressed="true"] { color: var(--color-accent); border-bottom-color: var(--color-accent); }
 .empty-note { border-block: 1px solid var(--color-border); padding: 3rem 0; color: var(--color-textMuted); font-size: .95rem; line-height: 1.9; }
 .empty-note a { display: block; margin-top: 1rem; color: var(--color-accent); font-size: .8rem; }
-.life-sections { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem; }
+.life-sections { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
 .life-section { padding: 2rem 0; border-top: 1px solid var(--color-rule); }
 .life-mark { display: block; margin-bottom: 2rem; font-family: 'Songti SC', serif; color: var(--color-accent); font-size: 2.5rem; }
 .life-section h2 { display: flex; justify-content: space-between; font-size: 1.25rem; font-weight: 600; }

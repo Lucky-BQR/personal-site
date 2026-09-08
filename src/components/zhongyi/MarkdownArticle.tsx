@@ -26,10 +26,8 @@ export default function MarkdownArticle({
           if (url.startsWith('indexeddb://')) {
             return imageUrls[url.slice('indexeddb://'.length)] ?? '';
           }
-          if (url.startsWith('/images/') && typeof window !== 'undefined') {
-            const markerIndex = window.location.pathname.indexOf('/guanwo/');
-            const basePath = markerIndex > 0 ? window.location.pathname.slice(0, markerIndex) : '';
-            return `${basePath}${url}`;
+          if (url.startsWith('/images/')) {
+            return `${process.env.NEXT_PUBLIC_BASE_PATH || ''}${url}`;
           }
           return defaultUrlTransform(url);
         }}

@@ -24,6 +24,8 @@ jobs:
           node-version: 22
           cache: 'npm'
       - run: npm ci --no-audit --no-fund
+      - name: Verify local notebook data and backups
+        run: npm run life:verify
       - run: npx next build
         env:
           GITHUB_PAGES: 'true'

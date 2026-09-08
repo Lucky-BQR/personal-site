@@ -5,6 +5,8 @@ const sections = [
   { href: '/guanwo/shufa', mark: '书', title: '书法', description: '自己的临帖、练习与作品。' },
   { href: '/pets', mark: '伴', title: '宠物', description: '陪伴中的小事与日常照片。' },
   { href: '/inspiration', mark: '记', title: '灵感', description: '给还没有展开的想法，留一个位置。' },
+  { href: '/life/writing', mark: '作', title: '创作', description: '随笔、故事与自己的文字，从草稿慢慢写成作品。' },
+  { href: '/life/links', mark: '藏', title: '链接', description: '个人主页、作品地址与值得收藏的网页。' },
 ];
 export const metadata = { title: '生活' };
 export default function LifePage() {
