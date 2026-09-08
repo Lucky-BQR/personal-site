@@ -1,5 +1,5 @@
 1:"$Sreact.fragment"
-:HL["/personal-site/_next/static/chunks/1havfdirpqths.css","style"]
+:HL["/personal-site/_next/static/chunks/2zncn4jd9c1o3.css","style"]
 2:T1823,
               (function() {
                 try {
@@ -116,7 +116,7 @@
                 } catch(e) {}
               })();
             5:X
-0:{"buildId":"NktK756hy3NhEatvr3q5E","data":[{"rsc":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/personal-site/_next/static/chunks/1havfdirpqths.css","precedence":"next"}],["$","script","script-0",{"src":"/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","async":true}],["$","script","script-1",{"src":"/personal-site/_next/static/chunks/1t2-njap-o4go.js","async":true}]],["$","html",null,{"lang":"zh-CN","className":"geistsans_c4c1ab9-module__8HqI_G__variable geistmono_3afd0436-module__SyuElG__variable h-full","suppressHydrationWarning":true,"children":[["$","head",null,{"children":["$","script",null,{"dangerouslySetInnerHTML":{"__html":"$2"}}]}],"$L3"]}]]}],"isPartial":"$@4","staleTime":"$5","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@6","rootVaryParams":null,"needsRuntimeRequest":"$@7"}
+0:{"buildId":"qumWHfkQvYMDw5Dp8MwCO","data":[{"rsc":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/personal-site/_next/static/chunks/2zncn4jd9c1o3.css","precedence":"next"}],["$","script","script-0",{"src":"/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","async":true}],["$","script","script-1",{"src":"/personal-site/_next/static/chunks/1t2-njap-o4go.js","async":true}]],["$","html",null,{"lang":"zh-CN","className":"geistsans_c4c1ab9-module__8HqI_G__variable geistmono_3afd0436-module__SyuElG__variable h-full","suppressHydrationWarning":true,"children":[["$","head",null,{"children":["$","script",null,{"dangerouslySetInnerHTML":{"__html":"$2"}}]}],"$L3"]}]]}],"isPartial":"$@4","staleTime":"$5","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@6","rootVaryParams":null,"needsRuntimeRequest":"$@7"}
 8:I[65150,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/1t2-njap-o4go.js"],"ThemeProvider"]
 9:I[5233,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/1t2-njap-o4go.js"],"LanguageProvider"]
 a:I[3374,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/1t2-njap-o4go.js"],"default"]
