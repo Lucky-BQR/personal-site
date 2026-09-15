@@ -1,0 +1,146 @@
+1:"$Sreact.fragment"
+8:I[68027,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3w62ka_3q8-w8.js"],"default",1]
+:HL["/personal-site/_next/static/chunks/2zncn4jd9c1o3.css","style"]
+:HL["/personal-site/_next/static/media/geist_latin-s.p.0wgildi0cnwt9.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/personal-site/_next/static/media/geist_mono_latin-s.p.0r6juujl39pe6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/personal-site/_next/static/chunks/344q7hwh7uqk7.css","style"]
+2:T1823,
+              (function() {
+                try {
+                  var theme = localStorage.getItem('site-theme-v2') || 'zhuqing';
+                  document.documentElement.setAttribute('data-theme', theme);
+                  var language = localStorage.getItem('site-language') || 'zh';
+                  document.documentElement.setAttribute('lang', language === 'zh-TW' ? 'zh-Hant' : language);
+
+                  // Set CSS variables for the saved theme to avoid flash
+                  var themes = {
+                    zhuqing: {
+                      '--color-bg': '#f5f2ea',
+                      '--color-text': '#20251f',
+                      '--color-textSecondary': '#4f594c',
+                      '--color-textMuted': '#788073',
+                      '--color-accent': '#48684c',
+                      '--color-accentLight': 'rgba(72,104,76,0.09)',
+                      '--color-accentSubtle': 'rgba(72,104,76,0.045)',
+                      '--color-accentContrast': '#ffffff',
+                      '--color-border': 'rgba(66,88,65,0.14)',
+                      '--color-rule': 'rgba(72,104,76,0.22)',
+                      '--color-card': 'rgba(255,255,252,0.68)',
+                      '--color-cardHover': '#fffefa',
+                      '--color-bgSecondary': '#eeeee6',
+                      '--color-bgTertiary': '#e4e8de',
+                      '--color-navBg': 'rgba(245,242,234,0.9)',
+                      '--color-glass': 'rgba(245,242,234,0.86)',
+                      '--color-glassBorder': 'rgba(66,88,65,0.12)',
+                      '--color-terminal': '#1a2315',
+                      '--color-terminalText': '#b5cca0',
+                      '--color-tagBg': 'rgba(72,104,76,0.09)',
+                      '--color-tagText': '#38563d',
+                      '--color-accentHover': '#38563d'
+                    },
+                    moyun: {
+                      '--color-bg': '#171b18',
+                      '--color-text': '#dce3da',
+                      '--color-textSecondary': '#b3bcb0',
+                      '--color-textMuted': '#8f9a8d',
+                      '--color-accent': '#a7c3a8',
+                      '--color-accentLight': 'rgba(167,195,168,0.12)',
+                      '--color-accentSubtle': 'rgba(167,195,168,0.05)',
+                      '--color-accentContrast': '#172018',
+                      '--color-border': 'rgba(215,230,213,0.15)',
+                      '--color-rule': 'rgba(167,195,168,0.28)',
+                      '--color-card': '#202620',
+                      '--color-cardHover': '#293029',
+                      '--color-bgSecondary': '#202620',
+                      '--color-bgTertiary': '#293029',
+                      '--color-navBg': 'rgba(23,27,24,0.92)',
+                      '--color-glass': 'rgba(23,27,24,0.86)',
+                      '--color-glassBorder': 'rgba(215,230,213,0.14)',
+                      '--color-terminal': '#0e110f',
+                      '--color-terminalText': '#a7c3a8',
+                      '--color-tagBg': 'rgba(167,195,168,0.12)',
+                      '--color-tagText': '#b9d2ba',
+                      '--color-accentHover': '#b9d2ba'
+                    },
+                    subai: {
+                      '--color-bg': '#f7f7f4',
+                      '--color-text': '#202326',
+                      '--color-textSecondary': '#51575d',
+                      '--color-textMuted': '#7c8389',
+                      '--color-accent': '#4d5964',
+                      '--color-accentLight': 'rgba(77,89,100,0.09)',
+                      '--color-accentSubtle': 'rgba(77,89,100,0.04)',
+                      '--color-accentContrast': '#ffffff',
+                      '--color-border': 'rgba(32,35,38,0.14)',
+                      '--color-rule': 'rgba(77,89,100,0.22)',
+                      '--color-card': '#ffffff',
+                      '--color-cardHover': '#f2f3f1',
+                      '--color-bgSecondary': '#f0f0ed',
+                      '--color-bgTertiary': '#e7e8e5',
+                      '--color-navBg': 'rgba(247,247,244,0.92)',
+                      '--color-glass': 'rgba(247,247,244,0.88)',
+                      '--color-glassBorder': 'rgba(32,35,38,0.1)',
+                      '--color-terminal': '#202326',
+                      '--color-terminalText': '#d8e2d8',
+                      '--color-tagBg': 'rgba(77,89,100,0.09)',
+                      '--color-tagText': '#4d5964',
+                      '--color-accentHover': '#3f4a54'
+                    },
+                    qingci: {
+                      '--color-bg': '#e6eeea',
+                      '--color-text': '#20302c',
+                      '--color-textSecondary': '#49625c',
+                      '--color-textMuted': '#70847f',
+                      '--color-accent': '#4f7c72',
+                      '--color-accentLight': 'rgba(79,124,114,0.11)',
+                      '--color-accentSubtle': 'rgba(79,124,114,0.05)',
+                      '--color-accentContrast': '#f1f7f4',
+                      '--color-border': 'rgba(32,70,62,0.16)',
+                      '--color-rule': 'rgba(79,124,114,0.26)',
+                      '--color-card': 'rgba(241,247,244,0.74)',
+                      '--color-cardHover': '#f0f6f3',
+                      '--color-bgSecondary': '#dce8e3',
+                      '--color-bgTertiary': '#ceded7',
+                      '--color-navBg': 'rgba(230,238,234,0.92)',
+                      '--color-glass': 'rgba(230,238,234,0.88)',
+                      '--color-glassBorder': 'rgba(32,70,62,0.13)',
+                      '--color-terminal': '#1d2b27',
+                      '--color-terminalText': '#b7d2c8',
+                      '--color-tagBg': 'rgba(79,124,114,0.11)',
+                      '--color-tagText': '#416c63',
+                      '--color-accentHover': '#416c63'
+                    }
+                  };
+
+                  var vars = themes[theme] || themes.zhuqing;
+                  var root = document.documentElement;
+                  for (var key in vars) {
+                    root.style.setProperty(key, vars[key]);
+                  }
+                } catch(e) {}
+              })();
+            6:X
+0:{"P":null,"c":["","write"],"q":"","i":false,"f":[[["",{"children":["write",{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/personal-site/_next/static/chunks/2zncn4jd9c1o3.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/personal-site/_next/static/chunks/3w62ka_3q8-w8.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","className":"geistsans_c4c1ab9-module__8HqI_G__variable geistmono_3afd0436-module__SyuElG__variable h-full","suppressHydrationWarning":true,"children":[["$","head",null,{"children":["$","script",null,{"dangerouslySetInnerHTML":{"__html":"$2"}}]}],"$L3"]}]]}],{"children":["$L4",{"children":["$L5",{},null,false,null]},null,false,"$6"]},null,false,null],"$L7",false]],"m":"$undefined","G":["$8",["$L9"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"q_u3FGiD3sM6uJixcUeKf"}
+a:I[65150,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3w62ka_3q8-w8.js"],"ThemeProvider"]
+b:I[5233,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3w62ka_3q8-w8.js"],"LanguageProvider"]
+c:I[3374,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3w62ka_3q8-w8.js"],"default"]
+d:I[39756,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3w62ka_3q8-w8.js"],"default"]
+e:I[37457,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3w62ka_3q8-w8.js"],"default"]
+f:I[58234,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3w62ka_3q8-w8.js"],"default"]
+10:I[48559,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3w62ka_3q8-w8.js"],"default"]
+11:I[22016,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3w62ka_3q8-w8.js","/personal-site/_next/static/chunks/2jhy7t0652bip.js"],""]
+12:I[81229,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3w62ka_3q8-w8.js","/personal-site/_next/static/chunks/2jhy7t0652bip.js"],"default"]
+13:I[97367,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3w62ka_3q8-w8.js"],"OutletBoundary"]
+14:"$Sreact.suspense"
+16:I[97367,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3w62ka_3q8-w8.js"],"ViewportBoundary"]
+18:I[97367,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3w62ka_3q8-w8.js"],"MetadataBoundary"]
+3:["$","body",null,{"className":"min-h-full flex flex-col antialiased transition-colors duration-300","style":{"backgroundColor":"var(--color-bg)","color":"var(--color-text)"},"children":["$","$La",null,{"children":["$","$Lb",null,{"children":[["$","$Lc",null,{}],["$","main",null,{"className":"flex-1 animate-fade-in","children":["$","$Ld",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$Le",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$Lf",null,{}],["$","$L10",null,{}]]}]}]}]
+4:["$","$1","c",{"children":[null,["$","$Ld",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$Le",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+5:["$","$1","c",{"children":[["$","div",null,{"className":"container-main spatial-section","children":[["$","header",null,{"className":"page-heading","children":["$undefined",["$","p",null,{"className":"type-meta mb-3","children":"WRITE & REFLECT"}],["$","h1",null,{"className":"type-heading-xl","children":"记录与写作"}],["$","p",null,{"className":"type-body mt-4","children":"从学习中的理解，到生活里的灵感，先记下来，再慢慢整理。"}]]}],["$","nav",null,{"className":"LifeHome-module__WEsxlW__shortcuts","aria-label":"开始记录","children":[["$","$L11",null,{"className":"LifeHome-module__WEsxlW__start","href":"/write/learning?new=1","children":[["$","span",null,{"className":"LifeHome-module__WEsxlW__kicker","children":"学到一点"}],["$","h2",null,{"children":["写学习记录 ",["$","span",null,{"children":"＋"}]]}],["$","p",null,{"children":"读书、课程与实践，不同领域的收获都可以记在这里。"}]]}],["$","$L11",null,{"href":"/inspiration?new=1","children":[["$","span",null,{"className":"LifeHome-module__WEsxlW__kicker","children":"想到一点"}],["$","h2",null,{"children":["记下灵感 ",["$","span",null,{"children":"＋"}]]}],["$","p",null,{"children":"先留下一句话，让尚未展开的想法有处可放。"}]]}],["$","$L11",null,{"href":"/life","children":[["$","span",null,{"className":"LifeHome-module__WEsxlW__kicker","children":"留住日常"}],["$","h2",null,{"children":["记生活 ",["$","span",null,{"children":"→"}]]}],["$","p",null,{"children":"选择书法、宠物、品鉴等栏目，留下今天的片刻。"}]]}]]}],["$","section",null,{"className":"LifeHome-module__WEsxlW__empty","children":[["$","h2",null,{"children":"正在读一本书？"}],["$","p",null,{"children":"按书整理摘录、章节和自己的理解；也可以先随手记，以后再归书。"}],["$","$L11",null,{"href":"/write/reading","children":"打开读书笔记 →"}]]}],["$","$L12",null,{}],["$","nav",null,{"className":"LifeHome-module__WEsxlW__shortcuts","aria-label":"整理与回顾","children":[["$","$L11",null,{"href":"/write/learning","children":[["$","h2",null,{"children":["学习记录 ",["$","span",null,{"children":"→"}]]}],["$","p",null,{"children":"按领域标签查找，继续补充自己的理解。"}]]}],["$","$L11",null,{"href":"/life/drafts","children":[["$","h2",null,{"children":["文章草稿 ",["$","span",null,{"children":"→"}]]}],["$","p",null,{"children":"把学习或生活记录整理成可以分享的文章。"}]]}],["$","$L11",null,{"href":"/life/review","children":[["$","h2",null,{"children":["每周回顾 ",["$","span",null,{"children":"→"}]]}],["$","p",null,{"children":"回看这一周的学习与日常，挑一点继续做。"}]]}]]}],["$","section",null,{"className":"LifeHome-module__WEsxlW__empty","children":[["$","h2",null,{"children":"从记录到公开笔记"}],["$","p",null,{"children":"保存记录 → 整理为文章 → 导出发布包 → 发布到笔记花园。"}],["$","p",null,{"children":"记录和草稿保存在当前浏览器；保存或导出不会自动公开。发布包需要加入网站并完成发布。"}],["$","$L11",null,{"href":"/garden","children":"阅读公开笔记 →"}]]}]]}],[["$","link","0",{"rel":"stylesheet","href":"/personal-site/_next/static/chunks/344q7hwh7uqk7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/personal-site/_next/static/chunks/2jhy7t0652bip.js","async":true,"nonce":"$undefined"}]],["$","$L13",null,{"children":["$","$14",null,{"name":"Next.MetadataOutlet","children":"$@15"}]}]]}]
+7:["$","$1","h",{"children":[null,["$","$L16",null,{"children":"$L17"}],["$","div",null,{"hidden":true,"children":["$","$L18",null,{"children":["$","$14",null,{"name":"Next.Metadata","children":"$L19"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]
+9:["$","link","0",{"rel":"stylesheet","href":"/personal-site/_next/static/chunks/2zncn4jd9c1o3.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
+6:C
+17:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+1a:I[27201,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3w62ka_3q8-w8.js"],"IconMark"]
+15:null
+19:[["$","title","0",{"children":"记录与写作 | 竹青小筑"}],["$","meta","1",{"name":"description","content":"探索技术、热爱创新、记录生活。关注编程、设计、古典文化与生活之美。"}],["$","link","2",{"rel":"icon","href":"/personal-site/favicon.ico?favicon.2vob68tjqpejf.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L1a","3",{}]]
