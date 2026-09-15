@@ -72,3 +72,24 @@ assert.throws(() => records.legacyInspirations('{"broken":true}'));
 assert.throws(() => records.legacyInspirations('[{"id":"one"}]'));
 assert.equal(records.legacyInspirations(null).length, 0);
 console.log('PASS: 8 categories, schema/URL validation, legacy migration, image backup and portable Markdown round trips, malformed backup rejection.');
+// Reading notebooks use the existing backup envelope; book IDs and excerpts must survive a round trip.
+const book = { ...records.newRecord('reading'), title: '测试书籍', reading: { kind: 'book', author: '作者' } };
+const readingNote = { ...records.newRecord('reading'), title: '一点理解', content: '自己的理解', images: [image], reading: { kind: 'note', bookId: book.id, location: '第二章 P.23', excerpt: '原文第一行\n原文第二行' } };
+const readingRoundTrip = backup.decodeBackup(await backup.encodeBackup([book, readingNote]));
+assert.deepEqual(readingRoundTrip[0].reading, book.reading);
+assert.deepEqual(readingRoundTrip[1].reading, readingNote.reading);
+assert.deepEqual(await readingRoundTrip[1].images[0].blob.arrayBuffer(), await image.blob.arrayBuffer());
+const readingMarkdown = await backup.exportMarkdown(readingNote, book);
+assert(readingMarkdown.includes('《测试书籍》 · 第二章 P.23'));
+assert(readingMarkdown.includes('> 原文第一行\n> 原文第二行'));
+assert(readingMarkdown.includes('## 我的理解 / 疑问\n\n自己的理解'));
+const unfiled = { ...readingNote, reading: { ...readingNote.reading, bookId: null } };
+records.validateRecord(unfiled);
+for (const reading of [{ kind: 'book', author: 42 }, { kind: 'note', bookId: readingNote.id, location: '', excerpt: '' }, { kind: 'note', bookId: null, location: 2, excerpt: '' }, { kind: 'unknown' }]) {
+  assert.throws(() => records.validateRecord({ ...readingNote, reading }));
+}
+assert.throws(() => records.validateRecord({ ...readingNote, category: 'pets' }));
+const summary = weekly.weekSummary([book, readingNote], weekly.weekStart(new Date()));
+assert(!summary.created.some(item => item.id === book.id));
+assert(summary.created.some(item => item.id === readingNote.id));
+console.log('PASS: reading book/note backups, images, unfiled notes, schema rejection, complete Markdown export and weekly filtering.');

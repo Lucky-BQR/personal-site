@@ -1,12 +1,14 @@
 import { isWeekStart } from './weekly';
 
 export const lifeCategories = {
+  reading: { title: '读书笔记', href: '/write/reading', description: '按书慢慢读，也可以先记下一段，再归入书中。', parent: { href: '/write', label: '记录与写作' } },
+  learning: { title: '学习记录', href: '/write/learning', description: '记录不同领域的学习、理解与实践。用领域标签连接相关的笔记。', parent: { href: '/write', label: '记录与写作' } },
   appreciation: { title: '书法赏析', href: '/pinjian/shufa', description: '读帖、赏字，留下自己的体会。', parent: { href: '/pinjian', label: '品鉴' } },
   poetry: { title: '诗歌', href: '/pinjian/poetry', description: '读到的诗句，与自己的感受。', parent: { href: '/pinjian', label: '品鉴' } },
   music: { title: '音乐', href: '/pinjian/music', description: '旋律、歌词与聆听记录。', parent: { href: '/pinjian', label: '品鉴' } },
   calligraphy: { title: '书法', href: '/guanwo/shufa', description: '临帖、日常习字与自己的作品。', parent: { href: '/life', label: '生活' } },
   pets: { title: '宠物', href: '/pets', description: '陪伴中的小事，值得记住的日常。', parent: { href: '/life', label: '生活' } },
-  inspiration: { title: '灵感', href: '/inspiration', description: '随手记下，还没有展开的想法。', parent: { href: '/life', label: '生活' } },
+  inspiration: { title: '灵感', href: '/inspiration', description: '随手记下，还没有展开的想法。', parent: { href: '/write', label: '记录与写作' } },
   writing: { title: '创作', href: '/life/writing', description: '从一句话到一篇作品，慢慢写。', parent: { href: '/life', label: '生活' } },
   links: { title: '链接', href: '/life/links', description: '自己的主页、发表地址与值得收藏的链接。', parent: { href: '/life', label: '生活' } },
 } as const;
@@ -24,6 +26,7 @@ export interface LifeRecord {
   images: LifeImage[]; createdAt: string; updatedAt: string; revision: string;
   article?: ArticleDraft;
   reviewWeek?: string;
+  reading?: { kind: 'book'; author: string } | { kind: 'note'; bookId: string | null; location: string; excerpt: string };
 }
 export const imageTypes = ['image/png', 'image/jpeg', 'image/webp', 'image/gif'];
 export function safeWebUrl(value: string) {
@@ -56,6 +59,15 @@ export function validateRecord(value: unknown): asserts value is LifeRecord {
       throw new Error('文章草稿的来源或字段不正确。');
     }
   }
+  if (r.reading !== undefined) {
+    const reading = r.reading;
+    if (!reading || r.category !== 'reading' || r.article || r.reviewWeek ||
+      (reading.kind === 'book' ? typeof reading.author !== 'string' :
+        reading.kind !== 'note' || (reading.bookId !== null && (typeof reading.bookId !== 'string' || !reading.bookId || reading.bookId === r.id)) ||
+        typeof reading.location !== 'string' || typeof reading.excerpt !== 'string')) {
+      throw new Error('书籍或读书笔记字段不正确。');
+    }
+  }
   if (r.reviewWeek !== undefined && (!isWeekStart(r.reviewWeek) || r.category !== 'writing' ||
     r.article !== undefined || r.id !== `weekly-${r.reviewWeek}`)) {
     throw new Error('每周回顾的日期或编号不正确。');
@@ -71,6 +83,7 @@ export function newRecord(category: LifeCategory): LifeRecord {
     status: 'draft', images: [], createdAt: now, updatedAt: now, revision: crypto.randomUUID() };
 }
 export function recordHref(record: LifeRecord, edit = false) {
+  if (record.reading?.kind === 'book') return `/write/reading?book=${encodeURIComponent(record.id)}`;
   if (record.reviewWeek) return `/life/review?week=${record.reviewWeek}`;
   if (record.article) return `/life/drafts?record=${encodeURIComponent(record.id)}`;
   return `${lifeCategories[record.category].href}?record=${encodeURIComponent(record.id)}${edit ? '&edit=1' : ''}`;

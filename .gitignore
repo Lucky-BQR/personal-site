@@ -51,3 +51,6 @@ next-env.d.ts
 
 # Skills lock file
 /skills-lock.json
+
+# Recoverable snapshots before task edits
+/.task-backups/

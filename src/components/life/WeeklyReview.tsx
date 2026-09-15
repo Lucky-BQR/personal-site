@@ -22,10 +22,10 @@ export default function WeeklyReview() {
     window.addEventListener('focus', refresh);
     return () => { active = false; window.removeEventListener('focus', refresh); };
   }, []);
-  if (!today) return <div className="container-reading spatial-section"><PageHeading title="每周回顾" parent={{ href: '/life', label: '生活' }} />
+  if (!today) return <div className="container-reading spatial-section"><PageHeading title="每周回顾" parent={{ href: '/write', label: '记录与写作' }} />
     {message ? <p role="alert">{message} 请检查本地存储权限后刷新页面。</p> : <p role="status">正在读取本机记录…</p>}</div>;
   const date = parseLocalDate(requestedWeek || today);
-  if (!date) return <div className="container-reading spatial-section"><PageHeading title="每周回顾" parent={{ href: '/life', label: '生活' }} /><p>日期无效，<Link href="/life/review">返回本周</Link>。</p></div>;
+  if (!date) return <div className="container-reading spatial-section"><PageHeading title="每周回顾" parent={{ href: '/write', label: '记录与写作' }} /><p>日期无效，<Link href="/life/review">返回本周</Link>。</p></div>;
   const selected = weekStart(date);
   return <WeekContent key={selected} selected={selected} today={today} records={records} loadError={message}
     onSaved={record => setRecords(previous => [record, ...previous.filter(item => item.id !== record.id)])} />;
@@ -89,7 +89,7 @@ function WeekContent({ selected, today, records, loadError, onSaved }: {
     { title: '继续整理文章', items: summary.drafts, empty: '这一周还没有新增或最近修改的文章草稿。' },
   ];
   return <div className={`container-reading spatial-section ${styles.notebook}`}>
-    <PageHeading title="每周回顾" description="回看这一周留下的东西，挑一点继续写，也为自己留一句话。" parent={{ href: '/life', label: '生活' }} />
+    <PageHeading title="每周回顾" description="回看这一周留下的东西，挑一点继续写，也为自己留一句话。" parent={{ href: '/write', label: '记录与写作' }} />
     <div className={styles.toolbar}>
       <div><p>{selected} — {localDateKey(end)}</p><p className={styles.muted}>周一至周日 · 按当前设备时区</p></div>
       <div className={styles.actions}>

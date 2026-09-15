@@ -25,6 +25,8 @@ export default function LifeNotebook({ category }: { category: LifeCategory }) {
   const [warning, setWarning] = useState('');
   const [query, setQuery] = useState('');
   const [status, setStatus] = useState('all');
+  const [domain, setDomain] = useState('');
+  const domains = [...new Set(records.filter(item => item.category === 'learning' && !item.article).flatMap(item => item.tags))].sort();
   const [busy, setBusy] = useState(false);
   const [pendingDelete, setPendingDelete] = useState<LifeRecord | null>(null);
   const refresh = useCallback(async () => { const next = await listRecords(); setRecords(next); return next; }, []);
@@ -49,7 +51,7 @@ export default function LifeNotebook({ category }: { category: LifeCategory }) {
   }, [editing, creating, refresh]);
   const record = records.find(item => item.id === id && item.category === category && !item.article && !item.reviewWeek);
   const visible = records.filter(item => item.category === category && !item.article && !item.reviewWeek &&
-    (status === 'all' || item.status === status) &&
+    (status === 'all' || item.status === status) && (!domain || item.tags.includes(domain)) &&
     [item.title, item.content, item.url, ...item.tags].join(' ').toLocaleLowerCase().includes(query.trim().toLocaleLowerCase()));
   const count = records.filter(item => item.category === category && !item.article && !item.reviewWeek).length;
   async function run(action: () => Promise<void>) {
@@ -84,6 +86,7 @@ export default function LifeNotebook({ category }: { category: LifeCategory }) {
         <div className={styles.toolbar}><span className={styles.muted}>本机记录 · {count} 条</span><Link className={styles.primary} href={section.href + '?new=1'}>＋ {category === 'writing' ? '开始创作' : category === 'links' ? '收藏链接' : '新建记录'}</Link></div>
         <div className={styles.fieldRow}><label className={styles.field}><span className="sr-only">搜索记录</span><input type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="搜索标题、正文、标签或链接" /></label>
           {category === 'writing' && <label className={styles.field}><span className="sr-only">筛选写作状态</span><select value={status} onChange={event => setStatus(event.target.value)}><option value="all">全部作品</option><option value="draft">草稿</option><option value="finished">定稿</option></select></label>}</div>
+        <>{category === 'learning' && <label className={styles.field}>按领域筛选<select value={domain} onChange={event => setDomain(event.target.value)}><option value="">全部领域</option>{domains.map(tag => <option key={tag} value={tag}>{tag}</option>)}</select></label>}</>
         <div className="record-list">{visible.map(item => <div className={styles.row} key={item.id}><Link className={styles.recordLink} href={recordHref(item)}>
           <span className={styles.muted}>{new Date(item.updatedAt).toLocaleDateString('zh-CN')}{category === 'writing' ? ' · ' + (item.status === 'draft' ? '草稿' : '定稿') : ''}</span>
           <h2>{item.title}</h2><p>{item.content.replace(/!\[[^\]]*\]\([^)]*\)/g, '[图片]').replace(/[#*>_`]/g, '').slice(0, 110) || item.url || '点击查看记录'}</p>

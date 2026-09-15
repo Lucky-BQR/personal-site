@@ -44,8 +44,13 @@ export function decodeBackup(raw: string): LifeRecord[] {
   if (new Set(records.map((r: LifeRecord) => r.id)).size !== records.length) throw new Error('备份包含重复记录。');
   return records;
 }
-export async function exportMarkdown(record: LifeRecord) {
+export async function exportMarkdown(record: LifeRecord, book?: LifeRecord) {
   let content = record.content;
+  if (record.reading?.kind === 'note') {
+    const source = [book ? `《${book.title}》` : '', record.reading.location].filter(Boolean).join(' · ');
+    const excerpt = record.reading.excerpt ? `## 原文摘录\n\n${record.reading.excerpt.split('\n').map(line => '> ' + line).join('\n')}\n\n` : '';
+    content = `${source ? source + '\n\n' : ''}${excerpt}${content ? '## 我的理解 / 疑问\n\n' + content : ''}`;
+  }
   for (const image of record.images) {
     content = content.split('indexeddb://' + image.id).join(await dataUrl(image.blob));
   }
@@ -67,3 +72,4 @@ export function importMarkdown(raw: string): { content: string; images: LifeImag
   });
   return { content, images, ...(heading ? { title: heading[1].trim() } : {}) };
 }
+

@@ -1,0 +1,15 @@
+.library { display: grid; grid-template-columns: 13rem minmax(0, 1fr); gap: 2.5rem; margin-top: 2rem; }
+.shelf { border-right: 1px solid var(--color-border); padding-right: 1.5rem; }
+.shelf h2 { font-size: 1.05rem; margin-bottom: 1rem; }
+.shelf a { display: block; padding: .65rem .75rem; margin: .25rem 0; border-radius: .4rem; font-size: .9rem; overflow-wrap: anywhere; }
+.shelf a[aria-current="page"] { background: var(--color-accentLight); color: var(--color-accent); }
+.shelf small { display: block; color: var(--color-textMuted); font-size: .75rem; margin-top: .25rem; }
+.shelf button { margin-top: 1rem; color: var(--color-accent); cursor: pointer; font-size: .85rem; }
+.notice { border-left: 2px solid var(--color-rule); padding: .7rem 1rem; color: var(--color-textSecondary); font-size: .85rem; line-height: 1.8; }
+.heading { margin-bottom: 1.5rem; }
+.heading h2 { font-size: 1.4rem; margin-bottom: .5rem; }
+.heading p { color: var(--color-textSecondary); font-size: .9rem; line-height: 1.8; white-space: pre-line; }
+.excerpt { border-left: 2px solid var(--color-rule); padding: 1rem 1.25rem; margin-block: 1.5rem; background: var(--color-accentSubtle); white-space: pre-wrap; overflow-wrap: anywhere; line-height: 1.9; }
+.empty { padding: 3rem 0; color: var(--color-textSecondary); line-height: 1.9; }
+.empty h3 { color: var(--color-text); font-size: 1.2rem; margin-bottom: .75rem; }
+@media(max-width: 700px) { .library { grid-template-columns: 1fr; gap: 1.5rem; } .shelf { border-right: 0; border-bottom: 1px solid var(--color-border); padding: 0 0 1rem; } .shelf nav { display: flex; flex-wrap: wrap; gap: .3rem; } .shelf a { margin: 0; } }

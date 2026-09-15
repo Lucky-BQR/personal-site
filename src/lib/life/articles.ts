@@ -3,11 +3,12 @@ import { newRecord, safeWebUrl, validateRecord, type LifeRecord } from './record
 export function articleFromRecord(source: LifeRecord): LifeRecord {
   validateRecord(source);
   if (source.article) throw new Error('这已经是一篇文章草稿。');
+  if (source.reading?.kind === 'book') throw new Error('请从一本书中的具体笔记整理文章。');
   const draft = newRecord('writing');
   const today = new Date();
   const date = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
   return {
-    ...draft, title: source.title, content: source.content, url: source.url,
+    ...draft, title: source.title, content: source.reading?.kind === 'note' && source.reading.excerpt ? source.reading.excerpt.split('\n').map(line => '> ' + line).join('\n') + '\n\n' + source.content : source.content, url: source.url,
     tags: [...source.tags], images: source.images.map(image => ({ ...image })),
     article: {
       sourceId: source.id, sourceRevision: source.revision, sourceTitle: source.title,
@@ -29,3 +30,4 @@ export function validateArticleForExport(record: LifeRecord) {
   if (/\b(?:blob:|file:|data:)/i.test(record.content)) throw new Error('正文含临时或嵌入式图片地址，请用添加图片重新插入后导出。');
   return a;
 }
+

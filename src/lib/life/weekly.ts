@@ -34,7 +34,7 @@ export function weekSummary(records: LifeRecord[], start: string) {
     const time = Date.parse(value);
     return time >= from.getTime() && time < until.getTime();
   };
-  const ordinary = records.filter(record => !record.article && !record.reviewWeek);
+  const ordinary = records.filter(record => !record.article && !record.reviewWeek && record.reading?.kind !== 'book');
   const byUpdated = (a: LifeRecord, b: LifeRecord) => Date.parse(b.updatedAt) - Date.parse(a.updatedAt);
   return {
     created: ordinary.filter(record => contains(record.createdAt)).sort(byUpdated),

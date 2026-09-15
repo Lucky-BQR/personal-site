@@ -15,7 +15,7 @@ export default function RecentLifeRecords() {
     let active = true;
     const refresh = () => { void listRecords().then(records => {
       if (active) {
-        setRecent(records.filter(record => !record.reviewWeek).sort((a, b) => Date.parse(b.updatedAt) - Date.parse(a.updatedAt)).slice(0, 5));
+        setRecent(records.filter(record => !record.reviewWeek && record.reading?.kind !== 'book').sort((a, b) => Date.parse(b.updatedAt) - Date.parse(a.updatedAt)).slice(0, 5));
         setError('');
       }
     }).catch(reason => { if (active) setError(errorText(reason)); }).finally(() => { if (active) setLoading(false); }); };
