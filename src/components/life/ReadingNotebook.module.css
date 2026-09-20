@@ -1,15 +1,82 @@
-.library { display: grid; grid-template-columns: 13rem minmax(0, 1fr); gap: 2.5rem; margin-top: 2rem; }
-.shelf { border-right: 1px solid var(--color-border); padding-right: 1.5rem; }
-.shelf h2 { font-size: 1.05rem; margin-bottom: 1rem; }
-.shelf a { display: block; padding: .65rem .75rem; margin: .25rem 0; border-radius: .4rem; font-size: .9rem; overflow-wrap: anywhere; }
-.shelf a[aria-current="page"] { background: var(--color-accentLight); color: var(--color-accent); }
-.shelf small { display: block; color: var(--color-textMuted); font-size: .75rem; margin-top: .25rem; }
-.shelf button { margin-top: 1rem; color: var(--color-accent); cursor: pointer; font-size: .85rem; }
-.notice { border-left: 2px solid var(--color-rule); padding: .7rem 1rem; color: var(--color-textSecondary); font-size: .85rem; line-height: 1.8; }
-.heading { margin-bottom: 1.5rem; }
-.heading h2 { font-size: 1.4rem; margin-bottom: .5rem; }
-.heading p { color: var(--color-textSecondary); font-size: .9rem; line-height: 1.8; white-space: pre-line; }
-.excerpt { border-left: 2px solid var(--color-rule); padding: 1rem 1.25rem; margin-block: 1.5rem; background: var(--color-accentSubtle); white-space: pre-wrap; overflow-wrap: anywhere; line-height: 1.9; }
+.root { overflow-wrap: anywhere; }
+.root button:disabled { opacity: .5; cursor: wait; }
+.notice { color: var(--color-textMuted); font-size: .8rem; line-height: 1.8; }
+.notice summary { cursor: pointer; }
+.notice p { max-width: 45rem; padding: .6rem 0; }
+.shelfSection, .openBook { margin-top: 2.5rem; }
+.filters { display: flex; flex-wrap: wrap; gap: .75rem; align-items: flex-start; margin-bottom: 1.5rem; }
+.filters > label { margin-bottom: 0; flex: 1; }
+.filters > label:nth-child(2) { flex: 0 1 10rem; }
+.filters > button { color: var(--color-accent); font-size: .8rem; padding: .8rem 0; cursor: pointer; }
+.books { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.5rem; padding-top: 1rem; }
+.bookCard { display: block; min-width: 0; }
+.cover { position: relative; min-height: 19rem; padding: 2rem 1.8rem 1.5rem 2.3rem; display: flex; flex-direction: column; background: var(--color-accentSubtle); border: 1px solid var(--color-border); border-radius: 2px 8px 8px 2px; box-shadow: 3px 3px 0 var(--color-bg), 4px 4px 0 var(--color-border); transition: border-color .2s; }
+.cover::before { content: ''; position: absolute; left: .6rem; top: 0; bottom: 0; border-left: 1px solid var(--color-rule); }
+.cover[data-tone="1"] { background: var(--color-card); }
+.cover[data-tone="2"] { background: var(--color-accentLight); }
+.bookCard:hover .cover { border-color: var(--color-accent); }
+.coverLabel, .coverFoot { font-size: .7rem; letter-spacing: .2em; color: var(--color-textMuted); }
+.cover h2 { font-family: 'STSong', 'SimSun', 'Noto Serif SC', serif; font-size: clamp(1.5rem, 2.5vw, 2rem); line-height: 1.6; margin: 1.7rem 0 .6rem; }
+.cover p { font-size: .85rem; line-height: 1.8; color: var(--color-textSecondary); }
+.coverFoot { margin-top: auto; padding-top: 2.5rem; font-size: .65rem; }
+.bookInfo { display: flex; justify-content: space-between; gap: .5rem; font-size: .8rem; margin-top: 1.2rem; color: var(--color-textSecondary); }
+.bookInfo > :last-child { color: var(--color-accent); }
+.updated { font-size: .7rem; color: var(--color-textMuted); margin-top: .4rem; }
+.unfiled { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.5rem 0; margin-top: 3rem; border-block: 1px solid var(--color-border); }
+.unfiled h2 { font-size: 1rem; margin-bottom: .4rem; }
+.unfiled h2 span { font-size: .8rem; color: var(--color-textMuted); margin-left: .75rem; }
+.unfiled p { font-size: .85rem; color: var(--color-textSecondary); }
+.unfiled > span { color: var(--color-accent); }
+.origin { margin-bottom: 1.5rem; font-size: .85rem; line-height: 1.9; color: var(--color-textSecondary); }
+.origin summary { cursor: pointer; }
+.origin p { white-space: pre-line; margin-top: .75rem; }
+.notebook { display: grid; grid-template-columns: 15rem minmax(0, 1fr); border-block: 1px solid var(--color-border); }
+.contents { min-width: 0; padding: 1.75rem 1.5rem 1.75rem 0; }
+.desktopContents { position: sticky; top: 6rem; max-height: calc(100dvh - 7rem); overflow-y: auto; scrollbar-width: thin; }
+.contents h2 { display: flex; justify-content: space-between; font-size: .9rem; margin-bottom: 1.5rem; }
+.contents h2 span { color: var(--color-textMuted); font-size: .8rem; }
+.contents .filters { display: block; }
+.contents .filters > label { margin-bottom: .7rem; }
+.contents input, .contents select { padding: .7rem; font-size: .8rem; }
+.directory { display: flex; flex-direction: column; gap: .3rem; }
+.directory a { display: flex; align-items: baseline; gap: .7rem; padding: .9rem .6rem; border-left: 2px solid transparent; font-size: .85rem; line-height: 1.7; }
+.directory a[aria-current="page"] { border-left-color: var(--color-accent); background: var(--color-accentSubtle); color: var(--color-accent); }
+.directory a:hover { background: var(--color-accentSubtle); }
+.directory small { display: block; color: var(--color-textMuted); font-size: .7rem; margin-top: .35rem; }
+.noteNumber { color: var(--color-textMuted); font-size: .7rem; font-variant-numeric: tabular-nums; }
+.paper { min-width: 0; border-left: 1px solid var(--color-border); padding: 2.5rem clamp(1.5rem, 4vw, 3.5rem); background: var(--color-card); min-height: 34rem; }
+.noteHeading { padding-bottom: 1.75rem; margin-bottom: 2rem; border-bottom: 1px solid var(--color-border); }
+.kicker { font-size: .7rem; letter-spacing: .15em; color: var(--color-accent); margin-bottom: .9rem; }
+.noteHeading h2 { font-family: 'STSong', 'SimSun', 'Noto Serif SC', serif; font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.6; margin-bottom: .75rem; }
+.noteHeading > div { margin-top: 1.25rem; }
+.noteSection { margin-block: 2rem; }
+.noteSection > h3 { font-size: .8rem; color: var(--color-textMuted); margin-bottom: 1rem; letter-spacing: .08em; }
+.excerpt { border-left: 2px solid var(--color-rule); padding: 1rem 1.25rem; background: var(--color-accentSubtle); white-space: pre-wrap; line-height: 1.9; }
+.pageTurn { display: grid; grid-template-columns: 1fr 1fr; align-items: start; gap: 1.5rem; padding-top: 1.5rem; margin-top: 3rem; border-top: 1px solid var(--color-border); }
+.pageTurn > :last-child { text-align: right; }
+.pageTurn small { display: block; color: var(--color-accent); font-size: .75rem; margin-bottom: .5rem; }
+.pageTurn a span { font-size: .85rem; line-height: 1.8; }
 .empty { padding: 3rem 0; color: var(--color-textSecondary); line-height: 1.9; }
-.empty h3 { color: var(--color-text); font-size: 1.2rem; margin-bottom: .75rem; }
-@media(max-width: 700px) { .library { grid-template-columns: 1fr; gap: 1.5rem; } .shelf { border-right: 0; border-bottom: 1px solid var(--color-border); padding: 0 0 1rem; } .shelf nav { display: flex; flex-wrap: wrap; gap: .3rem; } .shelf a { margin: 0; } }
+.empty h2 { color: var(--color-text); font-size: 1.2rem; margin-bottom: .75rem; }
+.empty p { font-size: .9rem; max-width: 32rem; margin-bottom: 1.5rem; }
+.emptyMark { display: inline-grid; place-items: center; width: 3rem; height: 3rem; border: 1px solid var(--color-rule); color: var(--color-accent); font-family: 'STSong', 'SimSun', 'Noto Serif SC', serif; margin-bottom: 1.5rem; }
+.mobileContents { display: none; }
+@media (max-width: 1000px) { .books { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; } .notebook { grid-template-columns: 13rem minmax(0, 1fr); } }
+@media (max-width: 700px) {
+  .books { gap: 1.5rem; }
+  .cover { min-height: 17rem; padding: 1.4rem 1rem 1.25rem 1.5rem; }
+  .cover h2 { font-size: 1.35rem; }
+  .coverLabel, .coverFoot { letter-spacing: .08em; }
+  .notebook { grid-template-columns: 1fr; }
+  .contents { padding: 0; border-bottom: 1px solid var(--color-border); }
+  .desktopContents { display: none; }
+  .mobileContents { display: block; }
+  .mobileContents > summary { padding: 1.2rem 0; cursor: pointer; font-size: .85rem; color: var(--color-accent); }
+  .mobileContents > summary span { float: right; font-size: .75rem; }
+  .mobileContents[open] > summary span { display: none; }
+  .mobileContents nav { max-height: 20rem; overflow-y: auto; padding-bottom: 1rem; }
+  .paper { padding: 1.75rem 0; border-left: 0; background: transparent; min-height: 20rem; }
+  .filters input, .filters select { font-size: 16px; }
+}
+@media (max-width: 380px) { .books { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .cover { transition: none; } }
