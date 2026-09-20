@@ -1,0 +1,224 @@
+1:"$Sreact.fragment"
+9:I[68027,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3w62ka_3q8-w8.js"],"default",1]
+:HL["/personal-site/_next/static/chunks/2zncn4jd9c1o3.css","style"]
+:HL["/personal-site/_next/static/media/geist_latin-s.p.0wgildi0cnwt9.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/personal-site/_next/static/media/geist_mono_latin-s.p.0r6juujl39pe6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/personal-site/_next/static/chunks/2gjazddowoi9i.css","style"]
+2:T1823,
+              (function() {
+                try {
+                  var theme = localStorage.getItem('site-theme-v2') || 'zhuqing';
+                  document.documentElement.setAttribute('data-theme', theme);
+                  var language = localStorage.getItem('site-language') || 'zh';
+                  document.documentElement.setAttribute('lang', language === 'zh-TW' ? 'zh-Hant' : language);
+
+                  // Set CSS variables for the saved theme to avoid flash
+                  var themes = {
+                    zhuqing: {
+                      '--color-bg': '#f5f2ea',
+                      '--color-text': '#20251f',
+                      '--color-textSecondary': '#4f594c',
+                      '--color-textMuted': '#788073',
+                      '--color-accent': '#48684c',
+                      '--color-accentLight': 'rgba(72,104,76,0.09)',
+                      '--color-accentSubtle': 'rgba(72,104,76,0.045)',
+                      '--color-accentContrast': '#ffffff',
+                      '--color-border': 'rgba(66,88,65,0.14)',
+                      '--color-rule': 'rgba(72,104,76,0.22)',
+                      '--color-card': 'rgba(255,255,252,0.68)',
+                      '--color-cardHover': '#fffefa',
+                      '--color-bgSecondary': '#eeeee6',
+                      '--color-bgTertiary': '#e4e8de',
+                      '--color-navBg': 'rgba(245,242,234,0.9)',
+                      '--color-glass': 'rgba(245,242,234,0.86)',
+                      '--color-glassBorder': 'rgba(66,88,65,0.12)',
+                      '--color-terminal': '#1a2315',
+                      '--color-terminalText': '#b5cca0',
+                      '--color-tagBg': 'rgba(72,104,76,0.09)',
+                      '--color-tagText': '#38563d',
+                      '--color-accentHover': '#38563d'
+                    },
+                    moyun: {
+                      '--color-bg': '#171b18',
+                      '--color-text': '#dce3da',
+                      '--color-textSecondary': '#b3bcb0',
+                      '--color-textMuted': '#8f9a8d',
+                      '--color-accent': '#a7c3a8',
+                      '--color-accentLight': 'rgba(167,195,168,0.12)',
+                      '--color-accentSubtle': 'rgba(167,195,168,0.05)',
+                      '--color-accentContrast': '#172018',
+                      '--color-border': 'rgba(215,230,213,0.15)',
+                      '--color-rule': 'rgba(167,195,168,0.28)',
+                      '--color-card': '#202620',
+                      '--color-cardHover': '#293029',
+                      '--color-bgSecondary': '#202620',
+                      '--color-bgTertiary': '#293029',
+                      '--color-navBg': 'rgba(23,27,24,0.92)',
+                      '--color-glass': 'rgba(23,27,24,0.86)',
+                      '--color-glassBorder': 'rgba(215,230,213,0.14)',
+                      '--color-terminal': '#0e110f',
+                      '--color-terminalText': '#a7c3a8',
+                      '--color-tagBg': 'rgba(167,195,168,0.12)',
+                      '--color-tagText': '#b9d2ba',
+                      '--color-accentHover': '#b9d2ba'
+                    },
+                    subai: {
+                      '--color-bg': '#f7f7f4',
+                      '--color-text': '#202326',
+                      '--color-textSecondary': '#51575d',
+                      '--color-textMuted': '#7c8389',
+                      '--color-accent': '#4d5964',
+                      '--color-accentLight': 'rgba(77,89,100,0.09)',
+                      '--color-accentSubtle': 'rgba(77,89,100,0.04)',
+                      '--color-accentContrast': '#ffffff',
+                      '--color-border': 'rgba(32,35,38,0.14)',
+                      '--color-rule': 'rgba(77,89,100,0.22)',
+                      '--color-card': '#ffffff',
+                      '--color-cardHover': '#f2f3f1',
+                      '--color-bgSecondary': '#f0f0ed',
+                      '--color-bgTertiary': '#e7e8e5',
+                      '--color-navBg': 'rgba(247,247,244,0.92)',
+                      '--color-glass': 'rgba(247,247,244,0.88)',
+                      '--color-glassBorder': 'rgba(32,35,38,0.1)',
+                      '--color-terminal': '#202326',
+                      '--color-terminalText': '#d8e2d8',
+                      '--color-tagBg': 'rgba(77,89,100,0.09)',
+                      '--color-tagText': '#4d5964',
+                      '--color-accentHover': '#3f4a54'
+                    },
+                    qingci: {
+                      '--color-bg': '#e6eeea',
+                      '--color-text': '#20302c',
+                      '--color-textSecondary': '#49625c',
+                      '--color-textMuted': '#70847f',
+                      '--color-accent': '#4f7c72',
+                      '--color-accentLight': 'rgba(79,124,114,0.11)',
+                      '--color-accentSubtle': 'rgba(79,124,114,0.05)',
+                      '--color-accentContrast': '#f1f7f4',
+                      '--color-border': 'rgba(32,70,62,0.16)',
+                      '--color-rule': 'rgba(79,124,114,0.26)',
+                      '--color-card': 'rgba(241,247,244,0.74)',
+                      '--color-cardHover': '#f0f6f3',
+                      '--color-bgSecondary': '#dce8e3',
+                      '--color-bgTertiary': '#ceded7',
+                      '--color-navBg': 'rgba(230,238,234,0.92)',
+                      '--color-glass': 'rgba(230,238,234,0.88)',
+                      '--color-glassBorder': 'rgba(32,70,62,0.13)',
+                      '--color-terminal': '#1d2b27',
+                      '--color-terminalText': '#b7d2c8',
+                      '--color-tagBg': 'rgba(79,124,114,0.11)',
+                      '--color-tagText': '#416c63',
+                      '--color-accentHover': '#416c63'
+                    }
+                  };
+
+                  var vars = themes[theme] || themes.zhuqing;
+                  var root = document.documentElement;
+                  for (var key in vars) {
+                    root.style.setProperty(key, vars[key]);
+                  }
+                } catch(e) {}
+              })();
+            7:X
+0:{"P":null,"c":["","garden","inner-sky-04-elements-modes"],"q":"","i":false,"f":[[["",{"children":["garden",{"children":[["slug","inner-sky-04-elements-modes","d",[]],{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/personal-site/_next/static/chunks/2zncn4jd9c1o3.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/personal-site/_next/static/chunks/3w62ka_3q8-w8.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","className":"geistsans_c4c1ab9-module__8HqI_G__variable geistmono_3afd0436-module__SyuElG__variable h-full","suppressHydrationWarning":true,"children":[["$","head",null,{"children":["$","script",null,{"dangerouslySetInnerHTML":{"__html":"$2"}}]}],"$L3"]}]]}],{"children":["$L4",{"children":["$L5",{"children":["$L6",{},null,false,null]},null,false,"$7"]},null,false,"$7"]},null,false,null],"$L8",false]],"m":"$undefined","G":["$9",["$La"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"4t6x5kcu5GzZoUN8F7vH4"}
+b:I[65150,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3w62ka_3q8-w8.js"],"ThemeProvider"]
+c:I[5233,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3w62ka_3q8-w8.js"],"LanguageProvider"]
+d:I[3374,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3w62ka_3q8-w8.js"],"default"]
+e:I[39756,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3w62ka_3q8-w8.js"],"default"]
+f:I[37457,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3w62ka_3q8-w8.js"],"default"]
+10:I[58234,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3w62ka_3q8-w8.js"],"default"]
+11:I[48559,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3w62ka_3q8-w8.js"],"default"]
+13:I[97367,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3w62ka_3q8-w8.js"],"OutletBoundary"]
+14:"$Sreact.suspense"
+16:I[97367,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3w62ka_3q8-w8.js"],"ViewportBoundary"]
+18:I[97367,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3w62ka_3q8-w8.js"],"MetadataBoundary"]
+3:["$","body",null,{"className":"min-h-full flex flex-col antialiased transition-colors duration-300","style":{"backgroundColor":"var(--color-bg)","color":"var(--color-text)"},"children":["$","$Lb",null,{"children":["$","$Lc",null,{"children":[["$","$Ld",null,{}],["$","main",null,{"className":"flex-1 animate-fade-in","children":["$","$Le",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$Lf",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$L10",null,{}],["$","$L11",null,{}]]}]}]}]
+4:["$","$1","c",{"children":[null,["$","$Le",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$Lf",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+5:["$","$1","c",{"children":[null,["$","$Le",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$Lf",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+6:["$","$1","c",{"children":["$L12",[["$","link","0",{"rel":"stylesheet","href":"/personal-site/_next/static/chunks/2gjazddowoi9i.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/personal-site/_next/static/chunks/3icmgy-mxxbls.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/personal-site/_next/static/chunks/3bbe4zu__-xaw.js","async":true,"nonce":"$undefined"}]],["$","$L13",null,{"children":["$","$14",null,{"name":"Next.MetadataOutlet","children":"$@15"}]}]]}]
+8:["$","$1","h",{"children":[null,["$","$L16",null,{"children":"$L17"}],["$","div",null,{"hidden":true,"children":["$","$L18",null,{"children":["$","$14",null,{"name":"Next.Metadata","children":"$L19"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]
+a:["$","link","0",{"rel":"stylesheet","href":"/personal-site/_next/static/chunks/2zncn4jd9c1o3.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
+1a:I[22016,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3w62ka_3q8-w8.js","/personal-site/_next/static/chunks/3icmgy-mxxbls.js","/personal-site/_next/static/chunks/3bbe4zu__-xaw.js"],""]
+1b:I[57465,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3w62ka_3q8-w8.js","/personal-site/_next/static/chunks/3icmgy-mxxbls.js","/personal-site/_next/static/chunks/3bbe4zu__-xaw.js"],"default"]
+7:C
+1c:T1560,阅读范围：第四章《基本象征》，PDF 第 41–52 页。以下元素和模式是作者的象征分类，不是物理学的物质分类，也不是人的科学测量结果。
+
+
+![四种元素 × 三种模式](/images/articles/inner-sky-04-elements-modes/04-elements-modes.svg)
+
+*图：本次原创阅读整理。象征关系不表示经验证实的因果。*
+
+
+## 作者怎样从天空走到十二星座？
+
+本章不是直接要求读者背十二种性格，而是从整体逐步分化：天空提供整体性的象征，黄道把球形经验简化为圆；季节转折为圆赋予不同阶段；四种元素与三种模式组合，产生十二个星座的解释结构。（PDF 41–50）
+
+这一过程在教学上的价值，是让十二项内容有组织，而不再是互不相关的词条。但要区分两种“推导”：四乘三确实可以构成十二个格子，并不能由此证明每个格子的心理含义来自自然规律。分类的整齐是一种结构性质，不是验证结果。
+
+## 元素讨论方向，模式讨论过程
+
+按作者的解释，元素描述一类关注方向，模式描述它怎样启动、维持和转化。（PDF 46–50）
+
+| 元素 | 本章组织的关注方向 | 便于理解的反思问题 |
+| --- | --- | --- |
+| 火 | 意志、行动与面对挑战 | 我愿意在哪里主动采取行动？ |
+| 土 | 现实条件、耐心与持续建设 | 我怎样让想法在限制下落地？ |
+| 风 | 感知、理解与联系 | 我还没有看见或理解什么？ |
+| 水 | 感受、滋养与敏感性 | 哪些感受需要被承认和安放？ |
+
+表格第三列是为本次阅读设计的提问，不是原书逐字问句，也不用于根据回答识别一个人的出生配置。
+
+| 模式 | 作者采用的过程图景 | 可能的代价 |
+| --- | --- | --- |
+| 创始 | 使新的活动开始 | 开始本身不能保证持续 |
+| 固定 | 让已形成的东西稳定延续 | 维持可能转成拒绝改变 |
+| 变动 | 调整、转换与结束旧形态 | 适应可能转成失去方向 |
+
+重要的区别是：没有一种模式天然比另一种高级。一个项目需要开始、积累和调整；把三者当成好坏等级，就丢失了作者描述过程的用意。
+
+## 为什么必须用矩阵，而不是用排行榜？
+
+四种元素与三种模式是交叉关系。火的主题可以启动、维持，也可以转化；水的主题同样如此。这使一个星座不只靠单一形容词记忆，还能放回它所在的两条维度中理解。（PDF 50）
+
+第五章会给每个格子加入更细的目标、策略、资源和阴影。矩阵适合导航，但不能替代这些细节。例如，“固定”只说明维持的过程特征，无法独自解释金牛、狮子、天蝎、水瓶之间的差别。
+
+这个建模方式也提示我们怎样做阅读图：把元素放成行、模式放成列，让十二星座显示为坐标交点，比画十二个互不相连的小卡片更能表达本章的推理。
+
+## 季节论证在哪一步变成了象征？
+
+作者用昼夜长度和季节经验连接元素的特征，并明确主张这里的星座依季节而不是依恒星图形定义。（PDF 44–47）需要分开三层：
+
+1. 可观测现象：地球不同地区会经历昼夜长度和日照角度的变化。
+2. 坐标约定：用分至点组织一个黄道分区系统。
+3. 心理含义：把某个季节阶段解释为意志、感受或理性。
+
+第三层并不能仅由前两层自动推出。NASA 的说明把地球季节变化解释为倾斜的地轴随公转导致日照变化，并强调南北半球季节相反。[NASA：季节的成因](https://spaceplace.nasa.gov/seasons/en/)
+
+因此，作者从北半球四季经验引出的心理象征若要主张普适性，需要额外说明：当南半球季节相反、赤道附近季节经验又不同时，这个映射依据什么保持不变？本章没有充分处理这个问题。它可以作为文化与象征的解释路径来学习，暂不把季节比喻当成人格成因。
+
+## 从类型读法转向过程读法，还没解决所有问题
+
+本章再次强调十二种过程可以同时存在于一个人身上，太阳星座无法概括整个人。（PDF 50–52）这能削弱“我只是某一种人”的限制。
+
+但作者示范过程读法时，也使用了很强的规范措辞，把某些挑战描述为一个人必须面对的功课。（PDF 51）这里仍要回到第一章的检查：是读者自己选择关注某个过程，还是解释者以符号为名强加目标？把名词换成动词，并不会自动消除权威与决定论。
+
+## 一个不需要排盘的阅读练习
+
+选一件真实任务，例如整理书房，分别观察：何时开始行动，哪些规则有助于持续，什么情况下应该调整方案。再把问题放到行动、现实条件、认知和感受四个角度看，记录哪一个角度带来了新信息。
+
+这个练习使用了本章矩阵作为提问工具，属于阅读改编。不要把结果换算为星座分数。它能验证的，是分类是否帮助你发现遗漏，而不是元素是否在自然中决定性格。
+
+## 理解检查
+
+- “固定”为什么既可能是稳定资源，也可能是僵化风险？
+- 四乘三构成十二个格子，究竟证明了什么，没有证明什么？
+- 如果一个分类能引发有用的反思，还需要什么证据才能说它揭示了人的客观本质？
+
+---
+
+[返回全书阅读导航](./inner-sky-reading-guide.html)12:["$","article",null,{"className":"container-reading spatial-section","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"[{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"四种元素与三种模式：第四章的建模方法\",\"description\":\"四种元素与三种模式组成十二格，同时分清象征分类与实证推论。\",\"datePublished\":\"2026-09-20\",\"author\":{\"@type\":\"Person\",\"name\":\"白清如\",\"url\":\"https://lucky-bqr.github.io/personal-site/about\"},\"url\":\"https://lucky-bqr.github.io/personal-site/garden/inner-sky-04-elements-modes\"},{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"首页\",\"item\":\"https://lucky-bqr.github.io/personal-site/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"笔记\",\"item\":\"https://lucky-bqr.github.io/personal-site/garden\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"四种元素与三种模式：第四章的建模方法\",\"item\":\"https://lucky-bqr.github.io/personal-site/garden/inner-sky-04-elements-modes\"}]}]"}}],["$","header",null,{"className":"page-heading","children":[["$","nav",null,{"className":"page-path","aria-label":"页面路径","children":[["$","$L1a",null,{"href":"/garden?category=reading","children":["← ","读书观影"]}],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","span",null,{"children":"四种元素与三种模式：第四章的建模方法"}]]}],"$undefined",["$","h1",null,{"className":"type-heading-xl","children":"四种元素与三种模式：第四章的建模方法"}],"$undefined"]}],["$","p",null,{"className":"article-date","children":[["$","time",null,{"dateTime":"2026-09-20","children":"2026-09-20"}]," · ","读书观影"]}],["$","p",null,{"className":"article-date","children":"四种元素与三种模式组成十二格，同时分清象征分类与实证推论。"}],["$","div",null,{"className":"prose-custom article-body","children":["$","$L1b",null,{"content":"$1c"}]}],"$L1d"]}]
+1d:["$","$L1a",null,{"href":"/garden?category=reading","className":"reading-back","children":["← 返回","读书观影"]}]
+17:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+1e:I[27201,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3w62ka_3q8-w8.js"],"IconMark"]
+15:null
+19:[["$","title","0",{"children":"四种元素与三种模式：第四章的建模方法 | 竹青小筑"}],["$","meta","1",{"name":"description","content":"四种元素与三种模式组成十二格，同时分清象征分类与实证推论。"}],["$","meta","2",{"name":"author","content":"Selene Bai"}],["$","link","3",{"rel":"canonical","href":"https://lucky-bqr.github.io/personal-site/garden/inner-sky-04-elements-modes"}],["$","meta","4",{"property":"og:title","content":"四种元素与三种模式：第四章的建模方法"}],["$","meta","5",{"property":"og:description","content":"四种元素与三种模式组成十二格，同时分清象征分类与实证推论。"}],["$","meta","6",{"property":"og:url","content":"https://lucky-bqr.github.io/personal-site/garden/inner-sky-04-elements-modes"}],["$","meta","7",{"property":"og:type","content":"article"}],["$","meta","8",{"property":"article:published_time","content":"2026-09-20"}],["$","meta","9",{"name":"twitter:card","content":"summary"}],["$","meta","10",{"name":"twitter:title","content":"四种元素与三种模式：第四章的建模方法"}],["$","meta","11",{"name":"twitter:description","content":"四种元素与三种模式组成十二格，同时分清象征分类与实证推论。"}],["$","link","12",{"rel":"icon","href":"/personal-site/favicon.ico?favicon.2vob68tjqpejf.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L1e","13",{}]]

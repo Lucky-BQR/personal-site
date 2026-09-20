@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="790" viewBox="0 0 640 790" role="img" aria-labelledby="title desc">
+<title id="title">同一位置，两套参照</title><desc id="desc">同一个行星位置同时相对于黄道分区和当地观察坐标定位。图中不包含真实星盘或个人出生数据。</desc>
+<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M1,1 L7,4.5 L1,8" fill="none" stroke="#315d4f" stroke-width="1.7"/></marker></defs>
+<rect width="640" height="790" rx="24" fill="#f7f5ef"/>
+<text x="32" y="50" font-family="Microsoft YaHei, Noto Sans CJK SC, PingFang SC, sans-serif" font-size="26" font-weight="400" fill="#607367" text-anchor="start">内在的天空  /  第 03 章</text>
+<text x="32" y="110" font-family="Microsoft YaHei, Noto Sans CJK SC, PingFang SC, sans-serif" font-size="36" font-weight="700" fill="#24362f" text-anchor="start">同一位置，两套参照</text>
+<text x="32" y="156" font-family="Microsoft YaHei, Noto Sans CJK SC, PingFang SC, sans-serif" font-size="26" font-weight="400" fill="#607367" text-anchor="start">先区分坐标，再讨论象征解释</text>
+<line x1="32" y1="182" x2="608" y2="182" stroke="#cbd7c9" stroke-width="2"/>
+<rect x="135" y="216" width="370" height="100" rx="20" fill="#e7ede3" stroke="#cbd7c9" stroke-width="2"/>
+<text x="320" y="278" font-family="Microsoft YaHei, Noto Sans CJK SC, PingFang SC, sans-serif" font-size="32" font-weight="700" fill="#315d4f" text-anchor="middle">同一个行星位置</text>
+<line x1="320" y1="317" x2="320" y2="350" stroke="#315d4f" stroke-width="3"/>
+<line x1="167" y1="350" x2="473" y2="350" stroke="#315d4f" stroke-width="3"/>
+<line x1="167" y1="350" x2="167" y2="380" stroke="#315d4f" stroke-width="3" marker-end="url(#arrow)"/>
+<line x1="473" y1="350" x2="473" y2="380" stroke="#315d4f" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="32" y="392" width="268" height="178" rx="20" fill="#ffffff" stroke="#cbd7c9" stroke-width="2"/>
+<text x="166" y="440" font-family="Microsoft YaHei, Noto Sans CJK SC, PingFang SC, sans-serif" font-size="32" font-weight="700" fill="#315d4f" text-anchor="middle">黄道参照</text>
+<text x="166" y="490" font-family="Microsoft YaHei, Noto Sans CJK SC, PingFang SC, sans-serif" font-size="28" font-weight="400" fill="#24362f" text-anchor="middle">落入哪个星座</text>
+<text x="166" y="532" font-family="Microsoft YaHei, Noto Sans CJK SC, PingFang SC, sans-serif" font-size="28" font-weight="400" fill="#24362f" text-anchor="middle">黄道分区</text>
+<rect x="340" y="392" width="268" height="178" rx="20" fill="#ffffff" stroke="#cbd7c9" stroke-width="2"/>
+<text x="474" y="440" font-family="Microsoft YaHei, Noto Sans CJK SC, PingFang SC, sans-serif" font-size="32" font-weight="700" fill="#315d4f" text-anchor="middle">当地参照</text>
+<text x="474" y="490" font-family="Microsoft YaHei, Noto Sans CJK SC, PingFang SC, sans-serif" font-size="28" font-weight="400" fill="#24362f" text-anchor="middle">落入哪个宫位</text>
+<text x="474" y="532" font-family="Microsoft YaHei, Noto Sans CJK SC, PingFang SC, sans-serif" font-size="28" font-weight="400" fill="#24362f" text-anchor="middle">地点与时刻</text>
+<text x="320" y="621" font-family="Microsoft YaHei, Noto Sans CJK SC, PingFang SC, sans-serif" font-size="28" font-weight="400" fill="#24362f" text-anchor="middle">同名或同序号，不等于同一含义</text>
+<line x1="32" y1="658" x2="608" y2="658" stroke="#cbd7c9" stroke-width="2"/>
+<text x="32" y="700" font-family="Microsoft YaHei, Noto Sans CJK SC, PingFang SC, sans-serif" font-size="26" font-weight="400" fill="#607367" text-anchor="start">此图为坐标示意，不是真实星盘</text>
+<text x="32" y="742" font-family="Microsoft YaHei, Noto Sans CJK SC, PingFang SC, sans-serif" font-size="26" font-weight="400" fill="#315d4f" text-anchor="start">阅读整理 · 作者的象征体系</text>
+</svg>

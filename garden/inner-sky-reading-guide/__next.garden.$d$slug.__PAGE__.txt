@@ -1,0 +1,88 @@
+1:"$Sreact.fragment"
+2:I[22016,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3w62ka_3q8-w8.js","/personal-site/_next/static/chunks/3icmgy-mxxbls.js","/personal-site/_next/static/chunks/3bbe4zu__-xaw.js"],""]
+3:I[57465,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3w62ka_3q8-w8.js","/personal-site/_next/static/chunks/3icmgy-mxxbls.js","/personal-site/_next/static/chunks/3bbe4zu__-xaw.js"],"default"]
+4:T13cc,本系列完整阅读了用户提供的 321 页 PDF，按 12 章整理为原创分析，并保留页码、版本疑点和方法试跑。笔记中的解释和评析是本次辅助阅读的产物；读者自己的体验、认同或异议，仍需要在实际共读时补充。
+
+## 这本书究竟在做什么？
+
+作者试图把占星从固定性格与命运判断，改写为关于成长、选择和自我认识的象征语言。全书结构很清楚：先说明为何反对标签，再学习行星、星座和宫位的词汇，随后学习组合、排序与整合，最后用同一个人物案例演示。
+
+本次阅读同时沿两条线进行：一条尽量准确理解作者怎样组织这门语言；另一条检查他的结论是否真的由前面的材料支持。我们可以学习一种分类、叙事或提问方法，而不因此接受它所有关于天体作用与人生道路的断言。
+
+## 四个阶段，十二篇笔记
+
+### 一、先理解方法的前提
+
+- [01 · 先把判断权留给人](./inner-sky-01-agency.html)：为什么准确描述也可能限制人；自主原则与理想成长路径之间的张力。
+- [02 · 学会造句，而不只是查词](./inner-sky-02-symbolic-language.html)：功能、目标与策略、情境怎样分工，怎样避免词条拼贴。
+- [03 · 星盘先是一张地图](./inner-sky-03-chart-map.html)：位置记录与意义解释的区别，出生输入的限制，以及源文件的日期疑点。
+
+### 二、建立词汇，读懂差别
+
+- [04 · 四种元素与三种模式](./inner-sky-04-elements-modes.html)：一个四乘三的分类如何形成，以及整齐的分类为什么不等于验证。
+- [05 · 十二种成长难题](./inner-sky-05-signs.html)：目标、策略、资源、阴影；相似行为背后如何可能有不同需要。
+- [06 · 行星：从标签到功能](./inner-sky-06-planets.html)：十种功能的区别，资源不足与过度使用，以及逆行解释的边界。
+- [07 · 宫位：回到生活现场](./inner-sky-07-houses.html)：同一个事件可以属于不同问题领域，不能由事件倒推个人配置。
+
+### 三、从组合走向整体
+
+- [08 · 组成有情境的句子](./inner-sky-08-reading-combinations.html)：五步组合工作表，建设性路径与偏离路径并列。
+- [09 · 读关系，而不只读零件](./inner-sky-09-aspects.html)：相位的几何定义与心理解释分层，守护关系和交点的约定。
+- [10 · 给信息排次序](./inner-sky-10-synthesis.html)：六阶段整合，重点不是排除少数线索，矛盾需要被解释。
+
+### 四、案例、反证与实践
+
+- [11 · 列侬案例的价值与风险](./inner-sky-11-practice.html)：共同任务怎样连接不同需要，缺失图像和事后解释有什么限制。
+- [12 · 允许地图被现实纠正](./inner-sky-12-conclusion.html)：读完不是做过，方法需要允许否认、修订和停止。
+
+## 读完全书，最值得带走的三个区别
+
+**目标与策略不同。** 一个人追求质量，反复修改只是其中一种策略；当修改开始妨碍交付，就值得检查策略是否仍在服务目标。这个判断不需要先给人贴性格标签。
+
+**资源与阴影可能来自同一能力。** 能理解多种立场可以帮助协作，也可能使人不断推迟选择。重要的是具体情境、使用程度与实际后果，不是给能力判好坏。
+
+**解释顺畅与解释正确不同。** 一套语言能串起很多材料，不代表它已经证明因果、预测能力或疗效。尤其当同一种解释能包容任何结果时，更要保留反例和替代解释。
+
+## 怎么把阅读变成一次实践？
+
+从一个最近发生的具体困扰开始，先写事实，再用目标、策略、资源、代价四栏整理。若存在两个相互拉扯的需要，设计一个能让双方各尽其用的小任务。最后写清：出现什么观察时，就要修改这次解释。
+
+配套的 `reflect-with-inner-sky` skill 已把这套读后改编写成步骤。它借鉴本书的结构，也明确增加了替代解释与现实反馈条件。相关模拟试跑用于检查流程能否执行，不冒充用户已经取得的效果。
+
+## 阅读证据和版本限制
+
+- 页码统一使用从 1 计数的 PDF 物理页。正文通常可用“物理页减 12”找到印刷页，但前置部分不适用。
+- 文件封面署名“斯蒂芬·弗里斯特”，出版社栏仍是占位文字。出版年份、正式版次和译者署名未由版权页确认。
+- 相邻页面共享跨页底图，但可见裁切范围不同。已按每页可见区域读取，没有把相邻页当重复内容跳过。
+- 第 31 与 36 页示例日期不一致；第 308 页月亮宫位叙述与邻近正文冲突；第 256 与 280 页交点允许度有差异。
+- 若干页面文字提到的星盘插图在本 PDF 中未显示，因此没有据图复算精确配置，也没有补造缺失原图。
+
+每篇笔记保留对这些问题的局部说明。它们提醒我们：深读既包括理解作者，也包括看见手头材料的缺口。b:X
+10:X
+10:C
+0:{"buildId":"4t6x5kcu5GzZoUN8F7vH4","data":[{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"container-reading spatial-section","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"[{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"《内在的天空》深读导航：把象征变成问题，把判断留给现实\",\"description\":\"完整阅读321页后整理的12章图文笔记，保留论证结构、实践方法与版本疑点。\",\"datePublished\":\"2026-09-20\",\"author\":{\"@type\":\"Person\",\"name\":\"白清如\",\"url\":\"https://lucky-bqr.github.io/personal-site/about\"},\"url\":\"https://lucky-bqr.github.io/personal-site/garden/inner-sky-reading-guide\"},{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"首页\",\"item\":\"https://lucky-bqr.github.io/personal-site/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"笔记\",\"item\":\"https://lucky-bqr.github.io/personal-site/garden\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"《内在的天空》深读导航：把象征变成问题，把判断留给现实\",\"item\":\"https://lucky-bqr.github.io/personal-site/garden/inner-sky-reading-guide\"}]}]"}}],["$","header",null,{"className":"page-heading","children":[["$","nav",null,{"className":"page-path","aria-label":"页面路径","children":[["$","$L2",null,{"href":"/garden?category=reading","children":["← ","读书观影"]}],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","span",null,{"children":"《内在的天空》深读导航：把象征变成问题，把判断留给现实"}]]}],"$undefined",["$","h1",null,{"className":"type-heading-xl","children":"《内在的天空》深读导航：把象征变成问题，把判断留给现实"}],"$undefined"]}],["$","p",null,{"className":"article-date","children":[["$","time",null,{"dateTime":"2026-09-20","children":"2026-09-20"}]," · ","读书观影"]}],["$","p",null,{"className":"article-date","children":"完整阅读321页后整理的12章图文笔记，保留论证结构、实践方法与版本疑点。"}],["$","div",null,{"className":"prose-custom article-body","children":["$","$L3",null,{"content":"$4"}]}],"$L5"]}],["$L6","$L7","$L8"],"$L9"]}],"isPartial":"$@a","staleTime":"$b","varyParams":null},{"rsc":"$Lc","isPartial":"$@d","staleTime":"$b","varyParams":null},{"rsc":"$Le","isPartial":"$@f","staleTime":"$b","varyParams":"$10"},{"rsc":"$L11","isPartial":"$@12","staleTime":"$b","varyParams":"$10"}],"isUpgradeableISRFallback":false,"a":"$@13","rootVaryParams":null,"needsRuntimeRequest":"$@14"}
+15:I[97367,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3w62ka_3q8-w8.js"],"OutletBoundary"]
+16:"$Sreact.suspense"
+18:I[97367,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3w62ka_3q8-w8.js"],"ViewportBoundary"]
+19:I[97367,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3w62ka_3q8-w8.js"],"MetadataBoundary"]
+1a:I[27201,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3w62ka_3q8-w8.js"],"IconMark"]
+1b:I[39756,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3w62ka_3q8-w8.js"],"default"]
+1c:I[37457,["/personal-site/_next/static/chunks/0ehjiuuxbbhq9.js","/personal-site/_next/static/chunks/3w62ka_3q8-w8.js"],"default"]
+:HL["/personal-site/_next/static/chunks/2gjazddowoi9i.css","style"]
+5:["$","$L2",null,{"href":"/garden?category=reading","className":"reading-back","children":["← 返回","读书观影"]}]
+6:["$","link","0",{"rel":"stylesheet","href":"/personal-site/_next/static/chunks/2gjazddowoi9i.css","precedence":"next"}]
+7:["$","script","script-0",{"src":"/personal-site/_next/static/chunks/3icmgy-mxxbls.js","async":true}]
+8:["$","script","script-1",{"src":"/personal-site/_next/static/chunks/3bbe4zu__-xaw.js","async":true}]
+9:["$","$L15",null,{"children":["$","$16",null,{"name":"Next.MetadataOutlet","children":"$@17"}]}]
+c:["$","$1","h",{"children":[null,["$","$L18",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L19",null,{"children":["$","$16",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"《内在的天空》深读导航：把象征变成问题，把判断留给现实 | 竹青小筑"}],["$","meta","1",{"name":"description","content":"完整阅读321页后整理的12章图文笔记，保留论证结构、实践方法与版本疑点。"}],["$","meta","2",{"name":"author","content":"Selene Bai"}],["$","link","3",{"rel":"canonical","href":"https://lucky-bqr.github.io/personal-site/garden/inner-sky-reading-guide"}],["$","meta","4",{"property":"og:title","content":"《内在的天空》深读导航：把象征变成问题，把判断留给现实"}],["$","meta","5",{"property":"og:description","content":"完整阅读321页后整理的12章图文笔记，保留论证结构、实践方法与版本疑点。"}],["$","meta","6",{"property":"og:url","content":"https://lucky-bqr.github.io/personal-site/garden/inner-sky-reading-guide"}],["$","meta","7",{"property":"og:type","content":"article"}],["$","meta","8",{"property":"article:published_time","content":"2026-09-20"}],["$","meta","9",{"name":"twitter:card","content":"summary"}],["$","meta","10",{"name":"twitter:title","content":"《内在的天空》深读导航：把象征变成问题，把判断留给现实"}],["$","meta","11",{"name":"twitter:description","content":"完整阅读321页后整理的12章图文笔记，保留论证结构、实践方法与版本疑点。"}],["$","link","12",{"rel":"icon","href":"/personal-site/favicon.ico?favicon.2vob68tjqpejf.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L1a","13",{}]]}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]
+e:["$","$1","c",{"children":[null,["$","$L1b",null,{"parallelRouterKey":"children","template":["$","$L1c",null,{}]}]]}]
+11:["$","$1","c",{"children":[null,["$","$L1b",null,{"parallelRouterKey":"children","template":["$","$L1c",null,{}]}]]}]
+14:true
+17:null
+b:300
+b:C
+13:0
+d:"$undefined"
+f:"$undefined"
+12:"$undefined"
+a:"$undefined"
