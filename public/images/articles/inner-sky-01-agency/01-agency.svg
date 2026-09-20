@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="820" viewBox="0 0 640 820" role="img" aria-labelledby="title desc">
+<title id="title">把判词变成选择</title><desc id="desc">从固定身份判断，到多种表现的可能，再到当事人选择一个可调整的行动。连接线表示阅读提问顺序，不表示天体的因果作用。</desc>
+<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M1,1 L7,4.5 L1,8" fill="none" stroke="#315d4f" stroke-width="1.7"/></marker></defs>
+<rect width="640" height="820" rx="24" fill="#f7f5ef"/>
+<text x="32" y="50" font-family="Microsoft YaHei, Noto Sans CJK SC, PingFang SC, sans-serif" font-size="26" font-weight="400" fill="#607367" text-anchor="start">内在的天空  /  第 01 章</text>
+<text x="32" y="110" font-family="Microsoft YaHei, Noto Sans CJK SC, PingFang SC, sans-serif" font-size="36" font-weight="700" fill="#24362f" text-anchor="start">把判词变成选择</text>
+<text x="32" y="156" font-family="Microsoft YaHei, Noto Sans CJK SC, PingFang SC, sans-serif" font-size="26" font-weight="400" fill="#607367" text-anchor="start">描述可以修订，决定留给当事人</text>
+<line x1="32" y1="182" x2="608" y2="182" stroke="#cbd7c9" stroke-width="2"/>
+<rect x="32" y="210" width="576" height="132" rx="20" fill="#ffffff" stroke="#cbd7c9" stroke-width="2"/>
+<circle cx="76" cy="255" r="22" fill="#315d4f" stroke="#315d4f" stroke-width="0"/>
+<text x="76" y="265" font-family="Microsoft YaHei, Noto Sans CJK SC, PingFang SC, sans-serif" font-size="27" font-weight="700" fill="#ffffff" text-anchor="middle">1</text>
+<text x="115" y="258" font-family="Microsoft YaHei, Noto Sans CJK SC, PingFang SC, sans-serif" font-size="32" font-weight="700" fill="#315d4f" text-anchor="start">判断</text>
+<text x="58" y="302" font-family="Microsoft YaHei, Noto Sans CJK SC, PingFang SC, sans-serif" font-size="28" font-weight="400" fill="#24362f" text-anchor="start">把“我就是这样”作为起点</text>
+<line x1="320" y1="350" x2="320" y2="382" stroke="#315d4f" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="32" y="392" width="576" height="132" rx="20" fill="#e7ede3" stroke="#cbd7c9" stroke-width="2"/>
+<circle cx="76" cy="437" r="22" fill="#315d4f" stroke="#315d4f" stroke-width="0"/>
+<text x="76" y="447" font-family="Microsoft YaHei, Noto Sans CJK SC, PingFang SC, sans-serif" font-size="27" font-weight="700" fill="#ffffff" text-anchor="middle">2</text>
+<text x="115" y="440" font-family="Microsoft YaHei, Noto Sans CJK SC, PingFang SC, sans-serif" font-size="32" font-weight="700" fill="#315d4f" text-anchor="start">可能</text>
+<text x="58" y="484" font-family="Microsoft YaHei, Noto Sans CJK SC, PingFang SC, sans-serif" font-size="28" font-weight="400" fill="#24362f" text-anchor="start">相同倾向可以有不同表现</text>
+<line x1="320" y1="532" x2="320" y2="564" stroke="#315d4f" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="32" y="574" width="576" height="108" rx="20" fill="#ffffff" stroke="#cbd7c9" stroke-width="2"/>
+<circle cx="76" cy="619" r="22" fill="#315d4f" stroke="#315d4f" stroke-width="0"/>
+<text x="76" y="629" font-family="Microsoft YaHei, Noto Sans CJK SC, PingFang SC, sans-serif" font-size="27" font-weight="700" fill="#ffffff" text-anchor="middle">3</text>
+<text x="115" y="622" font-family="Microsoft YaHei, Noto Sans CJK SC, PingFang SC, sans-serif" font-size="32" font-weight="700" fill="#315d4f" text-anchor="start">选择</text>
+<text x="58" y="666" font-family="Microsoft YaHei, Noto Sans CJK SC, PingFang SC, sans-serif" font-size="28" font-weight="400" fill="#24362f" text-anchor="start">由当事人挑一个可变的行动</text>
+<line x1="32" y1="688" x2="608" y2="688" stroke="#cbd7c9" stroke-width="2"/>
+<text x="32" y="730" font-family="Microsoft YaHei, Noto Sans CJK SC, PingFang SC, sans-serif" font-size="26" font-weight="400" fill="#607367" text-anchor="start">事实反馈可以改变这次解释</text>
+<text x="32" y="772" font-family="Microsoft YaHei, Noto Sans CJK SC, PingFang SC, sans-serif" font-size="26" font-weight="400" fill="#315d4f" text-anchor="start">阅读整理 · 作者的象征体系</text>
+</svg>

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="1130" viewBox="0 0 640 1130" role="img" aria-labelledby="title desc">
+<title id="title">相位：定义与解释分开</title><desc id="desc">五种主要相位的几何角度与作者解释：合相0度一起启动，相冲180度两端拉扯，相刑90度持续摩擦，三合120度自然配合，六合60度相互激发。图形不是因果机制。</desc>
+<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M1,1 L7,4.5 L1,8" fill="none" stroke="#315d4f" stroke-width="1.7"/></marker></defs>
+<rect width="640" height="1130" rx="24" fill="#f7f5ef"/>
+<text x="32" y="50" font-family="Microsoft YaHei, Noto Sans CJK SC, PingFang SC, sans-serif" font-size="26" font-weight="400" fill="#607367" text-anchor="start">内在的天空  /  第 09 章</text>
+<text x="32" y="110" font-family="Microsoft YaHei, Noto Sans CJK SC, PingFang SC, sans-serif" font-size="36" font-weight="700" fill="#24362f" text-anchor="start">相位：定义与解释分开</text>
+<text x="32" y="156" font-family="Microsoft YaHei, Noto Sans CJK SC, PingFang SC, sans-serif" font-size="26" font-weight="400" fill="#607367" text-anchor="start">角度可核对，心理含义属作者解释</text>
+<line x1="32" y1="182" x2="608" y2="182" stroke="#cbd7c9" stroke-width="2"/>
+<rect x="32" y="210" width="576" height="136" rx="20" fill="#ffffff" stroke="#cbd7c9" stroke-width="2"/>
+<circle cx="107" cy="277" r="45" fill="#ffffff" stroke="#cbd7c9" stroke-width="2"/>
+<line x1="107" y1="277" x2="152" y2="277" stroke="#315d4f" stroke-width="4"/>
+<line x1="107" y1="277" x2="152.0" y2="277.0" stroke="#315d4f" stroke-width="4"/>
+<circle cx="107" cy="277" r="4" fill="#315d4f" stroke="#315d4f" stroke-width="0"/>
+<text x="188" y="261" font-family="Microsoft YaHei, Noto Sans CJK SC, PingFang SC, sans-serif" font-size="32" font-weight="700" fill="#315d4f" text-anchor="start">合相  0°</text>
+<text x="188" y="309" font-family="Microsoft YaHei, Noto Sans CJK SC, PingFang SC, sans-serif" font-size="28" font-weight="400" fill="#24362f" text-anchor="start">一起启动，也需区分</text>
+<rect x="32" y="364" width="576" height="136" rx="20" fill="#ffffff" stroke="#cbd7c9" stroke-width="2"/>
+<circle cx="107" cy="431" r="45" fill="#ffffff" stroke="#cbd7c9" stroke-width="2"/>
+<line x1="107" y1="431" x2="152" y2="431" stroke="#315d4f" stroke-width="4"/>
+<line x1="107" y1="431" x2="62.0" y2="431.0" stroke="#315d4f" stroke-width="4"/>
+<circle cx="107" cy="431" r="4" fill="#315d4f" stroke="#315d4f" stroke-width="0"/>
+<text x="188" y="415" font-family="Microsoft YaHei, Noto Sans CJK SC, PingFang SC, sans-serif" font-size="32" font-weight="700" fill="#315d4f" text-anchor="start">相冲  180°</text>
+<text x="188" y="463" font-family="Microsoft YaHei, Noto Sans CJK SC, PingFang SC, sans-serif" font-size="28" font-weight="400" fill="#24362f" text-anchor="start">两端拉扯，容纳双方</text>
+<rect x="32" y="518" width="576" height="136" rx="20" fill="#ffffff" stroke="#cbd7c9" stroke-width="2"/>
+<circle cx="107" cy="585" r="45" fill="#ffffff" stroke="#cbd7c9" stroke-width="2"/>
+<line x1="107" y1="585" x2="152" y2="585" stroke="#315d4f" stroke-width="4"/>
+<line x1="107" y1="585" x2="107.0" y2="540.0" stroke="#315d4f" stroke-width="4"/>
+<circle cx="107" cy="585" r="4" fill="#315d4f" stroke="#315d4f" stroke-width="0"/>
+<text x="188" y="569" font-family="Microsoft YaHei, Noto Sans CJK SC, PingFang SC, sans-serif" font-size="32" font-weight="700" fill="#315d4f" text-anchor="start">相刑  90°</text>
+<text x="188" y="617" font-family="Microsoft YaHei, Noto Sans CJK SC, PingFang SC, sans-serif" font-size="28" font-weight="400" fill="#24362f" text-anchor="start">持续摩擦，协调表达</text>
+<rect x="32" y="672" width="576" height="136" rx="20" fill="#ffffff" stroke="#cbd7c9" stroke-width="2"/>
+<circle cx="107" cy="739" r="45" fill="#ffffff" stroke="#cbd7c9" stroke-width="2"/>
+<line x1="107" y1="739" x2="152" y2="739" stroke="#315d4f" stroke-width="4"/>
+<line x1="107" y1="739" x2="84.50000000000001" y2="700.0288568297003" stroke="#315d4f" stroke-width="4"/>
+<circle cx="107" cy="739" r="4" fill="#315d4f" stroke="#315d4f" stroke-width="0"/>
+<text x="188" y="723" font-family="Microsoft YaHei, Noto Sans CJK SC, PingFang SC, sans-serif" font-size="32" font-weight="700" fill="#315d4f" text-anchor="start">三合  120°</text>
+<text x="188" y="771" font-family="Microsoft YaHei, Noto Sans CJK SC, PingFang SC, sans-serif" font-size="28" font-weight="400" fill="#24362f" text-anchor="start">自然配合，也会纵容</text>
+<rect x="32" y="826" width="576" height="136" rx="20" fill="#ffffff" stroke="#cbd7c9" stroke-width="2"/>
+<circle cx="107" cy="893" r="45" fill="#ffffff" stroke="#cbd7c9" stroke-width="2"/>
+<line x1="107" y1="893" x2="152" y2="893" stroke="#315d4f" stroke-width="4"/>
+<line x1="107" y1="893" x2="129.5" y2="854.0288568297003" stroke="#315d4f" stroke-width="4"/>
+<circle cx="107" cy="893" r="4" fill="#315d4f" stroke="#315d4f" stroke-width="0"/>
+<text x="188" y="877" font-family="Microsoft YaHei, Noto Sans CJK SC, PingFang SC, sans-serif" font-size="32" font-weight="700" fill="#315d4f" text-anchor="start">六合  60°</text>
+<text x="188" y="925" font-family="Microsoft YaHei, Noto Sans CJK SC, PingFang SC, sans-serif" font-size="28" font-weight="400" fill="#24362f" text-anchor="start">相互激发，检查持续</text>
+<line x1="32" y1="998" x2="608" y2="998" stroke="#cbd7c9" stroke-width="2"/>
+<text x="32" y="1040" font-family="Microsoft YaHei, Noto Sans CJK SC, PingFang SC, sans-serif" font-size="26" font-weight="400" fill="#607367" text-anchor="start">先看互动，再同时检查收益与代价</text>
+<text x="32" y="1082" font-family="Microsoft YaHei, Noto Sans CJK SC, PingFang SC, sans-serif" font-size="26" font-weight="400" fill="#315d4f" text-anchor="start">阅读整理 · 作者的象征体系</text>
+</svg>
