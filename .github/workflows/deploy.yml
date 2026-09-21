@@ -26,6 +26,8 @@ jobs:
       - run: npm ci --no-audit --no-fund
       - name: Verify local notebook data and backups
         run: npm run life:verify
+      - name: Verify book aggregation and existing notes
+        run: npm run reading:verify
       - name: Verify article drafts and export
         run: npm run articles:verify
       - name: Verify weekly review

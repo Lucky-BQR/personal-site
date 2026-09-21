@@ -4,6 +4,9 @@ export type GardenCategory = 'technology' | 'reading' | 'reflection';
 
 export interface GardenMetadata extends ContentMetadata {
   format?: 'mdx' | 'markdown';
+  bookTitle?: string;
+  bookAuthor?: string;
+  readingOrder?: number;
   excerpt: string;
   date: string;
   category: GardenCategory;

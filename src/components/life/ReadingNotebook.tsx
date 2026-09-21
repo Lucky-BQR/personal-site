@@ -11,6 +11,9 @@ import RecordEditor from './RecordEditor';
 import RecordContent from './RecordContent';
 import styles from './life.module.css';
 import readingStyles from './ReadingNotebook.module.css';
+import BookCard from '@/components/reading/BookCard';
+import { type ReadingBook } from '@/lib/reading/books';
+import TcmBookshelf from '@/components/reading/TcmBookshelf';
 
 const base = '/write/reading';
 const attachedBookId = (item: LifeRecord) => item.reading?.kind === 'note' ? item.reading.bookId : null;
@@ -19,7 +22,7 @@ const dateLabel = (value: string) => new Date(value).toLocaleDateString('zh-CN')
 const noteText = (item: LifeRecord) => [item.title, item.content, ...item.tags,
   item.reading?.kind === 'note' ? `${item.reading.excerpt} ${item.reading.location}` : ''].join(' ').toLocaleLowerCase();
 
-export default function ReadingNotebook() {
+export default function ReadingNotebook({ publishedBooks = [] }: { publishedBooks?: ReadingBook[] }) {
   const router = useRouter();
   const params = useSearchParams();
   const bookId = params.get('book');
@@ -35,6 +38,7 @@ export default function ReadingNotebook() {
   const [tag, setTag] = useState('');
   const [bookDraft, setBookDraft] = useState<LifeRecord | null>(null);
   const [pendingDelete, setPendingDelete] = useState<LifeRecord | null>(null);
+  const [tcmSummary, setTcmSummary] = useState<{ matchedBooks: number | null; tags: string[] }>({ matchedBooks: null, tags: [] });
   const books = items.filter(item => item.category === 'reading' && item.reading?.kind === 'book');
   const notes = items.filter(item => item.category === 'reading' && item.reading?.kind !== 'book');
   const selectedNote = notes.find(item => item.id === id);
@@ -52,7 +56,11 @@ export default function ReadingNotebook() {
   const search = query.trim().toLocaleLowerCase();
   const matchesNote = (item: LifeRecord) => (!tag || item.tags.includes(tag)) && noteText(item).includes(search);
   const visibleNotes = bookNotes.filter(matchesNote);
-  const tags = [...new Set((opened ? bookNotes : notes).flatMap(item => item.tags))].sort();
+  const tags = [...new Set([...(opened ? bookNotes : notes).flatMap(item => item.tags), ...(!opened ? [...tcmSummary.tags, ...publishedBooks.flatMap(book => [book.overview, ...book.notes].flatMap(note => note.tags))] : [])])].sort();
+  const visiblePublishedBooks = publishedBooks.filter(book => {
+    const pages = [book.overview, ...book.notes];
+    return (!tag || pages.some(page => page.tags.includes(tag))) && [book.title, book.author, book.excerpt, ...pages.flatMap(page => [page.title, page.excerpt, ...page.tags])].join(' ').toLocaleLowerCase().includes(search);
+  });
   const visibleBooks = books.filter(item => {
     const children = notes.filter(candidate => attachedBookId(candidate) === item.id);
     const matchesBook = [item.title, item.content, item.reading?.kind === 'book' ? item.reading.author : ''].join(' ').toLocaleLowerCase().includes(search);
@@ -98,7 +106,7 @@ export default function ReadingNotebook() {
       eyebrow={opened ? 'READING NOTEBOOK' : 'READ & REMEMBER'}
       description={!opened && !creating ? '一本书，一本笔记。把读过的段落和自己的想法，慢慢收在一起。' : undefined}
       parent={{ href: opened || creating ? base : '/write', label: opened || creating ? '我的书架' : '记录与写作' }} />
-    <details className={readingStyles.notice}><summary>本机保存 · 不自动公开</summary><p>文字与图片保存在当前浏览器；这不是账号权限保护，共用这个浏览器的人也能读取。请定期在页底导出备份。</p></details>
+    <details className={readingStyles.notice}><summary>自己的记录本机保存 · 不自动公开</summary><p>书架也收录已有的公开读书笔记。你新写的文字与图片保存在当前浏览器，不会随公开笔记一起发布；共用这个浏览器的人也能读取。请定期在页底导出备份。</p></details>
     {loading ? <p role="status" className={readingStyles.empty}>正在打开书架…</p> : failed ? <p role="alert">{message} 请检查浏览器存储权限后刷新。</p> : creating || (selectedNote && editing) ?
       <div className="mt-8"><RecordEditor key={creating ? `new-${book?.id || 'unfiled'}` : selectedNote?.id} category="reading" record={creating ? undefined : selectedNote} books={books} initialBookId={book?.id || null}
         onCancel={() => router.push(selectedNote ? recordHref(selectedNote) : shelfHref)} onSaved={saved => { setItems(previous => [saved, ...previous.filter(item => item.id !== saved.id)]); clearFilters(); setMessage('已保存到当前浏览器，没有公开。'); router.replace(recordHref(saved)); }} /></div> : missing ?
@@ -115,11 +123,12 @@ export default function ReadingNotebook() {
         <div className={styles.actions}><button type="submit" disabled={busy}>保存书籍</button><button type="button" disabled={busy} onClick={() => setBookDraft(null)}>取消</button></div>
       </form>}
       {!opened ? <section className={readingStyles.shelfSection} aria-label="我的书架">
-        <div className={styles.toolbar}><p className={styles.muted}>{books.length} 本书 · {notes.length} 则笔记</p><div className={styles.actions}>
+        <div className={styles.toolbar}><p className={styles.muted}>{publishedBooks.length} 本已整理 · {books.length} 本自己的书 · {notes.length} 则本机笔记</p><div className={styles.actions}>
           <Link href={`${base}?new=1`}>随手记一段</Link><button className={styles.primary} onClick={() => setBookDraft({ ...newRecord('reading'), reading: { kind: 'book', author: '' } })}>＋ 添加一本书</button>
         </div></div>
         {filters}
         <div className={readingStyles.books}>
+          {visiblePublishedBooks.map(book => <BookCard key={book.slug} book={book} />)}
           {visibleBooks.map((item, index) => {
             const children = notes.filter(candidate => attachedBookId(candidate) === item.id);
             return <Link key={item.id} href={bookHref(item.id)} className={readingStyles.bookCard} onClick={clearFilters}>
@@ -129,7 +138,8 @@ export default function ReadingNotebook() {
             </Link>;
           })}
         </div>
-        {!visibleBooks.length && <div className={readingStyles.empty}><span className={readingStyles.emptyMark} aria-hidden="true">册</span><h2>{search || tag ? '没有找到相符的书' : '为正在读的书，留一本笔记'}</h2><p>{search || tag ? '试试其他关键词，或清除筛选。' : '添加书名，把摘录、章节与自己的理解收进来。已有的零散笔记也可以随时归书。'}</p></div>}
+        {!visibleBooks.length && !visiblePublishedBooks.length && tcmSummary.matchedBooks === 0 && <div className={readingStyles.empty}><span className={readingStyles.emptyMark} aria-hidden="true">册</span><h2>{search || tag ? '没有找到相符的书' : '为正在读的书，留一本笔记'}</h2><p>{search || tag ? '试试其他关键词，或清除筛选。' : '添加书名，把摘录、章节与自己的理解收进来。已有的零散笔记也可以随时归书。'}</p></div>}
+        <TcmBookshelf query={query} tag={tag} onSummary={setTcmSummary} />
         {(!search && !tag || unfiled.some(matchesNote)) && <Link className={readingStyles.unfiled} href={bookHref('unfiled')} onClick={clearFilters}><div><h2>未归书的随手记 <span>{unfiled.length} 则</span></h2><p>先留下触动你的话，以后再放回书里。</p></div><span aria-hidden="true">→</span></Link>}
       </section> : <section className={readingStyles.openBook} aria-label="阅读笔记本">
         <div className={styles.toolbar}><p className={styles.muted}>{book?.reading?.kind === 'book' && book.reading.author ? `${book.reading.author} · ` : ''}{bookNotes.length} 则笔记 · 按记录顺序</p><div className={styles.actions}>

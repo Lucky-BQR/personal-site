@@ -8,6 +8,8 @@ function toGardenMetadata(metadata: ContentMetadata, fields: Record<string, stri
   return {
     ...metadata,
     format: fields.format === 'markdown' ? 'markdown' : 'mdx',
+    ...(fields.bookTitle ? { bookTitle: fields.bookTitle, bookAuthor: fields.bookAuthor || '' } : {}),
+    ...(fields.readingOrder && /^\d+$/.test(fields.readingOrder) ? { readingOrder: Number(fields.readingOrder) } : {}),
     title: metadata.title || 'Untitled thought',
     excerpt: metadata.excerpt || '',
     date: metadata.date || '',
